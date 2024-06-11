@@ -118,6 +118,11 @@ mount /dev/sda1 /mnt/boot/EFI;
 mount /dev/sda3 /mnt/home;
 fi;
 
+
+
+
+
+### INSTALAR BASE, DRIVERS, INTERFACE GRÁFICA E PACOTES NECESSARIOS
 pacstrap /mnt --noconfirm \
 base \
 base-devel \
@@ -157,6 +162,11 @@ sddm \
 grub-efi-x86_64 \
 efibootmgr;
 
+
+
+
+
+### INDICAR E ANEXAR PARTIÇÕES DO SISTEMA EM NO ARQUIVO "fstab" EM "/etc"
 genfstab -U -p /mnt > /mnt/etc/fstab;
 
 mv ZL/2.sh /mnt;
