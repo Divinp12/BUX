@@ -178,6 +178,16 @@ mv ZL/2.sh /mnt;
 chmod 777 /mnt/2.sh;
 arch-chroot /mnt ./2.sh;
 
+
+
+
+
+### 
 sync;
 
-reboot;
+
+
+
+
+### REINICIAR O DISPOSITIVO FORÇADAMENTE
+reboot -f;
