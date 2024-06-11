@@ -169,6 +169,11 @@ efibootmgr;
 ### INDICAR E ANEXAR PARTIÇÕES DO SISTEMA EM NO ARQUIVO "fstab" EM "/etc"
 genfstab -U -p /mnt > /mnt/etc/fstab;
 
+
+
+
+
+### MOVER ARQUIVO "2.sh" PARA "/mnt", ATIVAR TODAS AS PERMISSÕES E EXECUTAR NO AMBIENTE "arch-chroot" EM "/mnt"
 mv ZL/2.sh /mnt;
 chmod 777 /mnt/2.sh;
 arch-chroot /mnt ./2.sh;
