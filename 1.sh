@@ -1,8 +1,12 @@
 #!/bin/bash
 
-### REMOVER E ADICIONAR ESPELHO BRASILEIRO
+### REMOVER E ADICIONAR NOVO ESPELHO BRASILEIRO
 echo "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist;
 
+
+
+
+### REMOVER E ADICIONAR NOVO ARQUIVO "pacman.conf" EM "/etc"
 echo "[options]
 Architecture=auto
 CheckSpace
