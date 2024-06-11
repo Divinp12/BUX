@@ -1,4 +1,6 @@
 #!/bin/bash
+
+### REMOVER E ADICIONAR ESPELHO BRASILEIRO
 echo "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist;
 
 echo "[options]
