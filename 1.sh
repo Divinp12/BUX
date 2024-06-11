@@ -182,7 +182,7 @@ arch-chroot /mnt ./2.sh;
 
 
 
-### 
+### SINCRONIZAR SISTEMAS DE ARQUIVOS EM MEMÓRIA COM DISPOSITIVO DE ARMAZENAMENTO
 sync;
 
 
