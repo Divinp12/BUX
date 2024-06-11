@@ -28,12 +28,13 @@ Include=/etc/pacman.d/mirrorlist" > /etc/pacman.conf;
 
 
 ### SINCRONIZAR ESPELHO E ATUALIZAR PACOTES
-pacman -Syyu --noconfirm;
+pacman -Syyu --noconfirm --quiet;
 
 
 
 
 
+### EXCLUIR TODOS OS DADOS E FORMATAR APENAS 1 DOS DISPOSITIVOS DE ARMAZENAMENTO VÁLIDO
 if fdisk /dev/nvme0n1; then <<EOF
 o
 w
