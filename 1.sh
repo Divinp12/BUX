@@ -6,6 +6,7 @@ echo "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /etc/pacman.
 
 
 
+
 ### REMOVER E ADICIONAR NOVO ARQUIVO "pacman.conf" EM "/etc"
 echo "[options]
 Architecture=auto
@@ -22,7 +23,16 @@ Include=/etc/pacman.d/mirrorlist
 [community]
 Include=/etc/pacman.d/mirrorlist" > /etc/pacman.conf;
 
-pacman -Syy --noconfirm;
+
+
+
+
+### SINCRONIZAR ESPELHO E ATUALIZAR PACOTES
+pacman -Syyu --noconfirm;
+
+
+
+
 
 if fdisk /dev/nvme0n1; then <<EOF
 o
