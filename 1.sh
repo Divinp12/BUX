@@ -7,7 +7,7 @@ echo "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /etc/pacman.
 
 
 
-### REMOVER E ADICIONAR NOVO ARQUIVO "pacman.conf" EM "/etc"
+### SOBRESCREVER ARQUIVO "pacman.conf" EM "/etc"
 echo "[options]
 Architecture=auto
 CheckSpace
