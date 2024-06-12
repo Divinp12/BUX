@@ -174,7 +174,7 @@ genfstab -U -p /mnt > /mnt/etc/fstab;
 
 
 ### MOVER ARQUIVO "2.sh" PARA "/mnt"
-mv ZL/2.sh /mnt;
+mv z/2.sh /mnt;
 
 
 
