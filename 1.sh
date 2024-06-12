@@ -1,6 +1,6 @@
 #!/bin/bash
 
-### REMOVER E ADICIONAR ESPELHO BRASILEIRO ADICIONANDO UM NOVO PARAMETRO NO ARQUIVO "mirrorlist" EM "/etc/pacman.d"
+### SOBRESCREVER ARQUIVO "mirrorlist" EM "/etc/pacman.d"
 echo "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist;
 
 
@@ -122,7 +122,7 @@ fi;
 
 
 
-### INSTALAR BASE, DRIVERS, INTERFACE GRÁFICA E PACOTES NECESSARIOS
+### INSTALAR BASE, DRIVERS, INTERFACE GRÁFICA E PACOTES NECESSARIOS EM "mnt"
 pacstrap /mnt --noconfirm \
 base \
 base-devel \
@@ -166,7 +166,7 @@ efibootmgr;
 
 
 
-### INDICAR E ANEXAR PARTIÇÕES DO SISTEMA EM NO ARQUIVO "fstab" EM "/etc"
+### INDICAR E ANEXAR PARTIÇÕES DO SISTEMA NO ARQUIVO "fstab" EM "/etc"
 genfstab -U -p /mnt > /mnt/etc/fstab;
 
 
@@ -187,7 +187,7 @@ chmod 777 /mnt/2.sh;
 
 
 
-### EXECUTAR NO AMBIENTE "arch-chroot" EM "/mnt"
+### EXECUTAR ARQUIVO "2.sh" NO AMBIENTE "arch-chroot" EM "/mnt"
 arch-chroot /mnt ./2.sh;
 
 
