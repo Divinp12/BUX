@@ -1,17 +1,34 @@
 #!/bin/bash
 
-echo "127.0.0.1 localhost.localdomain localhost
-::1 localhost.localdomain localhost
-127.0.0.1 z.localdomain z" > /etc/hosts;
-
+### CRIAR USUARIO ROOT COM NOME DE "z"
 echo z > /etc/hostname;
 
+
+
+
+
+### CRIAR SENHA COM NOME DE "z" DO USUÁRIO ROOT
 yes z | passwd root;
 
+
+
+
+
+### CRIAR USUÁRIO NORMAL COM NOME DE "z"
 useradd -m -g users -G wheel z;
 
+
+
+
+
+### CRIAR SENHA COM NOME DE "z" DO USUARIO NORMAL
 yes z | passwd z;
 
+
+
+
+
+### CONFIGURAR IDIOMA
 echo "pt_BR.UTF-8 UTF-8" > /etc/locale.gen;
 echo "LANG=pt_BR.UTF-8" > /etc/locale.conf;
 locale-gen;
@@ -126,5 +143,8 @@ sed -i "/^UUID=.* \/boot .*$/! s/rw/rw,noatime,discard,/" /etc/fstab;
 echo "none /home/z/.cache tmpfs defaults,size=0 0 0" >> /etc/fstab;
 echo "none /var/log tmpfs defaults,size=0 0 0" >> /etc/fstab;
 echo "none /tmp tmpfs defaults,size=0 0 0" >> /etc/fstab;
+echo "127.0.0.1 localhost.localdomain localhost
+::1 localhost.localdomain localhost
+127.0.0.1 z.localdomain z" > /etc/hosts;
 rm -rf /boot/initramfs-linux-fallback.img;
 rm -rf 2.sh;
