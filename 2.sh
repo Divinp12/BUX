@@ -28,21 +28,42 @@ yes z | passwd z;
 
 
 
-### CONFIGURAR IDIOMA
+### REMOVER E ADICIONAR NOVO PARAMETRO DE IDIOMA, DATA, HORARIO E FUSO HORARIO PARA NACIONALIDADE BRASILEIRA
 echo "pt_BR.UTF-8 UTF-8" > /etc/locale.gen;
+
+
+
+
+
+### REMOVER E ADICIONAR NOVO PARAMETRO DE LOCALIZAÇÃO PARA BRASILERA
 echo "LANG=pt_BR.UTF-8" > /etc/locale.conf;
+
+
+
+
+
+### ATUALIZAR ARQUIVO DE CONFIGURAÇÕES REGIONAIS
 locale-gen;
+
+
+
+
+
+### SINCRONIZAR E ATUALIZAR RELOGIO
 hwclock --systohc;
 
+
+
+
+
+### 
 echo "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist;
 
-echo "alias i='yay -S --noconfirm'
+echo "alias i='yay -S --noconfirm --quiet'
 alias d='sudo pacman -Rsc'
-alias nano='sudo nano'
-alias addsuporte-bluetooth='yay -S --noconfirm bluez bluez-tools bluez-utils blueman && sudo systemctl start bluetooth.service && sudo systemctl enable bluetooth.service'
 sudo rm -rf /home/z/.bash_history;
-sudo pacman -Syyu --noconfirm;
-sudo pacman -Scc --noconfirm;
+sudo pacman -Syyu --noconfirm --quiet;
+sudo pacman -Scc --noconfirm --quiet;
 clear;
 fastfetch
 git clone https://aur.archlinux.org/yay.git && sudo chmod 777 yay && cd yay && makepkg -si --noconfirm && cd .. && sudo rm -rf yay && yay -S --noconfirm nano --save --answerdiff None --answerclean None --removemake && sed -i '\$d' /home/z/.bashrc" > /home/z/.bashrc;
@@ -62,7 +83,7 @@ Include=/etc/pacman.d/mirrorlist
 [community]
 Include=/etc/pacman.d/mirrorlist" > /etc/pacman.conf;
 
-pacman -Syyu --noconfirm;
+pacman -Syyu --noconfirm --quiet;
 
 if lspci | grep -i amd; then
 pacman -Sy --noconfirm \
