@@ -1,6 +1,6 @@
 #!/bin/bash
 
-### REMOVER E ADICIONAR NOVO ESPELHO BRASILEIRO
+### REMOVER E ADICIONAR ESPELHO BRASILEIRO ADICIONANDO UM NOVO PARAMETRO NO ARQUIVO "mirrorlist" EM "/etc/pacman.d"
 echo "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist;
 
 
