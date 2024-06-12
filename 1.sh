@@ -173,9 +173,21 @@ genfstab -U -p /mnt > /mnt/etc/fstab;
 
 
 
-### MOVER ARQUIVO "2.sh" PARA "/mnt", ATIVAR TODAS AS PERMISSÕES E EXECUTAR NO AMBIENTE "arch-chroot" EM "/mnt"
+### MOVER ARQUIVO "2.sh" PARA "/mnt"
 mv ZL/2.sh /mnt;
+
+
+
+
+
+### ATIVAR TODAS AS PERMISSÕES DO ARQUIVO "2.sh"
 chmod 777 /mnt/2.sh;
+
+
+
+
+
+### EXECUTAR NO AMBIENTE "arch-chroot" EM "/mnt"
 arch-chroot /mnt ./2.sh;
 
 
