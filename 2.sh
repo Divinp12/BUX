@@ -56,9 +56,14 @@ hwclock --systohc;
 
 
 
-### 
+### SOBRESCREVER ARQUIVO "mirrorlist" EM "/etc/pacman.d"
 echo "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist;
 
+
+
+
+
+### SOBRESCREVER ARQUIVO ".bashrc" EM "/mnt/home/z"
 echo "alias i='yay -S --noconfirm --quiet'
 alias d='sudo pacman -Rsc'
 sudo rm -rf /home/z/.bash_history;
@@ -68,6 +73,11 @@ clear;
 fastfetch
 git clone https://aur.archlinux.org/yay.git && sudo chmod 777 yay && cd yay && makepkg -si --noconfirm && cd .. && sudo rm -rf yay && yay -S --noconfirm nano --save --answerdiff None --answerclean None --removemake && sed -i '\$d' /home/z/.bashrc" > /home/z/.bashrc;
 
+
+
+
+
+### SOBRESCREVER ARQUIVO "pacman.conf" EM "/etc"
 echo "[options]
 Architecture=auto
 CheckSpace
@@ -83,8 +93,18 @@ Include=/etc/pacman.d/mirrorlist
 [community]
 Include=/etc/pacman.d/mirrorlist" > /etc/pacman.conf;
 
+
+
+
+
+### SINCRONIZAR ESPELHO E ATUALIZAR PACOTES
 pacman -Syyu --noconfirm --quiet;
 
+
+
+
+
+### INSTALAR DRIVERS AMD
 if lspci | grep -i amd; then
 pacman -Sy --noconfirm \
 amd-ucode \
@@ -93,6 +113,11 @@ vulkan-radeon \
 lib32-vulkan-radeon
 fi;
 
+
+
+
+
+### INSTALAR DRIVERS INTEL
 if lspci | grep -i intel; then
 pacman -Sy --noconfirm \
 intel-ucode \
@@ -101,6 +126,11 @@ vulkan-intel \
 lib32-vulkan-intel
 fi;
 
+
+
+
+
+### INSTALAR DRIVERS NVIDIA
 if lspci | grep -i nvidia; then
 pacman -Sy --noconfirm \
 nvidia \
@@ -110,6 +140,11 @@ lib32-nvidia-utils \
 nvidia-settings
 fi;
 
+
+
+
+
+### INSTALAR DRIVERS VIRTUALBOX
 if lspci | grep -i virtualbox; then
 pacman -Sy --noconfirm \
 virtualbox-guest-utils \
@@ -117,6 +152,11 @@ virtualbox-guest-modules-arch;
 systemctl enable vboxservice;
 fi;
 
+
+
+
+
+### HABILITAR
 systemctl enable \
 NetworkManager \
 sddm;
