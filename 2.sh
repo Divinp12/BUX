@@ -156,16 +156,26 @@ fi;
 
 
 
-### HABILITAR
+### HABILITAR AUTOINICIALIZACAO DE SERVICOS
 systemctl enable \
 NetworkManager \
 sddm;
 
+
+
+
+
+### DESABILITAR AUTOINICIALIZACAO DE SERVICOS
 systemctl disable \
 NetworkManager-wait-online \
 systemd-networkd \
 systemd-timesyncd;
 
+
+
+
+
+### 
 mkinitcpio -P;
 
 echo "[Autologin]
