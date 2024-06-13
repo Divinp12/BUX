@@ -175,15 +175,25 @@ systemd-timesyncd;
 
 
 
-### 
+### RECONSTRUIR IMAGEM DO INITRAMFS USANDO CONFIGURACOES PADRAO DEFINIDAS PARA O PROCESSO DE INICIALIZACAO DO SISTEMA
 mkinitcpio -P;
 
+
+
+
+
+### SOBRESCREVER ARQUIVO "sddm.conf" EM "/etc"
 echo "[Autologin]
 Relogin=false
 User=z
 Session=xfce
 EnableWayland=true" > /etc/sddm.conf;
 
+
+
+
+
+### SOBRESCREVER ARQUIVO "grub" EM "/etc/default"
 echo "GRUB_DEFAULT=0
 GRUB_TIMEOUT=0
 GRUB_DISTRIBUTOR=\"z\"
@@ -193,9 +203,26 @@ GRUB_PRELOAD_MODULES=\"part_gpt part_msdos\"
 GRUB_GFXMODE=auto
 GRUB_GFXPAYLOAD_LINUX=keep
 GRUB_DISABLE_RECOVERY=true" > /etc/default/grub;
+
+
+
+
+
+### INSTALAR GRUB
 grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=z --recheck;
+
+
+
+
+
+### GERAR UM NOVO ARQUIVO DE CONFIGURACAO PARA O GRUB
 grub-mkconfig -o /boot/grub/grub.cfg;
 
+
+
+
+
+### CONFIGURACOES ADICIONAIS
 echo "z ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers;
 sed -i "/^\s*#/d; /^\s*$/d" \
 /home/z/.bash_profile \
