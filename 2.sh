@@ -186,7 +186,7 @@ mkinitcpio -P;
 echo "[Autologin]
 Relogin=false
 User=z
-Session=xfce
+Session=plasma
 EnableWayland=true" > /etc/sddm.conf;
 
 
