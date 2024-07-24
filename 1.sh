@@ -147,6 +147,7 @@ vulkan-mesa-layers \
 lib32-vulkan-mesa-layers \
 vulkan-headers \
 plasma-desktop \
+dolphin \
 konsole \
 wayland \
 lib32-wayland \
