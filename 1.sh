@@ -146,9 +146,12 @@ lib32-vulkan-validation-layers \
 vulkan-mesa-layers \
 lib32-vulkan-mesa-layers \
 vulkan-headers \
-plasma-desktop \
-dolphin \
-konsole \
+xfce4-panel \
+xfce4-settings \
+xfce4-session \
+xfce4-terminal \
+xfwm4 \
+xfdesktop \
 wayland \
 lib32-wayland \
 pipewire \
