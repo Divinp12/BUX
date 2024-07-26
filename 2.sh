@@ -67,6 +67,9 @@ echo "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /etc/pacman.
 echo "alias i='yay -S --noconfirm --quiet'
 alias d='sudo pacman -Rsc'
 sudo rm -rf /home/z/.bash_history;
+sudo rm -rf /home/z/.cache
+sudo rm -rf /var/log
+sudo rm -rf /tmp
 sudo pacman -Syyu --noconfirm --quiet;
 sudo pacman -Scc --noconfirm --quiet;
 clear;
@@ -238,9 +241,6 @@ sed -i "/^\s*#/d; /^\s*$/d" \
 /etc/ts.conf \
 /etc/fstab;
 sed -i "/^UUID=.* \/boot .*$/! s/rw/rw,noatime,discard,/" /etc/fstab;
-echo "none /home/z/.cache tmpfs defaults,size=0 0 0" >> /etc/fstab;
-echo "none /var/log tmpfs defaults,size=0 0 0" >> /etc/fstab;
-echo "none /tmp tmpfs defaults,size=0 0 0" >> /etc/fstab;
 echo "127.0.0.1 localhost.localdomain localhost
 ::1 localhost.localdomain localhost
 127.0.0.1 z.localdomain z" > /etc/hosts;
