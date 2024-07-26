@@ -67,9 +67,9 @@ echo "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /etc/pacman.
 echo "alias i='yay -S --noconfirm --quiet'
 alias d='sudo pacman -Rsc'
 sudo rm -rf /home/z/.bash_history;
-sudo rm -rf /home/z/.cache
-sudo rm -rf /var/log
-sudo rm -rf /tmp
+sudo rm -rf /home/z/.cache;
+sudo rm -rf /var/log;
+sudo rm -rf /tmp;
 sudo pacman -Syyu --noconfirm --quiet;
 sudo pacman -Scc --noconfirm --quiet;
 clear;
