@@ -111,7 +111,6 @@ pacman -Syyu --noconfirm --quiet;
 if lspci | grep -i amd; then
 pacman -Sy --noconfirm \
 amd-ucode \
-xf86-video-amdgpu \
 vulkan-radeon \
 lib32-vulkan-radeon
 fi;
@@ -124,7 +123,6 @@ fi;
 if lspci | grep -i intel; then
 pacman -Sy --noconfirm \
 intel-ucode \
-xf86-video-intel \
 vulkan-intel \
 lib32-vulkan-intel
 fi;
