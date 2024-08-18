@@ -148,7 +148,7 @@ lib32-vulkan-mesa-layers \
 vulkan-headers \
 gnome-shell \
 gnome-terminal \
-gnome-tweak-tool \
+gnome-tweaks \
 gnome-control-center \
 nautilus \
 wayland \
