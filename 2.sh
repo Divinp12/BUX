@@ -187,7 +187,7 @@ mkinitcpio -P;
 echo "[Autologin]
 Relogin=false
 User=z
-Session=gnome-wayland
+Session=plasma
 EnableWayland=true" > /etc/sddm.conf;
 
 
