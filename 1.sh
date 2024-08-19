@@ -146,11 +146,8 @@ lib32-vulkan-validation-layers \
 vulkan-mesa-layers \
 lib32-vulkan-mesa-layers \
 vulkan-headers \
-gnome-shell \
-gnome-terminal \
-gnome-tweaks \
-gnome-control-center \
-nautilus \
+plasma \
+konsole \
 wayland \
 lib32-wayland \
 pipewire \
