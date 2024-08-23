@@ -186,7 +186,7 @@ mkinitcpio -P;
 ### SOBRESCREVER ARQUIVO "sddm.conf" EM "/etc"
 echo "[Autologin]
 Relogin=false
-User=z
+User=4RCH
 Session=plasma
 EnableWayland=true" > /etc/sddm.conf;
 
@@ -197,7 +197,7 @@ EnableWayland=true" > /etc/sddm.conf;
 ### SOBRESCREVER ARQUIVO "grub" EM "/etc/default"
 echo "GRUB_DEFAULT=0
 GRUB_TIMEOUT=0
-GRUB_DISTRIBUTOR=\"z\"
+GRUB_DISTRIBUTOR=\"4RCH\"
 GRUB_CMDLINE_LINUX_DEFAULT=\"quiet mitigations=off\"
 GRUB_CMDLINE_LINUX=\"\"
 GRUB_PRELOAD_MODULES=\"part_gpt part_msdos\"
@@ -210,7 +210,7 @@ GRUB_DISABLE_RECOVERY=true" > /etc/default/grub;
 
 
 ### INSTALAR GRUB
-grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=z --recheck;
+grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=4RCH --recheck;
 
 
 
@@ -224,10 +224,10 @@ grub-mkconfig -o /boot/grub/grub.cfg;
 
 
 ### CONFIGURACOES ADICIONAIS
-echo "z ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers;
+echo "4RCH ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers;
 sed -i "/^\s*#/d; /^\s*$/d" \
-/home/z/.bash_profile \
-/home/z/.bash_logout \
+/home/4RCH/.bash_profile \
+/home/4RCH/.bash_logout \
 /etc/sudoers \
 /etc/sudo.conf \
 /etc/host.conf \
@@ -241,6 +241,6 @@ sed -i "/^\s*#/d; /^\s*$/d" \
 sed -i "/^UUID=.* \/boot .*$/! s/rw/rw,noatime,discard,/" /etc/fstab;
 echo "127.0.0.1 localhost.localdomain localhost
 ::1 localhost.localdomain localhost
-127.0.0.1 z.localdomain z" > /etc/hosts;
+127.0.0.1 4RCH.localdomain 4RCH" > /etc/hosts;
 rm -rf /boot/initramfs-linux-fallback.img;
 rm -rf 2.sh;
