@@ -66,15 +66,15 @@ echo "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /etc/pacman.
 ### SOBRESCREVER ARQUIVO ".bashrc" EM "/mnt/home/z"
 echo "alias i='yay -S --noconfirm --quiet'
 alias d='sudo pacman -Rsc'
-sudo rm -rf /home/z/.bash_history;
-sudo rm -rf /home/z/.cache;
+sudo rm -rf /home/4RCH/.bash_history;
+sudo rm -rf /home/4RCH/.cache;
 sudo rm -rf /var/log;
 sudo rm -rf /tmp;
 sudo pacman -Syyu --noconfirm --quiet;
 sudo pacman -Scc --noconfirm --quiet;
 clear;
 fastfetch
-git clone https://aur.archlinux.org/yay.git && sudo chmod 777 yay && cd yay && makepkg -si --noconfirm && cd .. && sudo rm -rf yay && yay -S --noconfirm nano --save --answerdiff None --answerclean None --removemake && sed -i '\$d' /home/z/.bashrc" > /home/z/.bashrc;
+git clone https://aur.archlinux.org/yay.git && sudo chmod 777 yay && cd yay && makepkg -si --noconfirm && cd .. && sudo rm -rf yay && yay -S --noconfirm nano --save --answerdiff None --answerclean None --removemake && sed -i '\$d' /home/4RCH/.bashrc" > /home/4RCH/.bashrc;
 
 
 
