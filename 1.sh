@@ -11,7 +11,7 @@ echo "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /etc/pacman.
 echo "[options]
 Architecture=auto
 CheckSpace
-ParallelDownloads=10
+ParallelDownloads=2
 SigLevel=Required DatabaseOptional
 LocalFileSigLevel=Optional
 [core]
