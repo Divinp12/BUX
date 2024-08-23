@@ -84,7 +84,7 @@ git clone https://aur.archlinux.org/yay.git && sudo chmod 777 yay && cd yay && m
 echo "[options]
 Architecture=auto
 CheckSpace
-ParallelDownloads=5
+ParallelDownloads=2
 SigLevel=Required DatabaseOptional
 LocalFileSigLevel=Optional
 [core]
