@@ -1,28 +1,28 @@
 #!/bin/bash
 
 ### CRIAR USUARIO ROOT COM NOME DE "z"
-echo z > /etc/hostname;
+echo 4RCH > /etc/hostname;
 
 
 
 
 
 ### CRIAR SENHA COM NOME DE "z" DO USUÁRIO ROOT
-yes z | passwd root;
+yes 4RCH | passwd root;
 
 
 
 
 
 ### CRIAR USUÁRIO NORMAL COM NOME DE "z"
-useradd -m -g users -G wheel z;
+useradd -m -g users -G wheel 4RCH;
 
 
 
 
 
 ### CRIAR SENHA COM NOME DE "z" DO USUARIO NORMAL
-yes z | passwd z;
+yes 4RCH | passwd 4RCH;
 
 
 
