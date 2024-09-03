@@ -34,7 +34,7 @@ sudo pacman -Syyu --noconfirm --quiet;
 sudo pacman -Scc --noconfirm --quiet;
 clear;
 fastfetch
-sudo chmod 777 YAY.sh && ./YAY.sh && sed -i '\$d' /home/4RCH/.bashrc" > /home/4RCH/.bashrc;
+sudo mv /mnt/YAY.sh /home/4RCH && sudo chmod 777 YAY.sh && ./YAY.sh && sed -i '\$d' /home/4RCH/.bashrc" > /home/4RCH/.bashrc;
 
 
 echo "[options]
@@ -128,8 +128,6 @@ grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=4RCH 
 grub-mkconfig -o /boot/grub/grub.cfg;
 
 
-
-mv /mnt/YAY.sh /home/4RCH/;
 
 echo "4RCH ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers;
 
