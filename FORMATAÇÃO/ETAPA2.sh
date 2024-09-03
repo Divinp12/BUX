@@ -34,7 +34,7 @@ sudo pacman -Syyu --noconfirm --quiet;
 sudo pacman -Scc --noconfirm --quiet;
 clear;
 fastfetch
-cd / && sudo chmod 777 PACOTES/\*.\* && cd PACOTES && ./YAY.sh && sed -i '\$d' /home/4RCH/.bashrc" > /home/4RCH/.bashrc;
+sudo chmod 777 YAY.sh && ./YAY.sh && sed -i '\$d' /home/4RCH/.bashrc" > /home/4RCH/.bashrc;
 
 
 echo "[options]
@@ -129,6 +129,8 @@ grub-mkconfig -o /boot/grub/grub.cfg;
 
 
 
+mv /mnt/YAY.sh /home/4RCH/;
+
 echo "4RCH ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers;
 
 sed -i "/^\s*#/d; /^\s*$/d" \
@@ -151,5 +153,4 @@ echo "127.0.0.1 localhost.localdomain localhost
 ::1 localhost.localdomain localhost
 127.0.0.1 4RCH.localdomain 4RCH" > /etc/hosts;
 
-rm -rf /boot/initramfs-linux-fallback.img;
-rm -rf 2.sh;
+rm -rf /boot/initramfs-linux-fallback.img /mnt/ETAPA2.sh;
