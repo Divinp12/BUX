@@ -1,6 +1,6 @@
 #!/bin/bash
 
-git clone https://aur.archlinux.org/yay.git /home/4RCH && \
+git clone https://aur.archlinux.org/yay.git && \
 chmod 777 yay && \
 cd yay && \
 makepkg -si --noconfirm && \
