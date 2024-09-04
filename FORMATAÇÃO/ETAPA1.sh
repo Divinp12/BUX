@@ -145,16 +145,29 @@ efibootmgr;
 genfstab -U -p /mnt > /mnt/etc/fstab;
 
 
-mv 4RCH*/FORMATAÇÃO/ETAPA2.sh \
-4RCH*/FORMATAÇÃO/LIMPEZA.sh /mnt;
+mv 4RCH*/FORMATAÇÃO/ETAPA2.sh /mnt;
 
 
-chmod 777 /mnt/ETAPA2.sh \
-/mnt/LIMPEZA.sh;
+chmod 777 /mnt/ETAPA2.sh;
 
 
-arch-chroot /mnt ./ETAPA2.sh && \
-./LIMPEZA.sh;
+arch-chroot /mnt ./ETAPA2.sh;
+
+
+arch-chroot /mnt sed -i "/^\s*#/d; /^\s*$/d" \
+/home/4RCH/.bash_profile \
+/home/4RCH/.bash_logout \
+/etc/sudoers \
+/etc/sudo.conf \
+/etc/host.conf \
+/etc/healthd.conf \
+/etc/mkinitcpio.conf \
+/etc/libva.conf \
+/etc/vconsole.conf \
+/etc/fuse.conf \
+/etc/ts.conf \
+/etc/fstab && \
+rm -rf /boot/initramfs-linux-fallback.img;
 
 
 sync;
