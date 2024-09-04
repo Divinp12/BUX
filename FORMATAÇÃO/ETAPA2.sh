@@ -136,5 +136,3 @@ sed -i "/^UUID=.* \/boot .*$/! s/rw/rw,noatime,discard,/" /etc/fstab;
 echo "127.0.0.1 localhost.localdomain localhost
 ::1 localhost.localdomain localhost
 127.0.0.1 4RCH.localdomain 4RCH" > /etc/hosts;
-
-rm -rf /boot/initramfs-linux-fallback.img ETAPA2.sh;
