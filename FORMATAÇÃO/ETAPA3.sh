@@ -14,8 +14,4 @@ sed -i "/^\s*#/d; /^\s*$/d" \
 /etc/ts.conf \
 /etc/fstab;
 
-rm -rf /boot/initramfs-linux-fallback.img \
-/home/4RCH/.bash_history \
-/home/4RCH/.cache \
-/var/log \
-/tmp;
+rm -rf /boot/initramfs-linux-fallback.img;
