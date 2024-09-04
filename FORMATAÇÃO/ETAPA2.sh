@@ -1,10 +1,5 @@
 #!/bin/bash
 
-echo 4RCH > /etc/hostname;
-
-
-yes 4RCH | passwd root;
-
 
 useradd -m -g users -G wheel 4RCH;
 
