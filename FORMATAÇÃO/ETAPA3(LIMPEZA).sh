@@ -13,3 +13,5 @@ sed -i "/^\s*#/d; /^\s*$/d" \
 /etc/fuse.conf \
 /etc/ts.conf \
 /etc/fstab;
+
+rm -rf /boot/initramfs-linux-fallback.img ETAPA2.sh;
