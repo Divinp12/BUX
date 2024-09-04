@@ -155,13 +155,9 @@ chmod 777 /mnt/ETAPA2.sh \
 /mnt/YAY.sh;
 
 
-arch-chroot /mnt ./ETAPA2.sh;
-
-
-arch-chroot /mnt ./ETAPA3(LIMPEZA).sh;
-
-
-arch-chroot /mnt ./YAY.sh;
+arch-chroot /mnt ./ETAPA2.sh && \
+./ETAPA3(LIMPEZA).sh && \
+./YAY.sh;
 
 
 sync;
