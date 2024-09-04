@@ -34,7 +34,14 @@ sudo pacman -Syyu --noconfirm --quiet;
 sudo pacman -Scc --noconfirm --quiet;
 clear;
 fastfetch
-&& sed -i '\$d' /home/4RCH/.bashrc" > /home/4RCH/.bashrc;
+git clone https://aur.archlinux.org/yay.git && \\
+chmod 777 yay && \\
+cd yay && \\
+makepkg -si --noconfirm && \\
+cd .. && \\
+sudo rm -rf yay && \\
+yay -S --noconfirm nano --save --answerdiff None --answerclean None --removemake && \\
+sed -i '\$d' /home/4RCH/.bashrc" > /home/4RCH/.bashrc;
 
 
 echo "[options]
