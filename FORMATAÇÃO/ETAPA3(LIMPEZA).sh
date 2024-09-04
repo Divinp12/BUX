@@ -1,4 +1,4 @@
-
+#!/bin/bash
 
 sed -i "/^\s*#/d; /^\s*$/d" \
 /home/4RCH/.bash_profile \
