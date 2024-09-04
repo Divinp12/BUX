@@ -93,7 +93,6 @@ if lspci | grep -i virtualbox; then
 pacman -Sy --noconfirm \
 virtualbox-guest-utils \
 virtualbox-guest-modules-arch;
-systemctl enable vboxservice;
 fi;
 
 
