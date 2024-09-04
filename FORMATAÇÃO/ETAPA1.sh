@@ -160,7 +160,7 @@ arch-chroot /mnt bash -c 'echo -e "4RCH\n4RCH" | passwd root';
 arch-chroot /mnt useradd -m -g users -G wheel 4RCH;
 
 
-arch-chroot /mnt bash -c "echo -e '4RCH\n4RCH' | passwd 4RCH"
+arch-chroot /mnt bash -c "echo -e '4RCH\n4RCH' | passwd 4RCH";
 
 
 arch-chroot /mnt ./ETAPA2.sh;
