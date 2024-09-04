@@ -166,24 +166,6 @@ arch-chroot /mnt bash -c "echo -e '4RCH\n4RCH' | passwd 4RCH"
 arch-chroot /mnt ./ETAPA2.sh;
 
 
-arch-chroot /mnt sed -i "/^\s*#/d; /^\s*$/d" \
-/home/4RCH/.bash_profile \
-/home/4RCH/.bash_logout \
-/etc/sudoers \
-/etc/sudo.conf \
-/etc/host.conf \
-/etc/healthd.conf \
-/etc/mkinitcpio.conf \
-/etc/libva.conf \
-/etc/vconsole.conf \
-/etc/fuse.conf \
-/etc/ts.conf \
-/etc/fstab;
-
-
-arch-chroot /mnt rm -rf /boot/initramfs-linux-fallback.img;
-
-
 sync;
 
 
