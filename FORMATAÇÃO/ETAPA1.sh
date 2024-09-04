@@ -146,18 +146,15 @@ genfstab -U -p /mnt > /mnt/etc/fstab;
 
 
 mv 4RCH*/FORMATAÇÃO/ETAPA2.sh \
-4RCH*/FORMATAÇÃO/LIMPEZA.sh \
-4RCH*/FORMATAÇÃO/PACOTES/YAY.sh /mnt;
+4RCH*/FORMATAÇÃO/LIMPEZA.sh /mnt;
 
 
 chmod 777 /mnt/ETAPA2.sh \
-/mnt/LIMPEZA.sh \
-/mnt/YAY.sh;
+/mnt/LIMPEZA.sh;
 
 
 arch-chroot /mnt ./ETAPA2.sh && \
-./LIMPEZA.sh && \
-./YAY.sh;
+./LIMPEZA.sh;
 
 
 sync;
