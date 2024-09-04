@@ -166,8 +166,10 @@ arch-chroot /mnt sed -i "/^\s*#/d; /^\s*$/d" \
 /etc/vconsole.conf \
 /etc/fuse.conf \
 /etc/ts.conf \
-/etc/fstab && \
-rm -rf /boot/initramfs-linux-fallback.img;
+/etc/fstab;
+
+
+arch-chroot /mnt rm -rf /boot/initramfs-linux-fallback.img;
 
 
 sync;
