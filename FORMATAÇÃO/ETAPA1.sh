@@ -151,6 +151,12 @@ mv 4RCH*/FORMATAÇÃO/ETAPA2.sh /mnt;
 chmod 777 /mnt/ETAPA2.sh;
 
 
+arch-chroot /mnt bash -c 'echo 4RCH > /etc/hostname';
+
+
+arch-chroot /mnt bash -c 'echo -e "4RCH\n4RCH" | passwd root';
+
+
 arch-chroot /mnt ./ETAPA2.sh;
 
 
