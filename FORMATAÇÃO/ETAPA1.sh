@@ -158,6 +158,9 @@ chmod 777 /mnt/ETAPA2.sh \
 arch-chroot /mnt ./ETAPA2.sh;
 
 
+arch-chroot /mnt ./ETAPA3(LIMPEZA).sh;
+
+
 sync;
 
 
