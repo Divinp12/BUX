@@ -145,10 +145,14 @@ efibootmgr;
 genfstab -U -p /mnt > /mnt/etc/fstab;
 
 
-mv 4RCH*/FORMA*/ETAPA2.sh 4RCH*/FORMA*/PACOTES/YAY.sh /mnt
+mv 4RCH*/FORMATAÇÃO/ETAPA2.sh \
+4RCH*/FORMATAÇÃO/ETAPA3(LIMPEZA).sh \
+4RCH*/FORMATAÇÃO/PACOTES/YAY.sh /mnt;
 
 
-chmod 777 /mnt/ETAPA2.sh;
+chmod 777 /mnt/ETAPA2.sh \
+/mnt/ETAPA3(LIMPEZA).sh \
+/mnt/YAY.sh;
 
 
 arch-chroot /mnt ./ETAPA2.sh;
