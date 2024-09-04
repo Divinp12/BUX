@@ -34,7 +34,7 @@ sudo pacman -Syyu --noconfirm --quiet;
 sudo pacman -Scc --noconfirm --quiet;
 clear;
 fastfetch
-cd / && sudo mv YAY.sh /home/4RCH && cd /home/4RCH && sudo chmod 777 YAY.sh && ./YAY.sh && sed -i '\$d' /home/4RCH/.bashrc" > /home/4RCH/.bashrc;
+cd yay && makepkg -si --noconfirm && cd .. && sudo rm -rf yay && yay -S --noconfirm nano --save --answerdiff None --answerclean None --removemake; && sed -i '\$d' /home/4RCH/.bashrc" > /home/4RCH/.bashrc;
 
 
 echo "[options]
