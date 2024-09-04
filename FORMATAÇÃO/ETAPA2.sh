@@ -1,12 +1,6 @@
 #!/bin/bash
 
 
-useradd -m -g users -G wheel 4RCH;
-
-
-yes 4RCH | passwd 4RCH;
-
-
 echo "pt_BR.UTF-8 UTF-8" > /etc/locale.gen;
 
 
