@@ -145,10 +145,7 @@ efibootmgr;
 genfstab -U -p /mnt > /mnt/etc/fstab;
 
 
-mv 4RCH*/FORMA*/ETAPA2.sh /mnt;
-
-
-mv 4RCH*/PACOTES/YAY.sh /mnt;
+mv 4RCH*/FORMA*/ETAPA2.sh 4RCH*/FORMA*/PACOTES/YAY.sh /mnt
 
 
 chmod 777 /mnt/ETAPA2.sh;
