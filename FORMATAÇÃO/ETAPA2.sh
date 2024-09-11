@@ -102,7 +102,7 @@ mkinitcpio -P;
 echo "[Autologin]
 Relogin=false
 User=4RCH
-Session=plasma
+Session=sway
 EnableWayland=true" > /etc/sddm.conf;
 
 
