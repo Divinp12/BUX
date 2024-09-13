@@ -1,9 +1,6 @@
 #!/bin/bash
 
 
-echo "LANG=pt_BR.UTF-8" > /etc/locale.conf;
-
-
 locale-gen;
 
 
