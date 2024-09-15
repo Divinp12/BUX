@@ -130,6 +130,7 @@ vulkan-mesa-layers \
 lib32-vulkan-mesa-layers \
 vulkan-headers \
 plasma-desktop \
+kscreen \
 foot \
 wayland \
 lib32-wayland \
