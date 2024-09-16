@@ -164,10 +164,16 @@ arch-chroot /mnt useradd -m -g users -G wheel 4RCH;
 arch-chroot /mnt bash -c "echo -e '4RCH\n4RCH' | passwd 4RCH";
 
 
-arch-chroot /mnt bash -c 'echo "pt_BR.UTF-8 UTF-8" > /etc/locale.gen'
+arch-chroot /mnt bash -c 'echo "pt_BR.UTF-8 UTF-8" > /etc/locale.gen';
 
 
-arch-chroot /mnt bash -c 'echo "LANG=pt_BR.UTF-8" > /etc/locale.conf'
+arch-chroot /mnt bash -c 'echo "LANG=pt_BR.UTF-8" > /etc/locale.conf';
+
+
+arch-chroot /mnt bash -c 'locale-gen';
+
+
+arch-chroot /mnt bash -c 'hwclock --systohc';
 
 
 arch-chroot /mnt ./ETAPA2.sh;
