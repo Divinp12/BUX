@@ -1,12 +1,6 @@
 #!/bin/bash
 
 
-locale-gen;
-
-
-hwclock --systohc;
-
-
 echo "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist;
 
 
