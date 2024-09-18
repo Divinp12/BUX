@@ -1,9 +1,6 @@
 #!/bin/bash
 
 
-echo "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist;
-
-
 echo "alias i='yay -S --noconfirm --quiet'
 alias d='sudo pacman -Rsc'
 sudo rm -rf /home/4RCH/.bash_history /home/4RCH/.cache /var/log /tmp;
