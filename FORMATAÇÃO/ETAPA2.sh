@@ -1,27 +1,5 @@
 #!/bin/bash
 
-if lspci | grep -i nvidia; then
-pacman -Sy --noconfirm \
-nvidia \
-nvidia-dkms \
-nvidia-utils \
-lib32-nvidia-utils \
-nvidia-settings
-fi;
-
-
-if lspci | grep -i virtualbox; then
-pacman -Sy --noconfirm \
-virtualbox-guest-utils \
-virtualbox-guest-modules-arch;
-fi;
-
-
-systemctl enable \
-NetworkManager \
-sddm;
-
-
 systemctl disable \
 NetworkManager-wait-online \
 systemd-networkd \
