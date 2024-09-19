@@ -315,9 +315,6 @@ sed -i "/^\s*#/d; /^\s*$/d" \
 rm -rf /boot/initramfs-linux-fallback.img;
 
 
-arch-chroot /mnt ./ETAPA2.sh;
-
-
 sync;
 
 
