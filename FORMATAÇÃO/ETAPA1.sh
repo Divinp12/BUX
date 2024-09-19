@@ -146,12 +146,6 @@ efibootmgr;
 genfstab -U -p /mnt > /mnt/etc/fstab;
 
 
-mv 4RCH*/FORMATAÇÃO/ETAPA2.sh /mnt;
-
-
-chmod 777 /mnt/ETAPA2.sh;
-
-
 arch-chroot /mnt bash -c 'echo 4RCH > /etc/hostname';
 
 
