@@ -215,6 +215,22 @@ Include=/etc/pacman.d/mirrorlist" > /etc/pacman.conf';
 arch-chroot /mnt bash -c 'pacman -Syyu --noconfirm --quiet';
 
 
+arch-chroot /mnt bash -c 'if lspci | grep -i amd; then
+pacman -Sy --noconfirm \
+amd-ucode \
+vulkan-radeon \
+lib32-vulkan-radeon
+fi';
+
+
+arch-chroot /mnt bash -c 'if lspci | grep -i intel; then
+pacman -Sy --noconfirm \
+intel-ucode \
+vulkan-intel \
+lib32-vulkan-intel
+fi';
+
+
 arch-chroot /mnt ./ETAPA2.sh;
 
 
