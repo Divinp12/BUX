@@ -1,30 +1,5 @@
 #!/bin/bash
 
-echo "[Autologin]
-Relogin=false
-User=4RCH
-Session=plasma
-EnableWayland=true" > /etc/sddm.conf;
-
-
-echo "GRUB_DEFAULT=0
-GRUB_TIMEOUT=0
-GRUB_DISTRIBUTOR=\"4RCH\"
-GRUB_CMDLINE_LINUX_DEFAULT=\"quiet mitigations=off\"
-GRUB_CMDLINE_LINUX=\"\"
-GRUB_PRELOAD_MODULES=\"part_gpt part_msdos\"
-GRUB_GFXMODE=auto
-GRUB_GFXPAYLOAD_LINUX=keep
-GRUB_DISABLE_RECOVERY=true" > /etc/default/grub;
-
-
-grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=4RCH --recheck;
-
-
-grub-mkconfig -o /boot/grub/grub.cfg;
-
-
-
 echo "4RCH ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers;
 
 sed -i "/^UUID=.* \/boot .*$/! s/rw/rw,noatime,discard,/" /etc/fstab;
