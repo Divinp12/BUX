@@ -1,22 +1,5 @@
 #!/bin/bash
 
-
-if lspci | grep -i amd; then
-pacman -Sy --noconfirm \
-amd-ucode \
-vulkan-radeon \
-lib32-vulkan-radeon
-fi;
-
-
-if lspci | grep -i intel; then
-pacman -Sy --noconfirm \
-intel-ucode \
-vulkan-intel \
-lib32-vulkan-intel
-fi;
-
-
 if lspci | grep -i nvidia; then
 pacman -Sy --noconfirm \
 nvidia \
