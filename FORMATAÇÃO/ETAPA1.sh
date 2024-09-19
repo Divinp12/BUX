@@ -231,6 +231,28 @@ lib32-vulkan-intel
 fi';
 
 
+arch-chroot /mnt bash -c 'if lspci | grep -i nvidia; then
+pacman -Sy --noconfirm \
+nvidia \
+nvidia-dkms \
+nvidia-utils \
+lib32-nvidia-utils \
+nvidia-settings
+fi';
+
+
+arch-chroot /mnt bash -c 'if lspci | grep -i virtualbox; then
+pacman -Sy --noconfirm \
+virtualbox-guest-utils \
+virtualbox-guest-modules-arch;
+fi';
+
+
+arch-chroot /mnt bash -c 'systemctl enable \
+NetworkManager \
+sddm';
+
+
 arch-chroot /mnt ./ETAPA2.sh;
 
 
