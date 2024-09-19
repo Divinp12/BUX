@@ -179,6 +179,23 @@ arch-chroot /mnt bash -c 'hwclock --systohc';
 arch-chroot /mnt bash -c 'echo "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist';
 
 
+arch-chroot /mnt bash -c 'echo "alias i=\"yay -S --noconfirm --quiet\"
+alias d=\"sudo pacman -Rsc\"
+sudo rm -rf /home/4RCH/.bash_history /home/4RCH/.cache /var/log /tmp;
+sudo pacman -Syyu --noconfirm --quiet;
+sudo pacman -Scc --noconfirm --quiet;
+clear;
+fastfetch
+git clone https://aur.archlinux.org/yay.git && \\
+chmod 777 yay && \\
+cd yay && \\
+makepkg -si --noconfirm && \\
+cd .. && \\
+sudo rm -rf yay && \\
+yay -S --noconfirm nano --save --answerdiff None --answerclean None --removemake && \\
+sed -i \'8,\$d\' /home/4RCH/.bashrc" > /home/4RCH/.bashrc';
+
+
 arch-chroot /mnt ./ETAPA2.sh;
 
 
