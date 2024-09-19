@@ -253,6 +253,15 @@ NetworkManager \
 sddm';
 
 
+arch-chroot /mnt bash -c 'systemctl disable \
+NetworkManager-wait-online \
+systemd-networkd \
+systemd-timesyncd';
+
+
+arch-chroot /mnt bash -c 'mkinitcpio -P';
+
+
 arch-chroot /mnt ./ETAPA2.sh;
 
 
