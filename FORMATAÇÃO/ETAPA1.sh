@@ -196,6 +196,22 @@ yay -S --noconfirm nano --save --answerdiff None --answerclean None --removemake
 sed -i \"8,\$d\" /home/4RCH/.bashrc" > /home/4RCH/.bashrc';
 
 
+arch-chroot /mnt bash -c 'echo "[options]
+Architecture=auto
+CheckSpace
+ParallelDownloads=1
+SigLevel=Required DatabaseOptional
+LocalFileSigLevel=Optional
+[core]
+Include=/etc/pacman.d/mirrorlist
+[extra]
+Include=/etc/pacman.d/mirrorlist
+[multilib]
+Include=/etc/pacman.d/mirrorlist
+[community]
+Include=/etc/pacman.d/mirrorlist" > /etc/pacman.conf';
+
+
 arch-chroot /mnt ./ETAPA2.sh;
 
 
