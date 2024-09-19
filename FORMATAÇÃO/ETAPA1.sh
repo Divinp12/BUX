@@ -212,6 +212,9 @@ Include=/etc/pacman.d/mirrorlist
 Include=/etc/pacman.d/mirrorlist" > /etc/pacman.conf';
 
 
+arch-chroot /mnt bash -c 'pacman -Syyu --noconfirm --quiet';
+
+
 arch-chroot /mnt ./ETAPA2.sh;
 
 
