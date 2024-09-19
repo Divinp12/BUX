@@ -262,14 +262,14 @@ systemd-timesyncd';
 arch-chroot /mnt bash -c 'mkinitcpio -P';
 
 
-echo "[Autologin]
+arch-chroot /mnt bash -c 'echo "[Autologin]
 Relogin=false
 User=4RCH
 Session=plasma
-EnableWayland=true" > /etc/sddm.conf;
+EnableWayland=true" > /etc/sddm.conf';
 
 
-echo "GRUB_DEFAULT=0
+arch-chroot /mnt bash -c 'echo "GRUB_DEFAULT=0
 GRUB_TIMEOUT=0
 GRUB_DISTRIBUTOR=\"4RCH\"
 GRUB_CMDLINE_LINUX_DEFAULT=\"quiet mitigations=off\"
@@ -277,13 +277,13 @@ GRUB_CMDLINE_LINUX=\"\"
 GRUB_PRELOAD_MODULES=\"part_gpt part_msdos\"
 GRUB_GFXMODE=auto
 GRUB_GFXPAYLOAD_LINUX=keep
-GRUB_DISABLE_RECOVERY=true" > /etc/default/grub;
+GRUB_DISABLE_RECOVERY=true" > /etc/default/grub';
 
 
-grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=4RCH --recheck;
+arch-chroot /mnt bash -c 'grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=4RCH --recheck';
 
 
-grub-mkconfig -o /boot/grub/grub.cfg;
+arch-chroot /mnt bash -c 'grub-mkconfig -o /boot/grub/grub.cfg';
 
 
 arch-chroot /mnt ./ETAPA2.sh;
