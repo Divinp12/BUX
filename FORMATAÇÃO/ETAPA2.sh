@@ -1,22 +1,6 @@
 #!/bin/bash
 
 
-echo "[options]
-Architecture=auto
-CheckSpace
-ParallelDownloads=1
-SigLevel=Required DatabaseOptional
-LocalFileSigLevel=Optional
-[core]
-Include=/etc/pacman.d/mirrorlist
-[extra]
-Include=/etc/pacman.d/mirrorlist
-[multilib]
-Include=/etc/pacman.d/mirrorlist
-[community]
-Include=/etc/pacman.d/mirrorlist" > /etc/pacman.conf;
-
-
 pacman -Syyu --noconfirm --quiet;
 
 
