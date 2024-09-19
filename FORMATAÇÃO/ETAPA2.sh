@@ -1,9 +1,6 @@
 #!/bin/bash
 
 
-pacman -Syyu --noconfirm --quiet;
-
-
 if lspci | grep -i amd; then
 pacman -Sy --noconfirm \
 amd-ucode \
