@@ -1,14 +1,5 @@
 #!/bin/bash
 
-systemctl disable \
-NetworkManager-wait-online \
-systemd-networkd \
-systemd-timesyncd;
-
-
-mkinitcpio -P;
-
-
 echo "[Autologin]
 Relogin=false
 User=4RCH
