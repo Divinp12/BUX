@@ -124,7 +124,7 @@ lib32-vulkan-validation-layers \
 vulkan-mesa-layers \
 lib32-vulkan-mesa-layers \
 vulkan-headers \
-gnome \
+sway \
 foot \
 wayland \
 lib32-wayland \
@@ -233,7 +233,8 @@ mkinitcpio -P;
 echo "[Autologin]
 Relogin=false
 User=4RCH
-Session=gnome" > /etc/sddm.conf;
+Session=sway
+EnableWayland=true" > /etc/sddm.conf;
 
 echo "GRUB_DEFAULT=0
 GRUB_TIMEOUT=0
