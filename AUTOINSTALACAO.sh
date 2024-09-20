@@ -129,8 +129,7 @@ lib32-vulkan-validation-layers \
 vulkan-mesa-layers \
 lib32-vulkan-mesa-layers \
 vulkan-headers \
-plasma-desktop \
-kscreen \
+sway \
 foot \
 wayland \
 lib32-wayland \
