@@ -309,6 +309,9 @@ arch-chroot /mnt bash -c 'sed -i "/^\s*#/d; /^\s*$/d" \
 arch-chroot /mnt bash -c 'rm -rf /boot/initramfs-linux-fallback.img';
 
 
+arch-chroot /mnt bash -c "echo "exec --no-startup-id bash -c 'swaymsg output "*" disable; for output in $(swaymsg -t get_outputs | jq -r ".[] | select(.active == true) | .name"); do if [[ "$output" == *"VGA"* || "$output" == *"HDMI"* || "$output" == *"DVI"* || "$output" == *"DP"* ]]; then swaymsg output "$output" enable; fi; done'"" >> /home/4RCH/.config/sway/config
+
+
 sync;
 
 
