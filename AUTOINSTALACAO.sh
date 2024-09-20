@@ -244,8 +244,7 @@ mkinitcpio -P;
 echo "[Autologin]
 Relogin=false
 User=4RCH
-Session=plasma
-EnableWayland=true" > /etc/sddm.conf;
+Session=xfce4" > /etc/sddm.conf;
 
 echo "GRUB_DEFAULT=0
 GRUB_TIMEOUT=0
