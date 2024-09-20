@@ -1,7 +1,5 @@
 #!/bin/bash
-
 echo "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist;
-
 
 echo "[options]
 Architecture=auto
@@ -18,9 +16,7 @@ Include=/etc/pacman.d/mirrorlist
 [community]
 Include=/etc/pacman.d/mirrorlist" > /etc/pacman.conf;
 
-
 pacman -Sy --noconfirm --quiet;
-
 
 if fdisk /dev/nvme0n1; then <<EOF
 o
@@ -105,7 +101,6 @@ mount /dev/sda1 /mnt/boot/EFI;
 mount /dev/sda3 /mnt/home;
 fi;
 
-
 pacstrap /mnt --noconfirm \
 base \
 base-devel \
@@ -129,11 +124,7 @@ lib32-vulkan-validation-layers \
 vulkan-mesa-layers \
 lib32-vulkan-mesa-layers \
 vulkan-headers \
-xfce4-panel \
-xfce4-session \
-xfce4-settings \
-xfwm4 \
-xfdesktop \
+gnome \
 foot \
 wayland \
 lib32-wayland \
@@ -145,9 +136,7 @@ sddm \
 grub-efi-x86_64 \
 efibootmgr;
 
-
 genfstab -U -p /mnt > /mnt/etc/fstab;
-
 
 arch-chroot /mnt bash -c '
 echo 4RCH > /etc/hostname;
