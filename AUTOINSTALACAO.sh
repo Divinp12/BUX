@@ -161,13 +161,11 @@ echo "LANG=pt_BR.UTF-8" > /etc/locale.conf;
 
 locale-gen;
 
-hwclock --systohc';
+hwclock --systohc;
 
+echo "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist;
 
-arch-chroot /mnt bash -c 'echo "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist';
-
-
-arch-chroot /mnt bash -c 'echo "alias i=\"yay -S --noconfirm --quiet\"
+echo "alias i=\"yay -S --noconfirm --quiet\"
 alias d=\"sudo pacman -Rsc\"
 sudo rm -rf /home/4RCH/.bash_history /home/4RCH/.cache /var/log /tmp;
 sudo pacman -Syyu --noconfirm --quiet;
@@ -181,10 +179,9 @@ makepkg -si --noconfirm && \\
 cd .. && \\
 sudo rm -rf yay && \\
 yay -S --noconfirm nano --save --answerdiff None --answerclean None --removemake && \\
-sed -i \"8,\\$d\" /home/4RCH/.bashrc" > /home/4RCH/.bashrc';
+sed -i \"8,\\$d\" /home/4RCH/.bashrc" > /home/4RCH/.bashrc;
 
-
-arch-chroot /mnt bash -c 'echo "[options]
+echo "[options]
 Architecture=auto
 CheckSpace
 ParallelDownloads=1
@@ -197,13 +194,11 @@ Include=/etc/pacman.d/mirrorlist
 [multilib]
 Include=/etc/pacman.d/mirrorlist
 [community]
-Include=/etc/pacman.d/mirrorlist" > /etc/pacman.conf';
+Include=/etc/pacman.d/mirrorlist" > /etc/pacman.conf;
 
+pacman -Syyu --noconfirm --quiet;
 
-arch-chroot /mnt bash -c 'pacman -Syyu --noconfirm --quiet';
-
-
-arch-chroot /mnt bash -c 'if lspci | grep -i amd; then
+if lspci | grep -i amd; then
 pacman -Sy --noconfirm \
 amd-ucode \
 vulkan-radeon \
@@ -230,30 +225,26 @@ if lspci | grep -i virtualbox; then
 pacman -Sy --noconfirm \
 virtualbox-guest-utils \
 virtualbox-guest-modules-arch
-fi';
+fi;
 
-
-arch-chroot /mnt bash -c 'systemctl enable \
+systemctl enable \
 NetworkManager \
 sddm;
 
 systemctl disable \
 NetworkManager-wait-online \
 systemd-networkd \
-systemd-timesyncd';
+systemd-timesyncd;
 
+mkinitcpio -P;
 
-arch-chroot /mnt bash -c 'mkinitcpio -P';
-
-
-arch-chroot /mnt bash -c 'echo "[Autologin]
+echo "[Autologin]
 Relogin=false
 User=4RCH
 Session=plasma
-EnableWayland=true" > /etc/sddm.conf';
+EnableWayland=true" > /etc/sddm.conf;
 
-
-arch-chroot /mnt bash -c 'echo "GRUB_DEFAULT=0
+echo "GRUB_DEFAULT=0
 GRUB_TIMEOUT=0
 GRUB_DISTRIBUTOR=\"4RCH\"
 GRUB_CMDLINE_LINUX_DEFAULT=\"quiet mitigations=off\"
@@ -261,27 +252,21 @@ GRUB_CMDLINE_LINUX=\"\"
 GRUB_PRELOAD_MODULES=\"part_gpt part_msdos\"
 GRUB_GFXMODE=auto
 GRUB_GFXPAYLOAD_LINUX=keep
-GRUB_DISABLE_RECOVERY=true" > /etc/default/grub';
+GRUB_DISABLE_RECOVERY=true" > /etc/default/grub;
 
+grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=4RCH --recheck;
 
-arch-chroot /mnt bash -c 'grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=4RCH --recheck';
+grub-mkconfig -o /boot/grub/grub.cfg;
 
+echo "4RCH ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers;
 
-arch-chroot /mnt bash -c 'grub-mkconfig -o /boot/grub/grub.cfg';
+sed -i "/^UUID=.* \/boot .*$/! s/rw/rw,noatime,discard,/" /etc/fstab;
 
-
-arch-chroot /mnt bash -c 'echo "4RCH ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers';
-
-
-arch-chroot /mnt bash -c 'sed -i "/^UUID=.* \/boot .*$/! s/rw/rw,noatime,discard,/" /etc/fstab';
-
-
-arch-chroot /mnt bash -c 'echo "127.0.0.1 localhost.localdomain localhost
+echo "127.0.0.1 localhost.localdomain localhost
 ::1 localhost.localdomain localhost
-127.0.0.1 4RCH.localdomain 4RCH" > /etc/hosts';
+127.0.0.1 4RCH.localdomain 4RCH" > /etc/hosts;
 
-
-arch-chroot /mnt bash -c 'sed -i "/^\s*#/d; /^\s*$/d" \
+sed -i "/^\s*#/d; /^\s*$/d" \
 /home/4RCH/.bash_profile \
 /home/4RCH/.bash_logout \
 /etc/sudoers \
@@ -293,10 +278,9 @@ arch-chroot /mnt bash -c 'sed -i "/^\s*#/d; /^\s*$/d" \
 /etc/vconsole.conf \
 /etc/fuse.conf \
 /etc/ts.conf \
-/etc/fstab';
+/etc/fstab;
 
-
-arch-chroot /mnt bash -c 'rm -rf /boot/initramfs-linux-fallback.img';
+rm -rf /boot/initramfs-linux-fallback.img';
 
 
 arch-chroot /mnt bash -c "echo "exec --no-startup-id bash -c 'swaymsg output "*" disable; for output in $(swaymsg -t get_outputs | jq -r ".[] | select(.active == true) | .name"); do if [[ "$output" == *"VGA"* || "$output" == *"HDMI"* || "$output" == *"DVI"* || "$output" == *"DP"* ]]; then swaymsg output "$output" enable; fi; done'"" >> /home/4RCH/.config/sway/config
