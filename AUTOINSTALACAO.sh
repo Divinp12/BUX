@@ -129,7 +129,11 @@ lib32-vulkan-validation-layers \
 vulkan-mesa-layers \
 lib32-vulkan-mesa-layers \
 vulkan-headers \
-sway \
+xfce4-panel \
+xfce4-session \
+xfce4-settings \
+xfwm4 \
+xfdesktop \
 foot \
 wayland \
 lib32-wayland \
