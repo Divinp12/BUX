@@ -19,7 +19,7 @@ Include=/etc/pacman.d/mirrorlist
 Include=/etc/pacman.d/mirrorlist" > /etc/pacman.conf;
 
 
-pacman -Syyu --noconfirm --quiet;
+pacman -Sy --noconfirm --quiet;
 
 
 if fdisk /dev/nvme0n1; then <<EOF
