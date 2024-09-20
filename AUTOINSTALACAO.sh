@@ -241,10 +241,9 @@ fi';
 
 arch-chroot /mnt bash -c 'systemctl enable \
 NetworkManager \
-sddm';
+sddm;
 
-
-arch-chroot /mnt bash -c 'systemctl disable \
+systemctl disable \
 NetworkManager-wait-online \
 systemd-networkd \
 systemd-timesyncd';
