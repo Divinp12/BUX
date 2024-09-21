@@ -172,7 +172,7 @@ makepkg -si --noconfirm && \\
 cd .. && \\
 sudo rm -rf yay && \\
 yay -S --noconfirm nano --save --answerdiff None --answerclean None --removemake && \\
-sudo sed -i \"8,\\$\d\" /home/4RCH/.bashrc" > /home/4RCH/.bashrc;
+sudo sed -i \"8,\\\$d\" /home/4RCH/.bashrc" > /home/4RCH/.bashrc;
 
 echo "[options]
 Architecture=auto
