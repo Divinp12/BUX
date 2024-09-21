@@ -171,7 +171,7 @@ makepkg -si --noconfirm && \\
 cd .. && \\
 sudo rm -rf yay && \\
 yay -S --noconfirm nano --save --answerdiff None --answerclean None --removemake && \\
-sed -i \"8,\\$d\" /home/4RCH/.bashrc" > /home/4RCH/.bashrc;
+sed -i \"8,\\$\d\" /home/4RCH/.bashrc" > /home/4RCH/.bashrc;
 
 echo "[options]
 Architecture=auto
@@ -188,7 +188,7 @@ Include=/etc/pacman.d/mirrorlist
 [community]
 Include=/etc/pacman.d/mirrorlist" > /etc/pacman.conf;
 
-pacman -Syyu --noconfirm --quiet;
+pacman -Sy --noconfirm --quiet;
 
 if lspci | grep -i amd; then
 pacman -Sy --noconfirm \
