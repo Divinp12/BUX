@@ -234,7 +234,7 @@ mkinitcpio -P;
 echo "[Autologin]
 Relogin=false
 User=4RCH
-Session=sway
+Session=plasma
 EnableWayland=true" > /etc/sddm.conf;
 
 echo "GRUB_DEFAULT=0
