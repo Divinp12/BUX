@@ -274,10 +274,9 @@ sed -i "/^\s*#/d; /^\s*$/d" \
 
 rm -rf /boot/initramfs-linux-fallback.img;
 
-echo "swaymsg output \* disable
-for output in \$(wlr-randr | grep -E \"HDMI|VGA|DVI|DP\" | awk \"{print \$1}\"); do
+echo "exec_always --no-startup-id bash -c "swaymsg output \* disable for output in \$(wlr-randr | grep -E \"HDMI|VGA|DVI|DP\" | awk \"{print \$1}\"); do
     swaymsg output \"\$output\" enable
-done"';
+done" >> home/4RCH/.config/sway/config';
 
 sync;
 
