@@ -140,25 +140,27 @@ efibootmgr;
 genfstab -U -p /mnt > /mnt/etc/fstab;
 
 arch-chroot /mnt bash -c '
-echo 4RCH > /etc/hostname;
+alias Z="echo"
 
-echo -e "4RCH\n4RCH" | passwd root;
+Z 4RCH > /etc/hostname;
+
+Z -e "4RCH\n4RCH" | passwd root;
 
 useradd -m -g users -G wheel 4RCH;
 
-echo -e "4RCH\n4RCH" | passwd 4RCH;
+Z -e "4RCH\n4RCH" | passwd 4RCH;
 
-echo "pt_BR.UTF-8 UTF-8" > /etc/locale.gen;
+Z "pt_BR.UTF-8 UTF-8" > /etc/locale.gen;
 
-echo "LANG=pt_BR.UTF-8" > /etc/locale.conf;
+Z "LANG=pt_BR.UTF-8" > /etc/locale.conf;
 
 locale-gen;
 
 hwclock --systohc;
 
-echo "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist;
+Z "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist;
 
-echo "alias i=\"yay -S --noconfirm --quiet\"
+Z "alias i=\"yay -S --noconfirm --quiet\"
 alias d=\"sudo pacman -Rsc\"
 sudo rm -rf /home/4RCH/.bash_history /home/4RCH/.cache /var/log /tmp;
 sudo pacman -Syyu --noconfirm --quiet;
@@ -174,7 +176,7 @@ sudo rm -rf yay && \\
 yay -S --noconfirm nano --save --answerdiff None --answerclean None --removemake && \\
 sudo sed -i \"8,\\\$d\" /home/4RCH/.bashrc" > /home/4RCH/.bashrc;
 
-echo "[options]
+Z "[options]
 Architecture=auto
 CheckSpace
 ParallelDownloads=1
@@ -231,13 +233,13 @@ systemd-timesyncd;
 
 mkinitcpio -P;
 
-echo "[Autologin]
+Z "[Autologin]
 Relogin=false
 User=4RCH
 Session=plasma
 EnableWayland=true" > /etc/sddm.conf;
 
-echo "GRUB_DEFAULT=0
+Z "GRUB_DEFAULT=0
 GRUB_TIMEOUT=0
 GRUB_DISTRIBUTOR=\"4RCH\"
 GRUB_CMDLINE_LINUX_DEFAULT=\"quiet mitigations=off\"
@@ -251,11 +253,11 @@ grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=4RCH 
 
 grub-mkconfig -o /boot/grub/grub.cfg;
 
-echo "4RCH ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers;
+Z "4RCH ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers;
 
 sed -i "/^UUID=.* \/boot .*$/! s/rw/rw,noatime,discard,/" /etc/fstab;
 
-echo "127.0.0.1 localhost.localdomain localhost
+Z "127.0.0.1 localhost.localdomain localhost
 ::1 localhost.localdomain localhost
 127.0.0.1 4RCH.localdomain 4RCH" > /etc/hosts;
 
