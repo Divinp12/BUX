@@ -140,7 +140,7 @@ efibootmgr;
 genfstab -U -p /mnt > /mnt/etc/fstab;
 
 arch-chroot /mnt bash -c '
-Z() { echo "$@"; }
+Z() {echo "$@";}
 
 Z 4RCH > /etc/hostname;
 
