@@ -1,6 +1,5 @@
 #!/bin/bash
 echo "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist;
-
 echo "[options]
 Architecture=auto
 CheckSpace
@@ -15,9 +14,7 @@ Include=/etc/pacman.d/mirrorlist
 Include=/etc/pacman.d/mirrorlist
 [community]
 Include=/etc/pacman.d/mirrorlist" > /etc/pacman.conf;
-
 pacman -Sy --noconfirm --quiet;
-
 if fdisk /dev/nvme0n1; then <<EOF
 o
 w
@@ -100,7 +97,6 @@ mkdir /mnt/home;
 mount /dev/sda1 /mnt/boot/EFI;
 mount /dev/sda3 /mnt/home;
 fi;
-
 pacstrap /mnt --noconfirm \
 base \
 base-devel \
@@ -136,31 +132,18 @@ pavucontrol \
 sddm \
 grub-efi-x86_64 \
 efibootmgr;
-
 genfstab -U -p /mnt > /mnt/etc/fstab;
-
 arch-chroot /mnt bash -c '
-Z() {echo "$@";}
-
-Z 4RCH > /etc/hostname;
-
-Z -e "4RCH\n4RCH" | passwd root;
-
+echo 4RCH > /etc/hostname;
+echo -e "4RCH\n4RCH" | passwd root;
 useradd -m -g users -G wheel 4RCH;
-
-Z -e "4RCH\n4RCH" | passwd 4RCH;
-
-Z "pt_BR.UTF-8 UTF-8" > /etc/locale.gen;
-
-Z "LANG=pt_BR.UTF-8" > /etc/locale.conf;
-
+echo -e "4RCH\n4RCH" | passwd 4RCH;
+echo "pt_BR.UTF-8 UTF-8" > /etc/locale.gen;
+echo "LANG=pt_BR.UTF-8" > /etc/locale.conf;
 locale-gen;
-
 hwclock --systohc;
-
-Z "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist;
-
-Z "alias i=\"yay -S --noconfirm --quiet\"
+echo "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist;
+echo "alias i=\"yay -S --noconfirm --quiet\"
 alias d=\"sudo pacman -Rsc\"
 sudo rm -rf /home/4RCH/.bash_history /home/4RCH/.cache /var/log /tmp;
 sudo pacman -Syyu --noconfirm --quiet;
@@ -175,8 +158,7 @@ cd .. && \\
 sudo rm -rf yay && \\
 yay -S --noconfirm nano --save --answerdiff None --answerclean None --removemake && \\
 sudo sed -i \"8,\\\$d\" /home/4RCH/.bashrc" > /home/4RCH/.bashrc;
-
-Z "[options]
+echo "[options]
 Architecture=auto
 CheckSpace
 ParallelDownloads=1
@@ -190,23 +172,19 @@ Include=/etc/pacman.d/mirrorlist
 Include=/etc/pacman.d/mirrorlist
 [community]
 Include=/etc/pacman.d/mirrorlist" > /etc/pacman.conf;
-
 pacman -Sy --noconfirm --quiet;
-
 if lspci | grep -i amd; then
 pacman -Sy --noconfirm \
 amd-ucode \
 vulkan-radeon \
 lib32-vulkan-radeon
 fi;
-
 if lspci | grep -i intel; then
 pacman -Sy --noconfirm \
 intel-ucode \
 vulkan-intel \
 lib32-vulkan-intel
 fi;
-
 if lspci | grep -i nvidia; then
 pacman -Sy --noconfirm \
 nvidia \
@@ -215,31 +193,25 @@ nvidia-utils \
 lib32-nvidia-utils \
 nvidia-settings
 fi;
-
 if lspci | grep -i virtualbox; then
 pacman -Sy --noconfirm \
 virtualbox-guest-utils \
 virtualbox-guest-modules-arch
 fi;
-
 systemctl enable \
 NetworkManager \
 sddm;
-
 systemctl disable \
 NetworkManager-wait-online \
 systemd-networkd \
 systemd-timesyncd;
-
 mkinitcpio -P;
-
-Z "[Autologin]
+echo "[Autologin]
 Relogin=false
 User=4RCH
 Session=plasma
 EnableWayland=true" > /etc/sddm.conf;
-
-Z "GRUB_DEFAULT=0
+echo "GRUB_DEFAULT=0
 GRUB_TIMEOUT=0
 GRUB_DISTRIBUTOR=\"4RCH\"
 GRUB_CMDLINE_LINUX_DEFAULT=\"quiet mitigations=off\"
@@ -248,19 +220,13 @@ GRUB_PRELOAD_MODULES=\"part_gpt part_msdos\"
 GRUB_GFXMODE=auto
 GRUB_GFXPAYLOAD_LINUX=keep
 GRUB_DISABLE_RECOVERY=true" > /etc/default/grub;
-
 grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=4RCH --recheck;
-
 grub-mkconfig -o /boot/grub/grub.cfg;
-
-Z "4RCH ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers;
-
+echo "4RCH ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers;
 sed -i "/^UUID=.* \/boot .*$/! s/rw/rw,noatime,discard,/" /etc/fstab;
-
-Z "127.0.0.1 localhost.localdomain localhost
+echo "127.0.0.1 localhost.localdomain localhost
 ::1 localhost.localdomain localhost
 127.0.0.1 4RCH.localdomain 4RCH" > /etc/hosts;
-
 sed -i "/^\s*#/d; /^\s*$/d" \
 /home/4RCH/.bash_profile \
 /home/4RCH/.bash_logout \
@@ -274,9 +240,6 @@ sed -i "/^\s*#/d; /^\s*$/d" \
 /etc/fuse.conf \
 /etc/ts.conf \
 /etc/fstab;
-
 rm -rf /boot/initramfs-linux-fallback.img';
-
 sync;
-
 reboot -f;
