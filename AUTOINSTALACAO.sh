@@ -1,6 +1,22 @@
 #!/bin/bash
-echo "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist;
-echo "[options]
+
+
+
+
+
+echo "ADICIONANDO ESPELHO BRASILEIRO"
+if echo "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist; then
+echo "ESPELHO BRASILEIRO ADICIONADO COM SUCESSO"
+else
+echo "ERRO AO ADICIONAR O ESPELHO BRASILEIRO"
+fi
+
+
+
+
+
+echo "SOBSCREVENDO ARQUIVO pacman.conf"
+if echo "[options]
 Architecture=auto
 CheckSpace
 ParallelDownloads=1
@@ -13,8 +29,27 @@ Include=/etc/pacman.d/mirrorlist
 [multilib]
 Include=/etc/pacman.d/mirrorlist
 [community]
-Include=/etc/pacman.d/mirrorlist" > /etc/pacman.conf;
-pacman -Sy --noconfirm --quiet;
+Include=/etc/pacman.d/mirrorlist" > /etc/pacman.conf; then
+echo "ARQUIVO pacman.conf SOBSCRITO COM SUCESSO"
+else
+echo "ERRO AO SOBSCREVER ARQUIVO pacman.conf"
+fi
+
+
+
+
+
+echo "SINCRONIZANDO REPOSITORIOS DO PACMAN"
+if pacman -Sy --noconfirm --quiet > /dev/null; then
+echo "REPOSITORIOS DO PACMAN SINCRONIZADOS COM SUCESSO"
+else
+echo "ERRO AO SINCRONIZAR REPOSITORIOS DO PACMAN"
+fi
+
+
+
+
+
 if fdisk /dev/nvme0n1; then <<EOF
 o
 w
