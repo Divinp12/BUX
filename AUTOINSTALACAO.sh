@@ -222,9 +222,42 @@ fi;
 
 
 
-genfstab -U -p /mnt > /mnt/etc/fstab;
+echo "AUTOGERANDO E AUTOCONFIGURANDO PARTICOES NO ARQUIVO fstab"
+if genfstab -U -p /mnt > /mnt/etc/fstab; then
+echo "ARQUIVO fstab AUTOGERADO E AUTOCONFIGURADO COM SUCESSO"
+else
+echo "ERRO AO AUTOGERAR E AUTOCONFIGURAR ARQUIVO fstab"
+fi
+
+
+
+
+
+sleep 5;
+clear;
+
+
+
+
+
+echo "ENTRANDO NO AMBIENTE arch-chroot"
 arch-chroot /mnt bash -c '
-echo 4RCH > /etc/hostname;
+
+
+
+
+
+echo "ADICIONANDO NOME 4RCH AO USUARIO ROOT NO ARQUIVO hostname";
+if echo 4RCH > /etc/hostname; then
+echo "NOME 4RCH DO USUARIO ROOT ADICIONADO NO ARQUIVO hostname COM SUCESSO"
+else
+echo "ERRO AO ADICIONAR NOME 4RCH AO USUARIO ROOT NO ARQUIVO hostname"
+fi
+
+
+
+
+
 echo -e "4RCH\n4RCH" | passwd root;
 useradd -m -g users -G wheel 4RCH;
 echo -e "4RCH\n4RCH" | passwd 4RCH;
