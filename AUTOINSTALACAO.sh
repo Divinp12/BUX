@@ -8,7 +8,7 @@ if echo "INICIANDO FORMATACAO EM 10 SEGUNDOS,
 ESTEJA CIENTE DO QUE ESTA FAZENDO,
 POIS TODOS OS DADOS SERAO APAGADOS
 PARA QUE A INSTALACAO SEJA BEM SUCEDIDA..."; then
-sleep 10
+sleep 10; clear
 fi;
 
 
@@ -222,6 +222,13 @@ fi;
 
 
 
+sleep 5;
+clear;
+
+
+
+
+
 echo "AUTOGERANDO E AUTOCONFIGURANDO PARTICOES NO ARQUIVO fstab"
 if genfstab -U -p /mnt > /mnt/etc/fstab; then
 echo "ARQUIVO fstab AUTOGERADO E AUTOCONFIGURADO COM SUCESSO"
@@ -242,6 +249,13 @@ clear;
 
 echo "ENTRANDO NO AMBIENTE arch-chroot"
 arch-chroot /mnt bash -c '
+
+
+
+
+
+sleep 5;
+clear;
 
 
 
