@@ -15,12 +15,6 @@ fi;
 
 
 
-sleep 2;
-
-
-
-
-
 echo "ADICIONANDO ESPELHO BRASILEIRO"
 if echo "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist; then
 echo "ESPELHO BRASILEIRO ADICIONADO COM SUCESSO"
@@ -32,7 +26,8 @@ fi;
 
 
 
-sleep 2;
+sleep 5;
+clear;
 
 
 
@@ -62,7 +57,8 @@ fi;
 
 
 
-sleep 2;
+sleep 5;
+clear;
 
 
 
@@ -79,7 +75,8 @@ fi;
 
 
 
-sleep 2;
+sleep 5;
+clear;
 
 
 
@@ -168,7 +165,19 @@ mkdir /mnt/home;
 mount /dev/sda1 /mnt/boot/EFI;
 mount /dev/sda3 /mnt/home;
 fi;
-pacstrap /mnt --noconfirm \
+
+
+
+
+sleep 5;
+clear;
+
+
+
+
+
+echo "INSTALANDO PACOTES DO SISTEMA";
+if pacstrap /mnt --noconfirm \
 base \
 base-devel \
 linux \
@@ -202,7 +211,17 @@ pipewire-media-session \
 pavucontrol \
 sddm \
 grub-efi-x86_64 \
-efibootmgr;
+efibootmgr > /dev/null; then
+echo "PACOTES DO SISTEMA INSTALADOS COM SUCESSO"
+else
+echo "ERRO AO INSTALAR PACOTES DO SISTEMA"
+fi;
+
+
+
+
+
+
 genfstab -U -p /mnt > /mnt/etc/fstab;
 arch-chroot /mnt bash -c '
 echo 4RCH > /etc/hostname;
