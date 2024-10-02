@@ -209,6 +209,7 @@ vulkan-headers \
 plasma-desktop \
 kscreen \
 flatpak \
+plasma-nm \
 foot \
 wayland \
 lib32-wayland \
