@@ -278,7 +278,17 @@ fi
 
 
 
-echo -e "4RCH\n4RCH" | passwd root;
+echo "ADICIONANDO SENHA 4RCH AO USUARIO ROOT"
+if echo -e "4RCH\n4RCH" | passwd root; then
+echo "SENHA 4RCH ADICIONADO AO USUARIO ROOT COM SUCESSO"
+else
+echo "ERRO AO ADICIONAR SENHA 4RCH AO USUARIO ROOT"
+fi
+
+
+
+
+
 useradd -m -g users -G wheel 4RCH;
 echo -e "4RCH\n4RCH" | passwd 4RCH;
 echo "pt_BR.UTF-8 UTF-8" > /etc/locale.gen;
