@@ -65,7 +65,7 @@ clear;
 
 
 echo "SINCRONIZANDO REPOSITORIOS DO PACMAN"
-if pacman -Sy --noconfirm --quiet > /dev/null; then
+if pacman -Sy --noconfirm --quiet > /dev/null 2>&1 || true; then
 echo "REPOSITORIOS DO PACMAN SINCRONIZADOS COM SUCESSO"
 else
 echo "ERRO AO SINCRONIZAR REPOSITORIOS DO PACMAN"
@@ -177,7 +177,7 @@ clear;
 
 
 echo "INSTALANDO PACOTES DO SISTEMA";
-if pacstrap /mnt --noconfirm \
+if pacstrap /mnt --noconfirm --quiet \
 base \
 base-devel \
 linux \
@@ -211,7 +211,7 @@ pipewire-media-session \
 pavucontrol \
 sddm \
 grub-efi-x86_64 \
-efibootmgr > /dev/null; then
+efibootmgr > /dev/null 2>&1 || true; then
 echo "PACOTES DO SISTEMA INSTALADOS COM SUCESSO"
 else
 echo "ERRO AO INSTALAR PACOTES DO SISTEMA"
