@@ -281,6 +281,13 @@ fi
 
 
 
+sleep 5;
+clear;
+
+
+
+
+
 echo "ADICIONANDO SENHA 4RCH AO USUARIO ROOT"
 if echo -e "4RCH\n4RCH" | passwd root; then
 echo "SENHA 4RCH ADICIONADO AO USUARIO ROOT COM SUCESSO"
@@ -292,8 +299,49 @@ fi
 
 
 
-useradd -m -g users -G wheel 4RCH;
-echo -e "4RCH\n4RCH" | passwd 4RCH;
+sleep 5;
+clear;
+
+
+
+
+
+echo "ADICIONANDO USUARIO NORMAL COM NOME 4RCH"
+if useradd -m -g users -G wheel 4RCH; then
+echo "USUARIO NORMAL COM NOME 4RCH ADICIONADO COM SUCESSO"
+else
+echo "ERRO AO ADICIONAR USUARIO NORMAL COM NOME 4RCH:
+fi
+
+
+
+
+
+sleep 5;
+clear;
+
+
+
+
+
+echo "ADICIONANDO SENHA 4RCH AO USUARIO NORMAL"
+if echo -e "4RCH\n4RCH" | passwd 4RCH; then
+echo "SENHA 4RCH ADICIONADO AO USUARIO NORMAL ADICIONADO COM SUCESSO"
+else
+echo "ERRO AO ADICIONAR SENHA 4RCH AO USUARIO NORMAL"
+fi
+
+
+
+
+
+sleep 5;
+clear;
+
+
+
+
+
 echo "pt_BR.UTF-8 UTF-8" > /etc/locale.gen;
 echo "LANG=pt_BR.UTF-8" > /etc/locale.conf;
 locale-gen;
