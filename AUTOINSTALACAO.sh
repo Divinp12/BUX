@@ -243,7 +243,7 @@ if genfstab -U -p /mnt > /mnt/etc/fstab; then
 echo "ARQUIVO fstab AUTOGERADO E AUTOCONFIGURADO COM SUCESSO"
 else
 echo "ERRO AO AUTOGERAR E AUTOCONFIGURAR ARQUIVO fstab"
-fi
+fi;
 
 
 
@@ -275,7 +275,7 @@ if echo 4RCH > /etc/hostname; then
 echo "NOME 4RCH DO USUARIO ROOT ADICIONADO NO ARQUIVO hostname COM SUCESSO"
 else
 echo "ERRO AO ADICIONAR NOME 4RCH AO USUARIO ROOT NO ARQUIVO hostname"
-fi
+fi;
 
 
 
@@ -293,7 +293,7 @@ if echo -e "4RCH\n4RCH" | passwd root; then
 echo "SENHA 4RCH ADICIONADO AO USUARIO ROOT COM SUCESSO"
 else
 echo "ERRO AO ADICIONAR SENHA 4RCH AO USUARIO ROOT"
-fi
+fi;
 
 
 
@@ -310,8 +310,8 @@ echo "ADICIONANDO USUARIO NORMAL COM NOME 4RCH"
 if useradd -m -g users -G wheel 4RCH; then
 echo "USUARIO NORMAL COM NOME 4RCH ADICIONADO COM SUCESSO"
 else
-echo "ERRO AO ADICIONAR USUARIO NORMAL COM NOME 4RCH:
-fi
+echo "ERRO AO ADICIONAR USUARIO NORMAL COM NOME 4RCH"
+fi;
 
 
 
@@ -329,7 +329,7 @@ if echo -e "4RCH\n4RCH" | passwd 4RCH; then
 echo "SENHA 4RCH ADICIONADO AO USUARIO NORMAL ADICIONADO COM SUCESSO"
 else
 echo "ERRO AO ADICIONAR SENHA 4RCH AO USUARIO NORMAL"
-fi
+fi;
 
 
 
@@ -342,8 +342,28 @@ clear;
 
 
 
-echo "pt_BR.UTF-8 UTF-8" > /etc/locale.gen;
-echo "LANG=pt_BR.UTF-8" > /etc/locale.conf;
+echo "ADICIONANDO CARACTERES PORTUGUES BRASILEIRO"
+if echo "pt_BR.UTF-8 UTF-8" > /etc/locale.gen; then
+echo "CARACTERES PORTUGUES BRASILEIROS ADICIONADO COM SUCESSO"
+else
+echo "ERRO AO ADICIONAR CARACTERES PORTUGUES BRASILEIRO"
+fi;
+
+
+
+
+
+echo "APLICANDO IDIOMA PORTUGUES BRASILEIRO NO SISTEMA"
+if echo "LANG=pt_BR.UTF-8" > /etc/locale.conf; then
+echo "IDIOMA PORTUGUES BRASILEIRO APLICADO NO SISTEMA COM SUCESSO"
+else
+echo "ERRO AO APLICAR IDIOMA PORTUGUES BRASILEIRO NO SISTEMA"
+fi;
+
+
+
+
+
 locale-gen;
 hwclock --systohc;
 echo "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist;
