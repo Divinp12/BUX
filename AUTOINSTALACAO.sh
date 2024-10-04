@@ -376,8 +376,28 @@ fi;
 
 
 
-hwclock --systohc;
-echo "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist;
+echo "SINCRONIZANDO RELOGIO DO HARDWARE E DO SISTEMA VIA WIFI"
+if hwclock --systohc; then
+echo "RELOGIO DO HARDWARE E DO SISTEMA SINCRONIZADO VIA WIFI COM SUCESSO"
+else
+echo "ERRO AO SINCRONIZAR RELOGIO DO HARDWARE E DO SISTEMA VIA WIFI"
+fi;
+
+
+
+
+
+echo "ADICIONANDO ESPELHO BRASILEIRO"
+if echo "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist; then
+echo "ESPELHO BRASILEIRO ADICIONADO COM SUCESSO"
+else
+echo "ERRO AO ADICIONAR ESPELHO BRASILEIRO"
+fi;
+
+
+
+
+
 echo "alias i=\"yay -S --noconfirm --quiet\"
 alias d=\"sudo pacman -Rsc\"
 sudo rm -rf /home/4RCH/.bash_history /home/4RCH/.cache /var/log /tmp;
