@@ -433,7 +433,7 @@ clear;
 
 
 
-echo "SOBSCREVENDO ARQUIVO pacman.conf"
+echo "SOBSCREVENDO ARQUIVO .bashrc"
 if echo "alias i=\"yay -S --noconfirm --quiet\"
 alias d=\"sudo pacman -Rsc\"
 sudo rm -rf /home/4RCH/.bash_history /home/4RCH/.cache /var/log;
@@ -449,16 +449,17 @@ cd .. && \\
 sudo rm -rf yay && \\
 yay -S --noconfirm nano --save --answerdiff None --answerclean None --removemake && \\
 sudo sed -i \"8,\\\$d\" /home/4RCH/.bashrc" > /home/4RCH/.bashrc; then
-echo "ARQUIVO pacman.conf SOBSCRITO COM SUCESSO"
+echo "ARQUIVO .bashrc SOBSCRITO COM SUCESSO"
 else
-echo "ERRO AO SOBSCREVER ARQUIVO pacman.conf"
+echo "ERRO AO SOBSCREVER ARQUIVO .bashrc"
 fi;
 
 
 
 
 
-echo "[options]
+echo "SOBSCREVENDO ARQUIVO pacman.conf"
+if echo "[options]
 Architecture=auto
 CheckSpace
 ParallelDownloads=1
@@ -471,7 +472,16 @@ Include=/etc/pacman.d/mirrorlist
 [multilib]
 Include=/etc/pacman.d/mirrorlist
 [community]
-Include=/etc/pacman.d/mirrorlist" > /etc/pacman.conf;
+Include=/etc/pacman.d/mirrorlist" > /etc/pacman.conf; then
+echo "ARQUIVO pacman.conf SOBSCRITO COM SUCESSO"
+else
+echo "ERRO AO SOBSCREVER ARQUIVO pacman.conf"
+fi;
+
+
+
+
+
 pacman -Sy --noconfirm --quiet;
 if lspci | grep -i amd; then
 pacman -Sy --noconfirm \
