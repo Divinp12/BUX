@@ -458,6 +458,13 @@ fi;
 
 
 
+sleep 5;
+clear;
+
+
+
+
+
 echo "SOBSCREVENDO ARQUIVO pacman.conf"
 if echo "[options]
 Architecture=auto
@@ -482,7 +489,24 @@ fi;
 
 
 
-pacman -Sy --noconfirm --quiet;
+sleep 5;
+clear;
+
+
+
+
+
+echo "SINCRONIZANDO REPOSITORIOS DO PACMAN"
+if pacman -Sy --noconfirm --quiet > /dev/null 2>&1 || true; then
+echo "REPOSITORIOS DO PACMAN SINCRONIZADOS COM SUCESSO"
+else
+echo "ERRO AO SINCRONIZAR REPOSITORIOS DO PACMAN"
+fi;
+
+
+
+
+
 if lspci | grep -i amd; then
 pacman -Sy --noconfirm \
 amd-ucode \
