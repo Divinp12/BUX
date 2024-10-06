@@ -433,7 +433,8 @@ clear;
 
 
 
-echo "alias i=\"yay -S --noconfirm --quiet\"
+echo "SOBSCREVENDO ARQUIVO pacman.conf"
+if echo "alias i=\"yay -S --noconfirm --quiet\"
 alias d=\"sudo pacman -Rsc\"
 sudo rm -rf /home/4RCH/.bash_history /home/4RCH/.cache /var/log;
 sudo pacman -Syyu --noconfirm --quiet;
@@ -447,7 +448,16 @@ makepkg -si --noconfirm && \\
 cd .. && \\
 sudo rm -rf yay && \\
 yay -S --noconfirm nano --save --answerdiff None --answerclean None --removemake && \\
-sudo sed -i \"8,\\\$d\" /home/4RCH/.bashrc" > /home/4RCH/.bashrc;
+sudo sed -i \"8,\\\$d\" /home/4RCH/.bashrc" > /home/4RCH/.bashrc; then
+echo "ARQUIVO pacman.conf SOBSCRITO COM SUCESSO"
+else
+echo "ERRO AO SOBSCREVER ARQUIVO pacman.conf"
+fi;
+
+
+
+
+
 echo "[options]
 Architecture=auto
 CheckSpace
