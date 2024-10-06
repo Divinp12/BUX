@@ -354,12 +354,26 @@ fi;
 
 
 
+sleep 5;
+clear;
+
+
+
+
+
 echo "APLICANDO IDIOMA PORTUGUES BRASILEIRO NO SISTEMA"
 if echo "LANG=pt_BR.UTF-8" > /etc/locale.conf; then
 echo "IDIOMA PORTUGUES BRASILEIRO APLICADO NO SISTEMA COM SUCESSO"
 else
 echo "ERRO AO APLICAR IDIOMA PORTUGUES BRASILEIRO NO SISTEMA"
 fi;
+
+
+
+
+
+sleep 5;
+clear;
 
 
 
@@ -376,6 +390,13 @@ fi;
 
 
 
+sleep 5;
+clear;
+
+
+
+
+
 echo "SINCRONIZANDO RELOGIO DO HARDWARE E DO SISTEMA VIA WIFI"
 if hwclock --systohc; then
 echo "RELOGIO DO HARDWARE E DO SISTEMA SINCRONIZADO VIA WIFI COM SUCESSO"
@@ -387,12 +408,26 @@ fi;
 
 
 
+sleep 5;
+clear;
+
+
+
+
+
 echo "ADICIONANDO ESPELHO BRASILEIRO"
 if echo "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist; then
 echo "ESPELHO BRASILEIRO ADICIONADO COM SUCESSO"
 else
 echo "ERRO AO ADICIONAR ESPELHO BRASILEIRO"
 fi;
+
+
+
+
+
+sleep 5;
+clear;
 
 
 
