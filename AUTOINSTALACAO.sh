@@ -119,10 +119,10 @@ p
 
 w
 EOF
-partprobe;
-mkfs.fat -F32 /dev/nvme0n1p1;
-mkfs.ext4 -F /dev/nvme0n1p2;
-mkfs.ext4 -F /dev/nvme0n1p3;
+partprobe > /dev/null 2>&1 || true;
+mkfs.fat -F32 /dev/nvme0n1p1 > /dev/null 2>&1 || true;
+mkfs.ext4 -F /dev/nvme0n1p2 > /dev/null 2>&1 || true;
+mkfs.ext4 -F /dev/nvme0n1p3 > /dev/null 2>&1 || true;
 mount /dev/nvme0n1p2 /mnt;
 mkdir /mnt/boot;
 mkdir /mnt/boot/EFI;
@@ -160,10 +160,10 @@ p
 
 w
 EOF
-partprobe;
-mkfs.fat -F32 /dev/sda1;
-mkfs.ext4 -F /dev/sda2;
-mkfs.ext4 -F /dev/sda3;
+partprobe > /dev/null 2>&1 || true;
+mkfs.fat -F32 /dev/sda1 > /dev/null 2>&1 || true;
+mkfs.ext4 -F /dev/sda2 > /dev/null 2>&1 || true;
+mkfs.ext4 -F /dev/sda3 > /dev/null 2>&1 || true;
 mount /dev/sda2 /mnt;
 mkdir /mnt/boot;
 mkdir /mnt/boot/EFI;
