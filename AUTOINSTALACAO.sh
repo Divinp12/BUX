@@ -507,12 +507,18 @@ fi;
 
 
 
-if lspci | grep -i amd; then
+echo "ESCANEANDO HARDWARE AMD E INSTALAR DRIVERS AMD"
+if lspci | grep -i amd > /dev/null 2>&1 || true; then
 pacman -Sy --noconfirm \
 amd-ucode \
 vulkan-radeon \
-lib32-vulkan-radeon
+lib32-vulkan-radeon > /dev/null 2>&1 || true
 fi;
+
+
+
+
+
 if lspci | grep -i intel; then
 pacman -Sy --noconfirm \
 intel-ucode \
