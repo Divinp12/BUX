@@ -543,14 +543,26 @@ fi;
 
 
 
-if lspci | grep -i nvidia; then
-pacman -Sy --noconfirm \
+echo "ESCANEANDO HARDWARE NVIDIA E INSTALANDO DRIVERS NVIDIA"
+if lspci | grep -i nvidia > /dev/null 2>&1; then
+if pacman -Sy --noconfirm \
 nvidia \
 nvidia-dkms \
 nvidia-utils \
 lib32-nvidia-utils \
-nvidia-settings
+nvidia-settings > /dev/null 2>&1; them
+echo "DRIVERS NVIDIA INSTALADOS COM SUCESSO"
+else
+echo "ERRO AO INSTALAR DRIVERS NVIDIA"
+fi
+else
+echo "NENHUM HARDWARE NVIDIA ENCONTRADO"
 fi;
+
+
+
+
+
 if lspci | grep -i virtualbox; then
 pacman -Sy --noconfirm \
 virtualbox-guest-utils \
