@@ -507,24 +507,42 @@ fi;
 
 
 
-echo "ESCANEANDO HARDWARE AMD E INSTALAR DRIVERS AMD"
-if lspci | grep -i amd > /dev/null 2>&1 || true; then
-pacman -Sy --noconfirm \
+echo "ESCANEANDO HARDWARE AMD E INSTALANDO DRIVERS AMD"
+if lspci | grep -i amd > /dev/null 2>&1; then
+if pacman -Sy --noconfirm \
 amd-ucode \
 vulkan-radeon \
-lib32-vulkan-radeon > /dev/null 2>&1 || true
+lib32-vulkan-radeon > /dev/null 2>&1; then
+echo "DRIVERS AMD INSTALADOS COM SUCESSO"
+else
+echo "ERRO AO INSTALAR DRIVERS AMD"
+fi
+else
+echo "NENHUM HARDWARE AMD ENCONTRADO"
 fi;
 
 
 
 
 
-if lspci | grep -i intel; then
-pacman -Sy --noconfirm \
+echo "ESCANEANDO HARDWARE INTEL E INSTALANDO DRIVERS INTEL"
+if lspci | grep -i intel > /dev/null 2>&1; then
+if pacman -Sy --noconfirm \
 intel-ucode \
 vulkan-intel \
-lib32-vulkan-intel
+lib32-vulkan-intel > /dev/null 2>&1; then
+echo "DRIVERS INTEL INSTALADOS COM SUCESSO"
+else
+echo "ERRO AO INSTALAR DRIVERS INTEL"
+fi
+else
+echo "NENHUM HARDWARE INTEL ENCONTRADO"
 fi;
+
+
+
+
+
 if lspci | grep -i nvidia; then
 pacman -Sy --noconfirm \
 nvidia \
