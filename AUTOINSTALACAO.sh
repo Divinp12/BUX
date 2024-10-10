@@ -599,13 +599,27 @@ echo "DESATIVANDO SERVICOS DESNECESSARIOS NA INICIALIZACAO DO SISTEMA"
 systemctl disable \
 NetworkManager-wait-online \
 systemd-networkd \
-systemd-timesyncd;
+systemd-timesyncd > /dev/null 2>&1; then
+echo "SERVICOS DESNESSARIOS DESATIVADOS NA INICIALIZACAO DO SISTEMA COM SUCESSO"
+else
+echo "ERRO AO DESATIVAR SERVICOS DESNECESSARIOS NA INICIALIZACAO DO SISTEMA"
+fi;
 
 
 
 
 
-mkinitcpio -P;
+echo "GERANDO IMAGENS NO INICIALIZADOR DO SISTEMA"
+mkinitcpio -P > /dev/null 2>&1; then
+echo "IMAGENS GERADAS NA INICIALIZACAO DO SISTEMA COM SUCESSO"
+else
+echo "ERRO AO GERAR IMAGENS NA INICIALIZACAO DO SISTEMA"
+fi;
+
+
+
+
+
 echo "[Autologin]
 Relogin=false
 User=4RCH
