@@ -123,12 +123,12 @@ partprobe > /dev/null 2>&1 || true;
 mkfs.fat -F32 /dev/nvme0n1p1 > /dev/null 2>&1 || true;
 mkfs.ext4 -F /dev/nvme0n1p2 > /dev/null 2>&1 || true;
 mkfs.ext4 -F /dev/nvme0n1p3 > /dev/null 2>&1 || true;
-mount /dev/nvme0n1p2 /mnt;
-mkdir /mnt/boot;
-mkdir /mnt/boot/EFI;
-mkdir /mnt/home;
-mount /dev/nvme0n1p1 /mnt/boot/EFI;
-mount /dev/nvme0n1p3 /mnt/home;
+mount /dev/nvme0n1p2 /mnt > /dev/null 2>&1 || true;
+mkdir /mnt/boot > /dev/null 2>&1 || true;
+mkdir /mnt/boot/EFI > /dev/null 2>&1 || true;
+mkdir /mnt/home > /dev/null 2>&1 || true;
+mount /dev/nvme0n1p1 /mnt/boot/EFI > /dev/null 2>&1 || true;
+mount /dev/nvme0n1p3 /mnt/home > /dev/null 2>&1 || true;
 else
 fdisk /dev/sda <<EOF > /dev/null 2>&1 || true
 o
@@ -164,12 +164,12 @@ partprobe > /dev/null 2>&1 || true;
 mkfs.fat -F32 /dev/sda1 > /dev/null 2>&1 || true;
 mkfs.ext4 -F /dev/sda2 > /dev/null 2>&1 || true;
 mkfs.ext4 -F /dev/sda3 > /dev/null 2>&1 || true;
-mount /dev/sda2 /mnt;
-mkdir /mnt/boot;
-mkdir /mnt/boot/EFI;
-mkdir /mnt/home;
-mount /dev/sda1 /mnt/boot/EFI;
-mount /dev/sda3 /mnt/home;
+mount /dev/sda2 /mnt > /dev/null 2>&1 || true;
+mkdir /mnt/boot > /dev/null 2>&1 || true;
+mkdir /mnt/boot/EFI > /dev/null 2>&1 || true;
+mkdir /mnt/home > /dev/null 2>&1 || true;
+mount /dev/sda1 /mnt/boot/EFI > /dev/null 2>&1 || true;
+mount /dev/sda3 /mnt/home > /dev/null 2>&1 || true;
 fi;
 
 
