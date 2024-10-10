@@ -563,18 +563,46 @@ fi;
 
 
 
-if lspci | grep -i virtualbox; then
-pacman -Sy --noconfirm \
+echo "ESCANEANDO HARDWARE VIRTUALBOX E INSTALANDO DRIVERS VIRTUALBOX"
+if lspci | grep -i virtualbox > /dev/null 2>&1; then
+if pacman -Sy --noconfirm \
 virtualbox-guest-utils \
-virtualbox-guest-modules-arch
+virtualbox-guest-modules-arch > /dev/null 2>&1; then
+echo "DRIVERS VIRTUALBOX INSTALADOS COM SUCESSO"
+else
+echo "ERRO AO INSTALAR DRIVERS VIRTUALBOX"
+fi
+else
+echo "NENHUM HARDWARE VIRTUALBOX ENCONTRADO"
 fi;
+
+
+
+
+
+echo "HABILITANDO DRIVER DE INTERNET E DISPLAY MANAGER (SDDM) NA INICIALIZACAO DO SISTEMA"
 systemctl enable \
 NetworkManager \
-sddm;
+sddm > /dev/null 2>&1; then
+echo "DRIVER DE INTERNET E DISPLAY MANAGER (SDDM) HABILITADO NA INICIALIZACAO DO SISTEMA COM SUCESSO"
+else
+echo "ERRO AO HABILITAR DRIVER DE INTERNET E DISPLAY MANAGER (SDDM) NA INICIALIZACAO DO SISTEMA"
+fi;
+
+
+
+
+
+echo "DESATIVANDO SERVICOS DESNECESSARIOS NA INICIALIZACAO DO SISTEMA"
 systemctl disable \
 NetworkManager-wait-online \
 systemd-networkd \
 systemd-timesyncd;
+
+
+
+
+
 mkinitcpio -P;
 echo "[Autologin]
 Relogin=false
