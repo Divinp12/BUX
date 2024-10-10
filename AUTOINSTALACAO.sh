@@ -509,6 +509,13 @@ fi;
 
 
 
+sleep 5;
+clear;
+
+
+
+
+
 echo "ESCANEANDO HARDWARE AMD E INSTALANDO DRIVERS AMD"
 if lspci | grep -i amd > /dev/null 2>&1 || true; then
 if pacman -Sy --noconfirm \
@@ -527,6 +534,13 @@ fi;
 
 
 
+sleep 5;
+clear;
+
+
+
+
+
 echo "ESCANEANDO HARDWARE INTEL E INSTALANDO DRIVERS INTEL"
 if lspci | grep -i intel > /dev/null 2>&1 || true; then
 if pacman -Sy --noconfirm \
@@ -540,6 +554,13 @@ fi
 else
 echo "NENHUM HARDWARE INTEL ENCONTRADO"
 fi;
+
+
+
+
+
+sleep 5;
+clear;
 
 
 
@@ -565,6 +586,13 @@ fi;
 
 
 
+sleep 5;
+clear;
+
+
+
+
+
 echo "ESCANEANDO HARDWARE VIRTUALBOX E INSTALANDO DRIVERS VIRTUALBOX"
 if lspci | grep -i virtualbox > /dev/null 2>&1 || true; then
 if pacman -Sy --noconfirm \
@@ -582,6 +610,13 @@ fi;
 
 
 
+sleep 5;
+clear;
+
+
+
+
+
 echo "HABILITANDO DRIVER DE INTERNET E DISPLAY MANAGER (SDDM) NA INICIALIZACAO DO SISTEMA"
 systemctl enable \
 NetworkManager \
@@ -590,6 +625,13 @@ echo "DRIVER DE INTERNET E DISPLAY MANAGER (SDDM) HABILITADO NA INICIALIZACAO DO
 else
 echo "ERRO AO HABILITAR DRIVER DE INTERNET E DISPLAY MANAGER (SDDM) NA INICIALIZACAO DO SISTEMA"
 fi;
+
+
+
+
+
+sleep 5;
+clear;
 
 
 
@@ -609,12 +651,26 @@ fi;
 
 
 
+sleep 5;
+clear;
+
+
+
+
+
 echo "GERANDO IMAGENS NO INICIALIZADOR DO SISTEMA"
 mkinitcpio -P > /dev/null 2>&1 || true; then
 echo "IMAGENS GERADAS NA INICIALIZACAO DO SISTEMA COM SUCESSO"
 else
 echo "ERRO AO GERAR IMAGENS NA INICIALIZACAO DO SISTEMA"
 fi;
+
+
+
+
+
+sleep 5;
+clear;
 
 
 
