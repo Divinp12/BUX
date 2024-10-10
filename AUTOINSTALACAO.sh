@@ -510,11 +510,11 @@ fi;
 
 
 echo "ESCANEANDO HARDWARE AMD E INSTALANDO DRIVERS AMD"
-if lspci | grep -i amd > /dev/null 2>&1; then
+if lspci | grep -i amd > /dev/null 2>&1 || true; then
 if pacman -Sy --noconfirm \
 amd-ucode \
 vulkan-radeon \
-lib32-vulkan-radeon > /dev/null 2>&1; then
+lib32-vulkan-radeon > /dev/null 2>&1 || true; then
 echo "DRIVERS AMD INSTALADOS COM SUCESSO"
 else
 echo "ERRO AO INSTALAR DRIVERS AMD"
@@ -528,11 +528,11 @@ fi;
 
 
 echo "ESCANEANDO HARDWARE INTEL E INSTALANDO DRIVERS INTEL"
-if lspci | grep -i intel > /dev/null 2>&1; then
+if lspci | grep -i intel > /dev/null 2>&1 || true; then
 if pacman -Sy --noconfirm \
 intel-ucode \
 vulkan-intel \
-lib32-vulkan-intel > /dev/null 2>&1; then
+lib32-vulkan-intel > /dev/null 2>&1 || true; then
 echo "DRIVERS INTEL INSTALADOS COM SUCESSO"
 else
 echo "ERRO AO INSTALAR DRIVERS INTEL"
@@ -546,13 +546,13 @@ fi;
 
 
 echo "ESCANEANDO HARDWARE NVIDIA E INSTALANDO DRIVERS NVIDIA"
-if lspci | grep -i nvidia > /dev/null 2>&1; then
+if lspci | grep -i nvidia > /dev/null 2>&1 || true; then
 if pacman -Sy --noconfirm \
 nvidia \
 nvidia-dkms \
 nvidia-utils \
 lib32-nvidia-utils \
-nvidia-settings > /dev/null 2>&1; them
+nvidia-settings > /dev/null 2>&1 || true; them
 echo "DRIVERS NVIDIA INSTALADOS COM SUCESSO"
 else
 echo "ERRO AO INSTALAR DRIVERS NVIDIA"
@@ -566,10 +566,10 @@ fi;
 
 
 echo "ESCANEANDO HARDWARE VIRTUALBOX E INSTALANDO DRIVERS VIRTUALBOX"
-if lspci | grep -i virtualbox > /dev/null 2>&1; then
+if lspci | grep -i virtualbox > /dev/null 2>&1 || true; then
 if pacman -Sy --noconfirm \
 virtualbox-guest-utils \
-virtualbox-guest-modules-arch > /dev/null 2>&1; then
+virtualbox-guest-modules-arch > /dev/null 2>&1 || true; then
 echo "DRIVERS VIRTUALBOX INSTALADOS COM SUCESSO"
 else
 echo "ERRO AO INSTALAR DRIVERS VIRTUALBOX"
@@ -585,7 +585,7 @@ fi;
 echo "HABILITANDO DRIVER DE INTERNET E DISPLAY MANAGER (SDDM) NA INICIALIZACAO DO SISTEMA"
 systemctl enable \
 NetworkManager \
-sddm > /dev/null 2>&1; then
+sddm > /dev/null 2>&1 || true; then
 echo "DRIVER DE INTERNET E DISPLAY MANAGER (SDDM) HABILITADO NA INICIALIZACAO DO SISTEMA COM SUCESSO"
 else
 echo "ERRO AO HABILITAR DRIVER DE INTERNET E DISPLAY MANAGER (SDDM) NA INICIALIZACAO DO SISTEMA"
@@ -599,7 +599,7 @@ echo "DESATIVANDO SERVICOS DESNECESSARIOS NA INICIALIZACAO DO SISTEMA"
 systemctl disable \
 NetworkManager-wait-online \
 systemd-networkd \
-systemd-timesyncd > /dev/null 2>&1; then
+systemd-timesyncd > /dev/null 2>&1 || true; then
 echo "SERVICOS DESNESSARIOS DESATIVADOS NA INICIALIZACAO DO SISTEMA COM SUCESSO"
 else
 echo "ERRO AO DESATIVAR SERVICOS DESNECESSARIOS NA INICIALIZACAO DO SISTEMA"
@@ -610,7 +610,7 @@ fi;
 
 
 echo "GERANDO IMAGENS NO INICIALIZADOR DO SISTEMA"
-mkinitcpio -P > /dev/null 2>&1; then
+mkinitcpio -P > /dev/null 2>&1 || true; then
 echo "IMAGENS GERADAS NA INICIALIZACAO DO SISTEMA COM SUCESSO"
 else
 echo "ERRO AO GERAR IMAGENS NA INICIALIZACAO DO SISTEMA"
