@@ -618,7 +618,7 @@ clear;
 
 
 echo "HABILITANDO DRIVER DE INTERNET E DISPLAY MANAGER (SDDM) NA INICIALIZACAO DO SISTEMA"
-systemctl enable \
+if systemctl enable \
 NetworkManager \
 sddm > /dev/null 2>&1 || true; then
 echo "DRIVER DE INTERNET E DISPLAY MANAGER (SDDM) HABILITADO NA INICIALIZACAO DO SISTEMA COM SUCESSO"
@@ -638,7 +638,7 @@ clear;
 
 
 echo "DESATIVANDO SERVICOS DESNECESSARIOS NA INICIALIZACAO DO SISTEMA"
-systemctl disable \
+if systemctl disable \
 NetworkManager-wait-online \
 systemd-networkd \
 systemd-timesyncd > /dev/null 2>&1 || true; then
@@ -659,7 +659,7 @@ clear;
 
 
 echo "GERANDO IMAGENS NO INICIALIZADOR DO SISTEMA"
-mkinitcpio -P > /dev/null 2>&1 || true; then
+if mkinitcpio -P > /dev/null 2>&1 || true; then
 echo "IMAGENS GERADAS NA INICIALIZACAO DO SISTEMA COM SUCESSO"
 else
 echo "ERRO AO GERAR IMAGENS NA INICIALIZACAO DO SISTEMA"
@@ -676,12 +676,30 @@ clear;
 
 
 
-echo "[Autologin]
+echo "SOBSCREVENDO ARQUIVO sddm.conf"
+if echo "[Autologin]
 Relogin=false
 User=4RCH
 Session=plasma
-EnableWayland=true" > /etc/sddm.conf;
-echo "GRUB_DEFAULT=0
+EnableWayland=true" > /etc/sddm.conf; then
+echo "ARQUIVO sddm.conf SOBSCRITO COM SUCESSO"
+else
+echo "ERRO AO SOBSCREVER ARQUIVO sddm.conf"
+fi;
+
+
+
+
+
+sleep 5;
+clear;
+
+
+
+
+
+echo "SOBSCREVENDO ARQUIVO grub"
+if echo "GRUB_DEFAULT=0
 GRUB_TIMEOUT=0
 GRUB_DISTRIBUTOR=\"4RCH\"
 GRUB_CMDLINE_LINUX_DEFAULT=\"quiet mitigations=off\"
@@ -689,14 +707,63 @@ GRUB_CMDLINE_LINUX=\"\"
 GRUB_PRELOAD_MODULES=\"part_gpt part_msdos\"
 GRUB_GFXMODE=auto
 GRUB_GFXPAYLOAD_LINUX=keep
-GRUB_DISABLE_RECOVERY=true" > /etc/default/grub;
-grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=4RCH --recheck;
-grub-mkconfig -o /boot/grub/grub.cfg;
-echo "4RCH ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers;
+GRUB_DISABLE_RECOVERY=true" > /etc/default/grub; then
+echo "ARQUIVO grub SOBSCRITO COM SUCESSO"
+else
+echo "ERRO AO SOBSCREVER ARQUIVO grub"
+fi;
+
+
+
+
+
+echo "CONFIGURANDO GRUB"
+if grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=4RCH --recheck; then
+echo "GRUB CONFIGURADO COM SUCESSO"
+else
+echo "ERRO AO CONFIGURAR GRUB"
+fi;
+
+
+
+
+
+echo "ADICIONANDO GRUB NA INICIALIZACAO"
+if grub-mkconfig -o /boot/grub/grub.cfg; then
+echo "GRUB ADICIONADO NA INICIALIZACAO COM SUCESSO"
+else
+echo "ERRO AO ADICIONAR GRUB NA INICIALIZACAO"
+fi;
+
+
+
+
+
+echo "ADICIONANDO USUARIO NORMAL (4RCH) AO SUDO NO ARQUIVO sudoers"
+if echo "4RCH ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers; then
+echo "USUARIO NORMAL (4RCH) ADICIONADO AO SUDO NO ARQUIVO sudoers COM SUCESSO"
+else
+echo "ERRO AO ADICIONAR USUARIO NORMAL (4RCH) AO SUDO NO ARQUIVO sudoers"
+fi;
+
+
+
+
+
 sed -i "/^UUID=.* \/boot .*$/! s/rw/rw,noatime,discard,/" /etc/fstab;
+
+
+
+
+
 echo "127.0.0.1 localhost.localdomain localhost
 ::1 localhost.localdomain localhost
 127.0.0.1 4RCH.localdomain 4RCH" > /etc/hosts;
+
+
+
+
+
 sed -i "/^\s*#/d; /^\s*$/d" \
 /home/4RCH/.bash_profile \
 /home/4RCH/.bash_logout \
@@ -710,6 +777,21 @@ sed -i "/^\s*#/d; /^\s*$/d" \
 /etc/fuse.conf \
 /etc/ts.conf \
 /etc/fstab;
+
+
+
+
+
 rm -rf /boot/initramfs-linux-fallback.img';
+
+
+
+
+
 sync;
+
+
+
+
+
 reboot -f;
