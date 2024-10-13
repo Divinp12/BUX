@@ -717,12 +717,26 @@ fi;
 
 
 
+sleep 5;
+clear;
+
+
+
+
+
 echo "CONFIGURANDO GRUB"
 if grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=4RCH --recheck; then
 echo "GRUB CONFIGURADO COM SUCESSO"
 else
 echo "ERRO AO CONFIGURAR GRUB"
 fi;
+
+
+
+
+
+sleep 5;
+clear;
 
 
 
@@ -739,12 +753,26 @@ fi;
 
 
 
+sleep 5;
+clear;
+
+
+
+
+
 echo "ADICIONANDO USUARIO NORMAL (4RCH) AO SUDO NO ARQUIVO sudoers"
 if echo "4RCH ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers; then
 echo "USUARIO NORMAL (4RCH) ADICIONADO AO SUDO NO ARQUIVO sudoers COM SUCESSO"
 else
 echo "ERRO AO ADICIONAR USUARIO NORMAL (4RCH) AO SUDO NO ARQUIVO sudoers"
 fi;
+
+
+
+
+
+sleep 5;
+clear;
 
 
 
