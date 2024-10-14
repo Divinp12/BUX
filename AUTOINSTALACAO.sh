@@ -778,21 +778,46 @@ clear;
 
 
 
-sed -i "/^UUID=.* \/boot .*$/! s/rw/rw,noatime,discard,/" /etc/fstab;
+echo "ADICIONANDO OPÇÕES NOATIME E DISCARD NAS PARTIÇÕES EXT4"
+if sed -i "/^UUID=.* \/boot .*$/! s/rw/rw,noatime,discard,/" /etc/fstab; then
+echo "OPÇÕES NOATIME E DISCARD ADICIONADAS NAS PARTIÇÕES EXT4 COM SUCESSO"
+else
+echo "ERRO AO ADICIONAR OPÇÕES NOATIME E DISCARD NAS PARTIÇÕES EXT4"
+fi;
 
 
 
 
 
-echo "127.0.0.1 localhost.localdomain localhost
+sleep 5;
+clear;
+
+
+
+
+
+echo "ADICIONANDO CONEXAO IPV6 NO SISTEMA"
+if echo "127.0.0.1 localhost.localdomain localhost
 ::1 localhost.localdomain localhost
-127.0.0.1 4RCH.localdomain 4RCH" > /etc/hosts;
+127.0.0.1 4RCH.localdomain 4RCH" > /etc/hosts; then
+echo "CONEXAO IPV6 ADICIONADA NO SISTEMA COM SUCESSO"
+else
+echo "ERRO AO ADICIONAR CONEXAO IPV6 NO SISTEMA"
+fi;
 
 
 
 
 
-sed -i "/^\s*#/d; /^\s*$/d" \
+sleep 5;
+clear;
+
+
+
+
+
+echo "REMOVENDO LINHAS QUE COMECAM COM JOGO DA VELHA E ESPACOS VAZIOS"
+if sed -i "/^\s*#/d; /^\s*$/d" \
 /home/4RCH/.bash_profile \
 /home/4RCH/.bash_logout \
 /etc/sudoers \
@@ -804,7 +829,18 @@ sed -i "/^\s*#/d; /^\s*$/d" \
 /etc/vconsole.conf \
 /etc/fuse.conf \
 /etc/ts.conf \
-/etc/fstab;
+/etc/fstab; then
+echo "LINHAS QUE COMECAM COM JOGO DA VELHA E ESPACOS VAZIOS REMOVIDAS COM SUCESSO"
+else
+echo "ERRO AO REMOVER LINHAS QUE COMECAM COM JOGO DA VELHA E ESPACOS VAZIOS"
+fi;
+
+
+
+
+
+sleep 5;
+clear;
 
 
 
