@@ -846,16 +846,41 @@ clear;
 
 
 
-rm -rf /boot/initramfs-linux-fallback.img';
+echo "REMOVENDO ARQUIVO initramfs-linux-fallback.img"
+if rm -rf /boot/initramfs-linux-fallback.img; then
+echo "ARQUIVO initramfs-linux-fallback.img REMOVIDO COM SUCESSO"
+else
+echo "ERRO AO REMOVER ARQUIVO initramfs-linux-fallback.img"
+fi';
 
 
 
 
 
-sync;
+sleep 5;
+clear;
 
 
 
 
 
+echo "GRAVANDO DADOS DA MEMORIA NO DISCO"
+if sync; then
+echo "DADOS DA MEMORIA GRAVADOS NO DISCO COM SUCESSO"
+else
+echo "ERRO AO GRAVAR DADOS DA MEMORIA NO DISCO"
+fi;
+
+
+
+
+
+sleep 5;
+clear;
+
+
+
+
+
+echo "REINICIANDO"
 reboot -f;
