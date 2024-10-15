@@ -537,16 +537,13 @@ clear;
 
 + "ESCANEANDO HARDWARE AMD E INSTALANDO DRIVERS AMD"
 if lspci | grep -i amd > /dev/null 2>&1; then
-if pacman -Sy --noconfirm \
+pacman -Sy --noconfirm \
 amd-ucode \
 vulkan-radeon \
 lib32-vulkan-radeon > /dev/null 2>&1; then
 + "DRIVERS AMD INSTALADOS COM SUCESSO"
 else
 + "ERRO AO INSTALAR DRIVERS AMD"
-fi
-else
-+ "NENHUM HARDWARE AMD ENCONTRADO"
 fi;
 
 
@@ -562,16 +559,13 @@ clear;
 
 + "ESCANEANDO HARDWARE INTEL E INSTALANDO DRIVERS INTEL"
 if lspci | grep -i intel > /dev/null 2>&1; then
-if pacman -Sy --noconfirm \
+pacman -Sy --noconfirm \
 intel-ucode \
 vulkan-intel \
 lib32-vulkan-intel > /dev/null 2>&1; then
 + "DRIVERS INTEL INSTALADOS COM SUCESSO"
 else
 + "ERRO AO INSTALAR DRIVERS INTEL"
-fi
-else
-+ "NENHUM HARDWARE INTEL ENCONTRADO"
 fi;
 
 
@@ -587,7 +581,7 @@ clear;
 
 + "ESCANEANDO HARDWARE NVIDIA E INSTALANDO DRIVERS NVIDIA"
 if lspci | grep -i nvidia > /dev/null 2>&1; then
-if pacman -Sy --noconfirm \
+pacman -Sy --noconfirm \
 nvidia \
 nvidia-dkms \
 nvidia-utils \
@@ -596,9 +590,6 @@ nvidia-settings > /dev/null 2>&1; them
 + "DRIVERS NVIDIA INSTALADOS COM SUCESSO"
 else
 + "ERRO AO INSTALAR DRIVERS NVIDIA"
-fi
-else
-+ "NENHUM HARDWARE NVIDIA ENCONTRADO"
 fi;
 
 
@@ -614,15 +605,12 @@ clear;
 
 + "ESCANEANDO HARDWARE VIRTUALBOX E INSTALANDO DRIVERS VIRTUALBOX"
 if lspci | grep -i virtualbox > /dev/null 2>&1; then
-if pacman -Sy --noconfirm \
+pacman -Sy --noconfirm \
 virtualbox-guest-utils \
 virtualbox-guest-modules-arch > /dev/null 2>&1; then
 + "DRIVERS VIRTUALBOX INSTALADOS COM SUCESSO"
 else
 + "ERRO AO INSTALAR DRIVERS VIRTUALBOX"
-fi
-else
-+ "NENHUM HARDWARE VIRTUALBOX ENCONTRADO"
 fi;
 
 
