@@ -4,13 +4,21 @@
 
 
 
++() {
+echo "$@"
+}
+
+
+
+
+
 clear;
 
 
 
 
 
-if echo "INICIANDO FORMATACAO EM 10 SEGUNDOS,
+if + "INICIANDO FORMATACAO EM 10 SEGUNDOS,
 ESTEJA CIENTE DO QUE ESTA FAZENDO,
 POIS TODOS OS DADOS SERAO APAGADOS
 PARA QUE A INSTALACAO SEJA BEM SUCEDIDA..."; then
@@ -21,11 +29,11 @@ fi;
 
 
 
-echo "ADICIONANDO ESPELHO BRASILEIRO"
-if echo "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist; then
-echo "ESPELHO BRASILEIRO ADICIONADO COM SUCESSO"
++ "ADICIONANDO ESPELHO BRASILEIRO"
+if + "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist; then
++ "ESPELHO BRASILEIRO ADICIONADO COM SUCESSO"
 else
-echo "ERRO AO ADICIONAR O ESPELHO BRASILEIRO"
++ "ERRO AO ADICIONAR O ESPELHO BRASILEIRO"
 fi;
 
 
@@ -39,8 +47,8 @@ clear;
 
 
 
-echo "SOBSCREVENDO ARQUIVO pacman.conf"
-if echo "[options]
++ "SOBSCREVENDO ARQUIVO pacman.conf"
+if + "[options]
 Architecture=auto
 CheckSpace
 ParallelDownloads=1
@@ -54,9 +62,9 @@ Include=/etc/pacman.d/mirrorlist
 Include=/etc/pacman.d/mirrorlist
 [community]
 Include=/etc/pacman.d/mirrorlist" > /etc/pacman.conf; then
-echo "ARQUIVO pacman.conf SOBSCRITO COM SUCESSO"
++ "ARQUIVO pacman.conf SOBSCRITO COM SUCESSO"
 else
-echo "ERRO AO SOBSCREVER ARQUIVO pacman.conf"
++ "ERRO AO SOBSCREVER ARQUIVO pacman.conf"
 fi;
 
 
@@ -70,11 +78,11 @@ clear;
 
 
 
-echo "SINCRONIZANDO REPOSITORIOS DO PACMAN"
++ "SINCRONIZANDO REPOSITORIOS DO PACMAN"
 if pacman -Sy --noconfirm --quiet > /dev/null 2>&1 || true; then
-echo "REPOSITORIOS DO PACMAN SINCRONIZADOS COM SUCESSO"
++ "REPOSITORIOS DO PACMAN SINCRONIZADOS COM SUCESSO"
 else
-echo "ERRO AO SINCRONIZAR REPOSITORIOS DO PACMAN"
++ "ERRO AO SINCRONIZAR REPOSITORIOS DO PACMAN"
 fi;
 
 
@@ -88,7 +96,7 @@ clear;
 
 
 
-echo "FORMATANDO DISPOSITIVO DE ARMAZENAMENTO DE DADOS VALIDO"
++ "FORMATANDO DISPOSITIVO DE ARMAZENAMENTO DE DADOS VALIDO"
 if fdisk /dev/nvme0n1; then <<EOF > /dev/null 2>&1 || true
 o
 w
@@ -182,7 +190,7 @@ clear;
 
 
 
-echo "INSTALANDO PACOTES DO SISTEMA";
++ "INSTALANDO PACOTES DO SISTEMA";
 if pacstrap /mnt --noconfirm --quiet \
 base \
 base-devel \
