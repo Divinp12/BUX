@@ -470,9 +470,9 @@ cd .. && \\
 sudo rm -rf yay && \\
 yay -S --noconfirm nano --save --answerdiff None --answerclean None --removemake && \\
 sudo sed -i \"13,\\\$d\" /home/4RCH/.bashrc" > /home/4RCH/.bashrc; then
-echo "ARQUIVO .bashrc SOBSCRITO COM SUCESSO"
++ "ARQUIVO .bashrc SOBSCRITO COM SUCESSO"
 else
-echo "ERRO AO SOBSCREVER ARQUIVO .bashrc"
++ "ERRO AO SOBSCREVER ARQUIVO .bashrc"
 fi;
 
 
