@@ -441,8 +441,11 @@ sudo pacman -Syyu --noconfirm --quiet;
 sudo pacman -Scc --noconfirm --quiet;
 clear;
 fastfetch;
-echo \"INSTALAR PACOTES (i nome-do-pacote)\";
-echo \"DESISTALAR PACOTES (d nome-do-pacote)\";
+echo \"
+INSTALAR PACOTES (i nome-do-pacote)
+DESISTALAR PACOTES (d nome-do-pacote)
+EXEMPLO: i google-chrome
+\";
 git clone https://aur.archlinux.org/yay.git && \\
 chmod 777 yay && \\
 cd yay && \\
@@ -450,7 +453,7 @@ makepkg -si --noconfirm && \\
 cd .. && \\
 sudo rm -rf yay && \\
 yay -S --noconfirm nano --save --answerdiff None --answerclean None --removemake && \\
-sudo sed -i \"10,\\\$d\" /home/4RCH/.bashrc" > /home/4RCH/.bashrc; then
+sudo sed -i \"13,\\\$d\" /home/4RCH/.bashrc" > /home/4RCH/.bashrc; then
 echo "ARQUIVO .bashrc SOBSCRITO COM SUCESSO"
 else
 echo "ERRO AO SOBSCREVER ARQUIVO .bashrc"
