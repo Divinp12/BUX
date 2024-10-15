@@ -520,11 +520,11 @@ clear;
 
 
 echo "ESCANEANDO HARDWARE AMD E INSTALANDO DRIVERS AMD"
-if lspci | grep -i amd > /dev/null 2>&1 || true; then
+if lspci | grep -i amd > /dev/null 2>&1; then
 if pacman -Sy --noconfirm \
 amd-ucode \
 vulkan-radeon \
-lib32-vulkan-radeon > /dev/null 2>&1 || true; then
+lib32-vulkan-radeon > /dev/null 2>&1; then
 echo "DRIVERS AMD INSTALADOS COM SUCESSO"
 else
 echo "ERRO AO INSTALAR DRIVERS AMD"
@@ -545,11 +545,11 @@ clear;
 
 
 echo "ESCANEANDO HARDWARE INTEL E INSTALANDO DRIVERS INTEL"
-if lspci | grep -i intel > /dev/null 2>&1 || true; then
+if lspci | grep -i intel > /dev/null 2>&1; then
 if pacman -Sy --noconfirm \
 intel-ucode \
 vulkan-intel \
-lib32-vulkan-intel > /dev/null 2>&1 || true; then
+lib32-vulkan-intel > /dev/null 2>&1; then
 echo "DRIVERS INTEL INSTALADOS COM SUCESSO"
 else
 echo "ERRO AO INSTALAR DRIVERS INTEL"
@@ -570,13 +570,13 @@ clear;
 
 
 echo "ESCANEANDO HARDWARE NVIDIA E INSTALANDO DRIVERS NVIDIA"
-if lspci | grep -i nvidia > /dev/null 2>&1 || true; then
+if lspci | grep -i nvidia > /dev/null 2>&1; then
 if pacman -Sy --noconfirm \
 nvidia \
 nvidia-dkms \
 nvidia-utils \
 lib32-nvidia-utils \
-nvidia-settings > /dev/null 2>&1 || true; them
+nvidia-settings > /dev/null 2>&1; them
 echo "DRIVERS NVIDIA INSTALADOS COM SUCESSO"
 else
 echo "ERRO AO INSTALAR DRIVERS NVIDIA"
@@ -597,10 +597,10 @@ clear;
 
 
 echo "ESCANEANDO HARDWARE VIRTUALBOX E INSTALANDO DRIVERS VIRTUALBOX"
-if lspci | grep -i virtualbox > /dev/null 2>&1 || true; then
+if lspci | grep -i virtualbox > /dev/null 2>&1; then
 if pacman -Sy --noconfirm \
 virtualbox-guest-utils \
-virtualbox-guest-modules-arch > /dev/null 2>&1 || true; then
+virtualbox-guest-modules-arch > /dev/null 2>&1; then
 echo "DRIVERS VIRTUALBOX INSTALADOS COM SUCESSO"
 else
 echo "ERRO AO INSTALAR DRIVERS VIRTUALBOX"
