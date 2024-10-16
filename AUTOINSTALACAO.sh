@@ -287,7 +287,7 @@ clear;
 
 
 + "ADICIONANDO NOME 4RCH AO USUARIO ROOT NO ARQUIVO hostname";
-if echo 4RCH > /etc/hostname; then
+if + 4RCH > /etc/hostname; then
 + "NOME 4RCH DO USUARIO ROOT ADICIONADO NO ARQUIVO hostname COM SUCESSO"
 else
 + "ERRO AO ADICIONAR NOME 4RCH AO USUARIO ROOT NO ARQUIVO hostname"
@@ -305,7 +305,7 @@ clear;
 
 
 + "ADICIONANDO SENHA 4RCH AO USUARIO ROOT"
-if echo -e "4RCH\n4RCH" | passwd root; then
+if + -e "4RCH\n4RCH" | passwd root; then
 + "SENHA 4RCH ADICIONADO AO USUARIO ROOT COM SUCESSO"
 else
 + "ERRO AO ADICIONAR SENHA 4RCH AO USUARIO ROOT"
@@ -341,7 +341,7 @@ clear;
 
 
 + "ADICIONANDO SENHA 4RCH AO USUARIO NORMAL"
-if echo -e "4RCH\n4RCH" | passwd 4RCH; then
+if + -e "4RCH\n4RCH" | passwd 4RCH; then
 + "SENHA 4RCH ADICIONADO AO USUARIO NORMAL ADICIONADO COM SUCESSO"
 else
 + "ERRO AO ADICIONAR SENHA 4RCH AO USUARIO NORMAL"
@@ -450,7 +450,7 @@ clear;
 
 
 + "SOBSCREVENDO ARQUIVO .bashrc"
-if echo "alias i=\"yay -S --noconfirm --quiet\"
+if + "alias i=\"yay -S --noconfirm --quiet\"
 alias d=\"sudo pacman -Rsc\"
 sudo rm -rf /home/4RCH/.bash_history /home/4RCH/.cache /var/log;
 sudo pacman -Syyu --noconfirm --quiet;
@@ -487,7 +487,7 @@ clear;
 
 
 + "SOBSCREVENDO ARQUIVO pacman.conf"
-if echo "[options]
+if + "[options]
 Architecture=auto
 CheckSpace
 ParallelDownloads=1
@@ -536,7 +536,8 @@ clear;
 
 
 + "ESCANEANDO HARDWARE AMD E INSTALANDO DRIVERS AMD"
-if lspci | grep -i amd > /dev/null 2>&1 && pacman -Sy --noconfirm \
+if lspci | grep -i amd > /dev/null 2>&1 && \
+pacman -Sy --noconfirm \
 amd-ucode \
 vulkan-radeon \
 lib32-vulkan-radeon > /dev/null 2>&1; then
@@ -557,7 +558,8 @@ clear;
 
 
 + "ESCANEANDO HARDWARE INTEL E INSTALANDO DRIVERS INTEL"
-if lspci | grep -i intel > /dev/null 2>&1 && pacman -Sy --noconfirm \
+if lspci | grep -i intel > /dev/null 2>&1 && \
+pacman -Sy --noconfirm \
 intel-ucode \
 vulkan-intel \
 lib32-vulkan-intel > /dev/null 2>&1; then
@@ -578,7 +580,8 @@ clear;
 
 
 + "ESCANEANDO HARDWARE NVIDIA E INSTALANDO DRIVERS NVIDIA"
-if lspci | grep -i nvidia > /dev/null 2>&1 && pacman -Sy --noconfirm \
+if lspci | grep -i nvidia > /dev/null 2>&1 && \
+pacman -Sy --noconfirm \
 nvidia \
 nvidia-dkms \
 nvidia-utils \
@@ -601,7 +604,8 @@ clear;
 
 
 + "ESCANEANDO HARDWARE VIRTUALBOX E INSTALANDO DRIVERS VIRTUALBOX"
-if lspci | grep -i virtualbox > /dev/null 2>&1 && pacman -Sy --noconfirm \
+if lspci | grep -i virtualbox > /dev/null 2>&1 && \
+pacman -Sy --noconfirm \
 virtualbox-guest-utils \
 virtualbox-guest-modules-arch > /dev/null 2>&1; then
 + "DRIVERS VIRTUALBOX INSTALADOS COM SUCESSO"
@@ -680,7 +684,7 @@ clear;
 
 
 + "SOBSCREVENDO ARQUIVO sddm.conf"
-if echo "[Autologin]
+if + "[Autologin]
 Relogin=false
 User=4RCH
 Session=plasma
@@ -702,7 +706,7 @@ clear;
 
 
 + "SOBSCREVENDO ARQUIVO grub"
-if echo "GRUB_DEFAULT=0
+if + "GRUB_DEFAULT=0
 GRUB_TIMEOUT=0
 GRUB_DISTRIBUTOR=\"4RCH\"
 GRUB_CMDLINE_LINUX_DEFAULT=\"quiet mitigations=off\"
@@ -764,7 +768,7 @@ clear;
 
 
 + "ADICIONANDO USUARIO NORMAL (4RCH) AO SUDO NO ARQUIVO sudoers"
-if echo "4RCH ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers; then
+if + "4RCH ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers; then
 + "USUARIO NORMAL (4RCH) ADICIONADO AO SUDO NO ARQUIVO sudoers COM SUCESSO"
 else
 + "ERRO AO ADICIONAR USUARIO NORMAL (4RCH) AO SUDO NO ARQUIVO sudoers"
@@ -800,7 +804,7 @@ clear;
 
 
 + "ADICIONANDO CONEXAO IPV6 NO SISTEMA"
-if echo "127.0.0.1 localhost.localdomain localhost
+if + "127.0.0.1 localhost.localdomain localhost
 ::1 localhost.localdomain localhost
 127.0.0.1 4RCH.localdomain 4RCH" > /etc/hosts; then
 + "CONEXAO IPV6 ADICIONADA NO SISTEMA COM SUCESSO"
