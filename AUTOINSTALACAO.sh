@@ -282,8 +282,16 @@ echo "$@"
 
 
 
+?() {
 sleep 5;
-clear;
+clear; "$@"
+}
+
+
+
+
+
+?
 
 
 
@@ -300,8 +308,7 @@ fi;
 
 
 
-sleep 5;
-clear;
+?
 
 
 
@@ -318,8 +325,7 @@ fi;
 
 
 
-sleep 5;
-clear;
+?
 
 
 
@@ -336,8 +342,7 @@ fi;
 
 
 
-sleep 5;
-clear;
+?
 
 
 
@@ -354,8 +359,7 @@ fi;
 
 
 
-sleep 5;
-clear;
+?
 
 
 
@@ -373,8 +377,7 @@ fi;
 
 
 
-sleep 5;
-clear;
+?
 
 
 
@@ -391,8 +394,7 @@ fi;
 
 
 
-sleep 5;
-clear;
+?
 
 
 
@@ -409,8 +411,7 @@ fi;
 
 
 
-sleep 5;
-clear;
+?
 
 
 
@@ -427,8 +428,7 @@ fi;
 
 
 
-sleep 5;
-clear;
+?
 
 
 
@@ -445,8 +445,7 @@ fi;
 
 
 
-sleep 5;
-clear;
+?
 
 
 
@@ -482,8 +481,7 @@ fi;
 
 
 
-sleep 5;
-clear;
+?
 
 
 
@@ -513,8 +511,7 @@ fi;
 
 
 
-sleep 5;
-clear;
+?
 
 
 
@@ -531,8 +528,7 @@ fi;
 
 
 
-sleep 5;
-clear;
+?
 
 
 
@@ -553,8 +549,7 @@ fi;
 
 
 
-sleep 5;
-clear;
+?
 
 
 
@@ -575,8 +570,7 @@ fi;
 
 
 
-sleep 5;
-clear;
+?
 
 
 
@@ -599,8 +593,7 @@ fi;
 
 
 
-sleep 5;
-clear;
+?
 
 
 
@@ -620,8 +613,7 @@ fi;
 
 
 
-sleep 5;
-clear;
+?
 
 
 
@@ -640,8 +632,7 @@ fi;
 
 
 
-sleep 5;
-clear;
+?
 
 
 
@@ -661,8 +652,7 @@ fi;
 
 
 
-sleep 5;
-clear;
+?
 
 
 
@@ -679,8 +669,7 @@ fi;
 
 
 
-sleep 5;
-clear;
+?
 
 
 
