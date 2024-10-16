@@ -12,6 +12,15 @@ echo "$@"
 
 
 
+?() {
+sleep 5;
+clear; "$@"
+}
+
+
+
+
+
 clear;
 
 
