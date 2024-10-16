@@ -690,8 +690,7 @@ fi;
 
 
 
-sleep 5;
-clear;
+?
 
 
 
@@ -716,8 +715,7 @@ fi;
 
 
 
-sleep 5;
-clear;
+?
 
 
 
@@ -734,8 +732,7 @@ fi;
 
 
 
-sleep 5;
-clear;
+?
 
 
 
@@ -752,8 +749,7 @@ fi;
 
 
 
-sleep 5;
-clear;
+?
 
 
 
@@ -770,8 +766,7 @@ fi;
 
 
 
-sleep 5;
-clear;
+?
 
 
 
@@ -788,8 +783,7 @@ fi;
 
 
 
-sleep 5;
-clear;
+?
 
 
 
@@ -808,8 +802,7 @@ fi;
 
 
 
-sleep 5;
-clear;
+?
 
 
 
@@ -838,8 +831,7 @@ fi;
 
 
 
-sleep 5;
-clear;
+?
 
 
 
@@ -856,8 +848,7 @@ fi';
 
 
 
-sleep 5;
-clear;
+?
 
 
 
@@ -874,8 +865,7 @@ fi;
 
 
 
-sleep 5;
-clear;
+?
 
 
 
