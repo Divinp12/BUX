@@ -518,7 +518,7 @@ fi;
 
 
 + "SINCRONIZANDO REPOSITORIOS DO PACMAN"
-if pacman -Sy --noconfirm --quiet > /dev/null 2>&1 || true; then
+if pacman -Sy --noconfirm --quiet > /dev/null 2>&1; then
 + "REPOSITORIOS DO PACMAN SINCRONIZADOS COM SUCESSO"
 else
 + "ERRO AO SINCRONIZAR REPOSITORIOS DO PACMAN"
@@ -539,8 +539,7 @@ if lspci | grep -i amd > /dev/null 2>&1; then
 pacman -Sy --noconfirm \
 amd-ucode \
 vulkan-radeon \
-lib32-vulkan-radeon > /dev/null 2>&1; then
-+ "DRIVERS AMD INSTALADOS COM SUCESSO"
+lib32-vulkan-radeon > /dev/null 2>&1
 else
 + "ERRO AO INSTALAR DRIVERS AMD"
 fi;
@@ -560,8 +559,7 @@ if lspci | grep -i intel > /dev/null 2>&1; then
 pacman -Sy --noconfirm \
 intel-ucode \
 vulkan-intel \
-lib32-vulkan-intel > /dev/null 2>&1; then
-+ "DRIVERS INTEL INSTALADOS COM SUCESSO"
+lib32-vulkan-intel > /dev/null 2>&1
 else
 + "ERRO AO INSTALAR DRIVERS INTEL"
 fi;
@@ -583,8 +581,7 @@ nvidia \
 nvidia-dkms \
 nvidia-utils \
 lib32-nvidia-utils \
-nvidia-settings > /dev/null 2>&1; them
-+ "DRIVERS NVIDIA INSTALADOS COM SUCESSO"
+nvidia-settings > /dev/null 2>&1
 else
 + "ERRO AO INSTALAR DRIVERS NVIDIA"
 fi;
@@ -603,8 +600,7 @@ fi;
 if lspci | grep -i virtualbox > /dev/null 2>&1; then
 pacman -Sy --noconfirm \
 virtualbox-guest-utils \
-virtualbox-guest-modules-arch > /dev/null 2>&1; then
-+ "DRIVERS VIRTUALBOX INSTALADOS COM SUCESSO"
+virtualbox-guest-modules-arch > /dev/null 2>&1
 else
 + "ERRO AO INSTALAR DRIVERS VIRTUALBOX"
 fi;
