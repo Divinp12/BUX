@@ -535,7 +535,7 @@ fi;
 
 
 + "ESCANEANDO HARDWARE AMD E INSTALANDO DRIVERS AMD"
-if lspci | grep -i amd > /dev/null 2>&1 && \
+if lspci | grep -i amd > /dev/null 2>&1; then
 pacman -Sy --noconfirm \
 amd-ucode \
 vulkan-radeon \
@@ -556,7 +556,7 @@ fi;
 
 
 + "ESCANEANDO HARDWARE INTEL E INSTALANDO DRIVERS INTEL"
-if lspci | grep -i intel > /dev/null 2>&1 && \
+if lspci | grep -i intel > /dev/null 2>&1; then
 pacman -Sy --noconfirm \
 intel-ucode \
 vulkan-intel \
@@ -577,7 +577,7 @@ fi;
 
 
 + "ESCANEANDO HARDWARE NVIDIA E INSTALANDO DRIVERS NVIDIA"
-if lspci | grep -i nvidia > /dev/null 2>&1 && \
+if lspci | grep -i nvidia > /dev/null 2>&1; then
 pacman -Sy --noconfirm \
 nvidia \
 nvidia-dkms \
@@ -600,7 +600,7 @@ fi;
 
 
 + "ESCANEANDO HARDWARE VIRTUALBOX E INSTALANDO DRIVERS VIRTUALBOX"
-if lspci | grep -i virtualbox > /dev/null 2>&1 && \
+if lspci | grep -i virtualbox > /dev/null 2>&1; then
 pacman -Sy --noconfirm \
 virtualbox-guest-utils \
 virtualbox-guest-modules-arch > /dev/null 2>&1; then
