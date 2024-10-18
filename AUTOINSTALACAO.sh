@@ -272,17 +272,9 @@ fi;
 + "ENTRANDO NO AMBIENTE arch-chroot"
 arch-chroot /mnt bash -c '
 
-
-
-
-
 +() {
 echo "$@"
 }
-
-
-
-
 
 ?() {
 sleep 5;
