@@ -8,18 +8,14 @@
 echo "$@"
 }
 
-
-
-
-
 ?() {
 sleep 5;
 clear; "$@"
 }
 
-
-
-
+%() {
+"$@" > /dev/null 2>&1;
+}
 
 clear;
 
@@ -86,7 +82,7 @@ fi;
 
 
 + "SINCRONIZANDO REPOSITORIOS DO PACMAN"
-if pacman -Sy --noconfirm --quiet > /dev/null 2>&1 || true; then
+if pacman -Sy --noconfirm --quiet; then
 + "REPOSITORIOS DO PACMAN SINCRONIZADOS COM SUCESSO"
 else
 + "ERRO AO SINCRONIZAR REPOSITORIOS DO PACMAN"
@@ -133,16 +129,16 @@ p
 
 w
 EOF
-partprobe > /dev/null 2>&1 || true;
-mkfs.fat -F32 /dev/nvme0n1p1 > /dev/null 2>&1 || true;
-mkfs.ext4 -F /dev/nvme0n1p2 > /dev/null 2>&1 || true;
-mkfs.ext4 -F /dev/nvme0n1p3 > /dev/null 2>&1 || true;
-mount /dev/nvme0n1p2 /mnt > /dev/null 2>&1 || true;
-mkdir /mnt/boot > /dev/null 2>&1 || true;
-mkdir /mnt/boot/EFI > /dev/null 2>&1 || true;
-mkdir /mnt/home > /dev/null 2>&1 || true;
-mount /dev/nvme0n1p1 /mnt/boot/EFI > /dev/null 2>&1 || true;
-mount /dev/nvme0n1p3 /mnt/home > /dev/null 2>&1 || true;
+% partprobe
+% mkfs.fat -F32 /dev/nvme0n1p1
+% mkfs.ext4 -F /dev/nvme0n1p2
+% mkfs.ext4 -F /dev/nvme0n1p3
+% mount /dev/nvme0n1p2 /mnt
+% mkdir /mnt/boot
+% mkdir /mnt/boot/EFI
+% mkdir /mnt/home
+% mount /dev/nvme0n1p1 /mnt/boot/EFI
+% mount /dev/nvme0n1p3 /mnt/home
 else
 fdisk /dev/sda <<EOF > /dev/null 2>&1 || true
 o
