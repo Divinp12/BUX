@@ -198,7 +198,7 @@ fi;
 
 
 + "INSTALANDO PACOTES DO SISTEMA";
-if pacstrap /mnt --noconfirm --quiet \
+if % pacstrap /mnt --noconfirm --quiet \
 base \
 base-devel \
 linux \
@@ -235,7 +235,7 @@ pipewire-media-session \
 pavucontrol \
 sddm \
 grub-efi-x86_64 \
-efibootmgr > /dev/null 2>&1; then
+efibootmgr; then
 + "PACOTES DO SISTEMA INSTALADOS COM SUCESSO"
 else
 + "ERRO AO INSTALAR PACOTES DO SISTEMA"
@@ -281,7 +281,9 @@ sleep 5;
 clear; "$@"
 }
 
-
+%() {
+"$@" > /dev/null 2>&1;
+}
 
 
 
@@ -395,7 +397,7 @@ fi;
 
 
 + "APLICANDO CARACTERES PORTUGUES BRASILEIRO E INGLES AMERICANO"
-if locale-gen > /dev/null 2>&1 || true; then
+if % locale-gen; then
 + "CARACTERES PORTUGUES BRASILEIRO E INGLES AMERICANO APLICADO COM SUCESSO"
 else
 + "ERRO AO APLICAR CARACTERES PORTUGUES BRASILEIRO E INGLES AMERICANO"
