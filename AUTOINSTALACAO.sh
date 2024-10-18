@@ -170,16 +170,16 @@ p
 
 w
 EOF
-partprobe > /dev/null 2>&1 || true;
-mkfs.fat -F32 /dev/sda1 > /dev/null 2>&1 || true;
-mkfs.ext4 -F /dev/sda2 > /dev/null 2>&1 || true;
-mkfs.ext4 -F /dev/sda3 > /dev/null 2>&1 || true;
-mount /dev/sda2 /mnt > /dev/null 2>&1 || true;
-mkdir /mnt/boot > /dev/null 2>&1 || true;
-mkdir /mnt/boot/EFI > /dev/null 2>&1 || true;
-mkdir /mnt/home > /dev/null 2>&1 || true;
-mount /dev/sda1 /mnt/boot/EFI > /dev/null 2>&1 || true;
-mount /dev/sda3 /mnt/home > /dev/null 2>&1 || true;
+% partprobe
+% mkfs.fat -F32 /dev/sda1
+% mkfs.ext4 -F /dev/sda2
+% mkfs.ext4 -F /dev/sda3
+% mount /dev/sda2 /mnt
+% mkdir /mnt/boot
+% mkdir /mnt/boot/EFI
+% mkdir /mnt/home
+% mount /dev/sda1 /mnt/boot/EFI
+% mount /dev/sda3 /mnt/home
 fi;
 
 
