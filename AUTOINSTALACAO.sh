@@ -414,7 +414,7 @@ fi;
 
 
 + "SINCRONIZANDO RELOGIO DO HARDWARE E DO SISTEMA VIA WIFI"
-if hwclock --systohc > /dev/null 2>&1 || true; then
+if % hwclock --systohc; then
 + "RELOGIO DO HARDWARE E DO SISTEMA SINCRONIZADO VIA WIFI COM SUCESSO"
 else
 + "ERRO AO SINCRONIZAR RELOGIO DO HARDWARE E DO SISTEMA VIA WIFI"
@@ -514,7 +514,7 @@ fi;
 
 
 + "SINCRONIZANDO REPOSITORIOS DO PACMAN"
-if pacman -Sy --noconfirm --quiet > /dev/null 2>&1; then
+if % pacman -Sy --noconfirm --quiet; then
 + "REPOSITORIOS DO PACMAN SINCRONIZADOS COM SUCESSO"
 else
 + "ERRO AO SINCRONIZAR REPOSITORIOS DO PACMAN"
@@ -612,9 +612,9 @@ fi;
 
 
 + "HABILITANDO DRIVER DE INTERNET E DISPLAY MANAGER (SDDM) NA INICIALIZACAO DO SISTEMA"
-if systemctl enable \
+if % systemctl enable \
 NetworkManager \
-sddm > /dev/null 2>&1 || true; then
+sddm; then
 + "DRIVER DE INTERNET E DISPLAY MANAGER (SDDM) HABILITADO NA INICIALIZACAO DO SISTEMA COM SUCESSO"
 else
 + "ERRO AO HABILITAR DRIVER DE INTERNET E DISPLAY MANAGER (SDDM) NA INICIALIZACAO DO SISTEMA"
@@ -631,10 +631,10 @@ fi;
 
 
 + "DESATIVANDO SERVICOS DESNECESSARIOS NA INICIALIZACAO DO SISTEMA"
-if systemctl disable \
+if % systemctl disable \
 NetworkManager-wait-online \
 systemd-networkd \
-systemd-timesyncd > /dev/null 2>&1 || true; then
+systemd-timesyncd; then
 + "SERVICOS DESNESSARIOS DESATIVADOS NA INICIALIZACAO DO SISTEMA COM SUCESSO"
 else
 + "ERRO AO DESATIVAR SERVICOS DESNECESSARIOS NA INICIALIZACAO DO SISTEMA"
@@ -651,7 +651,7 @@ fi;
 
 
 + "GERANDO IMAGENS NO INICIALIZADOR DO SISTEMA"
-if mkinitcpio -P > /dev/null 2>&1 || true; then
+if % mkinitcpio -P; then
 + "IMAGENS GERADAS NA INICIALIZACAO DO SISTEMA COM SUCESSO"
 else
 + "ERRO AO GERAR IMAGENS NA INICIALIZACAO DO SISTEMA"
@@ -714,7 +714,7 @@ fi;
 
 
 + "CONFIGURANDO GRUB"
-if grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=4RCH --recheck; then
+if % grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=4RCH --recheck; then
 + "GRUB CONFIGURADO COM SUCESSO"
 else
 + "ERRO AO CONFIGURAR GRUB"
@@ -731,7 +731,7 @@ fi;
 
 
 + "ADICIONANDO GRUB NA INICIALIZACAO"
-if grub-mkconfig -o /boot/grub/grub.cfg; then
+if % grub-mkconfig -o /boot/grub/grub.cfg; then
 + "GRUB ADICIONADO NA INICIALIZACAO COM SUCESSO"
 else
 + "ERRO AO ADICIONAR GRUB NA INICIALIZACAO"
