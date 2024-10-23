@@ -525,7 +525,7 @@ else
 + "ERRO AO ADICIONAR OPÇÕES NOATIME E DISCARD NAS PARTIÇÕES EXT4"
 fi;
 
-?
+S
 
 + "ADICIONANDO CONEXAO IPV6 NO SISTEMA"
 if + "127.0.0.1 localhost.localdomain localhost
@@ -536,7 +536,7 @@ else
 + "ERRO AO ADICIONAR CONEXAO IPV6 NO SISTEMA"
 fi;
 
-?
+S
 
 + "REMOVENDO LINHAS QUE COMECAM COM JOGO DA VELHA E ESPACOS VAZIOS"
 if sed -i "/^\s*#/d; /^\s*$/d" \
@@ -557,7 +557,7 @@ else
 + "ERRO AO REMOVER LINHAS QUE COMECAM COM JOGO DA VELHA E ESPACOS VAZIOS"
 fi;
 
-?
+S
 
 + "REMOVENDO ARQUIVO initramfs-linux-fallback.img"
 if rm -rf /boot/initramfs-linux-fallback.img; then
@@ -566,7 +566,7 @@ else
 + "ERRO AO REMOVER ARQUIVO initramfs-linux-fallback.img"
 fi';
 
-?
+S
 
 + "GRAVANDO DADOS DA MEMORIA NO DISCO"
 if X sync; then
@@ -575,7 +575,7 @@ else
 + "ERRO AO GRAVAR DADOS DA MEMORIA NO DISCO"
 fi;
 
-?
+S
 
 + "REINICIANDO"
 reboot -f;
