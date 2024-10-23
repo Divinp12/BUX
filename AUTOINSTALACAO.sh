@@ -4,7 +4,7 @@
 echo "$@"
 }
 
-?() {
+S() {
 sleep 5;
 clear; "$@"
 }
@@ -37,7 +37,7 @@ else
 + "ERRO AO ADICIONAR O ESPELHO BRASILEIRO"
 fi;
 
-?
+S
 
 + "SOBSCREVENDO ARQUIVO pacman.conf"
 if + "[options]
@@ -59,7 +59,7 @@ else
 + "ERRO AO SOBSCREVER ARQUIVO pacman.conf"
 fi;
 
-?
+S
 
 + "SINCRONIZANDO REPOSITORIOS DO PACMAN"
 if X pacman -Sy --noconfirm --quiet; then
@@ -68,7 +68,7 @@ else
 + "ERRO AO SINCRONIZAR REPOSITORIOS DO PACMAN"
 fi;
 
-?
+S
 
 + "FORMATANDO DISPOSITIVO DE ARMAZENAMENTO DE DADOS VALIDO"
 if X fdisk /dev/nvme0n1; then <<EOF > /dev/null 2>&1
@@ -164,7 +164,7 @@ X mount /dev/sda1 /mnt/boot/EFI
 X mount /dev/sda3 /mnt/home
 fi;
 
-?
+S
 
 + "INSTALANDO PACOTES DO SISTEMA";
 if X pacstrap /mnt --noconfirm --quiet \
@@ -210,7 +210,7 @@ else
 + "ERRO AO INSTALAR PACOTES DO SISTEMA"
 fi;
 
-?
+S
 
 + "AUTOGERANDO E AUTOCONFIGURANDO PARTICOES NO ARQUIVO fstab"
 if genfstab -U -p /mnt > /mnt/etc/fstab; then
@@ -219,7 +219,7 @@ else
 + "ERRO AO AUTOGERAR E AUTOCONFIGURAR ARQUIVO fstab"
 fi;
 
-?
+S
 
 + "ENTRANDO NO AMBIENTE arch-chroot"
 arch-chroot /mnt bash -c '
@@ -228,7 +228,7 @@ arch-chroot /mnt bash -c '
 echo "$@"
 }
 
-?() {
+S() {
 sleep 5;
 clear; "$@"
 }
@@ -237,9 +237,7 @@ X() {
 "$@" > /dev/null 2>&1;
 }
 
-
-
-?
+S
 
 + "ADICIONANDO NOME 4RCH AO USUARIO ROOT NO ARQUIVO hostname";
 if + 4RCH > /etc/hostname; then
@@ -248,7 +246,7 @@ else
 + "ERRO AO ADICIONAR NOME 4RCH AO USUARIO ROOT NO ARQUIVO hostname"
 fi;
 
-?
+S
 
 + "ADICIONANDO SENHA 4RCH AO USUARIO ROOT"
 if + -e "4RCH\n4RCH" | passwd root; then
@@ -257,7 +255,7 @@ else
 + "ERRO AO ADICIONAR SENHA 4RCH AO USUARIO ROOT"
 fi;
 
-?
+S
 
 + "ADICIONANDO USUARIO NORMAL COM NOME 4RCH"
 if useradd -m -g users -G wheel 4RCH; then
@@ -266,7 +264,7 @@ else
 + "ERRO AO ADICIONAR USUARIO NORMAL COM NOME 4RCH"
 fi;
 
-?
+S
 
 + "ADICIONANDO SENHA 4RCH AO USUARIO NORMAL"
 if + -e "4RCH\n4RCH" | passwd 4RCH; then
@@ -275,7 +273,7 @@ else
 + "ERRO AO ADICIONAR SENHA 4RCH AO USUARIO NORMAL"
 fi;
 
-?
+S
 
 + "ADICIONANDO CARACTERES PORTUGUES BRASILEIRO E INGLES AMERICANO"
 if + "pt_BR.UTF-8 UTF-8
@@ -285,7 +283,7 @@ else
 + "ERRO AO ADICIONAR CARACTERES PORTUGUES BRASILEIRO E INGLES AMERICANO"
 fi;
 
-?
+S
 
 + "APLICANDO IDIOMA PORTUGUES BRASILEIRO NO SISTEMA"
 if + "LANG=pt_BR.UTF-8" > /etc/locale.conf; then
@@ -294,7 +292,7 @@ else
 + "ERRO AO APLICAR IDIOMA PORTUGUES BRASILEIRO NO SISTEMA"
 fi;
 
-?
+S
 
 + "APLICANDO CARACTERES PORTUGUES BRASILEIRO E INGLES AMERICANO"
 if X locale-gen; then
@@ -303,7 +301,7 @@ else
 + "ERRO AO APLICAR CARACTERES PORTUGUES BRASILEIRO E INGLES AMERICANO"
 fi;
 
-?
+S
 
 + "SINCRONIZANDO RELOGIO DO HARDWARE E DO SISTEMA VIA WIFI"
 if X hwclock --systohc; then
@@ -312,7 +310,7 @@ else
 + "ERRO AO SINCRONIZAR RELOGIO DO HARDWARE E DO SISTEMA VIA WIFI"
 fi;
 
-?
+S
 
 + "ADICIONANDO ESPELHO BRASILEIRO"
 if + "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist; then
@@ -321,7 +319,7 @@ else
 + "ERRO AO ADICIONAR ESPELHO BRASILEIRO"
 fi;
 
-?
+S
 
 + "SOBSCREVENDO ARQUIVO .bashrc"
 if + "alias i=\"yay -S --noconfirm --quiet\"
@@ -349,7 +347,7 @@ else
 + "ERRO AO SOBSCREVER ARQUIVO .bashrc"
 fi;
 
-?
+S
 
 + "SOBSCREVENDO ARQUIVO pacman.conf"
 if + "[options]
@@ -371,7 +369,7 @@ else
 + "ERRO AO SOBSCREVER ARQUIVO pacman.conf"
 fi;
 
-?
+S
 
 + "SINCRONIZANDO REPOSITORIOS DO PACMAN"
 if X pacman -Sy --noconfirm --quiet; then
@@ -380,7 +378,7 @@ else
 + "ERRO AO SINCRONIZAR REPOSITORIOS DO PACMAN"
 fi;
 
-?
+S
 
 + "ESCANEANDO HARDWARE AMD E INSTALANDO DRIVERS AMD"
 if lspci | grep -i amd > /dev/null 2>&1; then
@@ -392,7 +390,7 @@ else
 + "ERRO AO INSTALAR DRIVERS AMD"
 fi;
 
-?
+S
 
 + "ESCANEANDO HARDWARE INTEL E INSTALANDO DRIVERS INTEL"
 if lspci | grep -i intel > /dev/null 2>&1; then
@@ -404,7 +402,7 @@ else
 + "ERRO AO INSTALAR DRIVERS INTEL"
 fi;
 
-?
+S
 
 + "ESCANEANDO HARDWARE NVIDIA E INSTALANDO DRIVERS NVIDIA"
 if lspci | grep -i nvidia > /dev/null 2>&1; then
@@ -418,7 +416,7 @@ else
 + "ERRO AO INSTALAR DRIVERS NVIDIA"
 fi;
 
-?
+S
 
 + "ESCANEANDO HARDWARE VIRTUALBOX E INSTALANDO DRIVERS VIRTUALBOX"
 if lspci | grep -i virtualbox > /dev/null 2>&1; then
@@ -429,7 +427,7 @@ else
 + "ERRO AO INSTALAR DRIVERS VIRTUALBOX"
 fi;
 
-?
+S
 
 + "HABILITANDO DRIVER DE INTERNET E DISPLAY MANAGER (SDDM) NA INICIALIZACAO DO SISTEMA"
 if X systemctl enable \
@@ -440,7 +438,7 @@ else
 + "ERRO AO HABILITAR DRIVER DE INTERNET E DISPLAY MANAGER (SDDM) NA INICIALIZACAO DO SISTEMA"
 fi;
 
-?
+S
 
 + "DESATIVANDO SERVICOS DESNECESSARIOS NA INICIALIZACAO DO SISTEMA"
 if X systemctl disable \
@@ -452,7 +450,7 @@ else
 + "ERRO AO DESATIVAR SERVICOS DESNECESSARIOS NA INICIALIZACAO DO SISTEMA"
 fi;
 
-?
+S
 
 + "GERANDO IMAGENS NO INICIALIZADOR DO SISTEMA"
 if X mkinitcpio -P; then
@@ -461,7 +459,7 @@ else
 + "ERRO AO GERAR IMAGENS NA INICIALIZACAO DO SISTEMA"
 fi;
 
-?
+S
 
 + "SOBSCREVENDO ARQUIVO sddm.conf"
 if + "[Autologin]
@@ -474,7 +472,7 @@ else
 + "ERRO AO SOBSCREVER ARQUIVO sddm.conf"
 fi;
 
-?
+S
 
 + "SOBSCREVENDO ARQUIVO grub"
 if + "GRUB_DEFAULT=0
@@ -491,7 +489,7 @@ else
 + "ERRO AO SOBSCREVER ARQUIVO grub"
 fi;
 
-?
+S
 
 + "CONFIGURANDO GRUB"
 if X grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=4RCH --recheck; then
@@ -500,7 +498,7 @@ else
 + "ERRO AO CONFIGURAR GRUB"
 fi;
 
-?
+S
 
 + "ADICIONANDO GRUB NA INICIALIZACAO"
 if X grub-mkconfig -o /boot/grub/grub.cfg; then
@@ -509,7 +507,7 @@ else
 + "ERRO AO ADICIONAR GRUB NA INICIALIZACAO"
 fi;
 
-?
+S
 
 + "ADICIONANDO USUARIO NORMAL (4RCH) AO SUDO NO ARQUIVO sudoers"
 if + "4RCH ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers; then
@@ -518,7 +516,7 @@ else
 + "ERRO AO ADICIONAR USUARIO NORMAL (4RCH) AO SUDO NO ARQUIVO sudoers"
 fi;
 
-?
+S
 
 + "ADICIONANDO OPÇÕES NOATIME E DISCARD NAS PARTIÇÕES EXT4"
 if sed -i "/^UUID=.* \/boot .*$/! s/rw/rw,noatime,discard,/" /etc/fstab; then
