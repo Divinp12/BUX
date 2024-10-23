@@ -9,7 +9,7 @@ sleep 5;
 clear; "$@"
 }
 
-%() {
+X() {
 "$@" > /dev/null 2>&1;
 }
 
@@ -62,7 +62,7 @@ fi;
 ?
 
 + "SINCRONIZANDO REPOSITORIOS DO PACMAN"
-if % pacman -Sy --noconfirm --quiet; then
+if X pacman -Sy --noconfirm --quiet; then
 + "REPOSITORIOS DO PACMAN SINCRONIZADOS COM SUCESSO"
 else
 + "ERRO AO SINCRONIZAR REPOSITORIOS DO PACMAN"
@@ -71,12 +71,12 @@ fi;
 ?
 
 + "FORMATANDO DISPOSITIVO DE ARMAZENAMENTO DE DADOS VALIDO"
-if % fdisk /dev/nvme0n1; then <<EOF > /dev/null 2>&1
+if X fdisk /dev/nvme0n1; then <<EOF > /dev/null 2>&1
 o
 w
 EOF
 
-% fdisk /dev/nvme0n1 <<EOF > /dev/null 2>&1
+fdisk /dev/nvme0n1 <<EOF > /dev/null 2>&1
 n
 p
 1
@@ -87,7 +87,7 @@ t
 w
 EOF
 
-% fdisk /dev/nvme0n1 <<EOF > /dev/null 2>&1
+fdisk /dev/nvme0n1 <<EOF > /dev/null 2>&1
 n
 p
 2
@@ -96,7 +96,7 @@ p
 w
 EOF
 
-% fdisk /dev/nvme0n1 <<EOF > /dev/null 2>&1
+fdisk /dev/nvme0n1 <<EOF > /dev/null 2>&1
 n
 p
 3
@@ -105,25 +105,25 @@ p
 w
 EOF
 
-% partprobe
-% mkfs.fat -F32 /dev/nvme0n1p1
-% mkfs.ext4 -F /dev/nvme0n1p2
-% mkfs.ext4 -F /dev/nvme0n1p3
-% mount /dev/nvme0n1p2 /mnt
-% mkdir /mnt/boot
-% mkdir /mnt/boot/EFI
-% mkdir /mnt/home
-% mount /dev/nvme0n1p1 /mnt/boot/EFI
-% mount /dev/nvme0n1p3 /mnt/home
+X partprobe
+X mkfs.fat -F32 /dev/nvme0n1p1
+X mkfs.ext4 -F /dev/nvme0n1p2
+X mkfs.ext4 -F /dev/nvme0n1p3
+X mount /dev/nvme0n1p2 /mnt
+X mkdir /mnt/boot
+X mkdir /mnt/boot/EFI
+X mkdir /mnt/home
+X mount /dev/nvme0n1p1 /mnt/boot/EFI
+X mount /dev/nvme0n1p3 /mnt/home
 
 else
 
-% fdisk /dev/sda <<EOF > /dev/null 2>&1
+fdisk /dev/sda <<EOF > /dev/null 2>&1
 o
 w
 EOF
 
-% fdisk /dev/sda <<EOF > /dev/null 2>&1
+fdisk /dev/sda <<EOF > /dev/null 2>&1
 n
 p
 1
@@ -134,7 +134,7 @@ t
 w
 EOF
 
-% fdisk /dev/sda <<EOF > /dev/null 2>&1
+fdisk /dev/sda <<EOF > /dev/null 2>&1
 n
 p
 2
@@ -143,7 +143,7 @@ p
 w
 EOF
 
-% fdisk /dev/sda <<EOF > /dev/null 2>&1
+fdisk /dev/sda <<EOF > /dev/null 2>&1
 n
 p
 3
@@ -152,22 +152,22 @@ p
 w
 EOF
 
-% partprobe
-% mkfs.fat -F32 /dev/sda1
-% mkfs.ext4 -F /dev/sda2
-% mkfs.ext4 -F /dev/sda3
-% mount /dev/sda2 /mnt
-% mkdir /mnt/boot
-% mkdir /mnt/boot/EFI
-% mkdir /mnt/home
-% mount /dev/sda1 /mnt/boot/EFI
-% mount /dev/sda3 /mnt/home
+X partprobe
+X mkfs.fat -F32 /dev/sda1
+X mkfs.ext4 -F /dev/sda2
+X mkfs.ext4 -F /dev/sda3
+X mount /dev/sda2 /mnt
+X mkdir /mnt/boot
+X mkdir /mnt/boot/EFI
+X mkdir /mnt/home
+X mount /dev/sda1 /mnt/boot/EFI
+X mount /dev/sda3 /mnt/home
 fi;
 
 ?
 
 + "INSTALANDO PACOTES DO SISTEMA";
-if % pacstrap /mnt --noconfirm --quiet \
+if X pacstrap /mnt --noconfirm --quiet \
 base \
 base-devel \
 linux \
@@ -233,7 +233,7 @@ sleep 5;
 clear; "$@"
 }
 
-%() {
+X() {
 "$@" > /dev/null 2>&1;
 }
 
@@ -297,7 +297,7 @@ fi;
 ?
 
 + "APLICANDO CARACTERES PORTUGUES BRASILEIRO E INGLES AMERICANO"
-if % locale-gen; then
+if X locale-gen; then
 + "CARACTERES PORTUGUES BRASILEIRO E INGLES AMERICANO APLICADO COM SUCESSO"
 else
 + "ERRO AO APLICAR CARACTERES PORTUGUES BRASILEIRO E INGLES AMERICANO"
@@ -306,7 +306,7 @@ fi;
 ?
 
 + "SINCRONIZANDO RELOGIO DO HARDWARE E DO SISTEMA VIA WIFI"
-if % hwclock --systohc; then
+if X hwclock --systohc; then
 + "RELOGIO DO HARDWARE E DO SISTEMA SINCRONIZADO VIA WIFI COM SUCESSO"
 else
 + "ERRO AO SINCRONIZAR RELOGIO DO HARDWARE E DO SISTEMA VIA WIFI"
@@ -374,7 +374,7 @@ fi;
 ?
 
 + "SINCRONIZANDO REPOSITORIOS DO PACMAN"
-if % pacman -Sy --noconfirm --quiet; then
+if X pacman -Sy --noconfirm --quiet; then
 + "REPOSITORIOS DO PACMAN SINCRONIZADOS COM SUCESSO"
 else
 + "ERRO AO SINCRONIZAR REPOSITORIOS DO PACMAN"
@@ -432,7 +432,7 @@ fi;
 ?
 
 + "HABILITANDO DRIVER DE INTERNET E DISPLAY MANAGER (SDDM) NA INICIALIZACAO DO SISTEMA"
-if % systemctl enable \
+if X systemctl enable \
 NetworkManager \
 sddm; then
 + "DRIVER DE INTERNET E DISPLAY MANAGER (SDDM) HABILITADO NA INICIALIZACAO DO SISTEMA COM SUCESSO"
@@ -443,7 +443,7 @@ fi;
 ?
 
 + "DESATIVANDO SERVICOS DESNECESSARIOS NA INICIALIZACAO DO SISTEMA"
-if % systemctl disable \
+if X systemctl disable \
 NetworkManager-wait-online \
 systemd-networkd \
 systemd-timesyncd; then
@@ -455,7 +455,7 @@ fi;
 ?
 
 + "GERANDO IMAGENS NO INICIALIZADOR DO SISTEMA"
-if % mkinitcpio -P; then
+if X mkinitcpio -P; then
 + "IMAGENS GERADAS NA INICIALIZACAO DO SISTEMA COM SUCESSO"
 else
 + "ERRO AO GERAR IMAGENS NA INICIALIZACAO DO SISTEMA"
@@ -494,7 +494,7 @@ fi;
 ?
 
 + "CONFIGURANDO GRUB"
-if % grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=4RCH --recheck; then
+if X grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=4RCH --recheck; then
 + "GRUB CONFIGURADO COM SUCESSO"
 else
 + "ERRO AO CONFIGURAR GRUB"
@@ -503,7 +503,7 @@ fi;
 ?
 
 + "ADICIONANDO GRUB NA INICIALIZACAO"
-if % grub-mkconfig -o /boot/grub/grub.cfg; then
+if X grub-mkconfig -o /boot/grub/grub.cfg; then
 + "GRUB ADICIONADO NA INICIALIZACAO COM SUCESSO"
 else
 + "ERRO AO ADICIONAR GRUB NA INICIALIZACAO"
@@ -571,7 +571,7 @@ fi';
 ?
 
 + "GRAVANDO DADOS DA MEMORIA NO DISCO"
-if sync; then
+if X sync; then
 + "DADOS DA MEMORIA GRAVADOS NO DISCO COM SUCESSO"
 else
 + "ERRO AO GRAVAR DADOS DA MEMORIA NO DISCO"
