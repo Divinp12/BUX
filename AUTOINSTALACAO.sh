@@ -470,7 +470,7 @@ S
 if + "GRUB_DEFAULT=0
 GRUB_TIMEOUT=0
 GRUB_DISTRIBUTOR=\"4RCH\"
-GRUB_CMDLINE_LINUX_DEFAULT=\"quiet noatime nodiratime nosplash nowatchdog mitigations=off\"
+GRUB_CMDLINE_LINUX_DEFAULT=\"quiet nosplash mitigations=off\"
 GRUB_CMDLINE_LINUX=\"\"
 GRUB_PRELOAD_MODULES=\"part_gpt part_msdos\"
 GRUB_GFXMODE=auto
