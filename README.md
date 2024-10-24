@@ -76,7 +76,9 @@ pcsx2 (emulador de playstation 2) = i pcsx2-git
 
 rpcs3 (emulador de playstation 3) = i rpcs3-git
 
-grapejuice (roblox player e roblox studio) = i grapejuice
+sober (roblox player {funcionando}) = i flatpak && flatpak install --user https://sober.vinegarhq.org/sober.flatpakref
+
+vinegar (roblox player {quebrado} e roblox studio {funcionando}) = i vinegar-git
 
 parsec = i parsec-bin
 
