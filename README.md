@@ -44,47 +44,47 @@ DESISTALAR PACOTES PELO TERMINAL: d NOME-DO-PACOTE
 
 ----------------------PACOTES POPULARES (OPCIONAL)--------------------------------
 
-google chrome = google-chrome
+google chrome = i google-chrome
 
-visualizador de fotos = ristretto
+visualizador de fotos = i ristretto
 
-(des)compactador de arquivos = xarchiver
+(des)compactador de arquivos = i xarchiver
 
-obs studio = obs-studio
+obs studio = i obs-studio
 
-media player = vlc
+media player = i vlc
 
-wine (versão estável) = wine
+wine (versão estável) = i wine wine-mono wine-gecko
 
-telegram = telegram-desktop
+telegram = i telegram-desktop
 
-discord = discord
+discord = i discord
 
-steam = steam
+steam = i steam
 
-java (console) = jdk
+java (console) = i jdk
 
-minecraft java (pirata) = sklauncher-bin
+minecraft java (pirata) = i sklauncher-bin
 
-minecraft java (original) = minecraft-launcher
+minecraft java (original) = i minecraft-launcher
 
-minecraft bedrock (original não oficial) = mcpelauncher-appimage
+minecraft bedrock (original não oficial) = i mcpelauncher-appimage
 
-mupen64 (emulador de nintendo 64) = mupen64plus-qt
+mupen64 (emulador de nintendo 64) = i mupen64plus-qt
 
-pcsx2 (emulador de playstation 2) = pcsx2-git
+pcsx2 (emulador de playstation 2) = i pcsx2-git
 
-rpcs3 (emulador de playstation 3) = rpcs3-git
+rpcs3 (emulador de playstation 3) = i rpcs3-git
 
-grapejuice (roblox player e roblox studio) = grapejuice
+grapejuice (roblox player e roblox studio) = i grapejuice
 
-parsec = parsec-bin
+parsec = i parsec-bin
 
-hidamari (papel de parede animado) = hidamari
+hidamari (papel de parede animado) = i hidamari
 
-heroic games launcher = heroic-games-launcher
+heroic games launcher = i heroic-games-launcher
 
-lutris = lutris
+lutris = i lutris
 
 ____________________________________________________________________________________________________
 MANGOHUD (OPCIONAL)
@@ -106,23 +106,6 @@ PARA OPENGL É mangohud --dlsym NOME_DO_JOGO OU COMANDO_DE_EXECUÇÃO
 PARA VULKAN OU DXVK É mangohud NOME_DO_JOGO OU COMANDO_DE_EXECUÇÃO
 
 PARA MAIS INFORMAÇÕES ACESSE: https://github.com/flightlessmango/MangoHud
-
-____________________________________________________________________________________________________
-GAMEMODE (OPCIONAL)
-
-Uma ferramenta com objetivo principal de otimizar o desempenho do sistema enquanto você joga, priorizando recursos do sistema para garantir uma experiência de jogo mais suave...
-
-Instalar: i gamemode lib32-gamemode
-
-Use na steam na “opções de inicialização”:
-
-gamemoderun %command%
-
-Use em jogos “executáveis”:
-
-gamemoderun NOME_DO_JOGO OU COMANDO_DE_EXECUÇÃO
-
-PARA MAIS INFORMAÇÕES ACESSE: https://github.com/FeralInteractive/gamemode
 
 ____________________________________________________________________________________________________
 BLUETOOTH (OPCIONAL)
