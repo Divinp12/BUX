@@ -46,15 +46,15 @@ DESISTALAR PACOTES PELO TERMINAL: d NOME-DO-PACOTE
 
 google chrome = i google-chrome
 
-libreoffice (visualizador 100% gratis de todos os formatos de microsoft office) i libreoffice-fresh
+media player (visualizador de audio e videos) = i vlc
+
+libreoffice (visualizador 100% gratis de todos os formatos de microsoft office) = i libreoffice-fresh
 
 visualizador de fotos = i ristretto
 
 (des)compactador de arquivos = i xarchiver tar xz unzip unrar
 
 obs studio = i obs-studio
-
-media player = i vlc
 
 wine (versão estável) = i wine wine-mono wine-gecko
 
