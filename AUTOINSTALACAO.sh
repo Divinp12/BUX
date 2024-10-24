@@ -15,20 +15,12 @@ X() {
 
 clear;
 
-
-
-
-
 if + "INICIANDO FORMATACAO EM 10 SEGUNDOS,
 ESTEJA CIENTE DO QUE ESTA FAZENDO,
 POIS TODOS OS DADOS SERAO APAGADOS
 PARA QUE A INSTALACAO SEJA BEM SUCEDIDA..."; then
 sleep 10; clear
 fi;
-
-
-
-
 
 + "ADICIONANDO ESPELHO BRASILEIRO"
 if + "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist; then
