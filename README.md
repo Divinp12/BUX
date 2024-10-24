@@ -48,7 +48,7 @@ google chrome = i google-chrome
 
 visualizador de fotos = i ristretto
 
-(des)compactador de arquivos = i xarchiver
+(des)compactador de arquivos = i xarchiver tar xz unzip unrar
 
 obs studio = i obs-studio
 
