@@ -46,6 +46,8 @@ DESISTALAR PACOTES PELO TERMINAL: d NOME-DO-PACOTE
 
 google chrome = i google-chrome
 
+libreoffice (visualizador 100% gratis de todos os formatos de microsoft office) i libreoffice-fresh
+
 visualizador de fotos = i ristretto
 
 (des)compactador de arquivos = i xarchiver tar xz unzip unrar
