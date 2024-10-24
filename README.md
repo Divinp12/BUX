@@ -84,7 +84,7 @@ parsec = i parsec-bin
 
 hidamari (papel de parede animado) = i hidamari
 
-heroic games launcher (epic games nao oficial) = i heroic-games-launcher
+heroic games launcher (launcher nao oficial de epic games, GOG e amazon prime) = i heroic-games-launcher
 
 lutris = i lutris
 
