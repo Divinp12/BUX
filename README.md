@@ -48,7 +48,7 @@ google chrome = i google-chrome
 
 media player (visualizador de audio e videos) = i vlc
 
-libreoffice (visualizador e modificador gratis de pdf, word, etc) = i libreoffice-fresh
+libreoffice (visualizador/modificador gratis de pdf, word, etc) = i libreoffice-fresh
 
 visualizador de fotos = i ristretto
 
