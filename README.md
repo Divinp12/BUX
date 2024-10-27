@@ -1,3 +1,5 @@
+____________________________________________________________________________________________________
+
 ---------------------------------AVISO LEIA COM ATENÇÃO--------------------------------
 
 OI, SEJA BEM VINDO AO MEU PROJETO QUE SE CHAMA "4RCH LINUX", É UM PROJETO QUE AUTOMATIZA A INSTALAÇÃO DO ARCH LINUX PARA QUE NÃO PERCA TEMPO DIGITANDO COMANDOS E TAMBÉM FACILITAR O USO TANTO PARA INICIANTES QUANTO PRA PROFISSIONAIS, O PROCESSO APAGARÁ UM DOS DISPOSITIVOS DE ARMAZENAMENTO QUE ESTÃO CONECTADOS A MAQUINA PARA QUE A INSTALAÇÃO/FORMATAÇÃO SEJA BEM-SUCEDIDA, PARA MAIS INFORMAÇÕES LEIA OS TÓPICOS ABAIXO.
@@ -121,3 +123,9 @@ CASO NÃO TENHA O PACOTE QUE QUEIRA POR AQUI NESTA PÁGINA, PROCURE PELO SITE OF
 
 https://aur.archlinux.org/packages
 
+____________________________________________________________________________________________________
+
+VEJA SE OS JOGOS SÃO COMPATIVEIS NAS DISTROS LINUX NO SITE PROTONDB
+
+https://www.protondb.com/explore
+____________________________________________________________________________________________________
