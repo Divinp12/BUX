@@ -470,7 +470,7 @@ S
 if + "GRUB_DEFAULT=0
 GRUB_TIMEOUT=0
 GRUB_DISTRIBUTOR=\"4RCH\"
-GRUB_CMDLINE_LINUX_DEFAULT=\"quiet noswap noatime nodiratime nowatchdog mitigations=off ibt=off split_lock_detect=off split_lock_mitigate=0 nokaslr\"
+GRUB_CMDLINE_LINUX_DEFAULT=\"quiet noswap noatime nodiratime nowatchdog mitigations=off ibt=off split_lock_detect=off split_lock_mitigate=0 noaslr nokaslr\"
 GRUB_CMDLINE_LINUX=\"\"
 GRUB_PRELOAD_MODULES=\"part_gpt part_msdos\"
 GRUB_GFXMODE=auto
