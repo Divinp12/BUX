@@ -459,7 +459,7 @@ S
 if + "GRUB_DEFAULT=0
 GRUB_TIMEOUT=0
 GRUB_DISTRIBUTOR=\"4RCH\"
-GRUB_CMDLINE_LINUX_DEFAULT=\"quiet noaes noencrypt nohyperv hv_storescsi=0 hv_vmbus=0 hyperv_no_hpet=1 hyperv=off noswap noatime nodiratime nowatchdog mitigations=off nospectre_v1 nospectre_v2 ibt=off noexec=off split_lock_detect=off split_lock_mitigate=0 nopti nopte norandmaps noaslr nokaslr\"
+GRUB_CMDLINE_LINUX_DEFAULT=\"quiet noaes noencrypt nohyperv hv_storescsi=0 hv_vmbus=0 hyperv_no_hpet=1 hyperv=off noswap noatime nodiratime nowatchdog mitigations=off nospectre_v1 nospectre_v2 nospec_store_bypass spec_store_bypass_disable no_meltdown ibt=off noexec=off split_lock_detect=off split_lock_mitigate=0 nopti nopte norandmaps noaslr nokaslr\"
 GRUB_CMDLINE_LINUX=\"\"
 GRUB_PRELOAD_MODULES=\"part_gpt part_msdos\"
 GRUB_GFXMODE=auto
