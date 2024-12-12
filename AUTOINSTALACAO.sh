@@ -257,8 +257,7 @@ fi;
 S
 
 + "ADICIONANDO CARACTERES PORTUGUES BRASILEIRO E INGLES AMERICANO"
-if + "pt_BR.UTF-8 UTF-8
-en_US.UTF-8 UTF-8" > /etc/locale.gen; then
+if + "pt_BR.UTF-8 UTF-8" > /etc/locale.gen; then
 + "CARACTERES PORTUGUES BRASILEIROS E INGLES AMERICANO ADICIONADO COM SUCESSO"
 else
 + "ERRO AO ADICIONAR CARACTERES PORTUGUES BRASILEIRO E INGLES AMERICANO"
@@ -459,7 +458,7 @@ S
 if + "GRUB_DEFAULT=0
 GRUB_TIMEOUT=0
 GRUB_DISTRIBUTOR=\"4RCH\"
-GRUB_CMDLINE_LINUX_DEFAULT=\"quiet noaes noencrypt nohyperv hv_storescsi=0 hv_vmbus=0 hyperv_no_hpet=1 hyperv=off noswap noatime nodiratime nowatchdog mitigations=off no_spectre nospectre_v1 nospectre_v2 nospec_store_bypass spec_store_bypass_disable noretpoline no_meltdown no_l1tf no_mds no_zombieload no_taa ibt=off noexec=off split_lock_detect=off split_lock_mitigate=0 nopti nopte norandmaps nomem noaslr nokaslr\"
+GRUB_CMDLINE_LINUX_DEFAULT=\"quiet\"
 GRUB_CMDLINE_LINUX=\"\"
 GRUB_PRELOAD_MODULES=\"part_gpt part_msdos\"
 GRUB_GFXMODE=auto
