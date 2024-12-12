@@ -162,7 +162,6 @@ S
 if X pacstrap /mnt --noconfirm --quiet \
 base \
 base-devel \
-linux \
 linux-firmware \
 linux-headers \
 networkmanager \
