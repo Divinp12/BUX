@@ -244,16 +244,16 @@ sed -i "/CONFIG_MITIGATION_SPECTRE_BHI=y$/s/y/n/" .config
 sed -i "/CONFIG_MITIGATION_MDS=y$/s/y/n/" .config
 sed -i "/CONFIG_MITIGATION_TAA=y$/s/y/n/" .config
 sed -i "/CONFIG_MITIGATION_MMIO_STALE_DATA=y$/s/y/n/" .config
-sed -i "/CONFIG_MITIGATION_L1TF=y$/s/y/n/' "$config_file"
-sed -i "/CONFIG_MITIGATION_RETBLEED=y$/s/y/n/' "$config_file"
-sed -i "/CONFIG_MITIGATION_SPECTRE_V1=y$/s/y/n/' "$config_file"
-sed -i "/CONFIG_MITIGATION_SPECTRE_V2=y$/s/y/n/' "$config_file"
-sed -i "/CONFIG_MITIGATION_SRBDS=y$/s/y/n/' "$config_file"
-sed -i "/CONFIG_MITIGATION_SSB=y$/s/y/n/' "$config_file"
-sed -i "/CONFIG_RANDOMIZE_MEMORY=y$/s/y/n/' "$config_file"
-sed -i "/CONFIG_RANDOMIZE_BASE=y$/s/y/n/' "$config_file"
-sed -i "/CONFIG_STACKPROTECTOR=y$/s/y/n/' "$config_file"
-sed -i "/CONFIG_STACKPROTECTOR_STRONG=y$/s/y/n/' "$config_file"
+sed -i "/CONFIG_MITIGATION_L1TF=y$/s/y/n/" .config
+sed -i "/CONFIG_MITIGATION_RETBLEED=y$/s/y/n/" .config
+sed -i "/CONFIG_MITIGATION_SPECTRE_V1=y$/s/y/n/" .config
+sed -i "/CONFIG_MITIGATION_SPECTRE_V2=y$/s/y/n/" .config
+sed -i "/CONFIG_MITIGATION_SRBDS=y$/s/y/n/" .config
+sed -i "/CONFIG_MITIGATION_SSB=y$/s/y/n/" .config
+sed -i "/CONFIG_RANDOMIZE_MEMORY=y$/s/y/n/" .config
+sed -i "/CONFIG_RANDOMIZE_BASE=y$/s/y/n/" .config
+sed -i "/CONFIG_STACKPROTECTOR=y$/s/y/n/" .config
+sed -i "/CONFIG_STACKPROTECTOR_STRONG=y$/s/y/n/" .config
 
 
 S
