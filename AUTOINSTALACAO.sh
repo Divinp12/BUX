@@ -253,8 +253,7 @@ sed -i "/CONFIG_STACKPROTECTOR=y$/s/y/n/" config;
 sed -i "/CONFIG_STACKPROTECTOR_STRONG=y$/s/y/n/" config;
 sed -i "/CONFIG_LOCALVERSION_AUTO=y$/s/y/n/" config;
 sed -i "s/^CONFIG_LOCALVERSION=".*"/CONFIG_LOCALVERSION="-test"/" config;
-make -j$(nproc) && \
-sudo make modules_install -j$(nproc) && \
+makepkg -si;
 
 S
 
