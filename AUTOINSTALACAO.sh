@@ -166,8 +166,6 @@ linux \
 linux-firmware \
 linux-headers \
 networkmanager \
-tar \
-wget \
 sudo \
 git \
 fastfetch \
@@ -222,9 +220,8 @@ X() {
 
 S
 
-wget https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.4.tar.xz && \
-tar -xvf linux-6.12* && \
-cd linux-6* && \
+git clone https://gitlab.archlinux.org/archlinux/packaging/packages/linux.git && \
+cd linux* && \
 yes "" | make localmodconfig && \
 sed -i "/CONFIG_SWAP=y$/s/y/n/" config;
 sed -i "/CONFIG_ZSWAP=y$/s/y/n/" config;
