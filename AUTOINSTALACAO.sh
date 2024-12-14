@@ -252,7 +252,7 @@ sed -i "/CONFIG_RANDOMIZE_BASE=y$/s/y/n/" config;
 sed -i "/CONFIG_STACKPROTECTOR=y$/s/y/n/" config;
 sed -i "/CONFIG_STACKPROTECTOR_STRONG=y$/s/y/n/" config;
 sed -i "/CONFIG_LOCALVERSION_AUTO=y$/s/y/n/" config;
-sed \'/CONFIG_LOCALVERSION=""/s/"[^"]*"/"-test"/\' config;
+sed "/CONFIG_LOCALVERSION=\"\"/s/\"[^\"]*\"/\"-test\"/" config;
 makepkg -si;
 
 S
