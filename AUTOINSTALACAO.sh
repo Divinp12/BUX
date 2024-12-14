@@ -539,6 +539,16 @@ fi;
 
 S
 
++ "DESATIVANDO MODULOS DESNECESSARIOS NO ARQUIVO blacklist.conf"
+if echo "blacklist swap
+blacklist zswap > /etc/modprobe.d/blacklist.conf; then
++ "MODULOS DESNECESSARIOS DESATIVADO NO ARQUIVO blacklist.conf COM SUCESSO"
+else
++ "ERRO AO DESATIVAR MODULOS DESNECESSARIOS NO ARQUIVO blacklist.conf"
+fi;
+
+S
+
 + "REMOVENDO ARQUIVO initramfs-linux-fallback.img"
 if rm -rf /boot/initramfs-linux-fallback.img; then
 + "ARQUIVO initramfs-linux-fallback.img REMOVIDO COM SUCESSO"
