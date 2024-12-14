@@ -220,43 +220,6 @@ X() {
 
 S
 
-git clone https://gitlab.archlinux.org/archlinux/packaging/packages/linux.git && \
-cd linux* && \
-yes "" | make localmodconfig && \
-sed -i "/CONFIG_SWAP=y$/s/y/n/" config;
-sed -i "/CONFIG_ZSWAP=y$/s/y/n/" config;
-sed -i "/CONFIG_CPU_MITIGATIONS=y$/s/y/n/" config;
-sed -i "/CONFIG_MITIGATION_PAGE_TABLE_ISOLATION=y$/s/y/n/" config;
-sed -i "/CONFIG_MITIGATION_RETPOLINE=y$/s/y/n/" config;
-sed -i "/CONFIG_MITIGATION_RETHUNK=y$/s/y/n/" config;
-sed -i "/CONFIG_MITIGATION_UNRET_ENTRY=y$/s/y/n/" config;
-sed -i "/CONFIG_MITIGATION_CALL_DEPTH_TRACKING=y$/s/y/n/" config;
-sed -i "/CONFIG_MITIGATION_IBPB_ENTRY=y$/s/y/n/" config;
-sed -i "/CONFIG_MITIGATION_IBRS_ENTRY=y$/s/y/n/" config;
-sed -i "/CONFIG_MITIGATION_SRSO=y$/s/y/n/" config;
-sed -i "/CONFIG_MITIGATION_SLS=y$/s/y/n/" config;
-sed -i "/CONFIG_MITIGATION_GDS=y$/s/y/n/" config;
-sed -i "/CONFIG_MITIGATION_RFDS=y$/s/y/n/" config;
-sed -i "/CONFIG_MITIGATION_SPECTRE_BHI=y$/s/y/n/" config;
-sed -i "/CONFIG_MITIGATION_MDS=y$/s/y/n/" config;
-sed -i "/CONFIG_MITIGATION_TAA=y$/s/y/n/" config;
-sed -i "/CONFIG_MITIGATION_MMIO_STALE_DATA=y$/s/y/n/" config;
-sed -i "/CONFIG_MITIGATION_L1TF=y$/s/y/n/" config;
-sed -i "/CONFIG_MITIGATION_RETBLEED=y$/s/y/n/" config;
-sed -i "/CONFIG_MITIGATION_SPECTRE_V1=y$/s/y/n/" config;
-sed -i "/CONFIG_MITIGATION_SPECTRE_V2=y$/s/y/n/" config;
-sed -i "/CONFIG_MITIGATION_SRBDS=y$/s/y/n/" config;
-sed -i "/CONFIG_MITIGATION_SSB=y$/s/y/n/" config;
-sed -i "/CONFIG_RANDOMIZE_MEMORY=y$/s/y/n/" config;
-sed -i "/CONFIG_RANDOMIZE_BASE=y$/s/y/n/" config;
-sed -i "/CONFIG_STACKPROTECTOR=y$/s/y/n/" config;
-sed -i "/CONFIG_STACKPROTECTOR_STRONG=y$/s/y/n/" config;
-sed -i "/CONFIG_LOCALVERSION_AUTO=y$/s/y/n/" config;
-sed "/CONFIG_LOCALVERSION=\"\"/s/\"[^\"]*\"/\"-test\"/" config;
-makepkg -si;
-
-S
-
 + "ADICIONANDO NOME 4RCH AO USUARIO ROOT NO ARQUIVO hostname";
 if + 4RCH > /etc/hostname; then
 + "NOME 4RCH DO USUARIO ROOT ADICIONADO NO ARQUIVO hostname COM SUCESSO"
