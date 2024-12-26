@@ -91,16 +91,16 @@ p
 w
 EOF
 
-X partprobe
-X mkfs.fat -F32 /dev/nvme0n1p1
-X mkfs.ext4 -F /dev/nvme0n1p2
-X mkfs.ext4 -F /dev/nvme0n1p3
-X mount /dev/nvme0n1p2 /mnt
-X mkdir /mnt/boot
-X mkdir /mnt/boot/EFI
-X mkdir /mnt/home
-X mount /dev/nvme0n1p1 /mnt/boot/EFI
-X mount /dev/nvme0n1p3 /mnt/home
+partprobe > /dev/null 2>&1
+mkfs.fat -F32 /dev/nvme0n1p1 > /dev/null 2>&1
+mkfs.ext4 -F /dev/nvme0n1p2 > /dev/null 2>&1
+mkfs.ext4 -F /dev/nvme0n1p3 > /dev/null 2>&1
+mount /dev/nvme0n1p2 /mnt > /dev/null 2>&1
+mkdir /mnt/boot > /dev/null 2>&1
+mkdir /mnt/boot/EFI > /dev/null 2>&1
+mkdir /mnt/home > /dev/null 2>&1
+mount /dev/nvme0n1p1 /mnt/boot/EFI > /dev/null 2>&1
+mount /dev/nvme0n1p3 /mnt/home > /dev/null 2>&1
 
 else
 
@@ -138,19 +138,20 @@ p
 w
 EOF
 
-X partprobe
-X mkfs.fat -F32 /dev/sda1
-X mkfs.ext4 -F /dev/sda2
-X mkfs.ext4 -F /dev/sda3
-X mount /dev/sda2 /mnt
-X mkdir /mnt/boot
-X mkdir /mnt/boot/EFI
-X mkdir /mnt/home
-X mount /dev/sda1 /mnt/boot/EFI
-X mount /dev/sda3 /mnt/home
+partprobe > /dev/null 2>&1
+mkfs.fat -F32 /dev/sda1 > /dev/null 2>&1
+mkfs.ext4 -F /dev/sda2 > /dev/null 2>&1
+mkfs.ext4 -F /dev/sda3 > /dev/null 2>&1
+mount /dev/sda2 /mnt > /dev/null 2>&1
+mkdir /mnt/boot > /dev/null 2>&1
+mkdir /mnt/boot/EFI > /dev/null 2>&1
+mkdir /mnt/home > /dev/null 2>&1
+mount /dev/sda1 /mnt/boot/EFI > /dev/null 2>&1
+mount /dev/sda3 /mnt/home > /dev/null 2>&1
 fi;
 
-S
+sleep 5;
+clear;
 
 + "INSTALANDO PACOTES DO SISTEMA";
 if X pacstrap /mnt --noconfirm --quiet \
