@@ -1,38 +1,30 @@
 #!/bin/bash
 
-+() {
-echo "$@"
-}
-
-S() {
-sleep 5;
-clear; "$@"
-}
-
 X() {
 "$@" > /dev/null 2>&1;
 }
 
 clear;
 
-if + "INICIANDO FORMATACAO EM 10 SEGUNDOS,
+if echo "INICIANDO FORMATACAO EM 10 SEGUNDOS,
 ESTEJA CIENTE DO QUE ESTA FAZENDO,
 POIS TODOS OS DADOS SERAO APAGADOS
 PARA QUE A INSTALACAO SEJA BEM SUCEDIDA..."; then
 sleep 10; clear
 fi;
 
-+ "ADICIONANDO ESPELHO BRASILEIRO"
-if + "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist; then
-+ "ESPELHO BRASILEIRO ADICIONADO COM SUCESSO"
+echo "ADICIONANDO ESPELHO BRASILEIRO"
+if echo "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist; then
+echo "ESPELHO BRASILEIRO ADICIONADO COM SUCESSO"
 else
-+ "ERRO AO ADICIONAR O ESPELHO BRASILEIRO"
+echo "ERRO AO ADICIONAR O ESPELHO BRASILEIRO"
 fi;
 
-S
+sleep 5;
+clear;
 
-+ "SOBSCREVENDO ARQUIVO pacman.conf"
-if + "[options]
+echo "SOBSCREVENDO ARQUIVO pacman.conf"
+if echo "[options]
 Architecture=auto
 CheckSpace
 ParallelDownloads=1
@@ -46,24 +38,26 @@ Include=/etc/pacman.d/mirrorlist
 Include=/etc/pacman.d/mirrorlist
 [community]
 Include=/etc/pacman.d/mirrorlist" > /etc/pacman.conf; then
-+ "ARQUIVO pacman.conf SOBSCRITO COM SUCESSO"
+echo "ARQUIVO pacman.conf SOBSCRITO COM SUCESSO"
 else
-+ "ERRO AO SOBSCREVER ARQUIVO pacman.conf"
+echo "ERRO AO SOBSCREVER ARQUIVO pacman.conf"
 fi;
 
-S
+sleep 5;
+clear;
 
-+ "SINCRONIZANDO REPOSITORIOS DO PACMAN"
-if X pacman -Sy --noconfirm --quiet; then
-+ "REPOSITORIOS DO PACMAN SINCRONIZADOS COM SUCESSO"
+echo "SINCRONIZANDO REPOSITORIOS DO PACMAN"
+if pacman -Sy --noconfirm --quiet > /dev/null 2>&1; then
+echo "REPOSITORIOS DO PACMAN SINCRONIZADOS COM SUCESSO"
 else
-+ "ERRO AO SINCRONIZAR REPOSITORIOS DO PACMAN"
+echo "ERRO AO SINCRONIZAR REPOSITORIOS DO PACMAN"
 fi;
 
-S
+sleep 5;
+clear;
 
 + "FORMATANDO DISPOSITIVO DE ARMAZENAMENTO DE DADOS VALIDO"
-if X fdisk /dev/nvme0n1; then <<EOF > /dev/null 2>&1
+if fdisk /dev/nvme0n1 > /dev/null 2>&1; then <<EOF > /dev/null 2>&1
 o
 w
 EOF
