@@ -1,9 +1,5 @@
 #!/bin/bash
 
-X() {
-"$@" > /dev/null 2>&1;
-}
-
 clear;
 
 if echo "INICIANDO FORMATACAO EM 10 SEGUNDOS,
@@ -20,8 +16,10 @@ else
 echo "ERRO AO ADICIONAR O ESPELHO BRASILEIRO"
 fi;
 
+
 sleep 5;
 clear;
+
 
 echo "SOBSCREVENDO ARQUIVO pacman.conf"
 if echo "[options]
@@ -43,8 +41,10 @@ else
 echo "ERRO AO SOBSCREVER ARQUIVO pacman.conf"
 fi;
 
+
 sleep 5;
 clear;
+
 
 echo "SINCRONIZANDO REPOSITORIOS DO PACMAN"
 if pacman -Sy --noconfirm --quiet > /dev/null 2>&1; then
@@ -53,8 +53,10 @@ else
 echo "ERRO AO SINCRONIZAR REPOSITORIOS DO PACMAN"
 fi;
 
+
 sleep 5;
 clear;
+
 
 + "FORMATANDO DISPOSITIVO DE ARMAZENAMENTO DE DADOS VALIDO"
 if fdisk /dev/nvme0n1 > /dev/null 2>&1; then <<EOF > /dev/null 2>&1
@@ -150,11 +152,13 @@ mount /dev/sda1 /mnt/boot/EFI > /dev/null 2>&1
 mount /dev/sda3 /mnt/home > /dev/null 2>&1
 fi;
 
+
 sleep 5;
 clear;
 
-+ "INSTALANDO PACOTES DO SISTEMA";
-if X pacstrap /mnt --noconfirm --quiet \
+
+echo "INSTALANDO PACOTES DO SISTEMA";
+if pacstrap /mnt --noconfirm --quiet \
 base \
 base-devel \
 linux \
@@ -174,28 +178,32 @@ plasma-nm \
 foot \
 wayland \
 lib32-wayland \
-pipewire \
-pipewire-pulse \
-pipewire-media-session \
+pulseaudio \
 pavucontrol \
 sddm \
 grub-efi-x86_64 \
-efibootmgr; then
-+ "PACOTES DO SISTEMA INSTALADOS COM SUCESSO"
+efibootmgr > /dev/null 2>&1; then
+echo "PACOTES DO SISTEMA INSTALADOS COM SUCESSO"
 else
-+ "ERRO AO INSTALAR PACOTES DO SISTEMA"
+echo "ERRO AO INSTALAR PACOTES DO SISTEMA"
 fi;
 
-S
 
-+ "AUTOGERANDO E AUTOCONFIGURANDO PARTICOES NO ARQUIVO fstab"
+sleep 5;
+clear;
+
+
+echo "AUTOGERANDO E AUTOCONFIGURANDO PARTICOES NO ARQUIVO fstab"
 if genfstab -U -p /mnt > /mnt/etc/fstab; then
-+ "ARQUIVO fstab AUTOGERADO E AUTOCONFIGURADO COM SUCESSO"
+echo "ARQUIVO fstab AUTOGERADO E AUTOCONFIGURADO COM SUCESSO"
 else
-+ "ERRO AO AUTOGERAR E AUTOCONFIGURAR ARQUIVO fstab"
+echo "ERRO AO AUTOGERAR E AUTOCONFIGURAR ARQUIVO fstab"
 fi;
 
-S
+
+sleep 5;
+clear;
+
 
 + "ENTRANDO NO AMBIENTE arch-chroot"
 arch-chroot /mnt bash -c '
