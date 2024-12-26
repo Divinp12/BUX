@@ -205,7 +205,7 @@ sleep 5;
 clear;
 
 
-+ "ENTRANDO NO AMBIENTE arch-chroot"
+echo "ENTRANDO NO AMBIENTE arch-chroot"
 arch-chroot /mnt bash -c '
 
 +() {
