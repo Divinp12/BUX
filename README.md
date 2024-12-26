@@ -46,6 +46,8 @@ DESISTALAR PACOTES PELO TERMINAL: d NOME-DO-PACOTE
 
 google chrome = i google-chrome
 
+firefox = i firefox
+
 media player (visualizador de audio e videos) = i vlc
 
 libreoffice (visualizador/modificador gratis de pdf, word, etc) = i libreoffice-fresh
