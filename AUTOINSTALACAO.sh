@@ -58,7 +58,7 @@ sleep 5;
 clear;
 
 
-+ "FORMATANDO DISPOSITIVO DE ARMAZENAMENTO DE DADOS VALIDO"
+echo "FORMATANDO DISPOSITIVO DE ARMAZENAMENTO DE DADOS VALIDO"
 if fdisk /dev/nvme0n1 > /dev/null 2>&1; then <<EOF > /dev/null 2>&1
 o
 w
