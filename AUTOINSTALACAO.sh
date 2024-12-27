@@ -157,7 +157,7 @@ fi;
 sleep 5;
 clear;
 
-
+#####################################################################################################################################
 echo "INSTALANDO PACOTES DO SISTEMA";
 if pacstrap /mnt --noconfirm --quiet \
 base \
@@ -188,24 +188,24 @@ echo "PACOTES DO SISTEMA INSTALADOS COM SUCESSO"
 else
 echo "ERRO AO INSTALAR PACOTES DO SISTEMA"
 fi;
-
+#####################################################################################################################################
 
 sleep 5;
 clear;
 
-
+#####################################################################################################################################
 echo "AUTOGERANDO E AUTOCONFIGURANDO PARTICOES NO ARQUIVO fstab"
 if genfstab -U -p /mnt > /mnt/etc/fstab; then
 echo "ARQUIVO fstab AUTOGERADO E AUTOCONFIGURADO COM SUCESSO"
 else
 echo "ERRO AO AUTOGERAR E AUTOCONFIGURAR ARQUIVO fstab"
 fi;
-
+#####################################################################################################################################
 
 sleep 5;
 clear;
 
-
+#####################################################################################################################################
 echo "ENTRANDO NO AMBIENTE arch-chroot"
 arch-chroot /mnt bash -c '
 
