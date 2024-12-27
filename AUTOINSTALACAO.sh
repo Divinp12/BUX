@@ -298,35 +298,44 @@ sleep 5;
 clear;
 
 
-+ "APLICANDO CARACTERES PORTUGUES BRASILEIRO E INGLES AMERICANO"
-if X locale-gen; then
-+ "CARACTERES PORTUGUES BRASILEIRO E INGLES AMERICANO APLICADO COM SUCESSO"
+echo "APLICANDO CARACTERES PORTUGUES BRASILEIRO"
+if locale-gen > /dev/null 2>&1; then
+echo "CARACTERES PORTUGUES BRASILEIRO APLICADO COM SUCESSO"
 else
-+ "ERRO AO APLICAR CARACTERES PORTUGUES BRASILEIRO E INGLES AMERICANO"
+echo "ERRO AO APLICAR CARACTERES PORTUGUES BRASILEIRO"
 fi;
 
-S
 
-+ "SINCRONIZANDO RELOGIO DO HARDWARE E DO SISTEMA VIA WIFI"
-if X hwclock --systohc; then
-+ "RELOGIO DO HARDWARE E DO SISTEMA SINCRONIZADO VIA WIFI COM SUCESSO"
+sleep 5;
+clear;
+
+
+echo "SINCRONIZANDO RELOGIO DO HARDWARE E DO SISTEMA VIA WIFI"
+if hwclock --systohc > /dev/null 2>&1; then
+echo "RELOGIO DO HARDWARE E DO SISTEMA SINCRONIZADO VIA WIFI COM SUCESSO"
 else
-+ "ERRO AO SINCRONIZAR RELOGIO DO HARDWARE E DO SISTEMA VIA WIFI"
+echo "ERRO AO SINCRONIZAR RELOGIO DO HARDWARE E DO SISTEMA VIA WIFI"
 fi;
 
-S
 
-+ "ADICIONANDO ESPELHO BRASILEIRO"
-if + "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist; then
-+ "ESPELHO BRASILEIRO ADICIONADO COM SUCESSO"
+sleep 5;
+clear;
+
+
+echo "ADICIONANDO ESPELHO BRASILEIRO"
+if echo "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist; then
+echo "ESPELHO BRASILEIRO ADICIONADO COM SUCESSO"
 else
-+ "ERRO AO ADICIONAR ESPELHO BRASILEIRO"
+echo "ERRO AO ADICIONAR ESPELHO BRASILEIRO"
 fi;
 
-S
 
-+ "SOBSCREVENDO ARQUIVO .bashrc"
-if + "alias i=\"yay -S --noconfirm --quiet\"
+sleep 5;
+clear;
+
+
+echo "SOBSCREVENDO ARQUIVO .bashrc"
+if echo "alias i=\"yay -S --noconfirm --quiet\"
 alias d=\"sudo pacman -Rsc\"
 sudo rm -rf /home/4RCH/.bash_history /home/4RCH/.cache /var/log;
 sudo pacman -Syyu --noconfirm --quiet;
@@ -346,15 +355,18 @@ cd .. && \\
 sudo rm -rf yay && \\
 yay -S --noconfirm nano --save --answerdiff None --answerclean None --removemake && \\
 sudo sed -i \"13,\\\$d\" /home/4RCH/.bashrc" > /home/4RCH/.bashrc; then
-+ "ARQUIVO .bashrc SOBSCRITO COM SUCESSO"
+echo "ARQUIVO .bashrc SOBSCRITO COM SUCESSO"
 else
-+ "ERRO AO SOBSCREVER ARQUIVO .bashrc"
+echo "ERRO AO SOBSCREVER ARQUIVO .bashrc"
 fi;
 
-S
 
-+ "SOBSCREVENDO ARQUIVO pacman.conf"
-if + "[options]
+sleep 5;
+clear;
+
+
+echo "SOBSCREVENDO ARQUIVO pacman.conf"
+if echo "[options]
 Architecture=auto
 CheckSpace
 ParallelDownloads=1
@@ -368,47 +380,59 @@ Include=/etc/pacman.d/mirrorlist
 Include=/etc/pacman.d/mirrorlist
 [community]
 Include=/etc/pacman.d/mirrorlist" > /etc/pacman.conf; then
-+ "ARQUIVO pacman.conf SOBSCRITO COM SUCESSO"
+echo "ARQUIVO pacman.conf SOBSCRITO COM SUCESSO"
 else
-+ "ERRO AO SOBSCREVER ARQUIVO pacman.conf"
+echo "ERRO AO SOBSCREVER ARQUIVO pacman.conf"
 fi;
 
-S
 
-+ "SINCRONIZANDO REPOSITORIOS DO PACMAN"
-if X pacman -Sy --noconfirm --quiet; then
-+ "REPOSITORIOS DO PACMAN SINCRONIZADOS COM SUCESSO"
+sleep 5;
+clear;
+
+
+echo "SINCRONIZANDO REPOSITORIOS DO PACMAN"
+if pacman -Sy --noconfirm --quiet > /dev/null 2>&1; then
+echo "REPOSITORIOS DO PACMAN SINCRONIZADOS COM SUCESSO"
 else
-+ "ERRO AO SINCRONIZAR REPOSITORIOS DO PACMAN"
+echo "ERRO AO SINCRONIZAR REPOSITORIOS DO PACMAN"
 fi;
 
-S
 
-+ "ESCANEANDO HARDWARE AMD E INSTALANDO DRIVERS AMD"
+sleep 5;
+clear;
+
+
+echo "ESCANEANDO HARDWARE AMD E INSTALANDO DRIVERS AMD"
 if lspci | grep -i amd > /dev/null 2>&1; then
 pacman -Sy --noconfirm \
 amd-ucode \
 vulkan-radeon \
 lib32-vulkan-radeon > /dev/null 2>&1
 else
-+ "ERRO AO INSTALAR DRIVERS AMD"
+echo "ERRO AO INSTALAR DRIVERS AMD"
 fi;
 
-S
 
-+ "ESCANEANDO HARDWARE INTEL E INSTALANDO DRIVERS INTEL"
+sleep 5;
+clear;
+
+
+echo "ESCANEANDO HARDWARE INTEL E INSTALANDO DRIVERS INTEL"
 if lspci | grep -i intel > /dev/null 2>&1; then
 pacman -Sy --noconfirm \
 intel-ucode \
 vulkan-intel \
 lib32-vulkan-intel > /dev/null 2>&1
 else
-+ "ERRO AO INSTALAR DRIVERS INTEL"
+echo "ERRO AO INSTALAR DRIVERS INTEL"
 fi;
 
-S
 
-+ "ESCANEANDO HARDWARE NVIDIA E INSTALANDO DRIVERS NVIDIA"
+sleep 5;
+clear;
+
+
+echo "ESCANEANDO HARDWARE NVIDIA E INSTALANDO DRIVERS NVIDIA"
 if lspci | grep -i nvidia > /dev/null 2>&1; then
 pacman -Sy --noconfirm \
 nvidia \
@@ -417,69 +441,87 @@ nvidia-utils \
 lib32-nvidia-utils \
 nvidia-settings > /dev/null 2>&1
 else
-+ "ERRO AO INSTALAR DRIVERS NVIDIA"
+echo "ERRO AO INSTALAR DRIVERS NVIDIA"
 fi;
 
-S
 
-+ "ESCANEANDO HARDWARE VIRTUALBOX E INSTALANDO DRIVERS VIRTUALBOX"
+sleep 5;
+clear;
+
+
+echo "ESCANEANDO HARDWARE VIRTUALBOX E INSTALANDO DRIVERS VIRTUALBOX"
 if lspci | grep -i virtualbox > /dev/null 2>&1; then
 pacman -Sy --noconfirm \
 virtualbox-guest-utils \
 virtualbox-guest-modules-arch > /dev/null 2>&1
 else
-+ "ERRO AO INSTALAR DRIVERS VIRTUALBOX"
+echo "ERRO AO INSTALAR DRIVERS VIRTUALBOX"
 fi;
 
-S
 
-+ "HABILITANDO DRIVER DE INTERNET E DISPLAY MANAGER (SDDM) NA INICIALIZACAO DO SISTEMA"
-if X systemctl enable \
+sleep 5;
+clear;
+
+
+echo "HABILITANDO DRIVER DE INTERNET E DISPLAY MANAGER (SDDM) NA INICIALIZACAO DO SISTEMA"
+if systemctl enable \
 NetworkManager \
-sddm; then
-+ "DRIVER DE INTERNET E DISPLAY MANAGER (SDDM) HABILITADO NA INICIALIZACAO DO SISTEMA COM SUCESSO"
+sddm > /dev/null 2>&1; then
+echo "DRIVER DE INTERNET E DISPLAY MANAGER (SDDM) HABILITADO NA INICIALIZACAO DO SISTEMA COM SUCESSO"
 else
-+ "ERRO AO HABILITAR DRIVER DE INTERNET E DISPLAY MANAGER (SDDM) NA INICIALIZACAO DO SISTEMA"
+echo "ERRO AO HABILITAR DRIVER DE INTERNET E DISPLAY MANAGER (SDDM) NA INICIALIZACAO DO SISTEMA"
 fi;
 
-S
 
-+ "DESATIVANDO SERVICOS DESNECESSARIOS NA INICIALIZACAO DO SISTEMA"
-if X systemctl disable \
+sleep 5;
+clear;
+
+
+echo "DESATIVANDO SERVICOS DESNECESSARIOS NA INICIALIZACAO DO SISTEMA"
+if systemctl disable \
 NetworkManager-wait-online \
 systemd-networkd \
-systemd-timesyncd; then
-+ "SERVICOS DESNESSARIOS DESATIVADOS NA INICIALIZACAO DO SISTEMA COM SUCESSO"
+systemd-timesyncd > /dev/null 2>&1; then
+echo "SERVICOS DESNESSARIOS DESATIVADOS NA INICIALIZACAO DO SISTEMA COM SUCESSO"
 else
-+ "ERRO AO DESATIVAR SERVICOS DESNECESSARIOS NA INICIALIZACAO DO SISTEMA"
+echo "ERRO AO DESATIVAR SERVICOS DESNECESSARIOS NA INICIALIZACAO DO SISTEMA"
 fi;
 
-S
 
-+ "GERANDO IMAGENS NO INICIALIZADOR DO SISTEMA"
-if X mkinitcpio -P; then
-+ "IMAGENS GERADAS NA INICIALIZACAO DO SISTEMA COM SUCESSO"
+sleep 5;
+clear;
+
+
+echo "GERANDO IMAGENS NO INICIALIZADOR DO SISTEMA"
+if mkinitcpio -P > /dev/null 2>&1; then
+echo "IMAGENS GERADAS NA INICIALIZACAO DO SISTEMA COM SUCESSO"
 else
-+ "ERRO AO GERAR IMAGENS NA INICIALIZACAO DO SISTEMA"
+echo "ERRO AO GERAR IMAGENS NA INICIALIZACAO DO SISTEMA"
 fi;
 
-S
 
-+ "SOBSCREVENDO ARQUIVO sddm.conf"
-if + "[Autologin]
+sleep 5;
+clear;
+
+
+echo "SOBSCREVENDO ARQUIVO sddm.conf"
+if echo "[Autologin]
 Relogin=false
 User=4RCH
 Session=plasma
 EnableWayland=true" > /etc/sddm.conf; then
-+ "ARQUIVO sddm.conf SOBSCRITO COM SUCESSO"
+echo "ARQUIVO sddm.conf SOBSCRITO COM SUCESSO"
 else
-+ "ERRO AO SOBSCREVER ARQUIVO sddm.conf"
+echo "ERRO AO SOBSCREVER ARQUIVO sddm.conf"
 fi;
 
-S
 
-+ "SOBSCREVENDO ARQUIVO grub"
-if + "GRUB_DEFAULT=0
+sleep 5;
+clear;
+
+
+echo "SOBSCREVENDO ARQUIVO grub"
+if echo "GRUB_DEFAULT=0
 GRUB_TIMEOUT=0
 GRUB_DISTRIBUTOR=\"4RCH\"
 GRUB_CMDLINE_LINUX_DEFAULT=\"quiet\"
@@ -488,27 +530,33 @@ GRUB_PRELOAD_MODULES=\"part_gpt part_msdos\"
 GRUB_GFXMODE=auto
 GRUB_GFXPAYLOAD_LINUX=keep
 GRUB_DISABLE_RECOVERY=true" > /etc/default/grub; then
-+ "ARQUIVO grub SOBSCRITO COM SUCESSO"
+echo "ARQUIVO grub SOBSCRITO COM SUCESSO"
 else
-+ "ERRO AO SOBSCREVER ARQUIVO grub"
+echo "ERRO AO SOBSCREVER ARQUIVO grub"
 fi;
 
-S
 
-+ "CONFIGURANDO GRUB"
-if X grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=4RCH --recheck; then
-+ "GRUB CONFIGURADO COM SUCESSO"
+sleep 5;
+clear;
+
+
+echo "CONFIGURANDO GRUB"
+if grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=4RCH --recheck > /dev/null 2>&1; then
+echo "GRUB CONFIGURADO COM SUCESSO"
 else
-+ "ERRO AO CONFIGURAR GRUB"
+echo "ERRO AO CONFIGURAR GRUB"
 fi;
 
-S
 
-+ "ADICIONANDO GRUB NA INICIALIZACAO"
-if X grub-mkconfig -o /boot/grub/grub.cfg; then
-+ "GRUB ADICIONADO NA INICIALIZACAO COM SUCESSO"
+sleep 5;
+clear;
+
+
+echo "ADICIONANDO GRUB NA INICIALIZACAO"
+if grub-mkconfig -o /boot/grub/grub.cfg > /dev/null 2>&1; then
+echo "GRUB ADICIONADO NA INICIALIZACAO COM SUCESSO"
 else
-+ "ERRO AO ADICIONAR GRUB NA INICIALIZACAO"
+echo "ERRO AO ADICIONAR GRUB NA INICIALIZACAO"
 fi;
 
 S
