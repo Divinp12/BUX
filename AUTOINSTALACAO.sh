@@ -2,27 +2,26 @@
 
 clear;
 
-######################################################################################################################################
 if echo "INICIANDO FORMATACAO EM 10 SEGUNDOS,
 ESTEJA CIENTE DO QUE ESTA FAZENDO,
 POIS TODOS OS DADOS SERAO APAGADOS
 PARA QUE A INSTALACAO SEJA BEM SUCEDIDA..."; then
 sleep 10; clear
 fi;
-######################################################################################################################################
 
+######################################################################################################################################
 echo "ADICIONANDO ESPELHO BRASILEIRO"
 if echo "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist; then
 echo "ESPELHO BRASILEIRO ADICIONADO COM SUCESSO"
 else
 echo "ERRO AO ADICIONAR O ESPELHO BRASILEIRO"
 fi;
-
+######################################################################################################################################
 
 sleep 5;
 clear;
 
-
+######################################################################################################################################
 echo "SOBSCREVENDO ARQUIVO pacman.conf"
 if echo "[options]
 Architecture=auto
@@ -42,24 +41,24 @@ echo "ARQUIVO pacman.conf SOBSCRITO COM SUCESSO"
 else
 echo "ERRO AO SOBSCREVER ARQUIVO pacman.conf"
 fi;
-
+######################################################################################################################################
 
 sleep 5;
 clear;
 
-
+######################################################################################################################################
 echo "SINCRONIZANDO REPOSITORIOS DO PACMAN"
 if pacman -Sy --noconfirm --quiet > /dev/null 2>&1; then
 echo "REPOSITORIOS DO PACMAN SINCRONIZADOS COM SUCESSO"
 else
 echo "ERRO AO SINCRONIZAR REPOSITORIOS DO PACMAN"
 fi;
-
+######################################################################################################################################
 
 sleep 5;
 clear;
 
-
+######################################################################################################################################
 echo "FORMATANDO DISPOSITIVO DE ARMAZENAMENTO DE DADOS VALIDO"
 if fdisk /dev/nvme0n1 > /dev/null 2>&1; then <<EOF > /dev/null 2>&1
 o
@@ -153,7 +152,7 @@ mkdir /mnt/home > /dev/null 2>&1
 mount /dev/sda1 /mnt/boot/EFI > /dev/null 2>&1
 mount /dev/sda3 /mnt/home > /dev/null 2>&1
 fi;
-
+#####################################################################################################################################
 
 sleep 5;
 clear;
