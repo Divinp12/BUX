@@ -173,7 +173,6 @@ lib32-mesa \
 plasma-desktop \
 dolphin \
 kscreen \
-flatpak \
 plasma-nm \
 foot \
 wayland \
