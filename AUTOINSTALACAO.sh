@@ -497,7 +497,7 @@ echo "SOBSCREVENDO ARQUIVO sddm.conf"
 if echo "[Autologin]
 Relogin=false
 User=4RCH
-Session=plasma
+Session=xfce
 EnableWayland=true" > /etc/sddm.conf; then
 echo "ARQUIVO sddm.conf SOBSCRITO COM SUCESSO"
 else
