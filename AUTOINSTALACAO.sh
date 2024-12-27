@@ -172,11 +172,12 @@ git \
 fastfetch \
 mesa \
 lib32-mesa \
-plasma-desktop \
-dolphin \
-kscreen \
-plasma-nm \
-foot \
+xfce4-panel \
+xfce4-session \
+xfce4-settings \
+xfce4-terminal \
+xfwm4 \
+xfdesktop \
 wayland \
 lib32-wayland \
 pulseaudio \
