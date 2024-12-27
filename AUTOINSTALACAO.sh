@@ -208,19 +208,6 @@ clear;
 echo "ENTRANDO NO AMBIENTE arch-chroot"
 arch-chroot /mnt bash -c '
 
-+() {
-echo "$@"
-}
-
-S() {
-sleep 5;
-clear; "$@"
-}
-
-X() {
-"$@" > /dev/null 2>&1;
-}
-
 
 sleep 5;
 clear;
@@ -559,38 +546,50 @@ else
 echo "ERRO AO ADICIONAR GRUB NA INICIALIZACAO"
 fi;
 
-S
 
-+ "ADICIONANDO USUARIO NORMAL (4RCH) AO SUDO NO ARQUIVO sudoers"
-if + "4RCH ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers; then
-+ "USUARIO NORMAL (4RCH) ADICIONADO AO SUDO NO ARQUIVO sudoers COM SUCESSO"
+sleep 5;
+clear;
+
+
+echo "ADICIONANDO USUARIO NORMAL (4RCH) AO SUDO NO ARQUIVO sudoers"
+if echo "4RCH ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers; then
+echo "USUARIO NORMAL (4RCH) ADICIONADO AO SUDO NO ARQUIVO sudoers COM SUCESSO"
 else
-+ "ERRO AO ADICIONAR USUARIO NORMAL (4RCH) AO SUDO NO ARQUIVO sudoers"
+echo "ERRO AO ADICIONAR USUARIO NORMAL (4RCH) AO SUDO NO ARQUIVO sudoers"
 fi;
 
-S
 
-+ "ADICIONANDO OPÇÕES NOATIME E DISCARD NAS PARTIÇÕES EXT4"
+sleep 5;
+clear;
+
+
+echo "ADICIONANDO OPÇÕES NOATIME E DISCARD NAS PARTIÇÕES EXT4"
 if sed -i "/^UUID=.* \/boot .*$/! s/rw/rw,noatime,discard,/" /etc/fstab; then
-+ "OPÇÕES NOATIME E DISCARD ADICIONADAS NAS PARTIÇÕES EXT4 COM SUCESSO"
+echo "OPÇÕES NOATIME E DISCARD ADICIONADAS NAS PARTIÇÕES EXT4 COM SUCESSO"
 else
-+ "ERRO AO ADICIONAR OPÇÕES NOATIME E DISCARD NAS PARTIÇÕES EXT4"
+echo "ERRO AO ADICIONAR OPÇÕES NOATIME E DISCARD NAS PARTIÇÕES EXT4"
 fi;
 
-S
 
-+ "ADICIONANDO CONEXAO IPV6 NO SISTEMA"
-if + "127.0.0.1 localhost.localdomain localhost
+sleep 5;
+clear;
+
+
+echo "ADICIONANDO CONEXAO IPV6 NO SISTEMA"
+if echo "127.0.0.1 localhost.localdomain localhost
 ::1 localhost.localdomain localhost
 127.0.0.1 4RCH.localdomain 4RCH" > /etc/hosts; then
-+ "CONEXAO IPV6 ADICIONADA NO SISTEMA COM SUCESSO"
+echo "CONEXAO IPV6 ADICIONADA NO SISTEMA COM SUCESSO"
 else
-+ "ERRO AO ADICIONAR CONEXAO IPV6 NO SISTEMA"
+echo "ERRO AO ADICIONAR CONEXAO IPV6 NO SISTEMA"
 fi;
 
-S
 
-+ "REMOVENDO LINHAS QUE COMECAM COM JOGO DA VELHA E ESPACOS VAZIOS"
+sleep 5;
+clear;
+
+
+echo "REMOVENDO LINHAS QUE COMECAM COM JOGO DA VELHA E ESPACOS VAZIOS"
 if sed -i "/^\s*#/d; /^\s*$/d" \
 /home/4RCH/.bash_profile \
 /home/4RCH/.bash_logout \
@@ -604,40 +603,52 @@ if sed -i "/^\s*#/d; /^\s*$/d" \
 /etc/fuse.conf \
 /etc/ts.conf \
 /etc/fstab; then
-+ "LINHAS QUE COMECAM COM JOGO DA VELHA E ESPACOS VAZIOS REMOVIDAS COM SUCESSO"
+echo "LINHAS QUE COMECAM COM JOGO DA VELHA E ESPACOS VAZIOS REMOVIDAS COM SUCESSO"
 else
-+ "ERRO AO REMOVER LINHAS QUE COMECAM COM JOGO DA VELHA E ESPACOS VAZIOS"
+echo "ERRO AO REMOVER LINHAS QUE COMECAM COM JOGO DA VELHA E ESPACOS VAZIOS"
 fi;
 
-S
 
-+ "DESATIVANDO MODULOS DESNECESSARIOS NO ARQUIVO blacklist.conf"
+sleep 5;
+clear;
+
+
+echo "DESATIVANDO MODULOS DESNECESSARIOS NO ARQUIVO blacklist.conf"
 if echo "blacklist swap
 blacklist zswap > /etc/modprobe.d/blacklist.conf; then
-+ "MODULOS DESNECESSARIOS DESATIVADO NO ARQUIVO blacklist.conf COM SUCESSO"
+echo "MODULOS DESNECESSARIOS DESATIVADO NO ARQUIVO blacklist.conf COM SUCESSO"
 else
-+ "ERRO AO DESATIVAR MODULOS DESNECESSARIOS NO ARQUIVO blacklist.conf"
+echo "ERRO AO DESATIVAR MODULOS DESNECESSARIOS NO ARQUIVO blacklist.conf"
 fi;
 
-S
 
-+ "REMOVENDO ARQUIVO initramfs-linux-fallback.img"
+sleep 5;
+clear;
+
+
+echo "REMOVENDO ARQUIVO initramfs-linux-fallback.img"
 if rm -rf /boot/initramfs-linux-fallback.img; then
-+ "ARQUIVO initramfs-linux-fallback.img REMOVIDO COM SUCESSO"
+echo "ARQUIVO initramfs-linux-fallback.img REMOVIDO COM SUCESSO"
 else
-+ "ERRO AO REMOVER ARQUIVO initramfs-linux-fallback.img"
+echo "ERRO AO REMOVER ARQUIVO initramfs-linux-fallback.img"
 fi';
 
-S
 
-+ "GRAVANDO DADOS DA MEMORIA NO DISCO"
-if X sync; then
-+ "DADOS DA MEMORIA GRAVADOS NO DISCO COM SUCESSO"
+sleep 5;
+clear;
+
+
+echo "GRAVANDO DADOS DA MEMORIA NO DISCO"
+if sync > /dev/null 2>&1; then
+echo "DADOS DA MEMORIA GRAVADOS NO DISCO COM SUCESSO"
 else
-+ "ERRO AO GRAVAR DADOS DA MEMORIA NO DISCO"
+echo "ERRO AO GRAVAR DADOS DA MEMORIA NO DISCO"
 fi;
 
-S
 
-+ "REINICIANDO"
+sleep 5;
+clear;
+
+
+echo "REINICIANDO"
 reboot -f;
