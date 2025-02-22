@@ -325,10 +325,11 @@ clear;
 echo "SOBSCREVENDO ARQUIVO .bashrc"
 if echo "alias i=\"yay -S --noconfirm --quiet\"
 alias d=\"sudo pacman -Rsc\"
-sudo rm -rf /home/4RCH/.bash_history /home/4RCH/.cache /var/log;
+sudo rm -rf /home/4RCH/.bash_history;
 sudo pacman -Syyu --noconfirm --quiet;
 sudo pacman -Scc --noconfirm --quiet;
 clear;
+sudo sleep 1;
 fastfetch;
 echo \"
 INSTALAR PACOTES (i nome-do-pacote)
@@ -342,7 +343,7 @@ makepkg -si --noconfirm && \\
 cd .. && \\
 sudo rm -rf yay && \\
 yay -S --noconfirm nano --save --answerdiff None --answerclean None --removemake && \\
-sudo sed -i \"13,\\\$d\" /home/4RCH/.bashrc" > /home/4RCH/.bashrc; then
+sudo sed -i \"14,\\\$d\" /home/4RCH/.bashrc" > /home/4RCH/.bashrc; then
 echo "ARQUIVO .bashrc SOBSCRITO COM SUCESSO"
 else
 echo "ERRO AO SOBSCREVER ARQUIVO .bashrc"
