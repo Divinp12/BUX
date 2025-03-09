@@ -32,10 +32,6 @@ LocalFileSigLevel=Optional
 [core]
 Include=/etc/pacman.d/mirrorlist
 [extra]
-Include=/etc/pacman.d/mirrorlist
-[multilib]
-Include=/etc/pacman.d/mirrorlist
-[community]
 Include=/etc/pacman.d/mirrorlist" > /etc/pacman.conf; then
 echo "ARQUIVO pacman.conf SOBSCRITO COM SUCESSO"
 else
