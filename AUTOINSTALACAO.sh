@@ -9,14 +9,14 @@ PARA QUE A INSTALACAO SEJA BEM SUCEDIDA..."; then
 sleep 10; clear
 fi;
 
-######################################################################################################################################
-echo "ADICIONANDO ESPELHO BRASILEIRO"
+
+echo "ADICIONANDO ESPELHO DA FUNDAÇÃO LINUX"
 if echo "Server=https://mirrors.kernel.org/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist; then
 echo "ESPELHO BRASILEIRO ADICIONADO COM SUCESSO"
 else
 echo "ERRO AO ADICIONAR O ESPELHO BRASILEIRO"
 fi;
-######################################################################################################################################
+
 
 sleep 5;
 clear;
@@ -32,6 +32,8 @@ LocalFileSigLevel=Optional
 [core]
 Include=/etc/pacman.d/mirrorlist
 [extra]
+Include=/etc/pacman.d/mirrorlist
+[multilib]
 Include=/etc/pacman.d/mirrorlist" > /etc/pacman.conf; then
 echo "ARQUIVO pacman.conf SOBSCRITO COM SUCESSO"
 else
@@ -306,7 +308,7 @@ sleep 5;
 clear;
 
 
-echo "ADICIONANDO ESPELHO BRASILEIRO"
+echo "ADICIONANDO ESPELHO DA FUNDAÇÃO LINUX"
 if echo "Server=https://mirrors.kernel.org/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist; then
 echo "ESPELHO BRASILEIRO ADICIONADO COM SUCESSO"
 else
@@ -362,8 +364,6 @@ Include=/etc/pacman.d/mirrorlist
 [extra]
 Include=/etc/pacman.d/mirrorlist
 [multilib]
-Include=/etc/pacman.d/mirrorlist
-[community]
 Include=/etc/pacman.d/mirrorlist" > /etc/pacman.conf; then
 echo "ARQUIVO pacman.conf SOBSCRITO COM SUCESSO"
 else
