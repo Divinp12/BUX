@@ -11,7 +11,7 @@ fi;
 
 ######################################################################################################################################
 echo "ADICIONANDO ESPELHO BRASILEIRO"
-if echo "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist; then
+if echo "Server=https://mirrors.kernel.org/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist; then
 echo "ESPELHO BRASILEIRO ADICIONADO COM SUCESSO"
 else
 echo "ERRO AO ADICIONAR O ESPELHO BRASILEIRO"
@@ -307,7 +307,7 @@ clear;
 
 
 echo "ADICIONANDO ESPELHO BRASILEIRO"
-if echo "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist; then
+if echo "Server=https://mirrors.kernel.org/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist; then
 echo "ESPELHO BRASILEIRO ADICIONADO COM SUCESSO"
 else
 echo "ERRO AO ADICIONAR ESPELHO BRASILEIRO"
