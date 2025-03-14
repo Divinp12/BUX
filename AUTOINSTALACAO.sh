@@ -11,7 +11,7 @@ fi;
 
 
 echo "ADICIONANDO ESPELHO DA FUNDAÇÃO LINUX"
-if echo "Server=https://mirrors.kernel.org/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist; then
+if echo "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist; then
 echo "ESPELHO BRASILEIRO ADICIONADO COM SUCESSO"
 else
 echo "ERRO AO ADICIONAR O ESPELHO BRASILEIRO"
@@ -21,7 +21,7 @@ fi;
 sleep 5;
 clear;
 
-######################################################################################################################################
+
 echo "SOBSCREVENDO ARQUIVO pacman.conf"
 if echo "[options]
 Architecture=auto
@@ -39,12 +39,12 @@ echo "ARQUIVO pacman.conf SOBSCRITO COM SUCESSO"
 else
 echo "ERRO AO SOBSCREVER ARQUIVO pacman.conf"
 fi;
-######################################################################################################################################
+
 
 sleep 5;
 clear;
 
-######################################################################################################################################
+
 echo "SINCRONIZANDO REPOSITORIOS DO PACMAN"
 if pacman -Sy --noconfirm --quiet > /dev/null 2>&1; then
 echo "REPOSITORIOS DO PACMAN SINCRONIZADOS COM SUCESSO"
@@ -309,7 +309,7 @@ clear;
 
 
 echo "ADICIONANDO ESPELHO DA FUNDAÇÃO LINUX"
-if echo "Server=https://mirrors.kernel.org/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist; then
+if echo "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist; then
 echo "ESPELHO BRASILEIRO ADICIONADO COM SUCESSO"
 else
 echo "ERRO AO ADICIONAR ESPELHO BRASILEIRO"
