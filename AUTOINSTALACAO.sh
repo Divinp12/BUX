@@ -51,12 +51,12 @@ echo "REPOSITORIOS DO PACMAN SINCRONIZADOS COM SUCESSO"
 else
 echo "ERRO AO SINCRONIZAR REPOSITORIOS DO PACMAN"
 fi;
-######################################################################################################################################
+
 
 sleep 5;
 clear;
 
-######################################################################################################################################
+
 echo "FORMATANDO DISPOSITIVO DE ARMAZENAMENTO DE DADOS VALIDO"
 if fdisk /dev/nvme0n1 > /dev/null 2>&1; then <<EOF > /dev/null 2>&1
 o
@@ -150,12 +150,12 @@ mkdir /mnt/home > /dev/null 2>&1
 mount /dev/sda1 /mnt/boot/EFI > /dev/null 2>&1
 mount /dev/sda3 /mnt/home > /dev/null 2>&1
 fi;
-#####################################################################################################################################
+
 
 sleep 5;
 clear;
 
-#####################################################################################################################################
+
 echo "INSTALANDO PACOTES DO SISTEMA";
 if pacstrap /mnt --noconfirm --quiet \
 base \
@@ -179,7 +179,6 @@ wayland \
 lib32-wayland \
 pulseaudio \
 pavucontrol \
-sddm \
 grub-efi-x86_64 \
 efibootmgr > /dev/null 2>&1; then
 echo "PACOTES DO SISTEMA INSTALADOS COM SUCESSO"
@@ -450,8 +449,7 @@ clear;
 
 echo "HABILITANDO DRIVER DE INTERNET E DISPLAY MANAGER (SDDM) NA INICIALIZACAO DO SISTEMA"
 if systemctl enable \
-NetworkManager \
-sddm > /dev/null 2>&1; then
+NetworkManager > /dev/null 2>&1; then
 echo "DRIVER DE INTERNET E DISPLAY MANAGER (SDDM) HABILITADO NA INICIALIZACAO DO SISTEMA COM SUCESSO"
 else
 echo "ERRO AO HABILITAR DRIVER DE INTERNET E DISPLAY MANAGER (SDDM) NA INICIALIZACAO DO SISTEMA"
@@ -482,22 +480,6 @@ if mkinitcpio -P > /dev/null 2>&1; then
 echo "IMAGENS GERADAS NA INICIALIZACAO DO SISTEMA COM SUCESSO"
 else
 echo "ERRO AO GERAR IMAGENS NA INICIALIZACAO DO SISTEMA"
-fi;
-
-
-sleep 5;
-clear;
-
-
-echo "SOBSCREVENDO ARQUIVO sddm.conf"
-if echo "[Autologin]
-Relogin=false
-User=4RCH
-Session=xfce
-EnableWayland=true" > /etc/sddm.conf; then
-echo "ARQUIVO sddm.conf SOBSCRITO COM SUCESSO"
-else
-echo "ERRO AO SOBSCREVER ARQUIVO sddm.conf"
 fi;
 
 
@@ -604,19 +586,6 @@ if sed -i "/^\s*#/d; /^\s*$/d" \
 echo "LINHAS QUE COMECAM COM JOGO DA VELHA E ESPACOS VAZIOS REMOVIDAS COM SUCESSO"
 else
 echo "ERRO AO REMOVER LINHAS QUE COMECAM COM JOGO DA VELHA E ESPACOS VAZIOS"
-fi;
-
-
-sleep 5;
-clear;
-
-
-echo "DESATIVANDO MODULOS DESNECESSARIOS NO ARQUIVO blacklist.conf"
-if echo "blacklist swap
-blacklist zswap > /etc/modprobe.d/blacklist.conf; then
-echo "MODULOS DESNECESSARIOS DESATIVADO NO ARQUIVO blacklist.conf COM SUCESSO"
-else
-echo "ERRO AO DESATIVAR MODULOS DESNECESSARIOS NO ARQUIVO blacklist.conf"
 fi;
 
 
