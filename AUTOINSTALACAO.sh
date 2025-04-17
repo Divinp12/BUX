@@ -169,14 +169,9 @@ git \
 fastfetch \
 mesa \
 lib32-mesa \
-xfce4-panel \
-xfce4-session \
-xfce4-settings \
-xfce4-terminal \
-xfwm4 \
-xfdesktop \
+sway \
+foot \
 wayland \
-lib32-wayland \
 pulseaudio \
 pavucontrol \
 grub-efi-x86_64 \
