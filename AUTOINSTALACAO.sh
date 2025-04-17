@@ -185,12 +185,12 @@ echo "PACOTES DO SISTEMA INSTALADOS COM SUCESSO"
 else
 echo "ERRO AO INSTALAR PACOTES DO SISTEMA"
 fi;
-#####################################################################################################################################
+
 
 sleep 5;
 clear;
 
-#####################################################################################################################################
+
 echo "AUTOGERANDO E AUTOCONFIGURANDO PARTICOES NO ARQUIVO fstab"
 if genfstab -U -p /mnt > /mnt/etc/fstab; then
 echo "ARQUIVO fstab AUTOGERADO E AUTOCONFIGURADO COM SUCESSO"
