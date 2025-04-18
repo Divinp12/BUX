@@ -615,10 +615,50 @@ clear;
 
 
 echo "ADICIONANDO AUTOSTART DO SWAY"
-if echo "exec sway" >> .bash_profile; then
+if echo "exec sway
+pkill pavucontrol" >> .bash_profile; then
 echo "AUTOSTART DO SWAY ADICIONADO COM SUCESSO"
 else
 echo "ERRO AO ADICIONAR AUTOSTART DO SWAY"
+fi;
+
+
+sleep 5;
+clear;
+
+
+echo "GERANDO CONFIGURACAO DO SWAY"
+if echo "### Variables
+
+xwayland enable
+
+### Key bindings
+#
+# Basics:
+#
+    # Start a terminal
+    bindsym Mod4+Return exec foot
+
+    # Kill focused window
+    bindsym Mod4+Shift+q kill window
+
+    # Start your launcher
+    bindsym Mod4+d exec wofi --show drun --location=center --anchor=center --width=100% --height=100% --f>
+
+    # Reload the configuration file
+    bindsym Mod4+Shift+c reload
+
+#
+# Layout stuff:
+#
+    # Make the current focus fullscreen
+    bindsym Mod4+f fullscreen; border normal
+
+}
+include /etc/sway/config.d/\*" > /home/4RCH/.config/sway/config; then
+echo "CONFIGURACAO DO SWAY GERADO COMO SUCESSO"
+else
+echo "ERRO AO GERAR CONFIGURACAO DO SWAY"
 fi';
 
 
