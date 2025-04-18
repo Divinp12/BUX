@@ -172,6 +172,7 @@ lib32-mesa \
 sway \
 foot \
 wofi \
+xorg-xwayland \
 wayland \
 pulseaudio \
 pavucontrol \
