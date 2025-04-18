@@ -593,6 +593,30 @@ if rm -rf /boot/initramfs-linux-fallback.img; then
 echo "ARQUIVO initramfs-linux-fallback.img REMOVIDO COM SUCESSO"
 else
 echo "ERRO AO REMOVER ARQUIVO initramfs-linux-fallback.img"
+fi
+
+
+sleep 5;
+clear;
+
+
+echo "HABILITANDO AUTOLOGIN DO TTY1"
+if sed -i \'s/^ExecStart=.*/ExecStart=-\/sbin\/agetty --autologin 4RCH --noclear %I $TERM/' /etc/systemd/system/getty@tty1.service; then
+echo "AUTOLOGIN TTY1 HABILITADO COM SUCESSO"
+else
+echo "ERRO AO HABILITAR AUTOLOGIN DO TTY1"
+fi
+
+
+sleep 5;
+clear;
+
+
+echo "ADICIONANDO AUTOSTART DO SWAY"
+if echo "exec sway" >> .bash_profile; then
+echo "AUTOSTART DO SWAY ADICIONADO COM SUCESSO"
+else
+echo "ERRO AO ADICIONAR AUTOSTART DO SWAY"
 fi';
 
 
