@@ -601,7 +601,7 @@ clear;
 
 
 echo "HABILITANDO AUTOLOGIN DO TTY1"
-if sed -i \'s/^ExecStart=.*/ExecStart=-\/sbin\/agetty --autologin 4RCH --noclear %I $TERM/' /etc/systemd/system/getty@tty1.service; then
+if sed -i \'s/^ExecStart=.*/ExecStart=-\/sbin\/agetty --autologin 4RCH --noclear %I $TERM/\' /etc/systemd/system/getty@tty1.service; then
 echo "AUTOLOGIN TTY1 HABILITADO COM SUCESSO"
 else
 echo "ERRO AO HABILITAR AUTOLOGIN DO TTY1"
