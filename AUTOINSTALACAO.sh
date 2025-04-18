@@ -171,6 +171,7 @@ mesa \
 lib32-mesa \
 sway \
 foot \
+wofi \
 wayland \
 pulseaudio \
 pavucontrol \
@@ -192,12 +193,12 @@ echo "ARQUIVO fstab AUTOGERADO E AUTOCONFIGURADO COM SUCESSO"
 else
 echo "ERRO AO AUTOGERAR E AUTOCONFIGURAR ARQUIVO fstab"
 fi;
-#####################################################################################################################################
+
 
 sleep 5;
 clear;
 
-#####################################################################################################################################
+
 echo "ENTRANDO NO AMBIENTE arch-chroot"
 arch-chroot /mnt bash -c '
 
