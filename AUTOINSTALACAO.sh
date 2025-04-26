@@ -640,13 +640,13 @@ xwayland enable
     bindsym Mod4+Return exec foot
 
     # Kill focused window
-    bindsym Mod4+Shift+q kill window
+    bindsym Mod4+q exec swaymsg \'kill\'
 
     # Start your launcher
-    bindsym Mod4+d exec wofi --show drun --location=center --anchor=center --width=100% --height=100% --f>
+    bindsym Mod4+d exec wofi --show drun --location=center --anchor=center --width=100% --height=100% --f\>
 
     # Reload the configuration file
-    bindsym Mod4+Shift+c reload
+    bindsym Mod4+c reload
 
 #
 # Layout stuff:
