@@ -488,8 +488,7 @@ echo "SOBSCREVENDO ARQUIVO grub"
 if echo "GRUB_DEFAULT=0
 GRUB_TIMEOUT=0
 GRUB_DISTRIBUTOR=\"4RCH\"
-GRUB_CMDLINE_LINUX_DEFAULT=\"quiet mitigations=off\"
-GRUB_CMDLINE_LINUX=\"\"
+GRUB_CMDLINE_LINUX=\"quiet mitigations=off loglevel=0\"
 GRUB_PRELOAD_MODULES=\"part_gpt part_msdos\"
 GRUB_GFXMODE=auto
 GRUB_GFXPAYLOAD_LINUX=keep
@@ -541,7 +540,7 @@ clear;
 
 
 echo "ADICIONANDO OPÇÕES NOATIME E DISCARD NAS PARTIÇÕES EXT4"
-if sed -i "/^UUID=.* \/boot .*$/! s/rw/rw,noatime,discard,/" /etc/fstab; then
+if sed -i "/^UUID=.* \/boot .*$/! s/rw/rw,noatime,discard/" /etc/fstab; then
 echo "OPÇÕES NOATIME E DISCARD ADICIONADAS NAS PARTIÇÕES EXT4 COM SUCESSO"
 else
 echo "ERRO AO ADICIONAR OPÇÕES NOATIME E DISCARD NAS PARTIÇÕES EXT4"
