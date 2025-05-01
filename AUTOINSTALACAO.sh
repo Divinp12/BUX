@@ -169,10 +169,12 @@ git \
 fastfetch \
 mesa \
 lib32-mesa \
-sway \
-foot \
-wofi \
-xorg-xwayland \
+xfce4-panel \
+xfce4-session \
+xfce4-settings \
+xfce4-terminal \
+xfwm4 \
+xfdesktop \
 wayland \
 pulseaudio \
 pavucontrol \
@@ -589,18 +591,6 @@ sleep 5;
 clear;
 
 
-echo "REMOVENDO ARQUIVO initramfs-linux-fallback.img"
-if rm -rf /boot/initramfs-linux-fallback.img; then
-echo "ARQUIVO initramfs-linux-fallback.img REMOVIDO COM SUCESSO"
-else
-echo "ERRO AO REMOVER ARQUIVO initramfs-linux-fallback.img"
-fi
-
-
-sleep 5;
-clear;
-
-
 echo "HABILITANDO AUTOLOGIN DO TTY1"
 if sed -i \'s/^ExecStart=.*/ExecStart=-\/sbin\/agetty --autologin 4RCH --noclear %I $TERM/\' /etc/systemd/system/getty@tty1.service; then
 echo "AUTOLOGIN TTY1 HABILITADO COM SUCESSO"
@@ -614,51 +604,11 @@ clear;
 
 
 echo "ADICIONANDO AUTOSTART DO SWAY"
-if echo "exec sway
-pkill pavucontrol" >> .bash_profile; then
+if echo "exec xfce4" >> .bash_profile; then
 echo "AUTOSTART DO SWAY ADICIONADO COM SUCESSO"
 else
 echo "ERRO AO ADICIONAR AUTOSTART DO SWAY"
 fi;
-
-
-sleep 5;
-clear;
-
-
-echo "GERANDO CONFIGURACAO DO SWAY"
-if echo "### Variables
-
-xwayland enable
-
-### Key bindings
-#
-# Basics:
-#
-    # Start a terminal
-    bindsym Mod4+Return exec foot
-
-    # Kill focused window
-    bindsym Mod4+q exec swaymsg \'kill\'
-
-    # Start your launcher
-    bindsym Mod4+d exec wofi --show drun --location=center --anchor=center --width=100% --height=100% --f\>
-
-    # Reload the configuration file
-    bindsym Mod4+c reload
-
-#
-# Layout stuff:
-#
-    # Make the current focus fullscreen
-    bindsym Mod4+f fullscreen; border normal
-
-}
-include /etc/sway/config.d/\*" > /home/4RCH/.config/sway/config; then
-echo "CONFIGURACAO DO SWAY GERADO COMO SUCESSO"
-else
-echo "ERRO AO GERAR CONFIGURACAO DO SWAY"
-fi';
 
 
 sleep 5;
