@@ -603,11 +603,11 @@ sleep 5;
 clear;
 
 
-echo "ADICIONANDO AUTOSTART DO SWAY"
-if echo "exec xfce4" >> .bash_profile; then
-echo "AUTOSTART DO SWAY ADICIONADO COM SUCESSO"
+echo "ADICIONANDO AUTOSTART DO XFCE"
+if echo "exec startxfce4" >> .bash_profile; then
+echo "AUTOSTART DO XFCE ADICIONADO COM SUCESSO"
 else
-echo "ERRO AO ADICIONAR AUTOSTART DO SWAY"
+echo "ERRO AO ADICIONAR AUTOSTART DO XFCE"
 fi;
 
 
