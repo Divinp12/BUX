@@ -169,7 +169,7 @@ git \
 fastfetch \
 mesa \
 lib32-mesa \
-cosmic \
+hyprland \
 wayland \
 pulseaudio \
 pavucontrol \
@@ -587,7 +587,7 @@ clear;
 
 
 echo "HABILITANDO AUTOLOGIN DO TTY1"
-if sed -i "s/^ExecStart=.*/ExecStart=-\/sbin\/agetty --autologin 4RCH --noclear %I \$TERM/" /etc/systemd/system/getty@tty1.service; then
+if sed -i "s/^ExecStart=.*/ExecStart=-\/sbin\/agetty --autologin 4RCH --noclear %I \$TERM/" /etc/systemd/system/getty.target.wants/getty@tty1.service; then
 echo "PASSOU :)"
 else
 echo "FALHOU :("
@@ -599,7 +599,7 @@ clear;
 
 
 echo "ADICIONANDO AUTOSTART DO XFCE"
-if echo "start-cosmic" > /home/4RCH/.bash_profile; then
+if echo "Hyprland" > /home/4RCH/.bash_profile; then
 echo "PASSOU :)"
 else
 echo "FALHOU :("
