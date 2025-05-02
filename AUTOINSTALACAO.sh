@@ -587,8 +587,20 @@ sleep 5;
 clear;
 
 
-echo "ADICIONANDO AUTOSTART DO XFCE"
+echo "ADICIONANDO AUTOSTART DO HYPRLAND"
 if echo "Hyprland" > /home/4RCH/.bash_profile; then
+echo "PASSOU :)"
+else
+echo "FALHOU :("
+fi;
+
+
+sleep 5;
+clear;
+
+
+echo "ADICIONANDO DIRETORIO DE CONFIGURAÇÃO DO HYPRLAND"
+if mkdir /home/4RCH/.config/hypr/; then
 echo "PASSOU :)"
 else
 echo "FALHOU :("
