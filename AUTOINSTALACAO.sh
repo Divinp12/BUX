@@ -10,7 +10,7 @@ sleep 10; clear
 fi;
 
 
-echo "ADICIONANDO ESPELHO DA FUNDAÇÃO LINUX"
+echo "ADICIONANDO ESPELHO BRASILEIRO"
 if echo "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist; then
 echo "PASSOU :)"
 else
