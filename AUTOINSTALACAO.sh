@@ -537,18 +537,6 @@ sleep 5;
 clear;
 
 
-echo "ADICIONANDO OPÇÕES NOATIME E DISCARD NAS PARTIÇÕES EXT4"
-if sed -i "/^UUID=.* \/boot .*$/! s/rw/rw,noatime,discard/" /etc/fstab; then
-echo "PASSOU :)"
-else
-echo "FALHOU :("
-fi;
-
-
-sleep 5;
-clear;
-
-
 echo "ADICIONANDO CONEXAO IPV6 NO SISTEMA"
 if echo "127.0.0.1 localhost.localdomain localhost
 ::1 localhost.localdomain localhost
