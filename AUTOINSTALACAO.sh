@@ -592,6 +592,42 @@ if echo "Hyprland" > /home/4RCH/.bash_profile; then
 echo "PASSOU :)"
 else
 echo "FALHOU :("
+fi;
+
+
+sleep 5;
+clear;
+
+
+echo "ADICIONANDO CONFIGURACOES DO HYPRLAND"
+if echo "xwayland {
+enabled = true
+}
+
+general {
+no_border_on_floating = true
+}
+
+misc {
+disable_hyprland_logo = true
+disable_splash_rendering = true
+}
+
+animations {
+enabled = false
+}
+
+monitor=,preferred,auto,auto
+
+bind = SUPER, T, exec, foot
+bind = SUPER, Q, killactive
+bind = SUPER, R, exec, wofi --show run
+bind = SUPER, F, fullscreen
+
+windowrule = nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0" > /home/4RCH/.config/hypr/hyprland.conf; then
+echo "PASSOU :)"
+else
+echo "FALHOU :("
 fi;'
 
 
