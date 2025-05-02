@@ -531,9 +531,9 @@ clear;
 
 echo "ADICIONANDO USUARIO NORMAL (4RCH) AO SUDO NO ARQUIVO sudoers"
 if echo "4RCH ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers; then
-echo "USUARIO NORMAL (4RCH) ADICIONADO AO SUDO NO ARQUIVO sudoers COM SUCESSO"
+echo "PASSOU"
 else
-echo "ERRO AO ADICIONAR USUARIO NORMAL (4RCH) AO SUDO NO ARQUIVO sudoers"
+echo "FALHOU"
 fi;
 
 
@@ -543,9 +543,9 @@ clear;
 
 echo "ADICIONANDO OPÇÕES NOATIME E DISCARD NAS PARTIÇÕES EXT4"
 if sed -i "/^UUID=.* \/boot .*$/! s/rw/rw,noatime,discard/" /etc/fstab; then
-echo "OPÇÕES NOATIME E DISCARD ADICIONADAS NAS PARTIÇÕES EXT4 COM SUCESSO"
+echo "PASSOU"
 else
-echo "ERRO AO ADICIONAR OPÇÕES NOATIME E DISCARD NAS PARTIÇÕES EXT4"
+echo "FALHOU"
 fi;
 
 
@@ -557,9 +557,9 @@ echo "ADICIONANDO CONEXAO IPV6 NO SISTEMA"
 if echo "127.0.0.1 localhost.localdomain localhost
 ::1 localhost.localdomain localhost
 127.0.0.1 4RCH.localdomain 4RCH" > /etc/hosts; then
-echo "CONEXAO IPV6 ADICIONADA NO SISTEMA COM SUCESSO"
+echo "PASSOU"
 else
-echo "ERRO AO ADICIONAR CONEXAO IPV6 NO SISTEMA"
+echo "FALHOU"
 fi;
 
 
@@ -581,9 +581,9 @@ if sed -i "/^\s*#/d; /^\s*$/d" \
 /etc/fuse.conf \
 /etc/ts.conf \
 /etc/fstab; then
-echo "LINHAS QUE COMECAM COM JOGO DA VELHA E ESPACOS VAZIOS REMOVIDAS COM SUCESSO"
+echo "PASSOU"
 else
-echo "ERRO AO REMOVER LINHAS QUE COMECAM COM JOGO DA VELHA E ESPACOS VAZIOS"
+echo "FALHOU"
 fi;
 
 
@@ -604,11 +604,11 @@ clear;
 
 
 echo "ADICIONANDO AUTOSTART DO XFCE"
-if echo "exec startxfce4" >> .bash_profile; then
-echo "AUTOSTART DO XFCE ADICIONADO COM SUCESSO"
+if echo "exec startxfce4" > /home/4RCH/.bash_profile; then
+echo "PASSOU"
 else
-echo "ERRO AO ADICIONAR AUTOSTART DO XFCE"
-fi;
+echo "FALHOU"
+fi;'
 
 
 sleep 5;
