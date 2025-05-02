@@ -12,9 +12,9 @@ fi;
 
 echo "ADICIONANDO ESPELHO DA FUNDAÇÃO LINUX"
 if echo "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist; then
-echo "ESPELHO BRASILEIRO ADICIONADO COM SUCESSO"
+echo "PASSOU :)"
 else
-echo "ERRO AO ADICIONAR O ESPELHO BRASILEIRO"
+echo "FALHOU :("
 fi;
 
 
@@ -35,9 +35,9 @@ Include=/etc/pacman.d/mirrorlist
 Include=/etc/pacman.d/mirrorlist
 [multilib]
 Include=/etc/pacman.d/mirrorlist" > /etc/pacman.conf; then
-echo "ARQUIVO pacman.conf SOBSCRITO COM SUCESSO"
+echo "PASSOU :)"
 else
-echo "ERRO AO SOBSCREVER ARQUIVO pacman.conf"
+echo "FALHOU :("
 fi;
 
 
@@ -47,9 +47,9 @@ clear;
 
 echo "SINCRONIZANDO REPOSITORIOS DO PACMAN"
 if pacman -Sy --noconfirm --quiet > /dev/null 2>&1; then
-echo "REPOSITORIOS DO PACMAN SINCRONIZADOS COM SUCESSO"
+echo "PASSOU :)"
 else
-echo "ERRO AO SINCRONIZAR REPOSITORIOS DO PACMAN"
+echo "FALHOU :("
 fi;
 
 
@@ -180,9 +180,9 @@ pulseaudio \
 pavucontrol \
 grub-efi-x86_64 \
 efibootmgr > /dev/null 2>&1; then
-echo "PACOTES DO SISTEMA INSTALADOS COM SUCESSO"
+echo "PASSOU :)"
 else
-echo "ERRO AO INSTALAR PACOTES DO SISTEMA"
+echo "FALHOU :("
 fi;
 
 
@@ -192,9 +192,9 @@ clear;
 
 echo "AUTOGERANDO E AUTOCONFIGURANDO PARTICOES NO ARQUIVO fstab"
 if genfstab -U -p /mnt > /mnt/etc/fstab; then
-echo "ARQUIVO fstab AUTOGERADO E AUTOCONFIGURADO COM SUCESSO"
+echo "PASSOU :)"
 else
-echo "ERRO AO AUTOGERAR E AUTOCONFIGURAR ARQUIVO fstab"
+echo "FALHOU :("
 fi;
 
 
@@ -212,9 +212,9 @@ clear;
 
 echo "ADICIONANDO NOME 4RCH AO USUARIO ROOT NO ARQUIVO hostname";
 if echo 4RCH > /etc/hostname; then
-echo "NOME 4RCH DO USUARIO ROOT ADICIONADO NO ARQUIVO hostname COM SUCESSO"
+echo "PASSOU :)"
 else
-echo "ERRO AO ADICIONAR NOME 4RCH AO USUARIO ROOT NO ARQUIVO hostname"
+echo "FALHOU :("
 fi;
 
 
@@ -224,9 +224,9 @@ clear;
 
 echo "ADICIONANDO SENHA 4RCH AO USUARIO ROOT"
 if echo -e "4RCH\n4RCH" | passwd root; then
-echo "SENHA 4RCH ADICIONADO AO USUARIO ROOT COM SUCESSO"
+echo "PASSOU :)"
 else
-echo "ERRO AO ADICIONAR SENHA 4RCH AO USUARIO ROOT"
+echo "FALHOU :("
 fi;
 
 
@@ -236,9 +236,9 @@ clear;
 
 echo "ADICIONANDO USUARIO NORMAL COM NOME 4RCH"
 if useradd -m -g users -G wheel 4RCH; then
-echo "USUARIO NORMAL COM NOME 4RCH ADICIONADO COM SUCESSO"
+echo "PASSOU :)"
 else
-echo "ERRO AO ADICIONAR USUARIO NORMAL COM NOME 4RCH"
+echo "FALHOU :("
 fi;
 
 
@@ -248,9 +248,9 @@ clear;
 
 echo "ADICIONANDO SENHA 4RCH AO USUARIO NORMAL"
 if echo -e "4RCH\n4RCH" | passwd 4RCH; then
-echo "SENHA 4RCH ADICIONADO AO USUARIO NORMAL ADICIONADO COM SUCESSO"
+echo "PASSOU :)"
 else
-echo "ERRO AO ADICIONAR SENHA 4RCH AO USUARIO NORMAL"
+echo "FALHOU :("
 fi;
 
 
@@ -260,9 +260,9 @@ clear;
 
 echo "ADICIONANDO CARACTERES PORTUGUES BRASILEIRO"
 if echo "pt_BR.UTF-8 UTF-8" > /etc/locale.gen; then
-echo "CARACTERES PORTUGUES BRASILEIROS ADICIONADO COM SUCESSO"
+echo "PASSOU :)"
 else
-echo "ERRO AO ADICIONAR CARACTERES PORTUGUES BRASILEIRO"
+echo "FALHOU :("
 fi;
 
 
@@ -272,9 +272,9 @@ clear;
 
 echo "APLICANDO IDIOMA PORTUGUES BRASILEIRO NO SISTEMA"
 if echo "LANG=pt_BR.UTF-8" > /etc/locale.conf; then
-echo "IDIOMA PORTUGUES BRASILEIRO APLICADO NO SISTEMA COM SUCESSO"
+echo "PASSOU :)"
 else
-echo "ERRO AO APLICAR IDIOMA PORTUGUES BRASILEIRO NO SISTEMA"
+echo "FALHOU :("
 fi;
 
 
@@ -284,9 +284,9 @@ clear;
 
 echo "APLICANDO CARACTERES PORTUGUES BRASILEIRO"
 if locale-gen > /dev/null 2>&1; then
-echo "CARACTERES PORTUGUES BRASILEIRO APLICADO COM SUCESSO"
+echo "PASSOU :)"
 else
-echo "ERRO AO APLICAR CARACTERES PORTUGUES BRASILEIRO"
+echo "FALHOU :("
 fi;
 
 
@@ -296,9 +296,9 @@ clear;
 
 echo "SINCRONIZANDO RELOGIO DO HARDWARE E DO SISTEMA VIA WIFI"
 if hwclock --systohc > /dev/null 2>&1; then
-echo "RELOGIO DO HARDWARE E DO SISTEMA SINCRONIZADO VIA WIFI COM SUCESSO"
+echo "PASSOU :)"
 else
-echo "ERRO AO SINCRONIZAR RELOGIO DO HARDWARE E DO SISTEMA VIA WIFI"
+echo "FALHOU :("
 fi;
 
 
@@ -308,9 +308,9 @@ clear;
 
 echo "ADICIONANDO ESPELHO DA FUNDAÇÃO LINUX"
 if echo "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist; then
-echo "ESPELHO BRASILEIRO ADICIONADO COM SUCESSO"
+echo "PASSOU :)"
 else
-echo "ERRO AO ADICIONAR ESPELHO BRASILEIRO"
+echo "FALHOU :("
 fi;
 
 
@@ -340,9 +340,9 @@ cd .. && \\
 sudo rm -rf yay && \\
 yay -S --noconfirm nano --save --answerdiff None --answerclean None --removemake && \\
 sudo sed -i \"14,\\\$d\" /home/4RCH/.bashrc" > /home/4RCH/.bashrc; then
-echo "ARQUIVO .bashrc SOBSCRITO COM SUCESSO"
+echo "PASSOU :)"
 else
-echo "ERRO AO SOBSCREVER ARQUIVO .bashrc"
+echo "FALHOU :("
 fi;
 
 
@@ -363,9 +363,9 @@ Include=/etc/pacman.d/mirrorlist
 Include=/etc/pacman.d/mirrorlist
 [multilib]
 Include=/etc/pacman.d/mirrorlist" > /etc/pacman.conf; then
-echo "ARQUIVO pacman.conf SOBSCRITO COM SUCESSO"
+echo "PASSOU :)"
 else
-echo "ERRO AO SOBSCREVER ARQUIVO pacman.conf"
+echo "FALHOU :("
 fi;
 
 
@@ -375,9 +375,9 @@ clear;
 
 echo "SINCRONIZANDO REPOSITORIOS DO PACMAN"
 if pacman -Sy --noconfirm --quiet > /dev/null 2>&1; then
-echo "REPOSITORIOS DO PACMAN SINCRONIZADOS COM SUCESSO"
+echo "PASSOU :)"
 else
-echo "ERRO AO SINCRONIZAR REPOSITORIOS DO PACMAN"
+echo "FALHOU :("
 fi;
 
 
@@ -446,12 +446,12 @@ sleep 5;
 clear;
 
 
-echo "HABILITANDO DRIVER DE INTERNET E DISPLAY MANAGER (SDDM) NA INICIALIZACAO DO SISTEMA"
+echo "HABILITANDO DRIVER DE INTERNET NA INICIALIZACAO DO SISTEMA"
 if systemctl enable \
 NetworkManager > /dev/null 2>&1; then
-echo "DRIVER DE INTERNET E DISPLAY MANAGER (SDDM) HABILITADO NA INICIALIZACAO DO SISTEMA COM SUCESSO"
+echo "PASSOU :)"
 else
-echo "ERRO AO HABILITAR DRIVER DE INTERNET E DISPLAY MANAGER (SDDM) NA INICIALIZACAO DO SISTEMA"
+echo "FALHOU :("
 fi;
 
 
@@ -464,9 +464,9 @@ if systemctl disable \
 NetworkManager-wait-online \
 systemd-networkd \
 systemd-timesyncd > /dev/null 2>&1; then
-echo "SERVICOS DESNESSARIOS DESATIVADOS NA INICIALIZACAO DO SISTEMA COM SUCESSO"
+echo "PASSOU :)"
 else
-echo "ERRO AO DESATIVAR SERVICOS DESNECESSARIOS NA INICIALIZACAO DO SISTEMA"
+echo "FALHOU :("
 fi;
 
 
@@ -476,9 +476,9 @@ clear;
 
 echo "GERANDO IMAGENS NO INICIALIZADOR DO SISTEMA"
 if mkinitcpio -P > /dev/null 2>&1; then
-echo "IMAGENS GERADAS NA INICIALIZACAO DO SISTEMA COM SUCESSO"
+echo "PASSOU :)"
 else
-echo "ERRO AO GERAR IMAGENS NA INICIALIZACAO DO SISTEMA"
+echo "FALHOU :("
 fi;
 
 
@@ -495,9 +495,9 @@ GRUB_PRELOAD_MODULES=\"part_gpt part_msdos\"
 GRUB_GFXMODE=auto
 GRUB_GFXPAYLOAD_LINUX=keep
 GRUB_DISABLE_RECOVERY=true" > /etc/default/grub; then
-echo "ARQUIVO grub SOBSCRITO COM SUCESSO"
+echo "PASSOU :)"
 else
-echo "ERRO AO SOBSCREVER ARQUIVO grub"
+echo "FALHOU :("
 fi;
 
 
@@ -507,9 +507,9 @@ clear;
 
 echo "CONFIGURANDO GRUB"
 if grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=4RCH --recheck > /dev/null 2>&1; then
-echo "GRUB CONFIGURADO COM SUCESSO"
+echo "PASSOU :)"
 else
-echo "ERRO AO CONFIGURAR GRUB"
+echo "FALHOU :("
 fi;
 
 
@@ -519,9 +519,9 @@ clear;
 
 echo "ADICIONANDO GRUB NA INICIALIZACAO"
 if grub-mkconfig -o /boot/grub/grub.cfg > /dev/null 2>&1; then
-echo "GRUB ADICIONADO NA INICIALIZACAO COM SUCESSO"
+echo "PASSOU :)"
 else
-echo "ERRO AO ADICIONAR GRUB NA INICIALIZACAO"
+echo "FALHOU :("
 fi;
 
 
@@ -531,9 +531,9 @@ clear;
 
 echo "ADICIONANDO USUARIO NORMAL (4RCH) AO SUDO NO ARQUIVO sudoers"
 if echo "4RCH ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers; then
-echo "PASSOU"
+echo "PASSOU :)"
 else
-echo "FALHOU"
+echo "FALHOU :("
 fi;
 
 
@@ -543,9 +543,9 @@ clear;
 
 echo "ADICIONANDO OPÇÕES NOATIME E DISCARD NAS PARTIÇÕES EXT4"
 if sed -i "/^UUID=.* \/boot .*$/! s/rw/rw,noatime,discard/" /etc/fstab; then
-echo "PASSOU"
+echo "PASSOU :)"
 else
-echo "FALHOU"
+echo "FALHOU :("
 fi;
 
 
@@ -557,9 +557,9 @@ echo "ADICIONANDO CONEXAO IPV6 NO SISTEMA"
 if echo "127.0.0.1 localhost.localdomain localhost
 ::1 localhost.localdomain localhost
 127.0.0.1 4RCH.localdomain 4RCH" > /etc/hosts; then
-echo "PASSOU"
+echo "PASSOU :)"
 else
-echo "FALHOU"
+echo "FALHOU :("
 fi;
 
 
@@ -581,9 +581,9 @@ if sed -i "/^\s*#/d; /^\s*$/d" \
 /etc/fuse.conf \
 /etc/ts.conf \
 /etc/fstab; then
-echo "PASSOU"
+echo "PASSOU :)"
 else
-echo "FALHOU"
+echo "FALHOU :("
 fi;
 
 
@@ -593,10 +593,10 @@ clear;
 
 echo "HABILITANDO AUTOLOGIN DO TTY1"
 if sed -i \'s/^ExecStart=.*/ExecStart=-\/sbin\/agetty --autologin 4RCH --noclear %I $TERM/\' /etc/systemd/system/getty@tty1.service; then
-echo "AUTOLOGIN TTY1 HABILITADO COM SUCESSO"
+echo "PASSOU :)"
 else
-echo "ERRO AO HABILITAR AUTOLOGIN DO TTY1"
-fi
+echo "FALHOU :("
+fi;
 
 
 sleep 5;
@@ -605,9 +605,9 @@ clear;
 
 echo "ADICIONANDO AUTOSTART DO XFCE"
 if echo "exec startxfce4" > /home/4RCH/.bash_profile; then
-echo "PASSOU"
+echo "PASSOU :)"
 else
-echo "FALHOU"
+echo "FALHOU :("
 fi;'
 
 
@@ -617,9 +617,9 @@ clear;
 
 echo "GRAVANDO DADOS DA MEMORIA NO DISCO"
 if sync > /dev/null 2>&1; then
-echo "DADOS DA MEMORIA GRAVADOS NO DISCO COM SUCESSO"
+echo "PASSOU :)"
 else
-echo "ERRO AO GRAVAR DADOS DA MEMORIA NO DISCO"
+echo "FALHOU :("
 fi;
 
 
