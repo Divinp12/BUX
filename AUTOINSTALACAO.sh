@@ -169,12 +169,7 @@ git \
 fastfetch \
 mesa \
 lib32-mesa \
-xfce4-panel \
-xfce4-session \
-xfce4-settings \
-xfce4-terminal \
-xfwm4 \
-xfdesktop \
+cosmic \
 wayland \
 pulseaudio \
 pavucontrol \
@@ -592,7 +587,7 @@ clear;
 
 
 echo "HABILITANDO AUTOLOGIN DO TTY1"
-if sed -i "s/^ExecStart=.*/ExecStart=-\/sbin\/agetty --autologin 4RCH --noclear \%I \$TERM/" /etc/systemd/system/getty@tty1.service; then
+if sed -i "s/^ExecStart=.*/ExecStart=-\/sbin\/agetty --autologin 4RCH --noclear %I \$TERM/" /etc/systemd/system/getty@tty1.service; then
 echo "PASSOU :)"
 else
 echo "FALHOU :("
@@ -604,7 +599,7 @@ clear;
 
 
 echo "ADICIONANDO AUTOSTART DO XFCE"
-if echo "exec startxfce4" > /home/4RCH/.bash_profile; then
+if echo "start-cosmic" > /home/4RCH/.bash_profile; then
 echo "PASSOU :)"
 else
 echo "FALHOU :("
