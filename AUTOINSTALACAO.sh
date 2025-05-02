@@ -170,6 +170,7 @@ fastfetch \
 mesa \
 lib32-mesa \
 hyprland \
+foot \
 wayland \
 pulseaudio \
 pavucontrol \
