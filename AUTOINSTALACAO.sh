@@ -574,8 +574,8 @@ sleep 3;
 clear;
 
 
-echo "HABILITANDO AUTOLOGIN DO TTY1"
-if sed -i "s/^ExecStart=.*/ExecStart=-\/sbin\/agetty --autologin 4RCH --noclear %I \$TERM/" /etc/systemd/system/getty.target.wants/getty@tty1.service; then
+echo "ADICIONANDO AUTOSTART DO HYPRLAND"
+if echo "Hyprland" > /home/4RCH/.bash_profile; then
 echo "PASSOU :)"
 else
 echo "FALHOU :("
@@ -586,15 +586,15 @@ sleep 3;
 clear;
 
 
-echo "ADICIONANDO AUTOSTART DO HYPRLAND"
-if echo "Hyprland" > /home/4RCH/.bash_profile; then
+echo "ADICIONANDO ARQUIVO .CONFIG"
+if mkdir /home/4RCH/.config/; then
 echo "PASSOU :)"
 else
 echo "FALHOU :("
 fi;
 
 
-sleep 5;
+sleep 3;
 clear;
 
 
@@ -606,7 +606,7 @@ echo "FALHOU :("
 fi;
 
 
-sleep 5;
+sleep 3;
 clear;
 
 
@@ -642,7 +642,7 @@ echo "FALHOU :("
 fi;'
 
 
-sleep 5;
+sleep 3;
 clear;
 
 
@@ -654,7 +654,7 @@ echo "FALHOU :("
 fi;
 
 
-sleep 5;
+sleep 3;
 clear;
 
 
