@@ -168,9 +168,12 @@ sudo \
 git \
 fastfetch \
 mesa \
-hyprland \
-foot \
-wayland \
+xfce4-panel \
+xfce4-session \
+xfce4-settings \
+xfce4-terminal \
+xfwm4 \
+xfdesktop \
 pulseaudio \
 pavucontrol \
 grub-efi-x86_64 \
