@@ -18,7 +18,7 @@ echo "FALHOU :("
 fi;
 
 
-sleep 4;
+sleep 3;
 clear;
 
 
@@ -41,7 +41,7 @@ echo "FALHOU :("
 fi;
 
 
-sleep 4;
+sleep 3;
 clear;
 
 
@@ -53,7 +53,7 @@ echo "FALHOU :("
 fi;
 
 
-sleep 4;
+sleep 3;
 clear;
 
 
@@ -152,7 +152,7 @@ mount /dev/sda3 /mnt/home > /dev/null 2>&1
 fi;
 
 
-sleep 4;
+sleep 3;
 clear;
 
 
@@ -181,7 +181,7 @@ echo "FALHOU :("
 fi;
 
 
-sleep 4;
+sleep 3;
 clear;
 
 
@@ -193,7 +193,7 @@ echo "FALHOU :("
 fi;
 
 
-sleep 4;
+sleep 3;
 clear;
 
 
@@ -201,7 +201,7 @@ echo "ENTRANDO NO AMBIENTE arch-chroot"
 arch-chroot /mnt bash -c '
 
 
-sleep 4;
+sleep 3;
 clear;
 
 
@@ -213,7 +213,7 @@ echo "FALHOU :("
 fi;
 
 
-sleep 5;
+sleep 3;
 clear;
 
 
@@ -225,7 +225,7 @@ echo "FALHOU :("
 fi;
 
 
-sleep 5;
+sleep 3;
 clear;
 
 
@@ -237,7 +237,7 @@ echo "FALHOU :("
 fi;
 
 
-sleep 5;
+sleep 3;
 clear;
 
 
@@ -249,7 +249,7 @@ echo "FALHOU :("
 fi;
 
 
-sleep 5;
+sleep 3;
 clear;
 
 
@@ -261,7 +261,7 @@ echo "FALHOU :("
 fi;
 
 
-sleep 5;
+sleep 3;
 clear;
 
 
@@ -273,7 +273,7 @@ echo "FALHOU :("
 fi;
 
 
-sleep 5;
+sleep 3;
 clear;
 
 
@@ -285,7 +285,7 @@ echo "FALHOU :("
 fi;
 
 
-sleep 5;
+sleep 3;
 clear;
 
 
@@ -297,7 +297,7 @@ echo "FALHOU :("
 fi;
 
 
-sleep 5;
+sleep 3;
 clear;
 
 
@@ -309,7 +309,7 @@ echo "FALHOU :("
 fi;
 
 
-sleep 5;
+sleep 3;
 clear;
 
 
@@ -341,7 +341,7 @@ echo "FALHOU :("
 fi;
 
 
-sleep 5;
+sleep 3;
 clear;
 
 
@@ -364,7 +364,7 @@ echo "FALHOU :("
 fi;
 
 
-sleep 5;
+sleep 3;
 clear;
 
 
@@ -376,7 +376,7 @@ echo "FALHOU :("
 fi;
 
 
-sleep 5;
+sleep 3;
 clear;
 
 
@@ -391,7 +391,7 @@ echo "FALHOU :("
 fi;
 
 
-sleep 5;
+sleep 3;
 clear;
 
 
@@ -406,7 +406,7 @@ echo "FALHOU :("
 fi;
 
 
-sleep 5;
+sleep 3;
 clear;
 
 
@@ -423,7 +423,7 @@ echo "FALHOU :("
 fi;
 
 
-sleep 5;
+sleep 3;
 clear;
 
 
@@ -437,7 +437,7 @@ echo "FALHOU :("
 fi;
 
 
-sleep 5;
+sleep 3;
 clear;
 
 
@@ -450,7 +450,7 @@ echo "FALHOU :("
 fi;
 
 
-sleep 5;
+sleep 3;
 clear;
 
 
@@ -465,7 +465,7 @@ echo "FALHOU :("
 fi;
 
 
-sleep 5;
+sleep 3;
 clear;
 
 
@@ -477,7 +477,7 @@ echo "FALHOU :("
 fi;
 
 
-sleep 5;
+sleep 3;
 clear;
 
 
@@ -496,7 +496,7 @@ echo "FALHOU :("
 fi;
 
 
-sleep 5;
+sleep 3;
 clear;
 
 
@@ -508,7 +508,7 @@ echo "FALHOU :("
 fi;
 
 
-sleep 5;
+sleep 3;
 clear;
 
 
@@ -520,7 +520,7 @@ echo "FALHOU :("
 fi;
 
 
-sleep 5;
+sleep 3;
 clear;
 
 
@@ -532,7 +532,7 @@ echo "FALHOU :("
 fi;
 
 
-sleep 5;
+sleep 3;
 clear;
 
 
@@ -546,7 +546,7 @@ echo "FALHOU :("
 fi;
 
 
-sleep 5;
+sleep 3;
 clear;
 
 
@@ -570,7 +570,7 @@ echo "FALHOU :("
 fi;
 
 
-sleep 5;
+sleep 3;
 clear;
 
 
@@ -582,7 +582,7 @@ echo "FALHOU :("
 fi;
 
 
-sleep 5;
+sleep 3;
 clear;
 
 
