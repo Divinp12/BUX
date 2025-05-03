@@ -387,7 +387,7 @@ amd-ucode \
 vulkan-radeon \
 lib32-vulkan-radeon > /dev/null 2>&1
 else
-echo "ERRO AO INSTALAR DRIVERS AMD"
+echo "FALHOU :("
 fi;
 
 
@@ -402,7 +402,7 @@ intel-ucode \
 vulkan-intel \
 lib32-vulkan-intel > /dev/null 2>&1
 else
-echo "ERRO AO INSTALAR DRIVERS INTEL"
+echo "FALHOU :("
 fi;
 
 
@@ -419,7 +419,7 @@ nvidia-utils \
 lib32-nvidia-utils \
 nvidia-settings > /dev/null 2>&1
 else
-echo "ERRO AO INSTALAR DRIVERS NVIDIA"
+echo "FALHOU :("
 fi;
 
 
@@ -433,7 +433,7 @@ pacman -Sy --noconfirm \
 virtualbox-guest-utils \
 virtualbox-guest-modules-arch > /dev/null 2>&1
 else
-echo "ERRO AO INSTALAR DRIVERS VIRTUALBOX"
+echo "FALHOU :("
 fi;
 
 
