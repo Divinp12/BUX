@@ -18,7 +18,7 @@ echo "FALHOU :("
 fi;
 
 
-sleep 5;
+sleep 4;
 clear;
 
 
@@ -41,7 +41,7 @@ echo "FALHOU :("
 fi;
 
 
-sleep 5;
+sleep 4;
 clear;
 
 
@@ -53,7 +53,7 @@ echo "FALHOU :("
 fi;
 
 
-sleep 5;
+sleep 4;
 clear;
 
 
@@ -152,7 +152,7 @@ mount /dev/sda3 /mnt/home > /dev/null 2>&1
 fi;
 
 
-sleep 5;
+sleep 4;
 clear;
 
 
@@ -181,7 +181,7 @@ echo "FALHOU :("
 fi;
 
 
-sleep 5;
+sleep 4;
 clear;
 
 
@@ -193,7 +193,7 @@ echo "FALHOU :("
 fi;
 
 
-sleep 5;
+sleep 4;
 clear;
 
 
@@ -201,7 +201,7 @@ echo "ENTRANDO NO AMBIENTE arch-chroot"
 arch-chroot /mnt bash -c '
 
 
-sleep 5;
+sleep 4;
 clear;
 
 
@@ -301,7 +301,7 @@ sleep 5;
 clear;
 
 
-echo "ADICIONANDO ESPELHO DA FUNDAÇÃO LINUX"
+echo "ADICIONANDO ESPELHO BRASILEIRO"
 if echo "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist; then
 echo "PASSOU :)"
 else
