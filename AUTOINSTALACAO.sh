@@ -171,8 +171,8 @@ mesa \
 xfce4-panel \
 xfce4-session \
 xfce4-settings \
-xfce4-terminal \
-xfwm4 \
+foot \
+labwc \
 xfdesktop \
 pulseaudio \
 pavucontrol \
@@ -578,7 +578,7 @@ clear;
 
 
 echo "ADICIONANDO AUTOSTART DO XFCE";
-if echo "startxfce4" > /home/4RCH/.bash_profile; then
+if echo "startxfce4 --wayland" > /home/4RCH/.bash_profile; then
 echo "PASSOU :)"
 else
 echo "FALHOU :("
