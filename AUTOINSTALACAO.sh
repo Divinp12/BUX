@@ -577,7 +577,7 @@ sleep 3;
 clear;
 
 
-echo "ADICIONANDO AUTOSTART DO XFCE"
+echo "ADICIONANDO AUTOSTART DO XFCE";
 if echo "startxfce4" > /home/4RCH/.bash_profile; then
 echo "PASSOU :)"
 else
@@ -589,8 +589,20 @@ sleep 3;
 clear;
 
 
-echo "ADICIONANDO AUTOLOGIN DO TTY1"
+echo "ADICIONANDO AUTOLOGIN DO TTY1";
 if sed -i "/ExecStart=-\/sbin\/agetty/ s|ExecStart=-/sbin/agetty.*|ExecStart=-/sbin/agetty -a 4RCH - \${TERM}|" /etc/systemd/system/getty.target.wants/getty\@tty1.service; then
+echo "PASSOU :)"
+else
+echo "FALHOU :("
+fi;
+
+
+sleep 3;
+clear;
+
+
+echo "REINICIANDO GETTY 1";
+if systemctl restart getty@tty1 > /dev/null 2>&1; then
 echo "PASSOU :)"
 else
 echo "FALHOU :("
