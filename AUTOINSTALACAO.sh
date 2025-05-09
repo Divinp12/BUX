@@ -589,7 +589,8 @@ sleep 3;
 clear;
 
 
-echo "[Unit]
+echo "ADICIONANDO AUTOLOGIN DO TTY1";
+if echo "[Unit]
 After=systemd-user-sessions.service plymouth-quit-wait.service
 Before=getty.target
 
@@ -606,9 +607,23 @@ StandardInput=tty
 StandardOutput=tty
 
 [Install]
-WantedBy=multi-user.target" > /etc/systemd/system/autologin-tty1.service;
+WantedBy=multi-user.target" > /etc/systemd/system/autologin-tty1.service; then
+echo "PASSOU :)"
+else
+echo "FALHOU :("
+fi;
 
-systemctl enable autologin-tty1.service;'
+
+sleep 3;
+clear;
+
+
+echo "HABILITANDO AUTOLOGIN NA INICIALIZAÇÃO";
+if systemctl enable autologin-tty1.service; then
+echo "PASSOU :)"
+else
+echo "FALHOU :("
+fi;'
 
 
 sleep 3;
