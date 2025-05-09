@@ -585,13 +585,16 @@ echo "FALHOU :("
 fi;
 
 
+sleep 3;
+clear;
+
+
 echo "[Unit]
-Description=AutoLogin no TTY1
 After=systemd-user-sessions.service plymouth-quit-wait.service
 Before=getty.target
 
 [Service]
-ExecStart=-/usr/bin/agetty --autologin SEU_USUARIO --noclear tty1 linux
+ExecStart=-/usr/bin/agetty --autologin 4RCH --noclear tty1 linux
 Type=idle
 Restart=always
 RestartSec=0
