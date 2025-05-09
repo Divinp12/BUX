@@ -582,7 +582,28 @@ if echo "startxfce4 --wayland" > /home/4RCH/.bash_profile; then
 echo "PASSOU :)"
 else
 echo "FALHOU :("
-fi;'
+fi;
+
+
+echo "[Unit]
+Description=AutoLogin no TTY1
+After=systemd-user-sessions.service plymouth-quit-wait.service
+Before=getty.target
+
+[Service]
+ExecStart=-/usr/bin/agetty --autologin SEU_USUARIO --noclear tty1 linux
+Type=idle
+Restart=always
+RestartSec=0
+UtmpIdentifier=tty1
+TTYPath=/dev/tty1
+TTYReset=yes
+TTYVHangup=yes
+StandardInput=tty
+StandardOutput=tty
+
+[Install]
+WantedBy=multi-user.target" > /etc/systemd/system/autologin-tty1.service'
 
 
 sleep 3;
