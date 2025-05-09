@@ -606,7 +606,9 @@ StandardInput=tty
 StandardOutput=tty
 
 [Install]
-WantedBy=multi-user.target" > /etc/systemd/system/autologin-tty1.service'
+WantedBy=multi-user.target" > /etc/systemd/system/autologin-tty1.service;
+
+systemctl enable autologin-tty1.service;'
 
 
 sleep 3;
