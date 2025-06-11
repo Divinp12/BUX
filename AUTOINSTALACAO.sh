@@ -73,7 +73,8 @@ perl \
 python3 \
 tar \
 xz \
-git; then
+git
+wget; then
 echo "PASSOU :)"
 else
 echo "FALHOU :("
