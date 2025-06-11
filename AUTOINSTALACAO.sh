@@ -188,7 +188,6 @@ echo "INSTALANDO PACOTES DO SISTEMA";
 if pacstrap /mnt --noconfirm --quiet \
 base \
 base-devel \
-linux \
 linux-firmware \
 linux-headers \
 networkmanager \
@@ -205,7 +204,7 @@ xfdesktop \
 pulseaudio \
 pavucontrol \
 grub-efi-x86_64 \
-efibootmgr > /dev/null 2>&1; then
+efibootmgr --ignore linux > /dev/null 2>&1; then
 echo "PASSOU :)"
 else
 echo "FALHOU :("
