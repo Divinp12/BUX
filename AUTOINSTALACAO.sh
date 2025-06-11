@@ -57,6 +57,33 @@ sleep 3;
 clear;
 
 
+echo "INSTALANDO DEPENDÊNCIAS"
+if pacman -S --noconfirm --quiet \
+base-devel \
+bc \
+coreutils \
+cpio \
+gettext \
+initramfs \
+kmod \
+libelf \
+ncurses \
+pahole \
+perl \
+python3 \
+tar \
+xz \
+git; then
+echo "PASSOU :)"
+else
+echo "FALHOU :("
+fi;
+
+
+sleep 3;
+clear;
+
+
 echo "FORMATANDO DISPOSITIVO DE ARMAZENAMENTO DE DADOS VALIDO"
 if fdisk /dev/nvme0n1 > /dev/null 2>&1; then <<EOF > /dev/null 2>&1
 o
