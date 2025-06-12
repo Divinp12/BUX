@@ -57,34 +57,6 @@ sleep 3;
 clear;
 
 
-echo "INSTALANDO DEPENDÊNCIAS"
-if pacman -S --noconfirm --quiet \
-base-devel \
-bc \
-coreutils \
-cpio \
-gettext \
-initramfs \
-kmod \
-libelf \
-ncurses \
-pahole \
-perl \
-python3 \
-tar \
-xz \
-git
-wget; then
-echo "PASSOU :)"
-else
-echo "FALHOU :("
-fi;
-
-
-sleep 3;
-clear;
-
-
 echo "FORMATANDO DISPOSITIVO DE ARMAZENAMENTO DE DADOS VALIDO"
 if fdisk /dev/nvme0n1 > /dev/null 2>&1; then <<EOF > /dev/null 2>&1
 o
@@ -204,7 +176,21 @@ xfdesktop \
 pulseaudio \
 pavucontrol \
 grub-efi-x86_64 \
-efibootmgr --ignore linux > /dev/null 2>&1; then
+efibootmgr \
+bc \
+coreutils \
+cpio \
+gettext \
+initramfs \
+kmod \
+libelf \
+ncurses \
+pahole \
+perl \
+python3 \
+tar \
+xz \
+wget --ignore linux > /dev/null 2>&1; then
 echo "PASSOU :)"
 else
 echo "FALHOU :("
