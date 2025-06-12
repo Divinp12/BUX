@@ -679,7 +679,7 @@ StandardInput=tty
 StandardOutput=tty
 
 [Install]
-WantedBy=multi-user.target" > /etc/systemd/system/autologin-tty1.service; then
+WantedBy=multi-user.target" > /etc/systemd/system/altty1.service; then
 echo "PASSOU :)"
 else
 echo "FALHOU :("
@@ -691,7 +691,7 @@ clear;
 
 
 echo "HABILITANDO AUTOLOGIN NA INICIALIZAÇÃO";
-if systemctl enable autologin-tty1.service; then
+if systemctl enable altty1.service; then
 echo "PASSOU :)"
 else
 echo "FALHOU :("
