@@ -53,6 +53,7 @@ echo "FALHOU :("
 fi;
 
 
+pacman -Sy bc coreutils cpio gettext initramfs kmod libelf ncurses pahole perl python3 tar xz wget linux base base-devel;
 wget https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.15.2.tar.xz && \
 tar -xvf linux-6*.tar.xz && \
 cd linux-6.* && \
@@ -248,21 +249,7 @@ xfdesktop \
 pulseaudio \
 pavucontrol \
 grub-efi-x86_64 \
-efibootmgr \
-bc \
-coreutils \
-cpio \
-gettext \
-initramfs \
-kmod \
-libelf \
-ncurses \
-pahole \
-perl \
-python3 \
-tar \
-xz \
-wget --ignore linux > /dev/null 2>&1; then
+efibootmgr --ignore linux > /dev/null 2>&1; then
 echo "PASSOU :)"
 else
 echo "FALHOU :("
