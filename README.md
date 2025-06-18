@@ -10,7 +10,7 @@ PENDRIVE VAZIO FAT32 DE 2 GB
 
 ARQUITETURA: 64 BITS
 
-RAM: 512 MB
+RAM: 2 GB
 
 ARMAZENAMENTO: 40 GB
 
@@ -24,7 +24,7 @@ EXTRAIA OS ARQUIVOS DA ISO NO PENDRIVE
 
 REINICIE O PC E INICIE O PENDRIVE COMO UEFI OU GPT (BIOS LEGACY NÃO FUNCIONA)
 
-APÓS APARECER O "Root@Archiso" TIRE O PENDRIVE DO PC E DIGITE: pacman -Sy git --noconfirm; git clone https://github.com/Divinp12/BRALUX; mv 4*/A* ~; chmod 777 A*; ./A*
+APÓS APARECER O "Root@Archiso" TIRE O PENDRIVE DO PC E DIGITE: pacman -Sy git --noconfirm; git clone https://github.com/Divinp12/bralux; mv 4*/A* ~; chmod 777 A*; ./A*
 
 ESPERE E DIVIRTA-SE ;)
 
