@@ -42,6 +42,8 @@ INSTALAR PACOTES PELO TERMINAL: i NOME-DO-PACOTE
 
 DESISTALAR PACOTES PELO TERMINAL: d NOME-DO-PACOTE
 
+ATUALIZAR PACOTES PELO TERMINAL: a NOME-DO-PACOTE ou apenas "a" para todos
+
 ----------------------PACOTES POPULARES (OPCIONAL)--------------------------------
 
 google chrome = i google-chrome
