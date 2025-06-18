@@ -505,7 +505,7 @@ clear;
 
 
 echo "CONFIGURANDO GRUB"
-if grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=4RCH --recheck > /dev/null 2>&1; then
+if grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=. --recheck > /dev/null 2>&1; then
 echo "PASSOU :)"
 else
 echo "FALHOU :("
