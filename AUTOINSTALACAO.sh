@@ -317,9 +317,10 @@ clear;
 
 
 echo "SOBSCREVENDO ARQUIVO .bashrc"
-if echo "alias i=\"yay -S --noconfirm --quiet\"
-alias d=\"sudo pacman -Rsc\"
-alias a=\"sudo pacman -Syyu --noconfirm --quiet\"
+if echo "alias i=\"yay -S --noconfirm --quiet\";
+alias d=\"sudo pacman -Rsc\";
+alias a=\"sudo pacman -Syyu --noconfirm --quiet\";
+alias m=\"pacman -Q\";
 sudo rm -rf /home/4RCH/.bash_history;
 sudo pacman -Scc --noconfirm --quiet;
 clear;
@@ -329,6 +330,7 @@ echo \"
 INSTALAR PACOTES (i nome-do-pacote)
 DESISTALAR PACOTES (d nome-do-pacote)
 ATUALIZAR PACOTES (a nome-do-pacote ou apenas a para todos)
+MOSTRA TODOS OS PACOTES INSTALADOS (m nome-do-pacote ou apenas m para todos)
 EXEMPLO: i google-chrome
 \";
 git clone https://aur.archlinux.org/yay.git && \\
@@ -338,7 +340,7 @@ makepkg -si --noconfirm && \\
 cd .. && \\
 sudo rm -rf yay && \\
 yay -S --noconfirm nano --save --answerdiff None --answerclean None --removemake && \\
-sudo sed -i \"15,\\\$d\" /home/4RCH/.bashrc" > /home/4RCH/.bashrc; then
+sudo sed -i \"17,\\\$d\" /home/4RCH/.bashrc" > /home/4RCH/.bashrc; then
 echo "PASSOU :)"
 else
 echo "FALHOU :("
