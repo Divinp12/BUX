@@ -44,6 +44,8 @@ DESISTALAR PACOTES PELO TERMINAL: d NOME-DO-PACOTE
 
 ATUALIZAR PACOTES PELO TERMINAL: a NOME-DO-PACOTE ou apenas "a" para todos
 
+MOSTRA TODOS OS PACOTES INSTALADOS: m NOME-DO-PACOTE ou apenas "m" para todos
+
 ----------------------PACOTES POPULARES (OPCIONAL)--------------------------------
 
 google chrome = i google-chrome
