@@ -28,7 +28,7 @@ APÓS APARECER O "Root@Archiso" TIRE O PENDRIVE DO PC E DIGITE: pacman -Sy git -
 
 ESPERE E DIVIRTA-SE ;)
 
------------------------INFORMAÇÕES BASICAS----------------------------------------
+-----------------------INFORMAÇÕES BASICAS SOBRE O TERMINAL----------------------------------------
 
 NOME DO USUARIO ROOT: 4RCH
 
@@ -38,13 +38,13 @@ NOME DO USUARIO NORMAL: 4RCH
 
 SENHA DO USUARIO NORMAL: 4RCH
 
-INSTALAR PACOTES PELO TERMINAL: i NOME-DO-PACOTE
+INSTALAR PACOTES: i nome-do-pacote
 
-DESISTALAR PACOTES PELO TERMINAL: d NOME-DO-PACOTE
+DESISTALAR PACOTES: d nome-do-pacote
 
-ATUALIZAR PACOTES PELO TERMINAL: a NOME-DO-PACOTE ou apenas "a" para todos
+ATUALIZAR PACOTES: a nome-do-pacote ou apenas "a" para todos
 
-MOSTRA TODOS OS PACOTES INSTALADOS: m NOME-DO-PACOTE ou apenas "m" para todos
+MOSTRA TODOS OS PACOTES INSTALADOS: m nome-do-pacote ou apenas "m" para todos
 
 ----------------------PACOTES POPULARES (OPCIONAL)--------------------------------
 
