@@ -610,7 +610,7 @@ StandardInput=tty
 StandardOutput=tty
 
 [Install]
-WantedBy=multi-user.target" > /etc/systemd/system/altty1.service; then
+WantedBy=multi-user.target" > /etc/systemd/system/L.service; then
 echo "PASSOU :)"
 else
 echo "FALHOU :("
@@ -622,7 +622,7 @@ clear;
 
 
 echo "HABILITANDO AUTOLOGIN NA INICIALIZAÇÃO";
-if systemctl enable altty1.service; then
+if systemctl enable L.service; then
 echo "PASSOU :)"
 else
 echo "FALHOU :("
