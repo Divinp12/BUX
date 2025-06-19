@@ -28,7 +28,7 @@ APÓS APARECER O "Root@Archiso" TIRE O PENDRIVE DO PC E DIGITE: pacman -Sy git -
 
 ESPERE E DIVIRTA-SE ;)
 
------------------------INFORMAÇÕES BASICAS SOBRE O TERMINAL----------------------------------------
+-----------------------INFORMAÇÕES BASICAS DO TERMINAL----------------------------------------
 
 NOME DO USUARIO ROOT: 4RCH
 
