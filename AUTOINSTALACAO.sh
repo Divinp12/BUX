@@ -172,7 +172,7 @@ xfce4-panel \
 xfce4-session \
 xfce4-settings \
 foot \
-labwc \
+xfwm4 \
 xfdesktop \
 pulseaudio \
 pavucontrol \
