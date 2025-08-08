@@ -321,17 +321,22 @@ if echo "alias i=\"yay -S --noconfirm --quiet\";
 alias d=\"sudo pacman -Rsc\";
 alias a=\"sudo pacman -Syyu --noconfirm --quiet\";
 alias m=\"pacman -Q\";
+alias w=\"nmtui\";
 sudo rm -rf /home/4RCH/.bash_history;
 sudo pacman -Scc --noconfirm --quiet;
 clear;
 sudo sleep 1;
 fastfetch;
 echo \"
+INSTRUÇÕES DE PACOTES:
 INSTALAR PACOTES (i nome-do-pacote)
 DESISTALAR PACOTES (d nome-do-pacote)
 ATUALIZAR PACOTES (a nome-do-pacote ou apenas a para todos)
 MOSTRA PACOTES INSTALADOS (m nome-do-pacote ou apenas m para todos)
 EXEMPLO: i google-chrome
+
+INSTRUÇÕES DE DRIVERS:
+CONECTAR WIFI COM OU SEM FIO (use w)
 \";
 git clone https://aur.archlinux.org/yay.git && \\
 chmod 777 yay && \\
@@ -340,7 +345,7 @@ makepkg -si --noconfirm && \\
 cd .. && \\
 sudo rm -rf yay && \\
 yay -S --noconfirm nano --save --answerdiff None --answerclean None --removemake && \\
-sudo sed -i \"17,\\\$d\" /home/4RCH/.bashrc" > /home/4RCH/.bashrc; then
+sudo sed -i \"22,\\\$d\" /home/4RCH/.bashrc" > /home/4RCH/.bashrc; then
 echo "PASSOU :)"
 else
 echo "FALHOU :("
