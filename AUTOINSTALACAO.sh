@@ -328,15 +328,15 @@ clear;
 sudo sleep 1;
 fastfetch;
 echo \"
-INSTRUÇÕES DE PACOTES:
+INFORMAÇÕES DE PACOTES:
 INSTALAR PACOTES (i nome-do-pacote)
 DESISTALAR PACOTES (d nome-do-pacote)
 ATUALIZAR PACOTES (a nome-do-pacote ou apenas a para todos)
 MOSTRA PACOTES INSTALADOS (m nome-do-pacote ou apenas m para todos)
 EXEMPLO: i google-chrome
 
-INSTRUÇÕES DE DRIVERS:
-CONECTAR WIFI COM OU SEM FIO (use w)
+INFORMAÇÕES DE DRIVERS:
+CONECTAR A REDE WIFI COM OU SEM FIO (w)
 \";
 git clone https://aur.archlinux.org/yay.git && \\
 chmod 777 yay && \\
