@@ -168,12 +168,8 @@ sudo \
 git \
 fastfetch \
 mesa \
-xfce4-panel \
-xfce4-session \
-xfce4-settings \
+plasma \
 foot \
-labwc \
-xfdesktop \
 pulseaudio \
 pavucontrol \
 grub-efi-x86_64 \
@@ -586,7 +582,7 @@ clear;
 
 
 echo "ADICIONANDO AUTOSTART DO XFCE";
-if echo "startxfce4 --wayland" > /home/4RCH/.bash_profile; then
+if echo "startplasma-wayland > /dev/null 2>&1" > /home/4RCH/.bash_profile; then
 echo "PASSOU :)"
 else
 echo "FALHOU :("
