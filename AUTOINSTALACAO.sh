@@ -171,6 +171,7 @@ mesa \
 plasma \
 wayland \
 lib32-wayland \
+xorg-xwayland \
 foot \
 pulseaudio \
 pavucontrol \
