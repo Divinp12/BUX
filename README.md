@@ -46,7 +46,7 @@ ATUALIZAR PACOTES: a nome-do-pacote ou apenas "a" para todos
 
 MOSTRA PACOTES INSTALADOS: m nome-do-pacote ou apenas "m" para todos
 
-CONECTAR A REDE WIFI: w
+CONECTAR A REDE WIFI COM/SEM FIO: w
 
 ----------------------PACOTES POPULARES (OPCIONAL)--------------------------------
 
