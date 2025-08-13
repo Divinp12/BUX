@@ -58,39 +58,11 @@ clear;
 
 
 echo "FORMATANDO DISPOSITIVO DE ARMAZENAMENTO DE DADOS VALIDO"
-if fdisk /dev/nvme0n1 > /dev/null 2>&1; then <<EOF > /dev/null 2>&1
-o
-w
-EOF
-
-fdisk /dev/nvme0n1 <<EOF > /dev/null 2>&1
-n
-p
-1
-
-+2G
-t
-4
-w
-EOF
-
-fdisk /dev/nvme0n1 <<EOF > /dev/null 2>&1
-n
-p
-2
-
-+30G
-w
-EOF
-
-fdisk /dev/nvme0n1 <<EOF > /dev/null 2>&1
-n
-p
-3
-
-
-w
-EOF
+if parted --script /dev/nvme0n1p mklabel gpt;
+parted --script /dev/nvme0n1p mkpart ESP fat32 1MiB 1025MiB;
+parted --script /dev/nvme0n1p set 1 esp on;
+parted --script /dev/nvme0n1p mkpart primary ext4 1025MiB 30721MiB;
+parted --script /dev/nvme0n1p mkpart primary ext4 30721MiB 100%;
 
 partprobe > /dev/null 2>&1
 mkfs.fat -F32 /dev/nvme0n1p1 > /dev/null 2>&1
@@ -105,39 +77,11 @@ mount /dev/nvme0n1p3 /mnt/home > /dev/null 2>&1
 
 else
 
-fdisk /dev/sda <<EOF > /dev/null 2>&1
-o
-w
-EOF
-
-fdisk /dev/sda <<EOF > /dev/null 2>&1
-n
-p
-1
-
-+2G
-t
-4
-w
-EOF
-
-fdisk /dev/sda <<EOF > /dev/null 2>&1
-n
-p
-2
-
-+30G
-w
-EOF
-
-fdisk /dev/sda <<EOF > /dev/null 2>&1
-n
-p
-3
-
-
-w
-EOF
+parted --script /dev/sda mklabel gpt;
+parted --script /dev/sda mkpart ESP fat32 1MiB 1025MiB;
+parted --script /dev/sda set 1 esp on;
+parted --script /dev/sda mkpart primary ext4 1025MiB 30721MiB;
+parted --script /dev/sda mkpart primary ext4 30721MiB 100%;
 
 partprobe > /dev/null 2>&1
 mkfs.fat -F32 /dev/sda1 > /dev/null 2>&1
