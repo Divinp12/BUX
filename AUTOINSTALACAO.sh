@@ -509,6 +509,7 @@ echo "REMOVENDO LINHAS QUE COMECAM COM JOGO DA VELHA E ESPACOS VAZIOS"
 if sed -i "/^\s*#/d; /^\s*$/d" \
 /home/4RCH/.bash_profile \
 /home/4RCH/.bash_logout \
+/etc/environment \
 /etc/sudoers \
 /etc/sudo.conf \
 /etc/host.conf \
