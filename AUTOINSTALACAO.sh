@@ -58,11 +58,11 @@ clear;
 
 
 echo "FORMATANDO DISPOSITIVO DE ARMAZENAMENTO DE DADOS VALIDO"
-if parted --script /dev/nvme0n1p mklabel gpt;
-parted --script /dev/nvme0n1p mkpart ESP fat32 1MiB 1025MiB;
-parted --script /dev/nvme0n1p set 1 esp on;
-parted --script /dev/nvme0n1p mkpart primary ext4 1025MiB 30721MiB;
-parted --script /dev/nvme0n1p mkpart primary ext4 30721MiB 100%;
+if parted -s /dev/nvme0n1p mklabel gpt;
+parted -s /dev/nvme0n1p mkpart ESP fat32 1MiB 1025MiB;
+parted -s /dev/nvme0n1p set 1 esp on;
+parted -s /dev/nvme0n1p mkpart primary ext4 1025MiB 30721MiB;
+parted -s /dev/nvme0n1p mkpart primary ext4 30721MiB 100%;
 
 partprobe > /dev/null 2>&1
 mkfs.fat -F32 /dev/nvme0n1p1 > /dev/null 2>&1
@@ -77,11 +77,11 @@ mount /dev/nvme0n1p3 /mnt/home > /dev/null 2>&1
 
 else
 
-parted --script /dev/sda mklabel gpt;
-parted --script /dev/sda mkpart ESP fat32 1MiB 1025MiB;
-parted --script /dev/sda set 1 esp on;
-parted --script /dev/sda mkpart primary ext4 1025MiB 30721MiB;
-parted --script /dev/sda mkpart primary ext4 30721MiB 100%;
+parted -s /dev/sda mklabel gpt;
+parted -s /dev/sda mkpart ESP fat32 1MiB 1025MiB;
+parted -s /dev/sda set 1 esp on;
+parted -s /dev/sda mkpart primary ext4 1025MiB 30721MiB;
+parted -s /dev/sda mkpart primary ext4 30721MiB 100%;
 
 partprobe > /dev/null 2>&1
 mkfs.fat -F32 /dev/sda1 > /dev/null 2>&1
