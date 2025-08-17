@@ -144,9 +144,10 @@ clear;
 echo "ENTRANDO NO AMBIENTE arch-chroot"
 arch-chroot /mnt bash -c '
 
+alias @="sleep 3; clear;"
 
-sleep 3;
-clear;
+
+@
 
 
 echo "ADICIONANDO NOME 4RCH AO USUARIO ROOT NO ARQUIVO hostname";
@@ -157,8 +158,7 @@ echo "FALHOU :("
 fi;
 
 
-sleep 3;
-clear;
+@
 
 
 echo "ADICIONANDO SENHA 4RCH AO USUARIO ROOT"
@@ -169,8 +169,7 @@ echo "FALHOU :("
 fi;
 
 
-sleep 3;
-clear;
+@
 
 
 echo "ADICIONANDO USUARIO NORMAL COM NOME 4RCH"
@@ -181,8 +180,7 @@ echo "FALHOU :("
 fi;
 
 
-sleep 3;
-clear;
+@
 
 
 echo "ADICIONANDO SENHA 4RCH AO USUARIO NORMAL"
@@ -193,8 +191,7 @@ echo "FALHOU :("
 fi;
 
 
-sleep 3;
-clear;
+@
 
 
 echo "ADICIONANDO CARACTERES PORTUGUES BRASILEIRO"
@@ -205,8 +202,7 @@ echo "FALHOU :("
 fi;
 
 
-sleep 3;
-clear;
+@
 
 
 echo "APLICANDO IDIOMA PORTUGUES BRASILEIRO NO SISTEMA"
@@ -217,8 +213,7 @@ echo "FALHOU :("
 fi;
 
 
-sleep 3;
-clear;
+@
 
 
 echo "APLICANDO CARACTERES PORTUGUES BRASILEIRO"
@@ -229,8 +224,7 @@ echo "FALHOU :("
 fi;
 
 
-sleep 3;
-clear;
+@
 
 
 echo "SINCRONIZANDO RELOGIO DO HARDWARE E DO SISTEMA VIA WIFI"
@@ -241,8 +235,7 @@ echo "FALHOU :("
 fi;
 
 
-sleep 3;
-clear;
+@
 
 
 echo "ADICIONANDO ESPELHO BRASILEIRO"
@@ -253,8 +246,7 @@ echo "FALHOU :("
 fi;
 
 
-sleep 3;
-clear;
+@
 
 
 echo "SOBSCREVENDO ARQUIVO .bashrc"
@@ -293,8 +285,7 @@ echo "FALHOU :("
 fi;
 
 
-sleep 3;
-clear;
+@
 
 
 echo "SOBSCREVENDO ARQUIVO pacman.conf"
@@ -316,8 +307,7 @@ echo "FALHOU :("
 fi;
 
 
-sleep 3;
-clear;
+@
 
 
 echo "SINCRONIZANDO REPOSITORIOS DO PACMAN"
@@ -328,8 +318,7 @@ echo "FALHOU :("
 fi;
 
 
-sleep 3;
-clear;
+@
 
 
 echo "ESCANEANDO HARDWARE AMD E INSTALANDO DRIVERS AMD"
@@ -343,8 +332,7 @@ echo "FALHOU :("
 fi;
 
 
-sleep 3;
-clear;
+@
 
 
 echo "ESCANEANDO HARDWARE INTEL E INSTALANDO DRIVERS INTEL"
@@ -358,8 +346,7 @@ echo "FALHOU :("
 fi;
 
 
-sleep 3;
-clear;
+@
 
 
 echo "ESCANEANDO HARDWARE NVIDIA E INSTALANDO DRIVERS NVIDIA"
@@ -375,8 +362,7 @@ echo "FALHOU :("
 fi;
 
 
-sleep 3;
-clear;
+@
 
 
 echo "ESCANEANDO HARDWARE VIRTUALBOX E INSTALANDO DRIVERS VIRTUALBOX"
@@ -389,8 +375,7 @@ echo "FALHOU :("
 fi;
 
 
-sleep 3;
-clear;
+@
 
 
 echo "HABILITANDO DRIVER DE INTERNET NA INICIALIZACAO DO SISTEMA"
@@ -402,8 +387,7 @@ echo "FALHOU :("
 fi;
 
 
-sleep 3;
-clear;
+@
 
 
 echo "DESATIVANDO SERVICOS DESNECESSARIOS NA INICIALIZACAO DO SISTEMA"
@@ -417,8 +401,7 @@ echo "FALHOU :("
 fi;
 
 
-sleep 3;
-clear;
+@
 
 
 echo "GERANDO IMAGENS NO INICIALIZADOR DO SISTEMA"
@@ -429,8 +412,7 @@ echo "FALHOU :("
 fi;
 
 
-sleep 3;
-clear;
+@
 
 
 echo "SOBSCREVENDO ARQUIVO grub"
@@ -449,8 +431,7 @@ echo "FALHOU :("
 fi;
 
 
-sleep 3;
-clear;
+@
 
 
 echo "CONFIGURANDO GRUB"
@@ -461,8 +442,7 @@ echo "FALHOU :("
 fi;
 
 
-sleep 3;
-clear;
+@
 
 
 echo "ADICIONANDO GRUB NA INICIALIZACAO"
@@ -473,8 +453,7 @@ echo "FALHOU :("
 fi;
 
 
-sleep 3;
-clear;
+@
 
 
 echo "ADICIONANDO USUARIO NORMAL (4RCH) AO SUDO NO ARQUIVO sudoers"
@@ -485,8 +464,7 @@ echo "FALHOU :("
 fi;
 
 
-sleep 3;
-clear;
+@
 
 
 echo "ADICIONANDO CONEXAO IPV6 NO SISTEMA"
@@ -499,8 +477,7 @@ echo "FALHOU :("
 fi;
 
 
-sleep 3;
-clear;
+@
 
 
 echo "REMOVENDO LINHAS QUE COMECAM COM JOGO DA VELHA E ESPACOS VAZIOS"
@@ -525,8 +502,7 @@ echo "FALHOU :("
 fi;
 
 
-sleep 3;
-clear;
+@
 
 
 echo "ADICIONANDO AUTOSTART DO XFCE";
@@ -537,8 +513,7 @@ echo "FALHOU :("
 fi;
 
 
-sleep 3;
-clear;
+@
 
 
 echo "ADICIONANDO AUTOLOGIN DO TTY1";
@@ -566,8 +541,7 @@ echo "FALHOU :("
 fi;
 
 
-sleep 3;
-clear;
+@
 
 
 echo "HABILITANDO AUTOLOGIN NA INICIALIZAÇÃO";
