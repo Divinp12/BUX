@@ -23,7 +23,7 @@ echo " 14 " && sleep 1 && \
 echo " 15 " && sleep 1 && clear;
 fi;
 
-?() {
+☆() {
 if "$@"; then
 echo "PASSOU"
 else
@@ -34,10 +34,10 @@ clear;
 }
 
 echo "ADICIONANDO ESPELHO BRASILEIRO"
-? echo "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist
+☆ echo "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist
 
 echo "SOBSCREVENDO ARQUIVO pacman.conf"
-? echo "[options]
+☆ echo "[options]
 Architecture=auto
 CheckSpace
 ParallelDownloads=1
@@ -52,7 +52,7 @@ Include=/etc/pacman.d/mirrorlist" > /etc/pacman.conf
 
 
 echo "SINCRONIZANDO REPOSITORIOS DO PACMAN"
-? pacman -Sy --noconfirm --quiet > /dev/null 2>&1
+☆ pacman -Sy --noconfirm --quiet > /dev/null 2>&1
 
 
 echo "FORMATANDO DISPOSITIVO DE ARMAZENAMENTO DE DADOS VALIDO"
@@ -97,7 +97,7 @@ clear;
 
 
 echo "INSTALANDO PACOTES DO SISTEMA"
-? pacstrap /mnt --noconfirm --quiet \
+☆ pacstrap /mnt --noconfirm --quiet \
 base \
 base-devel \
 linux \
@@ -120,7 +120,7 @@ efibootmgr > /dev/null 2>&1
 
 
 echo "AUTOGERANDO E AUTOCONFIGURANDO PARTICOES NO ARQUIVO fstab"
-? genfstab -U -p /mnt > /mnt/etc/fstab
+☆ genfstab -U -p /mnt > /mnt/etc/fstab
 
 
 echo "ENTRANDO NO AMBIENTE arch-chroot"
