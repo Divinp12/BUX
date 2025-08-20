@@ -126,113 +126,55 @@ echo "AUTOGERANDO E AUTOCONFIGURANDO PARTICOES NO ARQUIVO fstab"
 echo "ENTRANDO NO AMBIENTE arch-chroot"
 arch-chroot /mnt bash -c '
 
-alias @="sleep 3; clear;"
-
-
-@
+☆() {
+if "$@"; then
+echo "PASSOU"
+else
+echo "FALHOU"
+fi;
+sleep 3;
+clear;
+}
 
 
 echo "ADICIONANDO NOME 4RCH AO USUARIO ROOT NO ARQUIVO hostname";
-if echo 4RCH > /etc/hostname; then
-echo "PASSOU :)"
-else
-echo "FALHOU :("
-fi;
-
-
-@
+☆ echo 4RCH > /etc/hostname
 
 
 echo "ADICIONANDO SENHA 4RCH AO USUARIO ROOT"
-if echo -e "4RCH\n4RCH" | passwd root; then
-echo "PASSOU :)"
-else
-echo "FALHOU :("
-fi;
-
-
-@
+☆ echo -e "4RCH\n4RCH" | passwd root
 
 
 echo "ADICIONANDO USUARIO NORMAL COM NOME 4RCH"
-if useradd -m -g users -G wheel 4RCH; then
-echo "PASSOU :)"
-else
-echo "FALHOU :("
-fi;
-
-
-@
+☆ useradd -m -g users -G wheel 4RCH
 
 
 echo "ADICIONANDO SENHA 4RCH AO USUARIO NORMAL"
-if echo -e "4RCH\n4RCH" | passwd 4RCH; then
-echo "PASSOU :)"
-else
-echo "FALHOU :("
-fi;
-
-
-@
+☆ echo -e "4RCH\n4RCH" | passwd 4RCH
 
 
 echo "ADICIONANDO CARACTERES PORTUGUES BRASILEIRO"
-if echo "pt_BR.UTF-8 UTF-8" > /etc/locale.gen; then
-echo "PASSOU :)"
-else
-echo "FALHOU :("
-fi;
-
-
-@
+☆ echo "pt_BR.UTF-8 UTF-8" > /etc/locale.gen
 
 
 echo "APLICANDO IDIOMA PORTUGUES BRASILEIRO NO SISTEMA"
-if echo "LANG=pt_BR.UTF-8" > /etc/locale.conf; then
-echo "PASSOU :)"
-else
-echo "FALHOU :("
-fi;
-
-
-@
+☆ echo "LANG=pt_BR.UTF-8" > /etc/locale.conf
 
 
 echo "APLICANDO CARACTERES PORTUGUES BRASILEIRO"
-if locale-gen > /dev/null 2>&1; then
-echo "PASSOU :)"
-else
-echo "FALHOU :("
-fi;
-
-
-@
+☆ locale-gen > /dev/null 2>&1
 
 
 echo "SINCRONIZANDO RELOGIO DO HARDWARE E DO SISTEMA VIA WIFI"
-if hwclock --systohc > /dev/null 2>&1; then
-echo "PASSOU :)"
-else
-echo "FALHOU :("
-fi;
-
-
-@
+☆ hwclock --systohc > /dev/null 2>&1
 
 
 echo "ADICIONANDO ESPELHO BRASILEIRO"
-if echo "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist; then
-echo "PASSOU :)"
-else
-echo "FALHOU :("
-fi;
-
-
-@
+☆ echo "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist
 
 
 echo "SOBSCREVENDO ARQUIVO .bashrc"
-if echo "alias i=\"yay -S --noconfirm --quiet\";
+☆ echo "alias i=\"yay -S --noconfirm --quiet\";
 alias d=\"sudo pacman -Rsc\";
 alias a=\"sudo pacman -Syyu --noconfirm --quiet\";
 alias m=\"pacman -Q\";
@@ -260,18 +202,11 @@ makepkg -si --noconfirm && \\
 cd .. && \\
 sudo rm -rf yay && \\
 yay -S --noconfirm nano --save --answerdiff None --answerclean None --removemake && \\
-sudo sed -i \"22,\\\$d\" /home/4RCH/.bashrc" > /home/4RCH/.bashrc; then
-echo "PASSOU :)"
-else
-echo "FALHOU :("
-fi;
-
-
-@
+sudo sed -i \"22,\\\$d\" /home/4RCH/.bashrc" > /home/4RCH/.bashrc
 
 
 echo "SOBSCREVENDO ARQUIVO pacman.conf"
-if echo "[options]
+☆ echo "[options]
 Architecture=auto
 CheckSpace
 ParallelDownloads=1
@@ -282,25 +217,11 @@ Include=/etc/pacman.d/mirrorlist
 [extra]
 Include=/etc/pacman.d/mirrorlist
 [multilib]
-Include=/etc/pacman.d/mirrorlist" > /etc/pacman.conf; then
-echo "PASSOU :)"
-else
-echo "FALHOU :("
-fi;
-
-
-@
+Include=/etc/pacman.d/mirrorlist" > /etc/pacman.conf
 
 
 echo "SINCRONIZANDO REPOSITORIOS DO PACMAN"
-if pacman -Sy --noconfirm --quiet > /dev/null 2>&1; then
-echo "PASSOU :)"
-else
-echo "FALHOU :("
-fi;
-
-
-@
+☆ pacman -Sy --noconfirm --quiet > /dev/null 2>&1
 
 
 echo "ESCANEANDO HARDWARE AMD E INSTALANDO DRIVERS AMD"
@@ -361,44 +282,22 @@ fi;
 
 
 echo "HABILITANDO DRIVER DE INTERNET NA INICIALIZACAO DO SISTEMA"
-if systemctl enable \
-NetworkManager > /dev/null 2>&1; then
-echo "PASSOU :)"
-else
-echo "FALHOU :("
-fi;
-
-
-@
+☆ systemctl enable NetworkManager > /dev/null 2>&1
 
 
 echo "DESATIVANDO SERVICOS DESNECESSARIOS NA INICIALIZACAO DO SISTEMA"
-if systemctl disable \
+☆ systemctl disable \
 NetworkManager-wait-online \
 systemd-networkd \
-systemd-timesyncd > /dev/null 2>&1; then
-echo "PASSOU :)"
-else
-echo "FALHOU :("
-fi;
-
-
-@
+systemd-timesyncd > /dev/null 2>&1
 
 
 echo "GERANDO IMAGENS NO INICIALIZADOR DO SISTEMA"
-if mkinitcpio -P > /dev/null 2>&1; then
-echo "PASSOU :)"
-else
-echo "FALHOU :("
-fi;
-
-
-@
+☆ mkinitcpio -P > /dev/null 2>&1
 
 
 echo "SOBSCREVENDO ARQUIVO grub"
-if echo "GRUB_DEFAULT=0
+☆ echo "GRUB_DEFAULT=0
 GRUB_TIMEOUT=0
 GRUB_DISTRIBUTOR=\"BUX\"
 GRUB_CMDLINE_LINUX_DEFAULT=\"quiet loglevel=0 panic=0 mitigations=off\"
@@ -406,64 +305,29 @@ GRUB_CMDLINE_LINUX=\"\"
 GRUB_PRELOAD_MODULES=\"part_gpt part_msdos\"
 GRUB_GFXMODE=auto
 GRUB_GFXPAYLOAD_LINUX=keep
-GRUB_DISABLE_RECOVERY=true" > /etc/default/grub; then
-echo "PASSOU :)"
-else
-echo "FALHOU :("
-fi;
-
-
-@
+GRUB_DISABLE_RECOVERY=true" > /etc/default/grub
 
 
 echo "CONFIGURANDO GRUB"
-if grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=. --recheck > /dev/null 2>&1; then
-echo "PASSOU :)"
-else
-echo "FALHOU :("
-fi;
-
-
-@
+☆ grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=. --recheck > /dev/null 2>&1
 
 
 echo "ADICIONANDO GRUB NA INICIALIZACAO"
-if grub-mkconfig -o /boot/grub/grub.cfg > /dev/null 2>&1; then
-echo "PASSOU :)"
-else
-echo "FALHOU :("
-fi;
-
-
-@
+☆ grub-mkconfig -o /boot/grub/grub.cfg > /dev/null 2>&1
 
 
 echo "ADICIONANDO USUARIO NORMAL (4RCH) AO SUDO NO ARQUIVO sudoers"
-if echo "4RCH ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers; then
-echo "PASSOU :)"
-else
-echo "FALHOU :("
-fi;
-
-
-@
+☆ echo "4RCH ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers
 
 
 echo "ADICIONANDO CONEXAO IPV6 NO SISTEMA"
-if echo "127.0.0.1 localhost.localdomain localhost
+☆ echo "127.0.0.1 localhost.localdomain localhost
 ::1 localhost.localdomain localhost
-127.0.0.1 4RCH.localdomain 4RCH" > /etc/hosts; then
-echo "PASSOU :)"
-else
-echo "FALHOU :("
-fi;
-
-
-@
+127.0.0.1 4RCH.localdomain 4RCH" > /etc/hosts
 
 
 echo "REMOVENDO LINHAS QUE COMECAM COM JOGO DA VELHA E ESPACOS VAZIOS"
-if sed -i "/^\s*#/d; /^\s*$/d" \
+☆ sed -i "/^\s*#/d; /^\s*$/d" \
 /home/4RCH/.bash_profile \
 /home/4RCH/.bash_logout \
 /etc/environment \
@@ -477,29 +341,15 @@ if sed -i "/^\s*#/d; /^\s*$/d" \
 /etc/vconsole.conf \
 /etc/fuse.conf \
 /etc/ts.conf \
-/etc/fstab; then
-echo "PASSOU :)"
-else
-echo "FALHOU :("
-fi;
+/etc/fstab
 
 
-@
+echo "ADICIONANDO AUTOSTART DO XFCE"
+☆ echo "startplasma-wayland > /dev/null 2>&1" > /home/4RCH/.bash_profile
 
 
-echo "ADICIONANDO AUTOSTART DO XFCE";
-if echo "startplasma-wayland > /dev/null 2>&1" > /home/4RCH/.bash_profile; then
-echo "PASSOU :)"
-else
-echo "FALHOU :("
-fi;
-
-
-@
-
-
-echo "ADICIONANDO AUTOLOGIN DO TTY1";
-if echo "[Unit]
+echo "ADICIONANDO AUTOLOGIN DO TTY1"
+☆ echo "[Unit]
 After=systemd-user-sessions.service plymouth-quit-wait.service
 Before=getty.target
 
@@ -516,22 +366,11 @@ StandardInput=tty
 StandardOutput=tty
 
 [Install]
-WantedBy=multi-user.target" > /etc/systemd/system/L.service; then
-echo "PASSOU :)"
-else
-echo "FALHOU :("
-fi;
+WantedBy=multi-user.target" > /etc/systemd/system/L.service
 
 
-@
-
-
-echo "HABILITANDO AUTOLOGIN NA INICIALIZAÇÃO";
-if systemctl enable L.service; then
-echo "PASSOU :)"
-else
-echo "FALHOU :("
-fi;'
+echo "HABILITANDO AUTOLOGIN NA INICIALIZAÇÃO"
+☆ systemctl enable L.service'
 
 
 sleep 3;
@@ -539,15 +378,7 @@ clear;
 
 
 echo "GRAVANDO DADOS DA MEMORIA NO DISCO"
-if sync > /dev/null 2>&1; then
-echo "PASSOU :)"
-else
-echo "FALHOU :("
-fi;
-
-
-sleep 3;
-clear;
+☆ sync > /dev/null 2>&1
 
 
 echo "REINICIANDO"
