@@ -235,7 +235,8 @@ echo "FALHOU :("
 fi;
 
 
-@
+sleep 3;
+clear
 
 
 echo "ESCANEANDO HARDWARE INTEL E INSTALANDO DRIVERS INTEL"
@@ -249,7 +250,8 @@ echo "FALHOU :("
 fi;
 
 
-@
+sleep 3;
+clear
 
 
 echo "ESCANEANDO HARDWARE NVIDIA E INSTALANDO DRIVERS NVIDIA"
@@ -265,20 +267,8 @@ echo "FALHOU :("
 fi;
 
 
-@
-
-
-echo "ESCANEANDO HARDWARE VIRTUALBOX E INSTALANDO DRIVERS VIRTUALBOX"
-if lspci | grep -i virtualbox > /dev/null 2>&1; then
-pacman -Sy --noconfirm \
-virtualbox-guest-utils \
-virtualbox-guest-modules-arch > /dev/null 2>&1
-else
-echo "FALHOU :("
-fi;
-
-
-@
+sleep 3;
+clear
 
 
 echo "HABILITANDO DRIVER DE INTERNET NA INICIALIZACAO DO SISTEMA"
