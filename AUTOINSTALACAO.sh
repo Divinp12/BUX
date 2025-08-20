@@ -2,11 +2,25 @@
 
 clear;
 
-if echo "INICIANDO FORMATACAO EM 10 SEGUNDOS,
+if echo "INICIANDO FORMATACAO EM 15 SEGUNDOS,
 ESTEJA CIENTE DO QUE ESTA FAZENDO,
 POIS TODOS OS DADOS SERAO APAGADOS
 PARA QUE A INSTALACAO SEJA BEM SUCEDIDA..."; then
-sleep 10; clear
+echo " 1 " && sleep 1 && \
+echo " 2 " && sleep 1 && \
+echo " 3 " && sleep 1 && \
+echo " 4 " && sleep 1 && \
+echo " 5 " && sleep 1 && \
+echo " 6 " && sleep 1 && \
+echo " 7 " && sleep 1 && \
+echo " 8 " && sleep 1 && \
+echo " 9 " && sleep 1 && \
+echo " 10 " && sleep 1 && \
+echo " 11 " && sleep 1 && \
+echo " 12 " && sleep 1 && \
+echo " 13 " && sleep 1 && \
+echo " 14 " && sleep 1 && \
+echo " 15 " && sleep 1 && clear;
 fi;
 
 
