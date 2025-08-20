@@ -23,21 +23,21 @@ echo " 14 " && sleep 1 && \
 echo " 15 " && sleep 1 && clear;
 fi;
 
-
-echo "ADICIONANDO ESPELHO BRASILEIRO"
-if echo "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist; then
-echo "PASSOU :)"
+?() {
+if "$@"; then
+echo "PASSOU"
 else
-echo "FALHOU :("
+echo "FALHOU"
 fi;
-
-
 sleep 3;
 clear;
+}
 
+echo "ADICIONANDO ESPELHO BRASILEIRO"
+? echo "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist
 
 echo "SOBSCREVENDO ARQUIVO pacman.conf"
-if echo "[options]
+? echo "[options]
 Architecture=auto
 CheckSpace
 ParallelDownloads=1
@@ -48,27 +48,11 @@ Include=/etc/pacman.d/mirrorlist
 [extra]
 Include=/etc/pacman.d/mirrorlist
 [multilib]
-Include=/etc/pacman.d/mirrorlist" > /etc/pacman.conf; then
-echo "PASSOU :)"
-else
-echo "FALHOU :("
-fi;
-
-
-sleep 3;
-clear;
+Include=/etc/pacman.d/mirrorlist" > /etc/pacman.conf
 
 
 echo "SINCRONIZANDO REPOSITORIOS DO PACMAN"
-if pacman -Sy --noconfirm --quiet > /dev/null 2>&1; then
-echo "PASSOU :)"
-else
-echo "FALHOU :("
-fi;
-
-
-sleep 3;
-clear;
+? pacman -Sy --noconfirm --quiet > /dev/null 2>&1
 
 
 echo "FORMATANDO DISPOSITIVO DE ARMAZENAMENTO DE DADOS VALIDO"
@@ -112,8 +96,8 @@ sleep 3;
 clear;
 
 
-echo "INSTALANDO PACOTES DO SISTEMA";
-if pacstrap /mnt --noconfirm --quiet \
+echo "INSTALANDO PACOTES DO SISTEMA"
+? pacstrap /mnt --noconfirm --quiet \
 base \
 base-devel \
 linux \
@@ -132,27 +116,11 @@ foot \
 pulseaudio \
 pavucontrol \
 grub-efi-x86_64 \
-efibootmgr > /dev/null 2>&1; then
-echo "PASSOU :)"
-else
-echo "FALHOU :("
-fi;
-
-
-sleep 3;
-clear;
+efibootmgr > /dev/null 2>&1
 
 
 echo "AUTOGERANDO E AUTOCONFIGURANDO PARTICOES NO ARQUIVO fstab"
-if genfstab -U -p /mnt > /mnt/etc/fstab; then
-echo "PASSOU :)"
-else
-echo "FALHOU :("
-fi;
-
-
-sleep 3;
-clear;
+? genfstab -U -p /mnt > /mnt/etc/fstab
 
 
 echo "ENTRANDO NO AMBIENTE arch-chroot"
