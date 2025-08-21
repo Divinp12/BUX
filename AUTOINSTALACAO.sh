@@ -340,7 +340,7 @@ echo "removendo linhas que começam com jogo da velha e espaços vazios"
 
 
 echo "adicionando autostartx do kde plasma"
-☆ echo "startplasma-wayland > /dev/null 2>&1" > /home/4RCH/.bash_profile
+☆ echo "startplasma-wayland > /dev/null 2>&1" > /home/bux/.bash_profile
 
 
 echo "adicionando autologin do tty1"
