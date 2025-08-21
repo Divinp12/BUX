@@ -278,18 +278,18 @@ echo "habilitando driver de wifi na inicialização do sistema"
 ☆ systemctl enable NetworkManager > /dev/null 2>&1
 
 
-echo "DESATIVANDO SERVICOS DESNECESSARIOS NA INICIALIZACAO DO SISTEMA"
+echo "desativando serviços inuteis na inicialização do sistema"
 ☆ systemctl disable \
 NetworkManager-wait-online \
 systemd-networkd \
 systemd-timesyncd > /dev/null 2>&1
 
 
-echo "GERANDO IMAGENS NO INICIALIZADOR DO SISTEMA"
+echo "gerando imagens no inicializador do sistema"
 ☆ mkinitcpio -P > /dev/null 2>&1
 
 
-echo "SOBSCREVENDO ARQUIVO grub"
+echo "sobscrevendo arquivo grub"
 ☆ echo "GRUB_DEFAULT=0
 GRUB_TIMEOUT=0
 GRUB_DISTRIBUTOR=\"BUX\"
@@ -301,28 +301,28 @@ GRUB_GFXPAYLOAD_LINUX=keep
 GRUB_DISABLE_RECOVERY=true" > /etc/default/grub
 
 
-echo "CONFIGURANDO GRUB"
+echo "configurando grub"
 ☆ grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=. --recheck > /dev/null 2>&1
 
 
-echo "ADICIONANDO GRUB NA INICIALIZACAO"
+echo "adicionando grub na inicialização"
 ☆ grub-mkconfig -o /boot/grub/grub.cfg > /dev/null 2>&1
 
 
-echo "ADICIONANDO USUARIO NORMAL (4RCH) AO SUDO NO ARQUIVO sudoers"
-☆ echo "4RCH ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers
+echo "adicionando usuario normal (bux) ao sudo no arquivo sudoers"
+☆ echo "bux ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers
 
 
-echo "ADICIONANDO CONEXAO IPV6 NO SISTEMA"
+echo "adicionando conexão ipv6 no sistema"
 ☆ echo "127.0.0.1 localhost.localdomain localhost
 ::1 localhost.localdomain localhost
-127.0.0.1 4RCH.localdomain 4RCH" > /etc/hosts
+127.0.0.1 bux.localdomain bux" > /etc/hosts
 
 
-echo "REMOVENDO LINHAS QUE COMECAM COM JOGO DA VELHA E ESPACOS VAZIOS"
+echo "removendo linhas que começam com jogo da velha e espaços vazios"
 ☆ sed -i "/^\s*#/d; /^\s*$/d" \
-/home/4RCH/.bash_profile \
-/home/4RCH/.bash_logout \
+/home/bux/.bash_profile \
+/home/bux/.bash_logout \
 /etc/environment \
 /etc/gai.conf \
 /etc/sudoers \
@@ -337,17 +337,17 @@ echo "REMOVENDO LINHAS QUE COMECAM COM JOGO DA VELHA E ESPACOS VAZIOS"
 /etc/fstab
 
 
-echo "ADICIONANDO AUTOSTART DO XFCE"
+echo "adicionando autostartx do kde plasma"
 ☆ echo "startplasma-wayland > /dev/null 2>&1" > /home/4RCH/.bash_profile
 
 
-echo "ADICIONANDO AUTOLOGIN DO TTY1"
+echo "adicionando autologin do tty1"
 ☆ echo "[Unit]
 After=systemd-user-sessions.service plymouth-quit-wait.service
 Before=getty.target
 
 [Service]
-ExecStart=-/usr/bin/agetty --autologin 4RCH --noclear tty1 linux
+ExecStart=-/usr/bin/agetty --autologin bux --noclear tty1 linux
 Type=idle
 Restart=always
 RestartSec=0
@@ -362,7 +362,7 @@ StandardOutput=tty
 WantedBy=multi-user.target" > /etc/systemd/system/L.service
 
 
-echo "HABILITANDO AUTOLOGIN NA INICIALIZAÇÃO"
+echo "habilitando autologin na inicialização"
 ☆ systemctl enable L.service'
 
 
@@ -370,9 +370,9 @@ sleep 3;
 clear;
 
 
-echo "GRAVANDO DADOS DA MEMORIA NO DISCO"
+echo "gravando dados da memoria no disco"
 ☆ sync > /dev/null 2>&1
 
 
-echo "REINICIANDO"
+echo "reiniciando"
 reboot -f;
