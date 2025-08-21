@@ -5,7 +5,7 @@ clear;
 if echo "iniciando formatação em 15 segundos,
 esteja ciente do que esta fazendo,
 pois todos os dados serão apagados
-para que a instalação seja bem secedida..."; then
+para que a instalação seja bem sucedida..."; then
 echo " 1 " && sleep 1 && \
 echo " 2 " && sleep 1 && \
 echo " 3 " && sleep 1 && \
