@@ -160,7 +160,7 @@ echo "adicionando caracteres portugues brasileiro"
 ☆ echo "pt_BR.UTF-8 UTF-8" > /etc/locale.gen
 
 
-echo "adicionando idioma portugues brasileiro ao sistema"
+echo "adicionando idioma portugues brasileiro"
 ☆ echo "LANG=pt_BR.UTF-8" > /etc/locale.conf
 
 
@@ -179,7 +179,7 @@ echo "adicionando espelho brasileiro"
 echo "sobscrevendo arquivo .bashrc"
 ☆ echo "alias i=\"paru -Sy --noconfirm --quiet\";
 alias d=\"sudo pacman -Rsc\";
-alias a=\"sudo pacman -Syyu --noconfirm --quiet\";
+alias a=\"paru -Syyu --noconfirm --quiet\";
 alias m=\"pacman -Q\";
 alias w=\"nmtui\";
 sudo rm -rf /home/bux/.bash_history;
@@ -198,17 +198,17 @@ EXEMPLO: i google-chrome
 INFORMAÇÕES DE DRIVERS:
 CONECTAR A REDE WIFI COM OU SEM FIO (w)
 \";
-git clone https://aur.archlinux.org/yay.git && \\
-chmod 777 yay && \\
-cd yay && \\
+git clone https://aur.archlinux.org/paru.git && \\
+chmod 777 paru && \\
+cd paru && \\
 makepkg -si --noconfirm --quiet && \\
 cd .. && \\
-sudo rm -rf yay && \\
-yay -S --noconfirm nano --save --answerdiff None --answerclean None --removemake && \\
-sudo sed -i \"22,\\\$d\" /home/4RCH/.bashrc" > /home/4RCH/.bashrc
+sudo rm -rf paru && \\
+paru -Sy --noconfirm --quiet nano && \\
+sudo sed -i \"22,\\\$d\" /home/bux/.bashrc" > /home/bux/.bashrc
 
 
-echo "SOBSCREVENDO ARQUIVO pacman.conf"
+echo "sobscrevendo arquivo pacman.conf"
 ☆ echo "[options]
 Architecture=auto
 CheckSpace
@@ -223,18 +223,18 @@ Include=/etc/pacman.d/mirrorlist
 Include=/etc/pacman.d/mirrorlist" > /etc/pacman.conf
 
 
-echo "SINCRONIZANDO REPOSITORIOS DO PACMAN"
+echo "sincronizando repositorios do pacman"
 ☆ pacman -Sy --noconfirm --quiet > /dev/null 2>&1
 
 
-echo "ESCANEANDO HARDWARE AMD E INSTALANDO DRIVERS AMD"
+echo "escaneando hardware amd e instalando drivers amd"
 if lspci | grep -i amd > /dev/null 2>&1; then
 pacman -Sy --noconfirm \
 amd-ucode \
 vulkan-radeon \
 lib32-vulkan-radeon > /dev/null 2>&1
 else
-echo "FALHOU :("
+echo "falhou"
 fi;
 
 
@@ -242,14 +242,14 @@ sleep 3;
 clear
 
 
-echo "ESCANEANDO HARDWARE INTEL E INSTALANDO DRIVERS INTEL"
+echo "escaneando hardware intel e instalando drivers intel"
 if lspci | grep -i intel > /dev/null 2>&1; then
 pacman -Sy --noconfirm \
 intel-ucode \
 vulkan-intel \
 lib32-vulkan-intel > /dev/null 2>&1
 else
-echo "FALHOU :("
+echo "falhou"
 fi;
 
 
@@ -257,7 +257,7 @@ sleep 3;
 clear
 
 
-echo "ESCANEANDO HARDWARE NVIDIA E INSTALANDO DRIVERS NVIDIA"
+echo "escaneando hardware nvidia e instalando drivers nvidia"
 if lspci | grep -i nvidia > /dev/null 2>&1; then
 pacman -Sy --noconfirm \
 nvidia \
@@ -266,7 +266,7 @@ nvidia-utils \
 lib32-nvidia-utils \
 nvidia-settings > /dev/null 2>&1
 else
-echo "FALHOU :("
+echo "falhou"
 fi;
 
 
@@ -274,7 +274,7 @@ sleep 3;
 clear
 
 
-echo "HABILITANDO DRIVER DE INTERNET NA INICIALIZACAO DO SISTEMA"
+echo "habilitando driver de wifi na inicialização do sistema"
 ☆ systemctl enable NetworkManager > /dev/null 2>&1
 
 
