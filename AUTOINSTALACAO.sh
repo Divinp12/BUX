@@ -1,27 +1,127 @@
 #!/bin/bash
 
-clear;
+clear && sleep 3
 
-if echo "iniciando formatação em 15 segundos,
+echo "
+iniciando formatação em 15 segundos,
 esteja ciente do que esta fazendo,
 pois todos os dados serão apagados
-para que a instalação seja bem sucedida..."; then
-echo " 1 " && sleep 1 && \
-echo " 2 " && sleep 1 && \
-echo " 3 " && sleep 1 && \
-echo " 4 " && sleep 1 && \
-echo " 5 " && sleep 1 && \
-echo " 6 " && sleep 1 && \
-echo " 7 " && sleep 1 && \
-echo " 8 " && sleep 1 && \
-echo " 9 " && sleep 1 && \
-echo " 10 " && sleep 1 && \
-echo " 11 " && sleep 1 && \
-echo " 12 " && sleep 1 && \
-echo " 13 " && sleep 1 && \
-echo " 14 " && sleep 1 && \
-echo " 15 " && sleep 1 && clear;
-fi;
+para que a instalação seja bem sucedida.
+
+{=              }
+" && sleep 1 && clear && \
+echo "
+iniciando formatação em 15 segundos,
+esteja ciente do que esta fazendo,
+pois todos os dados serão apagados
+para que a instalação seja bem sucedida.
+
+{==             }
+" && sleep 1 && clear && \
+echo "
+iniciando formatação em 15 segundos,
+esteja ciente do que esta fazendo,
+pois todos os dados serão apagados
+para que a instalação seja bem sucedida.
+
+{===            }
+" && sleep 1 && clear && \
+echo "
+iniciando formatação em 15 segundos,
+esteja ciente do que esta fazendo,
+pois todos os dados serão apagados
+para que a instalação seja bem sucedida.
+
+{====           }
+" && sleep 1 && clear && \
+echo "
+iniciando formatação em 15 segundos,
+esteja ciente do que esta fazendo,
+pois todos os dados serão apagados
+para que a instalação seja bem sucedida.
+
+{=====          }
+" && sleep 1 && clear && \
+echo "
+iniciando formatação em 15 segundos,
+esteja ciente do que esta fazendo,
+pois todos os dados serão apagados
+para que a instalação seja bem sucedida.
+
+{======         }
+" && sleep 1 && clear && \
+echo "
+iniciando formatação em 15 segundos,
+esteja ciente do que esta fazendo,
+pois todos os dados serão apagados
+para que a instalação seja bem sucedida.
+
+{=======        }
+" && sleep 1 && clear && \
+echo "
+iniciando formatação em 15 segundos,
+esteja ciente do que esta fazendo,
+pois todos os dados serão apagados
+para que a instalação seja bem sucedida.
+
+{========       }
+" && sleep 1 && clear && \
+echo "
+iniciando formatação em 15 segundos,
+esteja ciente do que esta fazendo,
+pois todos os dados serão apagados
+para que a instalação seja bem sucedida.
+
+{=========      }
+" && sleep 1 && clear && \
+echo "
+iniciando formatação em 15 segundos,
+esteja ciente do que esta fazendo,
+pois todos os dados serão apagados
+para que a instalação seja bem sucedida.
+
+{==========     }
+" && sleep 1 && clear && \
+echo "
+iniciando formatação em 15 segundos,
+esteja ciente do que esta fazendo,
+pois todos os dados serão apagados
+para que a instalação seja bem sucedida.
+
+{===========    }
+" && sleep 1 && clear && \
+echo "
+iniciando formatação em 15 segundos,
+esteja ciente do que esta fazendo,
+pois todos os dados serão apagados
+para que a instalação seja bem sucedida.
+
+{============   }
+" && sleep 1 && clear && \
+echo "
+iniciando formatação em 15 segundos,
+esteja ciente do que esta fazendo,
+pois todos os dados serão apagados
+para que a instalação seja bem sucedida.
+
+{=============  }
+" && sleep 1 && clear && \
+echo "
+iniciando formatação em 15 segundos,
+esteja ciente do que esta fazendo,
+pois todos os dados serão apagados
+para que a instalação seja bem sucedida.
+
+{============== }
+" && sleep 1 && clear && \
+echo "
+iniciando formatação em 15 segundos,
+esteja ciente do que esta fazendo,
+pois todos os dados serão apagados
+para que a instalação seja bem sucedida.
+
+{===============}
+" && sleep 1 && clear;
 
 ☆() {
 if "$@"; then
@@ -29,8 +129,6 @@ echo "passou"
 else
 echo "falhou"
 fi;
-sleep 3;
-clear;
 }
 
 echo "adicionando espelho brasileiro"
