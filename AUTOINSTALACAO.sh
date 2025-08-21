@@ -2,10 +2,10 @@
 
 clear;
 
-if echo "INICIANDO FORMATACAO EM 15 SEGUNDOS,
-ESTEJA CIENTE DO QUE ESTA FAZENDO,
-POIS TODOS OS DADOS SERAO APAGADOS
-PARA QUE A INSTALACAO SEJA BEM SUCEDIDA..."; then
+if echo "iniciando formatação em 15 segundos,
+esteja ciente do que esta fazendo,
+pois todos os dados serão apagados
+para que a instalação seja bem secedida..."; then
 echo " 1 " && sleep 1 && \
 echo " 2 " && sleep 1 && \
 echo " 3 " && sleep 1 && \
@@ -25,18 +25,18 @@ fi;
 
 ☆() {
 if "$@"; then
-echo "PASSOU"
+echo "passou"
 else
-echo "FALHOU"
+echo "falhou"
 fi;
 sleep 3;
 clear;
 }
 
-echo "ADICIONANDO ESPELHO BRASILEIRO"
+echo "adicionando espelho brasileiro"
 ☆ echo "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist
 
-echo "SOBSCREVENDO ARQUIVO pacman.conf"
+echo "sobscrevendo arquivo pacman.conf"
 ☆ echo "[options]
 Architecture=auto
 CheckSpace
@@ -51,11 +51,11 @@ Include=/etc/pacman.d/mirrorlist
 Include=/etc/pacman.d/mirrorlist" > /etc/pacman.conf
 
 
-echo "SINCRONIZANDO REPOSITORIOS DO PACMAN"
+echo "sincronizando repositorios do pacman"
 ☆ pacman -Sy --noconfirm --quiet > /dev/null 2>&1
 
 
-echo "FORMATANDO DISPOSITIVO DE ARMAZENAMENTO DE DADOS VALIDO"
+echo "formatando 1 disco rigido valido"
 if parted -s /dev/nvme0n1p mklabel gpt && \
 parted -s /dev/nvme0n1p mkpart ESP fat32 1MiB 1025MiB && \
 parted -s /dev/nvme0n1p set 1 esp on && \
@@ -96,7 +96,7 @@ sleep 3;
 clear;
 
 
-echo "INSTALANDO PACOTES DO SISTEMA"
+echo "instalando pacotes do sistema"
 ☆ pacstrap /mnt --noconfirm --quiet \
 base \
 base-devel \
@@ -119,12 +119,15 @@ grub-efi-x86_64 \
 efibootmgr > /dev/null 2>&1
 
 
-echo "AUTOGERANDO E AUTOCONFIGURANDO PARTICOES NO ARQUIVO fstab"
+echo "configurando partições no arquivo fstab"
 ☆ genfstab -U -p /mnt > /mnt/etc/fstab
 
 
-echo "ENTRANDO NO AMBIENTE arch-chroot"
+echo "entrando no ambiente arch-chroot"
 arch-chroot /mnt bash -c '
+
+sleep 3;
+clear;
 
 ☆() {
 if "$@"; then
@@ -137,49 +140,49 @@ clear;
 }
 
 
-echo "ADICIONANDO NOME 4RCH AO USUARIO ROOT NO ARQUIVO hostname";
-☆ echo 4RCH > /etc/hostname
+echo "adicionando nome bux ao usuario root no arquivo hostname";
+☆ echo bux > /etc/hostname
 
 
-echo "ADICIONANDO SENHA 4RCH AO USUARIO ROOT"
-☆ echo -e "4RCH\n4RCH" | passwd root
+echo "adicionando senha bux ao usuario root"
+☆ echo -e "bux\nbux" | passwd root
 
 
-echo "ADICIONANDO USUARIO NORMAL COM NOME 4RCH"
-☆ useradd -m -g users -G wheel 4RCH
+echo "adicionando usuario normal com nome bux"
+☆ useradd -m -g users -G wheel bux
 
 
-echo "ADICIONANDO SENHA 4RCH AO USUARIO NORMAL"
-☆ echo -e "4RCH\n4RCH" | passwd 4RCH
+echo "adicionando senha bux ao usuario normal"
+☆ echo -e "bux\nbux" | passwd bux
 
 
-echo "ADICIONANDO CARACTERES PORTUGUES BRASILEIRO"
+echo "adicionando caracteres portugues brasileiro"
 ☆ echo "pt_BR.UTF-8 UTF-8" > /etc/locale.gen
 
 
-echo "APLICANDO IDIOMA PORTUGUES BRASILEIRO NO SISTEMA"
+echo "adicionando idioma portugues brasileiro ao sistema"
 ☆ echo "LANG=pt_BR.UTF-8" > /etc/locale.conf
 
 
-echo "APLICANDO CARACTERES PORTUGUES BRASILEIRO"
+echo "aplicando caracteres portugues brasileiro"
 ☆ locale-gen > /dev/null 2>&1
 
 
-echo "SINCRONIZANDO RELOGIO DO HARDWARE E DO SISTEMA VIA WIFI"
+echo "sincronizando relogio"
 ☆ hwclock --systohc > /dev/null 2>&1
 
 
-echo "ADICIONANDO ESPELHO BRASILEIRO"
+echo "adicionando espelho brasileiro"
 ☆ echo "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist
 
 
-echo "SOBSCREVENDO ARQUIVO .bashrc"
-☆ echo "alias i=\"yay -S --noconfirm --quiet\";
+echo "sobscrevendo arquivo .bashrc"
+☆ echo "alias i=\"paru -Sy --noconfirm --quiet\";
 alias d=\"sudo pacman -Rsc\";
 alias a=\"sudo pacman -Syyu --noconfirm --quiet\";
 alias m=\"pacman -Q\";
 alias w=\"nmtui\";
-sudo rm -rf /home/4RCH/.bash_history;
+sudo rm -rf /home/bux/.bash_history;
 sudo pacman -Scc --noconfirm --quiet;
 clear;
 sudo sleep 1;
@@ -198,7 +201,7 @@ CONECTAR A REDE WIFI COM OU SEM FIO (w)
 git clone https://aur.archlinux.org/yay.git && \\
 chmod 777 yay && \\
 cd yay && \\
-makepkg -si --noconfirm && \\
+makepkg -si --noconfirm --quiet && \\
 cd .. && \\
 sudo rm -rf yay && \\
 yay -S --noconfirm nano --save --answerdiff None --answerclean None --removemake && \\
