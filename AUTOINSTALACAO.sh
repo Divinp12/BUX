@@ -123,20 +123,32 @@ para que a instalação seja bem sucedida.
 {===============}
 " && sleep 1 && clear;
 
-☆() {
-if "$@"; then
-echo "passou"
-else
-echo "falhou"
-fi;
-}
+
+
+
 
 echo "
 adicionando espelho brasileiro
 
 {========       }
-"
-☆ echo "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist
+" && sleep 1 && clear && \
+if echo "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist; then
+echo "
+adicionando espelho brasileiro
+
+{===============} sucesso
+" && sleep 3 && clear
+else
+echo "
+adicionando espelho brasileiro
+
+{               } falhou
+" && sleep 3 && clear && exit 1
+fi;
+
+
+
+
 
 echo "sobscrevendo arquivo pacman.conf"
 ☆ echo "[options]
