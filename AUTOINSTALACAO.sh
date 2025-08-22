@@ -121,17 +121,12 @@ pois todos os dados serão apagados
 para que a instalação seja bem sucedida.
 
 {===============}
-" && sleep 1 && clear;
-
-
-
-
-
+" && sleep 1 && clear && \
 echo "
 adicionando espelho brasileiro
 
 {========       }
-" && sleep 1 && clear && \
+" && sleep 3 && \
 if echo "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist; then
 echo "
 adicionando espelho brasileiro
@@ -144,14 +139,13 @@ adicionando espelho brasileiro
 
 {               } falhou
 " && sleep 3 && clear && exit 1
-fi;
+fi && \
+echo "
+sobscrevendo arquivo pacman.conf
 
-
-
-
-
-echo "sobscrevendo arquivo pacman.conf"
-☆ echo "[options]
+{========       }
+" && sleep 3 && \
+if echo "[options]
 Architecture=auto
 CheckSpace
 ParallelDownloads=1
