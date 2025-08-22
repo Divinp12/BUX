@@ -131,7 +131,11 @@ echo "falhou"
 fi;
 }
 
-echo "adicionando espelho brasileiro"
+echo "
+adicionando espelho brasileiro
+
+{========       }
+"
 ☆ echo "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist
 
 echo "sobscrevendo arquivo pacman.conf"
