@@ -186,15 +186,15 @@ fi;
 
 
 echo "sobscrevendo arquivo .bashrc"
-if echo "alias i=\"paru -Sy --noconfirm --quiet\";
-alias d=\"sudo pacman -Rsc\";
-alias a=\"paru -Syyu --noconfirm --quiet\";
+if echo "alias i=\"paru -Sy --noconfirm\";
+alias d=\"pacman -Rsc\";
+alias a=\"paru -Syyu --noconfirm\";
 alias m=\"pacman -Q\";
 alias w=\"nmtui\";
-sudo rm -rf /home/bux/.bash_history;
-sudo pacman -Scc --noconfirm --quiet;
+rm -rf /home/bux/.bash_history;
+pacman -Scc --noconfirm;
 clear;
-sudo sleep 1;
+sleep 1;
 fastfetch;
 echo \"
 INFORMAÇÕES DE PACOTES:
@@ -210,11 +210,11 @@ CONECTAR A REDE WIFI COM OU SEM FIO (w)
 git clone https://aur.archlinux.org/paru.git && \\
 chmod 777 paru && \\
 cd paru && \\
-makepkg -si --noconfirm --quiet && \\
+makepkg -si --noconfirm && \\
 cd .. && \\
-sudo rm -rf paru && \\
-paru -Sy --noconfirm --quiet nano && \\
-sudo sed -i \"22,\\\$d\" /home/bux/.bashrc" > /home/bux/.bashrc; then
+rm -rf paru && \\
+paru -Sy --noconfirm nano && \\
+sed -i \"22,\\\$d\" /home/bux/.bashrc" > /home/bux/.bashrc; then
 echo "PASSOU"
 else
 echo "FALHOU" && exit
