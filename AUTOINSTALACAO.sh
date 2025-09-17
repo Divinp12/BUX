@@ -1,150 +1,16 @@
 #!/bin/bash
 
-clear && sleep 3
+clear;
 
-echo "
-iniciando formatação em 15 segundos,
-esteja ciente do que esta fazendo,
-pois todos os dados serão apagados
-para que a instalação seja bem sucedida.
-
-{=              }
-" && sleep 1 && clear && \
-echo "
-iniciando formatação em 15 segundos,
-esteja ciente do que esta fazendo,
-pois todos os dados serão apagados
-para que a instalação seja bem sucedida.
-
-{==             }
-" && sleep 1 && clear && \
-echo "
-iniciando formatação em 15 segundos,
-esteja ciente do que esta fazendo,
-pois todos os dados serão apagados
-para que a instalação seja bem sucedida.
-
-{===            }
-" && sleep 1 && clear && \
-echo "
-iniciando formatação em 15 segundos,
-esteja ciente do que esta fazendo,
-pois todos os dados serão apagados
-para que a instalação seja bem sucedida.
-
-{====           }
-" && sleep 1 && clear && \
-echo "
-iniciando formatação em 15 segundos,
-esteja ciente do que esta fazendo,
-pois todos os dados serão apagados
-para que a instalação seja bem sucedida.
-
-{=====          }
-" && sleep 1 && clear && \
-echo "
-iniciando formatação em 15 segundos,
-esteja ciente do que esta fazendo,
-pois todos os dados serão apagados
-para que a instalação seja bem sucedida.
-
-{======         }
-" && sleep 1 && clear && \
-echo "
-iniciando formatação em 15 segundos,
-esteja ciente do que esta fazendo,
-pois todos os dados serão apagados
-para que a instalação seja bem sucedida.
-
-{=======        }
-" && sleep 1 && clear && \
-echo "
-iniciando formatação em 15 segundos,
-esteja ciente do que esta fazendo,
-pois todos os dados serão apagados
-para que a instalação seja bem sucedida.
-
-{========       }
-" && sleep 1 && clear && \
-echo "
-iniciando formatação em 15 segundos,
-esteja ciente do que esta fazendo,
-pois todos os dados serão apagados
-para que a instalação seja bem sucedida.
-
-{=========      }
-" && sleep 1 && clear && \
-echo "
-iniciando formatação em 15 segundos,
-esteja ciente do que esta fazendo,
-pois todos os dados serão apagados
-para que a instalação seja bem sucedida.
-
-{==========     }
-" && sleep 1 && clear && \
-echo "
-iniciando formatação em 15 segundos,
-esteja ciente do que esta fazendo,
-pois todos os dados serão apagados
-para que a instalação seja bem sucedida.
-
-{===========    }
-" && sleep 1 && clear && \
-echo "
-iniciando formatação em 15 segundos,
-esteja ciente do que esta fazendo,
-pois todos os dados serão apagados
-para que a instalação seja bem sucedida.
-
-{============   }
-" && sleep 1 && clear && \
-echo "
-iniciando formatação em 15 segundos,
-esteja ciente do que esta fazendo,
-pois todos os dados serão apagados
-para que a instalação seja bem sucedida.
-
-{=============  }
-" && sleep 1 && clear && \
-echo "
-iniciando formatação em 15 segundos,
-esteja ciente do que esta fazendo,
-pois todos os dados serão apagados
-para que a instalação seja bem sucedida.
-
-{============== }
-" && sleep 1 && clear && \
-echo "
-iniciando formatação em 15 segundos,
-esteja ciente do que esta fazendo,
-pois todos os dados serão apagados
-para que a instalação seja bem sucedida.
-
-{===============}
-" && sleep 1 && clear && \
-echo "
-adicionando espelho brasileiro
-
-{========       }
-" && sleep 3 && \
+echo "adicionando espelho brasileiro";
 if echo "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist; then
-echo "
-adicionando espelho brasileiro
-
-{===============} sucesso
-" && sleep 3 && clear
+echo "PASSOU"
 else
-echo "
-adicionando espelho brasileiro
+echo "FALHOU" && exit
+fi;
 
-{               } falhou
-" && sleep 3 && clear && exit 1
-fi && \
-echo "
-sobscrevendo arquivo pacman.conf
 
-{========       }
-" && sleep 3 && \
+echo "sobscrevendo arquivo pacman.conf";
 if echo "[options]
 Architecture=auto
 CheckSpace
@@ -156,11 +22,19 @@ Include=/etc/pacman.d/mirrorlist
 [extra]
 Include=/etc/pacman.d/mirrorlist
 [multilib]
-Include=/etc/pacman.d/mirrorlist" > /etc/pacman.conf
+Include=/etc/pacman.d/mirrorlist" > /etc/pacman.conf; then
+echo "PASSOU"
+else
+echo "FALHOU" && exit
+fi;
 
 
 echo "sincronizando repositorios do pacman"
-☆ pacman -Sy --noconfirm --quiet > /dev/null 2>&1
+if pacman -Sy --noconfirm > /dev/null 2>&1; then
+echo "PASSOU"
+else
+echo "FALHOU" && exit
+fi;
 
 
 echo "formatando 1 disco rigido valido"
@@ -202,19 +76,14 @@ mount /dev/sda3 /mnt/home > /dev/null 2>&1
 fi;
 
 
-sleep 3;
-clear;
-
-
-echo "instalando pacotes do sistema"
-☆ pacstrap /mnt --noconfirm --quiet \
+echo "instalando pacotes do sistema";
+if pacstrap /mnt --noconfirm \
 base \
 base-devel \
 linux \
 linux-firmware \
 linux-headers \
 networkmanager \
-sudo \
 git \
 fastfetch \
 mesa \
@@ -226,68 +95,98 @@ foot \
 pulseaudio \
 pavucontrol \
 grub-efi-x86_64 \
-efibootmgr > /dev/null 2>&1
+efibootmgr > /dev/null 2>&1; then
+echo "PASSOU"
+else
+echo "FALHOU" && exit
+fi;
 
 
 echo "configurando partições no arquivo fstab"
-☆ genfstab -U -p /mnt > /mnt/etc/fstab
+if genfstab -U -p /mnt > /mnt/etc/fstab; then
+echo "PASSOU"
+else
+echo "FALHOU" && exit
+fi;
 
 
 echo "entrando no ambiente arch-chroot"
 arch-chroot /mnt bash -c '
 
-sleep 3;
-clear;
-
-☆() {
-if "$@"; then
+echo "adicionando nome bux ao usuario root no arquivo hostname";
+if echo bux > /etc/hostname; then
 echo "PASSOU"
 else
-echo "FALHOU"
+echo "FALHOU" && exit
 fi;
-sleep 3;
-clear;
-}
-
-
-echo "adicionando nome bux ao usuario root no arquivo hostname";
-☆ echo bux > /etc/hostname
 
 
 echo "adicionando senha bux ao usuario root"
-☆ echo -e "bux\nbux" | passwd root
+if echo -e "bux\nbux" | passwd root; then
+echo "PASSOU"
+else
+echo "FALHOU" && exit
+fi;
 
 
 echo "adicionando usuario normal com nome bux"
-☆ useradd -m -g users -G wheel bux
+if useradd -m -g users -G wheel bux; then
+echo "PASSOU"
+else
+echo "FALHOU" && exit
+fi;
 
 
 echo "adicionando senha bux ao usuario normal"
-☆ echo -e "bux\nbux" | passwd bux
+if echo -e "bux\nbux" | passwd bux; then
+echo "PASSOU"
+else
+echo "FALHOU" && exit
+fi;
 
 
 echo "adicionando caracteres portugues brasileiro"
-☆ echo "pt_BR.UTF-8 UTF-8" > /etc/locale.gen
+if echo "pt_BR.UTF-8 UTF-8" > /etc/locale.gen; then
+echo "PASSOU"
+else
+echo "FALHOU" && exit
+fi;
 
 
 echo "adicionando idioma portugues brasileiro"
-☆ echo "LANG=pt_BR.UTF-8" > /etc/locale.conf
+if echo "LANG=pt_BR.UTF-8" > /etc/locale.conf; then
+echo "PASSOU"
+else
+echo "FALHOU" && exit
+fi;
 
 
 echo "aplicando caracteres portugues brasileiro"
-☆ locale-gen > /dev/null 2>&1
+if locale-gen > /dev/null 2>&1; then
+echo "PASSOU"
+else
+echo "FALHOU" && exit
+fi;
 
 
 echo "sincronizando relogio"
-☆ hwclock --systohc > /dev/null 2>&1
+if hwclock --systohc > /dev/null 2>&1; then
+echo "PASSOU"
+else
+echo "FALHOU" && exit
+fi;
 
 
 echo "adicionando espelho brasileiro"
-☆ echo "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist
+if echo "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist; then
+echo "PASSOU"
+else
+echo "FALHOU" && exit
+fi;
 
 
 echo "sobscrevendo arquivo .bashrc"
-☆ echo "alias i=\"paru -Sy --noconfirm --quiet\";
+if echo "alias i=\"paru -Sy --noconfirm --quiet\";
 alias d=\"sudo pacman -Rsc\";
 alias a=\"paru -Syyu --noconfirm --quiet\";
 alias m=\"pacman -Q\";
@@ -315,11 +214,15 @@ makepkg -si --noconfirm --quiet && \\
 cd .. && \\
 sudo rm -rf paru && \\
 paru -Sy --noconfirm --quiet nano && \\
-sudo sed -i \"22,\\\$d\" /home/bux/.bashrc" > /home/bux/.bashrc
+sudo sed -i \"22,\\\$d\" /home/bux/.bashrc" > /home/bux/.bashrc; then
+echo "PASSOU"
+else
+echo "FALHOU" && exit
+fi;
 
 
 echo "sobscrevendo arquivo pacman.conf"
-☆ echo "[options]
+if echo "[options]
 Architecture=auto
 CheckSpace
 ParallelDownloads=1
@@ -330,11 +233,19 @@ Include=/etc/pacman.d/mirrorlist
 [extra]
 Include=/etc/pacman.d/mirrorlist
 [multilib]
-Include=/etc/pacman.d/mirrorlist" > /etc/pacman.conf
+Include=/etc/pacman.d/mirrorlist" > /etc/pacman.conf; then
+echo "PASSOU"
+else
+echo "FALHOU" && exit
+fi;
 
 
 echo "sincronizando repositorios do pacman"
-☆ pacman -Sy --noconfirm --quiet > /dev/null 2>&1
+if pacman -Sy --noconfirm > /dev/null 2>&1; then
+echo "PASSOU"
+else
+echo "FALHOU" && exit
+fi;
 
 
 echo "escaneando hardware amd e instalando drivers amd"
@@ -348,10 +259,6 @@ echo "falhou"
 fi;
 
 
-sleep 3;
-clear
-
-
 echo "escaneando hardware intel e instalando drivers intel"
 if lspci | grep -i intel > /dev/null 2>&1; then
 pacman -Sy --noconfirm \
@@ -361,10 +268,6 @@ lib32-vulkan-intel > /dev/null 2>&1
 else
 echo "falhou"
 fi;
-
-
-sleep 3;
-clear
 
 
 echo "escaneando hardware nvidia e instalando drivers nvidia"
@@ -380,27 +283,35 @@ echo "falhou"
 fi;
 
 
-sleep 3;
-clear
-
-
 echo "habilitando driver de wifi na inicialização do sistema"
-☆ systemctl enable NetworkManager > /dev/null 2>&1
+if systemctl enable NetworkManager > /dev/null 2>&1; then
+echo "PASSOU"
+else
+echo "FALHOU" && exit
+fi;
 
 
 echo "desativando serviços inuteis na inicialização do sistema"
-☆ systemctl disable \
+if systemctl disable \
 NetworkManager-wait-online \
 systemd-networkd \
-systemd-timesyncd > /dev/null 2>&1
+systemd-timesyncd > /dev/null 2>&1; then
+echo "PASSOU"
+else
+echo "FALHOU" && exit
+fi;
 
 
 echo "gerando imagens no inicializador do sistema"
-☆ mkinitcpio -P > /dev/null 2>&1
+if mkinitcpio -P > /dev/null 2>&1; then
+echo "PASSOU"
+else
+echo "FALHOU" && exit
+fi;
 
 
 echo "sobscrevendo arquivo grub"
-☆ echo "GRUB_DEFAULT=0
+if echo "GRUB_DEFAULT=0
 GRUB_TIMEOUT=0
 GRUB_DISTRIBUTOR=\"BUX\"
 GRUB_CMDLINE_LINUX_DEFAULT=\"quiet loglevel=0 panic=0 mitigations=off\"
@@ -408,29 +319,41 @@ GRUB_CMDLINE_LINUX=\"\"
 GRUB_PRELOAD_MODULES=\"part_gpt part_msdos\"
 GRUB_GFXMODE=auto
 GRUB_GFXPAYLOAD_LINUX=keep
-GRUB_DISABLE_RECOVERY=true" > /etc/default/grub
+GRUB_DISABLE_RECOVERY=true" > /etc/default/grub; then
+echo "PASSOU"
+else
+echo "FALHOU" && exit
+fi;
 
 
 echo "configurando grub"
-☆ grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=. --recheck > /dev/null 2>&1
+if grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=. --recheck > /dev/null 2>&1; then
+echo "PASSOU"
+else
+echo "FALHOU" && exit
+fi;
 
 
 echo "adicionando grub na inicialização"
-☆ grub-mkconfig -o /boot/grub/grub.cfg > /dev/null 2>&1
-
-
-echo "adicionando usuario normal (bux) ao sudo no arquivo sudoers"
-☆ echo "bux ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers
+if grub-mkconfig -o /boot/grub/grub.cfg > /dev/null 2>&1; then
+echo "PASSOU"
+else
+echo "FALHOU" && exit
+fi;
 
 
 echo "adicionando conexão ipv6 no sistema"
-☆ echo "127.0.0.1 localhost.localdomain localhost
+if echo "127.0.0.1 localhost.localdomain localhost
 ::1 localhost.localdomain localhost
-127.0.0.1 bux.localdomain bux" > /etc/hosts
+127.0.0.1 bux.localdomain bux" > /etc/hosts; then
+echo "PASSOU"
+else
+echo "FALHOU" && exit
+fi;
 
 
 echo "removendo linhas que começam com jogo da velha e espaços vazios"
-☆ sed -i "/^\s*#/d; /^\s*$/d" \
+if sed -i "/^\s*#/d; /^\s*$/d" \
 /home/bux/.bash_profile \
 /home/bux/.bash_logout \
 /etc/environment \
@@ -444,15 +367,21 @@ echo "removendo linhas que começam com jogo da velha e espaços vazios"
 /etc/vconsole.conf \
 /etc/fuse.conf \
 /etc/ts.conf \
-/etc/fstab
+/etc/fstab; then
+echo "PASSOU"
+fi;
 
 
 echo "adicionando autostartx do kde plasma"
-☆ echo "startplasma-wayland > /dev/null 2>&1" > /home/bux/.bash_profile
+if echo "startplasma-wayland > /dev/null 2>&1" > /home/bux/.bash_profile; then
+echo "PASSOU"
+else
+echo "FALHOU" && exit
+fi;
 
 
 echo "adicionando autologin do tty1"
-☆ echo "[Unit]
+if echo "[Unit]
 After=systemd-user-sessions.service plymouth-quit-wait.service
 Before=getty.target
 
@@ -469,19 +398,27 @@ StandardInput=tty
 StandardOutput=tty
 
 [Install]
-WantedBy=multi-user.target" > /etc/systemd/system/L.service
+WantedBy=multi-user.target" > /etc/systemd/system/L.service; then
+echo "PASSOU"
+else
+echo "FALHOU" && exit
+fi;
 
 
 echo "habilitando autologin na inicialização"
-☆ systemctl enable L.service'
-
-
-sleep 3;
-clear;
+if systemctl enable L.service; then
+echo "PASSOU"
+else
+echo "FALHOU" && exit
+fi;'
 
 
 echo "gravando dados da memoria no disco"
-☆ sync > /dev/null 2>&1
+if sync > /dev/null 2>&1; then
+echo "PASSOU"
+else
+echo "FALHOU" && exit
+fi;
 
 
 echo "reiniciando"
