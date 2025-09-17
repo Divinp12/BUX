@@ -40,10 +40,10 @@ fi;
 echo "formatando 1 disco rigido valido"
 if dd if=/dev/zero of=/dev/nvme0n1p bs=64M > /dev/null 2>&1 && \
 parted -s /dev/nvme0n1p mklabel gpt && \
-parted -s /dev/nvme0n1p mkpart ESP fat32 1MiB 1025MiB && \
+parted -s /dev/nvme0n1p mkpart ESP fat32 1MiB 600MiB && \
 parted -s /dev/nvme0n1p set 1 esp on && \
-parted -s /dev/nvme0n1p mkpart primary ext4 1025MiB 30721MiB && \
-parted -s /dev/nvme0n1p mkpart primary ext4 30721MiB 100% && \
+parted -s /dev/nvme0n1p mkpart primary ext4 600MiB 30000MiB && \
+parted -s /dev/nvme0n1p mkpart primary ext4 30000MiB 100% && \
 partprobe > /dev/null 2>&1 && \
 mkfs.fat -F32 /dev/nvme0n1p1 > /dev/null 2>&1 && \
 mkfs.ext4 -F /dev/nvme0n1p2 > /dev/null 2>&1 && \
@@ -59,10 +59,10 @@ else
 
 dd if=/dev/zero of=/dev/sda bs=64M > /dev/null 2>&1 && \
 parted -s /dev/sda mklabel gpt && \
-parted -s /dev/sda mkpart ESP fat32 1MiB 1025MiB && \
+parted -s /dev/sda mkpart ESP fat32 1MiB 600MiB && \
 parted -s /dev/sda set 1 esp on && \
-parted -s /dev/sda mkpart primary ext4 1025MiB 30721MiB && \
-parted -s /dev/sda mkpart primary ext4 30721MiB 100% && \
+parted -s /dev/sda mkpart primary ext4 600MiB 30000MiB && \
+parted -s /dev/sda mkpart primary ext4 30000MiB 100% && \
 partprobe > /dev/null 2>&1 && \
 mkfs.fat -F32 /dev/sda1 > /dev/null 2>&1 && \
 mkfs.ext4 -F /dev/sda2 > /dev/null 2>&1 && \
