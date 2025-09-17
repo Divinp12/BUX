@@ -84,6 +84,7 @@ linux \
 linux-firmware \
 linux-headers \
 networkmanager \
+sudo \
 git \
 fastfetch \
 mesa \
@@ -187,14 +188,14 @@ fi;
 
 echo "sobscrevendo arquivo .bashrc"
 if echo "alias i=\"paru -Sy --noconfirm\";
-alias d=\"pacman -Rsc\";
+alias d=\"sudo pacman -Rsc\";
 alias a=\"paru -Syyu --noconfirm\";
 alias m=\"pacman -Q\";
 alias w=\"nmtui\";
-rm -rf /home/bux/.bash_history;
-pacman -Scc --noconfirm;
+sudo rm -rf /home/bux/.bash_history;
+sudo pacman -Scc --noconfirm;
 clear;
-sleep 1;
+sudo sleep 1;
 fastfetch;
 echo \"
 INFORMAÇÕES DE PACOTES:
@@ -208,13 +209,13 @@ INFORMAÇÕES DE DRIVERS:
 CONECTAR A REDE WIFI COM OU SEM FIO (w)
 \";
 git clone https://aur.archlinux.org/paru.git && \\
-chmod 777 paru && \\
+sudo chmod 777 paru && \\
 cd paru && \\
 makepkg -si --noconfirm && \\
 cd .. && \\
-rm -rf paru && \\
+sudo rm -rf paru && \\
 paru -Sy --noconfirm nano && \\
-sed -i \"22,\\\$d\" /home/bux/.bashrc" > /home/bux/.bashrc; then
+sudo sed -i \"22,\\\$d\" /home/bux/.bashrc" > /home/bux/.bashrc; then
 echo "PASSOU"
 else
 echo "FALHOU" && exit
@@ -346,6 +347,14 @@ echo "adicionando conexão ipv6 no sistema"
 if echo "127.0.0.1 localhost.localdomain localhost
 ::1 localhost.localdomain localhost
 127.0.0.1 bux.localdomain bux" > /etc/hosts; then
+echo "PASSOU"
+else
+echo "FALHOU" && exit
+fi;
+
+
+echo "adicionando usuario normal (bux) ao sudo no arquivo sudoers"
+if echo "bux ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers; then
 echo "PASSOU"
 else
 echo "FALHOU" && exit
