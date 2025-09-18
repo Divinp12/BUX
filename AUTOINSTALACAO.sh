@@ -57,7 +57,7 @@ mount /dev/nvme0n1p3 /mnt/home > /dev/null 2>&1
 
 else
 
-dd wipefs -a /dev/sda > /dev/null 2>&1 && \
+wipefs -a /dev/sda > /dev/null 2>&1 && \
 parted -s /dev/sda mklabel gpt && \
 parted -s /dev/sda mkpart ESP fat32 1MiB 500MiB && \
 parted -s /dev/sda set 1 esp on && \
