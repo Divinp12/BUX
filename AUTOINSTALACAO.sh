@@ -40,9 +40,9 @@ fi;
 echo "formatando 1 disco rigido valido"
 if wipefs -a /dev/nvme0n1p > /dev/null 2>&1; then
 parted -s /dev/nvme0n1p mklabel gpt && \
-parted -s /dev/nvme0n1p mkpart ESP fat32 1MiB 600MiB && \
+parted -s /dev/nvme0n1p mkpart ESP fat32 1MiB 500MiB && \
 parted -s /dev/nvme0n1p set 1 esp on && \
-parted -s /dev/nvme0n1p mkpart primary ext4 600MiB 30000MiB && \
+parted -s /dev/nvme0n1p mkpart primary ext4 500MiB 30000MiB && \
 parted -s /dev/nvme0n1p mkpart primary ext4 30000MiB 100% && \
 partprobe > /dev/null 2>&1 && \
 mkfs.fat -F32 /dev/nvme0n1p1 > /dev/null 2>&1 && \
@@ -59,9 +59,9 @@ else
 
 dd wipefs -a /dev/sda > /dev/null 2>&1 && \
 parted -s /dev/sda mklabel gpt && \
-parted -s /dev/sda mkpart ESP fat32 1MiB 600MiB && \
+parted -s /dev/sda mkpart ESP fat32 1MiB 500MiB && \
 parted -s /dev/sda set 1 esp on && \
-parted -s /dev/sda mkpart primary ext4 600MiB 30000MiB && \
+parted -s /dev/sda mkpart primary ext4 500MiB 30000MiB && \
 parted -s /dev/sda mkpart primary ext4 30000MiB 100% && \
 partprobe > /dev/null 2>&1 && \
 mkfs.fat -F32 /dev/sda1 > /dev/null 2>&1 && \
