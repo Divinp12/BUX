@@ -38,7 +38,7 @@ fi;
 
 
 echo "formatando 1 disco rigido valido"
-if dd if=/dev/zero of=/dev/nvme0n1p bs=64M > /dev/null 2>&1 && \
+if wipefs -a /dev/nvme0n1p > /dev/null 2>&1; then
 parted -s /dev/nvme0n1p mklabel gpt && \
 parted -s /dev/nvme0n1p mkpart ESP fat32 1MiB 600MiB && \
 parted -s /dev/nvme0n1p set 1 esp on && \
@@ -57,7 +57,7 @@ mount /dev/nvme0n1p3 /mnt/home > /dev/null 2>&1
 
 else
 
-dd if=/dev/zero of=/dev/sda bs=64M > /dev/null 2>&1 && \
+dd wipefs -a /dev/sda > /dev/null 2>&1 && \
 parted -s /dev/sda mklabel gpt && \
 parted -s /dev/sda mkpart ESP fat32 1MiB 600MiB && \
 parted -s /dev/sda set 1 esp on && \
