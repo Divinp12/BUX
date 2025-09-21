@@ -286,7 +286,7 @@ let status13 = Command::new("arch-chroot")
 .stdin(Stdio::null())
 .status();
 match status13 {
-Ok(status) if status.success() => {println!("sucesso");thread::sleep(Duration::from_secs(3));let _ = Command::new("clear").status();}
+Ok(status) if status.success() => {println!("sucesso").status();}
 Ok(_) => {println!("falha ao aplica caracteres portugues brasileiro");}
 Err(e) => {eprintln!("erro ao executar o comando: {}", e);}
 }
@@ -302,7 +302,7 @@ let status14 = Command::new("arch-chroot")
 .stdin(Stdio::null())
 .status();
 match status14 {
-Ok(status) if status.success() => {println!("sucesso");thread::sleep(Duration::from_secs(3));let _ = Command::new("clear").status();}
+Ok(status) if status.success() => {println!("sucesso").status();}
 Ok(_) => {println!("falha ao sincroniza relogio");}
 Err(e) => {eprintln!("erro ao executar o comando: {}", e);}
 }
@@ -319,7 +319,7 @@ let status15 = Command::new("arch-chroot")
 .stdin(Stdio::null())
 .status();
 match status15 {
-Ok(status) if status.success() => {println!("sucesso");thread::sleep(Duration::from_secs(3));let _ = Command::new("clear").status();}
+Ok(status) if status.success() => {println!("sucesso").status();}
 Ok(_) => {println!("falha ao adicionar espelho brasileiro");}
 Err(e) => {eprintln!("erro ao executar o comando: {}", e);}
 }
@@ -367,7 +367,7 @@ sudo sed -i "22,\$d" /home/bux/.bashrc' > /home/bux/.bashrc"#)
 .stdin(Stdio::null())
 .status();
 match status16 {
-Ok(status) if status.success() => {println!("sucesso");thread::sleep(Duration::from_secs(3));let _ = Command::new("clear").status();}
+Ok(status) if status.success() => {println!("sucesso").status();}
 Ok(_) => {println!("falha ao sobscreve arquivo .bashrc");}
 Err(e) => {eprintln!("erro ao executar o comando: {}", e);}
 }
