@@ -1,10 +1,10 @@
 use std::process::{Command, Stdio};
-use std::thread;
-use std::time::Duration;
 
-// thread::sleep(Duration::from_secs(3)); // pausa em 3 segundos. Para muda a duracao da pausa altere o numero depois de from_secs(
-// let _ = Command::new("clear")
-// .status();
+// habilitar pausa
+// use std::thread;
+// use std::time::Duration;
+
+// thread::sleep(Duration::from_secs(NÚMERO DE SEGUNDOS))
 
 // .stdout(Stdio::null()) redirecionar mensagens para lugar nenhum.
 // .stderr(Stdio::null()) redirecionar mensagens de erro para lugar nenhum.
@@ -25,7 +25,7 @@ let status1 = Command::new("sh")
 .stdin(Stdio::null())
 .status();
 match status1 {
-Ok(status) if status.success() => {println!("sucesso");thread::sleep(Duration::from_secs(3));let _ = Command::new("clear").status();}
+Ok(status) if status.success() => {println!("sucesso");.status();}
 Ok(_) => {println!("falha ao adicionar espelho brasileiro");}
 Err(e) => {eprintln!("erro ao executar o comando: {}", e);}
 }
@@ -51,7 +51,7 @@ Include=/etc/pacman.d/mirrorlist' > /etc/pacman.conf"#)
 .stdin(Stdio::null())
 .status();
 match status2 {
-Ok(status) if status.success() => {println!("sucesso");thread::sleep(Duration::from_secs(3));let _ = Command::new("clear").status();}
+Ok(status) if status.success() => {println!("sucesso");.status();}
 Ok(_) => {println!("falha ao sobscrever arquivo pacman.conf");}
 Err(e) => {eprintln!("erro ao executar o comando: {}", e);}
 }
@@ -66,7 +66,7 @@ let status3 = Command::new("pacman")
 .stdin(Stdio::null())
 .status();
 match status3 {
-Ok(status) if status.success() => {println!("sucesso");thread::sleep(Duration::from_secs(3));let _ = Command::new("clear").status();}
+Ok(status) if status.success() => {println!("sucesso");.status();}
 Ok(_) => {println!("falha ao atualizar repositorios");}
 Err(e) => {eprintln!("erro ao executar o comando: {}", e);}
 }
@@ -115,7 +115,7 @@ fi"#)
 .stdin(Stdio::null())
 .status();
 match status4 {
-Ok(status) if status.success() => {println!("sucesso");thread::sleep(Duration::from_secs(3));let _ = Command::new("clear").status();}
+Ok(status) if status.success() => {println!("sucesso");.status();}
 Ok(_) => {println!("falha ao formata 1 disco rigido valido");}
 Err(e) => {eprintln!("erro ao executar o comando: {}", e);}
 }
@@ -150,7 +150,7 @@ let status5 = Command::new("pacstrap")
 .stdin(Stdio::null())
 .status();
 match status5 {
-Ok(status) if status.success() => {println!("sucesso");thread::sleep(Duration::from_secs(3));let _ = Command::new("clear").status();}
+Ok(status) if status.success() => {println!("sucesso");.status();}
 Ok(_) => {println!("falha ao instala pacotes do sistema");}
 Err(e) => {eprintln!("erro ao executar o comando: {}", e);}
 }
