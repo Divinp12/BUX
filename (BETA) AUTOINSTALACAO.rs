@@ -395,7 +395,7 @@ Include=/etc/pacman.d/mirrorlist' > /etc/pacman.conf"#)
 .stdin(Stdio::null())
 .status();
 match status17 {
-Ok(status) if status.success() => {println!("sucesso");thread::sleep(Duration::from_secs(3));let _ = Command::new("clear").status();}
+Ok(status) if status.success() => {println!("sucesso").status();}
 Ok(_) => {println!("falha ao sobscreve arquivo pacman.conf");}
 Err(e) => {eprintln!("erro ao executar o comando: {}", e);}
 }
@@ -412,7 +412,7 @@ let status18 = Command::new("arch-chroot")
 .stdin(Stdio::null())
 .status();
 match status18 {
-Ok(status) if status.success() => {println!("sucesso");thread::sleep(Duration::from_secs(3));let _ = Command::new("clear").status();}
+Ok(status) if status.success() => {println!("sucesso").status();}
 Ok(_) => {println!("falha ao sincroniza repositorios do pacman");}
 Err(e) => {eprintln!("erro ao executar o comando: {}", e);}
 }
@@ -431,7 +431,7 @@ fi"#)
 .stdin(Stdio::null())
 .status();
 match status19 {
-Ok(status) if status.success() => {println!("sucesso");thread::sleep(Duration::from_secs(3));let _ = Command::new("clear").status();}
+Ok(status) if status.success() => {println!("sucesso").status();}
 Ok(_) => {println!("falha ao escanea hardware amd e instala drivers amd");}
 Err(e) => {eprintln!("erro ao executar o comando: {}", e);}
 }
@@ -450,7 +450,7 @@ fi"#)
 .stdin(Stdio::null())
 .status();
 match status20 {
-Ok(status) if status.success() => {println!("sucesso");thread::sleep(Duration::from_secs(3));let _ = Command::new("clear").status();}
+Ok(status) if status.success() => {println!("sucesso").status();}
 Ok(_) => {println!("falha ao escanea hardware intel e instala drivers intel");}
 Err(e) => {eprintln!("erro ao executar o comando: {}", e);}
 }
@@ -469,7 +469,7 @@ fi"#)
 .stdin(Stdio::null())
 .status();
 match status21 {
-Ok(status) if status.success() => {println!("sucesso");thread::sleep(Duration::from_secs(3));let _ = Command::new("clear").status();}
+Ok(status) if status.success() => {println!("sucesso").status();}
 Ok(_) => {println!("falha ao escanea hardware nvidia e instala drivers nvidia");}
 Err(e) => {eprintln!("erro ao executar o comando: {}", e);}
 }
@@ -486,7 +486,7 @@ let status22 = Command::new("arch-chroot")
 .stdin(Stdio::null())
 .status();
 match status22 {
-Ok(status) if status.success() => {println!("sucesso");thread::sleep(Duration::from_secs(3));let _ = Command::new("clear").status();}
+Ok(status) if status.success() => {println!("sucesso").status();}
 Ok(_) => {println!("falha ao habilita driver wifi na inicialização do sistema");}
 Err(e) => {eprintln!("erro ao executar o comando: {}", e);}
 }
@@ -505,7 +505,7 @@ let status23 = Command::new("arch-chroot")
 .stdin(Stdio::null())
 .status();
 match status23 {
-Ok(status) if status.success() => {println!("sucesso");thread::sleep(Duration::from_secs(3));let _ = Command::new("clear").status();}
+Ok(status) if status.success() => {println!("sucesso").status();}
 Ok(_) => {println!("falha ao desativa serviços inuteis na inicialização do sistema");}
 Err(e) => {eprintln!("erro ao executar o comando: {}", e);}
 }
@@ -521,7 +521,7 @@ let status24 = Command::new("arch-chroot")
 .stdin(Stdio::null())
 .status();
 match status24 {
-Ok(status) if status.success() => {println!("sucesso");thread::sleep(Duration::from_secs(3));let _ = Command::new("clear").status();}
+Ok(status) if status.success() => {println!("sucesso").status();}
 Ok(_) => {println!("falha ao gera imagens no inicializador do sistema");}
 Err(e) => {eprintln!("erro ao executar o comando: {}", e);}
 }
@@ -546,7 +546,7 @@ GRUB_DISABLE_RECOVERY=true' > /etc/default/grub"#)
 .stdin(Stdio::null())
 .status();
 match status25 {
-Ok(status) if status.success() => {println!("sucesso");thread::sleep(Duration::from_secs(3));let _ = Command::new("clear").status();}
+Ok(status) if status.success() => {println!("sucesso").status();}
 Ok(_) => {println!("falha ao sobscreve arquivo grub");}
 Err(e) => {eprintln!("erro ao executar o comando: {}", e);}
 }
