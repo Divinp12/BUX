@@ -565,7 +565,7 @@ let status26 = Command::new("arch-chroot")
 .stdin(Stdio::null())
 .status();
 match status26 {
-Ok(status) if status.success() => {println!("sucesso");thread::sleep(Duration::from_secs(3));let _ = Command::new("clear").status();}
+Ok(status) if status.success() => {println!("sucesso").status();}
 Ok(_) => {println!("falha ao configura grub");}
 Err(e) => {eprintln!("erro ao executar o comando: {}", e);}
 }
@@ -582,7 +582,7 @@ let status27 = Command::new("arch-chroot")
 .stdin(Stdio::null())
 .status();
 match status27 {
-Ok(status) if status.success() => {println!("sucesso");thread::sleep(Duration::from_secs(3));let _ = Command::new("clear").status();}
+Ok(status) if status.success() => {println!("sucesso").status();}
 Ok(_) => {println!("falha ao adicionar grub na inicializacao");}
 Err(e) => {eprintln!("erro ao executar o comando: {}", e);}
 }
@@ -599,7 +599,7 @@ let status28 = Command::new("arch-chroot")
 .stdin(Stdio::null())
 .status();
 match status28 {
-Ok(status) if status.success() => {println!("sucesso");thread::sleep(Duration::from_secs(3));let _ = Command::new("clear").status();}
+Ok(status) if status.success() => {println!("sucesso").status();}
 Ok(_) => {println!("falha ao adicionar usuario normal (bux) ao sudo no arquivo sudoers");}
 Err(e) => {eprintln!("erro ao executar o comando: {}", e);}
 }
@@ -618,7 +618,7 @@ let status29 = Command::new("arch-chroot")
 .stdin(Stdio::null())
 .status();
 match status29 {
-Ok(status) if status.success() => {println!("sucesso");thread::sleep(Duration::from_secs(3));let _ = Command::new("clear").status();}
+Ok(status) if status.success() => {println!("sucesso").status();}
 Ok(_) => {println!("falha ao adicionar conexão ipv6 no sistema");}
 Err(e) => {eprintln!("erro ao executar o comando: {}", e);}
 }
@@ -633,7 +633,7 @@ let status30 = Command::new("arch-chroot")
 .stdin(Stdio::null())
 .status();
 match status30 {
-Ok(status) if status.success() => {println!("sucesso");thread::sleep(Duration::from_secs(3));let _ = Command::new("clear").status();}
+Ok(status) if status.success() => {println!("sucesso").status();}
 Ok(_) => {println!("falha ao remove linhas que começam com jogo da velha e espaços vazios");}
 Err(e) => {eprintln!("erro ao executar o comando: {}", e);}
 }
@@ -650,7 +650,7 @@ let status31 = Command::new("arch-chroot")
 .stdin(Stdio::null())
 .status();
 match status31 {
-Ok(status) if status.success() => {println!("sucesso");thread::sleep(Duration::from_secs(3));let _ = Command::new("clear").status();}
+Ok(status) if status.success() => {println!("sucesso").status();}
 Ok(_) => {println!("falha ao adiciona autostartx do kde plasma");}
 Err(e) => {eprintln!("erro ao executar o comando: {}", e);}
 }
@@ -684,7 +684,7 @@ WantedBy=multi-user.target' > /etc/systemd/system/L.service"#)
 .stdin(Stdio::null())
 .status();
 match status32 {
-Ok(status) if status.success() => {println!("sucesso");thread::sleep(Duration::from_secs(3));let _ = Command::new("clear").status();}
+Ok(status) if status.success() => {println!("sucesso").status();}
 Ok(_) => {println!("falha ao adiciona autologin do tty1");}
 Err(e) => {eprintln!("erro ao executar o comando: {}", e);}
 }
@@ -701,7 +701,7 @@ let status33 = Command::new("arch-chroot")
 .stdin(Stdio::null())
 .status();
 match status33 {
-Ok(status) if status.success() => {println!("sucesso");thread::sleep(Duration::from_secs(3));let _ = Command::new("clear").status();}
+Ok(status) if status.success() => {println!("sucesso").status();}
 Ok(_) => {println!("falha ao habilita autologin na inicialização");}
 Err(e) => {eprintln!("erro ao executar o comando: {}", e);}
 }
@@ -714,7 +714,7 @@ let status34 = Command::new("sync")
 .stdin(Stdio::null())
 .status();
 match status34 {
-Ok(status) if status.success() => {println!("sucesso");thread::sleep(Duration::from_secs(3));let _ = Command::new("clear").status();}
+Ok(status) if status.success() => {println!("sucesso").status();}
 Ok(_) => {println!("falha ao grava dados da memoria no disco");}
 Err(e) => {eprintln!("erro ao executar o comando: {}", e);}
 }
@@ -728,7 +728,7 @@ let status35 = Command::new("reboot")
 .stdin(Stdio::null())
 .status();
 match status35 {
-Ok(status) if status.success() => {println!("sucesso");thread::sleep(Duration::from_secs(3));let _ = Command::new("clear").status();}
+Ok(status) if status.success() => {println!("sucesso").status();}
 Ok(_) => {println!("falha ao reiniciar");}
 Err(e) => {eprintln!("erro ao executar o comando: {}", e);}
 }
