@@ -241,29 +241,29 @@ echo "FALHOU" && exit
 fi;
 
 
-echo "sincronizando repositorios do pacman, escaneando hardware amd e instalando drivers amd"
+echo "escaneando hardware amd, sincronizando repositorios do pacman e instalando drivers amd"
 if lspci | grep -i amd > /dev/null 2>&1; then
 pacman -Sy --noconfirm \
 amd-ucode \
 vulkan-radeon \
 lib32-vulkan-radeon > /dev/null 2>&1
 else
-echo "FALHOU"
+echo "NÃO ENCONTRADO"
 fi;
 
 
-echo "sincronizando repositorios do pacman, escaneando hardware intel e instalando drivers intel"
+echo "escaneando hardware intel, sincronizando repositorios do pacman e instalando drivers intel"
 if lspci | grep -i intel > /dev/null 2>&1; then
 pacman -Sy --noconfirm \
 intel-ucode \
 vulkan-intel \
 lib32-vulkan-intel > /dev/null 2>&1
 else
-echo "FALHOU"
+echo "NÃO ENCONTRADO"
 fi;
 
 
-echo "sincronizando repositorios do pacman, escaneando hardware nvidia e instalando drivers nvidia"
+echo "escaneando hardware nvidia, sincronizando repositorios do pacman e instalando drivers nvidia"
 if lspci | grep -i nvidia > /dev/null 2>&1; then
 pacman -Sy --noconfirm \
 nvidia \
@@ -272,7 +272,7 @@ nvidia-utils \
 lib32-nvidia-utils \
 nvidia-settings > /dev/null 2>&1
 else
-echo "FALHOU"
+echo "NÃO ENCONTRADO"
 fi;
 
 
