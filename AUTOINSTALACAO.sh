@@ -88,7 +88,11 @@ sudo \
 git \
 fastfetch \
 mesa \
-plasma \
+xfce4-panel \
+xfce4-session \
+xfce4-settings \
+xfdesktop \
+xfwm4 \
 wayland \
 lib32-wayland \
 xorg-xwayland \
@@ -374,7 +378,7 @@ fi;
 
 
 echo "adicionando autostartx do kde plasma"
-if echo "startplasma-wayland > /dev/null 2>&1" > /home/bux/.bash_profile; then
+if echo "startxfce4 --wayland labwc > /dev/null 2>&1" > /home/bux/.bash_profile; then
 echo " "
 else
 echo "FALHOU" && exit
