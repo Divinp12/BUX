@@ -88,6 +88,7 @@ sudo \
 git \
 fastfetch \
 mesa \
+labwc \
 xfce4-panel \
 xfce4-session \
 xfce4-settings \
