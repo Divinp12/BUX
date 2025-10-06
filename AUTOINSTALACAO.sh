@@ -29,14 +29,6 @@ echo "FALHOU" && exit
 fi;
 
 
-echo "sincronizando repositorios do pacman"
-if pacman -Sy --noconfirm > /dev/null 2>&1; then
-echo " "
-else
-echo "FALHOU" && exit
-fi;
-
-
 echo "formatando 1 disco rigido valido"
 if wipefs -a /dev/nvme0n1p > /dev/null 2>&1; then
 parted -s /dev/nvme0n1p mklabel gpt && \
