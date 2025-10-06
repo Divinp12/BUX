@@ -29,7 +29,7 @@ echo "FALHOU" && exit
 fi;
 
 
-echo "sincronizando repositorios do pacman"
+echo "sincronizando repositorios do pacman";
 if pacman -Sy --noconfirm > /dev/null 2>&1; then
 echo " "
 else
@@ -37,7 +37,7 @@ echo "FALHOU" && exit
 fi;
 
 
-echo "formatando 1 disco rigido valido"
+echo "formatando 1 disco rigido valido";
 if wipefs -a /dev/nvme0n1p > /dev/null 2>&1; then
 parted -s /dev/nvme0n1p mklabel gpt && \
 parted -s /dev/nvme0n1p mkpart ESP fat32 1MiB 500MiB && \
@@ -107,7 +107,7 @@ echo "FALHOU" && exit
 fi;
 
 
-echo "configurando partições no arquivo fstab"
+echo "configurando partições no arquivo fstab";
 if genfstab -U -p /mnt > /mnt/etc/fstab; then
 echo " "
 else
@@ -115,7 +115,7 @@ echo "FALHOU" && exit
 fi;
 
 
-echo "entrando no ambiente arch-chroot"
+echo "entrando no ambiente arch-chroot";
 arch-chroot /mnt bash -c '
 
 echo "adicionando nome bux ao usuario root no arquivo hostname";
@@ -126,7 +126,7 @@ echo "FALHOU" && exit
 fi;
 
 
-echo "adicionando senha bux ao usuario root"
+echo "adicionando senha bux ao usuario root";
 if echo -e "bux\nbux" | passwd root; then
 echo " "
 else
@@ -134,7 +134,7 @@ echo "FALHOU" && exit
 fi;
 
 
-echo "adicionando usuario normal com nome bux"
+echo "adicionando usuario normal com nome bux";
 if useradd -m -g users -G wheel bux; then
 echo " "
 else
@@ -142,7 +142,7 @@ echo "FALHOU" && exit
 fi;
 
 
-echo "adicionando senha bux ao usuario normal"
+echo "adicionando senha bux ao usuario normal";
 if echo -e "bux\nbux" | passwd bux; then
 echo " "
 else
@@ -150,7 +150,7 @@ echo "FALHOU" && exit
 fi;
 
 
-echo "adicionando caracteres portugues brasileiro"
+echo "adicionando caracteres portugues brasileiro";
 if echo "pt_BR.UTF-8 UTF-8" > /etc/locale.gen; then
 echo " "
 else
@@ -158,7 +158,7 @@ echo "FALHOU" && exit
 fi;
 
 
-echo "adicionando idioma portugues brasileiro"
+echo "adicionando idioma portugues brasileiro";
 if echo "LANG=pt_BR.UTF-8" > /etc/locale.conf; then
 echo " "
 else
@@ -166,7 +166,7 @@ echo "FALHOU" && exit
 fi;
 
 
-echo "aplicando caracteres portugues brasileiro"
+echo "aplicando caracteres portugues brasileiro";
 if locale-gen > /dev/null 2>&1; then
 echo " "
 else
@@ -174,7 +174,7 @@ echo "FALHOU" && exit
 fi;
 
 
-echo "sincronizando relogio"
+echo "sincronizando relogio";
 if hwclock --systohc > /dev/null 2>&1; then
 echo " "
 else
@@ -182,7 +182,7 @@ echo "FALHOU" && exit
 fi;
 
 
-echo "adicionando espelho brasileiro"
+echo "adicionando espelho brasileiro";
 if echo "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist; then
 echo " "
 else
@@ -190,7 +190,7 @@ echo "FALHOU" && exit
 fi;
 
 
-echo "sobscrevendo arquivo .bashrc"
+echo "sobscrevendo arquivo .bashrc";
 if echo "alias i=\"paru -Sy --noconfirm\";
 alias d=\"sudo pacman -Rsc\";
 alias a=\"paru -Syyu --noconfirm\";
@@ -226,7 +226,7 @@ echo "FALHOU" && exit
 fi;
 
 
-echo "sobscrevendo arquivo pacman.conf"
+echo "sobscrevendo arquivo pacman.conf";
 if echo "[options]
 Architecture=auto
 CheckSpace
@@ -245,7 +245,7 @@ echo "FALHOU" && exit
 fi;
 
 
-echo "escaneando hardware amd, sincronizando repositorios do pacman e instalando drivers amd"
+echo "escaneando hardware amd, sincronizando repositorios do pacman e instalando drivers amd";
 if lspci | grep -i amd > /dev/null 2>&1; then
 pacman -Sy --noconfirm \
 amd-ucode \
@@ -256,7 +256,7 @@ echo "NÃO ENCONTRADO"
 fi;
 
 
-echo "escaneando hardware intel, sincronizando repositorios do pacman e instalando drivers intel"
+echo "escaneando hardware intel, sincronizando repositorios do pacman e instalando drivers intel";
 if lspci | grep -i intel > /dev/null 2>&1; then
 pacman -Sy --noconfirm \
 intel-ucode \
@@ -267,7 +267,7 @@ echo "NÃO ENCONTRADO"
 fi;
 
 
-echo "escaneando hardware nvidia, sincronizando repositorios do pacman e instalando drivers nvidia"
+echo "escaneando hardware nvidia, sincronizando repositorios do pacman e instalando drivers nvidia";
 if lspci | grep -i nvidia > /dev/null 2>&1; then
 pacman -Sy --noconfirm \
 nvidia \
@@ -280,7 +280,7 @@ echo "NÃO ENCONTRADO"
 fi;
 
 
-echo "habilitando driver de wifi na inicialização do sistema"
+echo "habilitando driver de wifi na inicialização do sistema";
 if systemctl enable NetworkManager > /dev/null 2>&1; then
 echo " "
 else
@@ -288,7 +288,7 @@ echo "FALHOU" && exit
 fi;
 
 
-echo "desativando serviços inuteis na inicialização do sistema"
+echo "desativando serviços inuteis na inicialização do sistema";
 if systemctl disable \
 NetworkManager-wait-online \
 systemd-networkd \
@@ -299,7 +299,7 @@ echo "FALHOU" && exit
 fi;
 
 
-echo "gerando imagens no inicializador do sistema"
+echo "gerando imagens no inicializador do sistema";
 if mkinitcpio -P > /dev/null 2>&1; then
 echo " "
 else
@@ -307,7 +307,7 @@ echo "FALHOU" && exit
 fi;
 
 
-echo "sobscrevendo arquivo grub"
+echo "sobscrevendo arquivo grub";
 if echo "GRUB_DEFAULT=0
 GRUB_TIMEOUT=0
 GRUB_DISTRIBUTOR=\"BUX\"
@@ -323,7 +323,7 @@ echo "FALHOU" && exit
 fi;
 
 
-echo "configurando grub"
+echo "configurando grub";
 if grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=. --recheck > /dev/null 2>&1; then
 echo " "
 else
@@ -331,7 +331,7 @@ echo "FALHOU" && exit
 fi;
 
 
-echo "adicionando grub na inicialização"
+echo "adicionando grub na inicialização";
 if grub-mkconfig -o /boot/grub/grub.cfg > /dev/null 2>&1; then
 echo " "
 else
@@ -339,7 +339,7 @@ echo "FALHOU" && exit
 fi;
 
 
-echo "adicionando conexão ipv6 no sistema"
+echo "adicionando conexão ipv6 no sistema";
 if echo "127.0.0.1 localhost.localdomain localhost
 ::1 localhost.localdomain localhost
 127.0.0.1 bux.localdomain bux" > /etc/hosts; then
@@ -349,7 +349,7 @@ echo "FALHOU" && exit
 fi;
 
 
-echo "adicionando usuario normal (bux) ao sudo no arquivo sudoers"
+echo "adicionando usuario normal (bux) ao sudo no arquivo sudoers";
 if echo "bux ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers; then
 echo " "
 else
@@ -357,7 +357,7 @@ echo "FALHOU" && exit
 fi;
 
 
-echo "removendo linhas que começam com jogo da velha e espaços vazios"
+echo "removendo linhas que começam com jogo da velha e espaços vazios";
 if sed -i "/^\s*#/d; /^\s*$/d" \
 /home/bux/.bash_profile \
 /home/bux/.bash_logout \
@@ -377,7 +377,7 @@ echo " "
 fi;
 
 
-echo "adicionando autostartx do kde plasma"
+echo "adicionando autostartx do kde plasma";
 if echo "startxfce4 --wayland labwc > /dev/null 2>&1" > /home/bux/.bash_profile; then
 echo " "
 else
@@ -385,7 +385,7 @@ echo "FALHOU" && exit
 fi;
 
 
-echo "adicionando autologin do tty1"
+echo "adicionando autologin do tty1";
 if echo "[Unit]
 After=systemd-user-sessions.service plymouth-quit-wait.service
 Before=getty.target
@@ -410,7 +410,7 @@ echo "FALHOU" && exit
 fi;
 
 
-echo "habilitando autologin na inicialização"
+echo "habilitando autologin na inicialização";
 if systemctl enable L.service; then
 echo " "
 else
@@ -418,7 +418,7 @@ echo "FALHOU" && exit
 fi;'
 
 
-echo "gravando dados da memoria no disco"
+echo "gravando dados da memoria no disco";
 if sync > /dev/null 2>&1; then
 echo " "
 else
@@ -426,5 +426,5 @@ echo "FALHOU" && exit
 fi;
 
 
-echo "reiniciando"
+echo "reiniciando";
 reboot -f;
