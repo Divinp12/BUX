@@ -54,6 +54,7 @@ mkdir /mnt/boot/EFI > /dev/null 2>&1 && \
 mkdir /mnt/home > /dev/null 2>&1 && \
 mount /dev/nvme0n1p1 /mnt/boot/EFI > /dev/null 2>&1 && \
 mount /dev/nvme0n1p3 /mnt/home > /dev/null 2>&1
+echo " ";
 
 else
 
@@ -73,6 +74,7 @@ mkdir /mnt/boot/EFI > /dev/null 2>&1 && \
 mkdir /mnt/home > /dev/null 2>&1 && \
 mount /dev/sda1 /mnt/boot/EFI > /dev/null 2>&1 && \
 mount /dev/sda3 /mnt/home > /dev/null 2>&1
+echo " ";
 fi;
 
 
@@ -112,6 +114,7 @@ fi;
 
 echo "entrando no ambiente arch-chroot";
 arch-chroot /mnt bash -c '
+echo " ";
 
 echo "adicionando nome bux ao usuario root no arquivo hostname";
 if echo bux > /etc/hostname; then
@@ -122,7 +125,7 @@ fi;
 
 
 echo "adicionando senha bux ao usuario root";
-if echo -e "bux\nbux" | passwd root; then
+if echo -e "bux\nbux" | passwd root > /dev/null 2>&1; then
 echo " "
 else
 echo "FALHOU" && exit
@@ -138,7 +141,7 @@ fi;
 
 
 echo "adicionando senha bux ao usuario normal";
-if echo -e "bux\nbux" | passwd bux; then
+if echo -e "bux\nbux" | passwd bux > /dev/null 2>&1; then
 echo " "
 else
 echo "FALHOU" && exit
@@ -247,7 +250,7 @@ amd-ucode \
 vulkan-radeon \
 lib32-vulkan-radeon > /dev/null 2>&1
 else
-echo "NÃO ENCONTRADO"
+echo "NÃO ENCONTRADO" && echo " "
 fi;
 
 
@@ -258,7 +261,7 @@ intel-ucode \
 vulkan-intel \
 lib32-vulkan-intel > /dev/null 2>&1
 else
-echo "NÃO ENCONTRADO"
+echo "NÃO ENCONTRADO" && echo " "
 fi;
 
 
@@ -271,7 +274,7 @@ nvidia-utils \
 lib32-nvidia-utils \
 nvidia-settings > /dev/null 2>&1
 else
-echo "NÃO ENCONTRADO"
+echo "NÃO ENCONTRADO" && echo " "
 fi;
 
 
@@ -398,7 +401,7 @@ StandardInput=tty
 StandardOutput=tty
 
 [Install]
-WantedBy=multi-user.target" > /etc/systemd/system/L.service; then
+WantedBy=multi-user.target" > /etc/systemd/system/autologin.service; then
 echo " "
 else
 echo "FALHOU" && exit
@@ -406,7 +409,7 @@ fi;
 
 
 echo "habilitando autologin na inicialização";
-if systemctl enable L.service; then
+if systemctl enable autologin.service; then
 echo " "
 else
 echo "FALHOU" && exit
