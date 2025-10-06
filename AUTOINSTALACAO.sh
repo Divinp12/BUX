@@ -4,7 +4,7 @@ clear;
 
 echo "adicionando espelho brasileiro";
 if echo "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist; then
-echo " "
+echo ""
 else
 echo "FALHOU" && exit
 fi;
@@ -23,7 +23,7 @@ Include=/etc/pacman.d/mirrorlist
 Include=/etc/pacman.d/mirrorlist
 [multilib]
 Include=/etc/pacman.d/mirrorlist" > /etc/pacman.conf; then
-echo " "
+echo ""
 else
 echo "FALHOU" && exit
 fi;
@@ -31,7 +31,7 @@ fi;
 
 echo "sincronizando repositorios do pacman";
 if pacman -Sy --noconfirm > /dev/null 2>&1; then
-echo " "
+echo ""
 else
 echo "FALHOU" && exit
 fi;
@@ -54,7 +54,7 @@ mkdir /mnt/boot/EFI > /dev/null 2>&1 && \
 mkdir /mnt/home > /dev/null 2>&1 && \
 mount /dev/nvme0n1p1 /mnt/boot/EFI > /dev/null 2>&1 && \
 mount /dev/nvme0n1p3 /mnt/home > /dev/null 2>&1
-echo " ";
+echo "";
 
 else
 
@@ -74,7 +74,7 @@ mkdir /mnt/boot/EFI > /dev/null 2>&1 && \
 mkdir /mnt/home > /dev/null 2>&1 && \
 mount /dev/sda1 /mnt/boot/EFI > /dev/null 2>&1 && \
 mount /dev/sda3 /mnt/home > /dev/null 2>&1
-echo " ";
+echo "";
 fi;
 
 
@@ -98,7 +98,7 @@ pulseaudio \
 pavucontrol \
 grub-efi-x86_64 \
 efibootmgr > /dev/null 2>&1; then
-echo " "
+echo ""
 else
 echo "FALHOU" && exit
 fi;
@@ -106,7 +106,7 @@ fi;
 
 echo "configurando partições no arquivo fstab";
 if genfstab -U -p /mnt > /mnt/etc/fstab; then
-echo " "
+echo ""
 else
 echo "FALHOU" && exit
 fi;
@@ -114,11 +114,11 @@ fi;
 
 echo "entrando no ambiente arch-chroot";
 arch-chroot /mnt bash -c '
-echo " ";
+echo "";
 
 echo "adicionando nome bux ao usuario root no arquivo hostname";
 if echo bux > /etc/hostname; then
-echo " "
+echo ""
 else
 echo "FALHOU" && exit
 fi;
@@ -126,7 +126,7 @@ fi;
 
 echo "adicionando senha bux ao usuario root";
 if echo -e "bux\nbux" | passwd root > /dev/null 2>&1; then
-echo " "
+echo ""
 else
 echo "FALHOU" && exit
 fi;
@@ -134,7 +134,7 @@ fi;
 
 echo "adicionando usuario normal com nome bux";
 if useradd -m -g users -G wheel bux; then
-echo " "
+echo ""
 else
 echo "FALHOU" && exit
 fi;
@@ -142,7 +142,7 @@ fi;
 
 echo "adicionando senha bux ao usuario normal";
 if echo -e "bux\nbux" | passwd bux > /dev/null 2>&1; then
-echo " "
+echo ""
 else
 echo "FALHOU" && exit
 fi;
@@ -150,7 +150,7 @@ fi;
 
 echo "adicionando caracteres portugues brasileiro";
 if echo "pt_BR.UTF-8 UTF-8" > /etc/locale.gen; then
-echo " "
+echo ""
 else
 echo "FALHOU" && exit
 fi;
@@ -158,7 +158,7 @@ fi;
 
 echo "adicionando idioma portugues brasileiro";
 if echo "LANG=pt_BR.UTF-8" > /etc/locale.conf; then
-echo " "
+echo ""
 else
 echo "FALHOU" && exit
 fi;
@@ -166,7 +166,7 @@ fi;
 
 echo "aplicando caracteres portugues brasileiro";
 if locale-gen > /dev/null 2>&1; then
-echo " "
+echo ""
 else
 echo "FALHOU" && exit
 fi;
@@ -174,7 +174,7 @@ fi;
 
 echo "sincronizando relogio";
 if hwclock --systohc > /dev/null 2>&1; then
-echo " "
+echo ""
 else
 echo "FALHOU" && exit
 fi;
@@ -182,7 +182,7 @@ fi;
 
 echo "adicionando espelho brasileiro";
 if echo "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist; then
-echo " "
+echo ""
 else
 echo "FALHOU" && exit
 fi;
@@ -218,7 +218,7 @@ cd .. && \\
 sudo rm -rf paru && \\
 paru -Sy --noconfirm nano && \\
 sudo sed -i \"22,\\\$d\" /home/bux/.bashrc" > /home/bux/.bashrc; then
-echo " "
+echo ""
 else
 echo "FALHOU" && exit
 fi;
@@ -237,7 +237,7 @@ Include=/etc/pacman.d/mirrorlist
 Include=/etc/pacman.d/mirrorlist
 [multilib]
 Include=/etc/pacman.d/mirrorlist" > /etc/pacman.conf; then
-echo " "
+echo ""
 else
 echo "FALHOU" && exit
 fi;
@@ -250,7 +250,7 @@ amd-ucode \
 vulkan-radeon \
 lib32-vulkan-radeon > /dev/null 2>&1
 else
-echo "NÃO ENCONTRADO" && echo " "
+echo "NÃO ENCONTRADO" && echo ""
 fi;
 
 
@@ -261,7 +261,7 @@ intel-ucode \
 vulkan-intel \
 lib32-vulkan-intel > /dev/null 2>&1
 else
-echo "NÃO ENCONTRADO" && echo " "
+echo "NÃO ENCONTRADO" && echo ""
 fi;
 
 
@@ -274,13 +274,13 @@ nvidia-utils \
 lib32-nvidia-utils \
 nvidia-settings > /dev/null 2>&1
 else
-echo "NÃO ENCONTRADO" && echo " "
+echo "NÃO ENCONTRADO" && echo ""
 fi;
 
 
 echo "habilitando driver de wifi na inicialização do sistema";
 if systemctl enable NetworkManager > /dev/null 2>&1; then
-echo " "
+echo ""
 else
 echo "FALHOU" && exit
 fi;
@@ -291,7 +291,7 @@ if systemctl disable \
 NetworkManager-wait-online \
 systemd-networkd \
 systemd-timesyncd > /dev/null 2>&1; then
-echo " "
+echo ""
 else
 echo "FALHOU" && exit
 fi;
@@ -299,7 +299,7 @@ fi;
 
 echo "gerando imagens no inicializador do sistema";
 if mkinitcpio -P > /dev/null 2>&1; then
-echo " "
+echo ""
 else
 echo "FALHOU" && exit
 fi;
@@ -315,7 +315,7 @@ GRUB_PRELOAD_MODULES=\"part_gpt part_msdos\"
 GRUB_GFXMODE=auto
 GRUB_GFXPAYLOAD_LINUX=keep
 GRUB_DISABLE_RECOVERY=true" > /etc/default/grub; then
-echo " "
+echo ""
 else
 echo "FALHOU" && exit
 fi;
@@ -323,7 +323,7 @@ fi;
 
 echo "configurando grub";
 if grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=. --recheck > /dev/null 2>&1; then
-echo " "
+echo ""
 else
 echo "FALHOU" && exit
 fi;
@@ -331,7 +331,7 @@ fi;
 
 echo "adicionando grub na inicialização";
 if grub-mkconfig -o /boot/grub/grub.cfg > /dev/null 2>&1; then
-echo " "
+echo ""
 else
 echo "FALHOU" && exit
 fi;
@@ -341,7 +341,7 @@ echo "adicionando conexão ipv6 no sistema";
 if echo "127.0.0.1 localhost.localdomain localhost
 ::1 localhost.localdomain localhost
 127.0.0.1 bux.localdomain bux" > /etc/hosts; then
-echo " "
+echo ""
 else
 echo "FALHOU" && exit
 fi;
@@ -349,7 +349,7 @@ fi;
 
 echo "adicionando usuario normal (bux) ao sudo no arquivo sudoers";
 if echo "bux ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers; then
-echo " "
+echo ""
 else
 echo "FALHOU" && exit
 fi;
@@ -371,13 +371,13 @@ if sed -i "/^\s*#/d; /^\s*$/d" \
 /etc/fuse.conf \
 /etc/ts.conf \
 /etc/fstab; then
-echo " "
+echo ""
 fi;
 
 
 echo "adicionando autostartx do kde plasma";
 if echo "startplasma-wayland > /dev/null 2>&1" > /home/bux/.bash_profile; then
-echo " "
+echo ""
 else
 echo "FALHOU" && exit
 fi;
@@ -402,7 +402,7 @@ StandardOutput=tty
 
 [Install]
 WantedBy=multi-user.target" > /etc/systemd/system/autologin.service; then
-echo " "
+echo ""
 else
 echo "FALHOU" && exit
 fi;
@@ -410,7 +410,7 @@ fi;
 
 echo "habilitando autologin na inicialização";
 if systemctl enable autologin.service; then
-echo " "
+echo ""
 else
 echo "FALHOU" && exit
 fi;'
@@ -418,7 +418,7 @@ fi;'
 
 echo "gravando dados da memoria no disco";
 if sync > /dev/null 2>&1; then
-echo " "
+echo ""
 else
 echo "FALHOU" && exit
 fi;
