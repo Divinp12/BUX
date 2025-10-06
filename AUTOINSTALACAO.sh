@@ -94,7 +94,6 @@ xfce4-settings \
 xfdesktop \
 xfwm4 \
 wayland \
-lib32-wayland \
 xorg-xwayland \
 foot \
 pulseaudio \
