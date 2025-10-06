@@ -53,8 +53,8 @@ mkdir /mnt/boot > /dev/null 2>&1 && \
 mkdir /mnt/boot/EFI > /dev/null 2>&1 && \
 mkdir /mnt/home > /dev/null 2>&1 && \
 mount /dev/nvme0n1p1 /mnt/boot/EFI > /dev/null 2>&1 && \
-mount /dev/nvme0n1p3 /mnt/home > /dev/null 2>&1
-echo "";
+mount /dev/nvme0n1p3 /mnt/home > /dev/null 2>&1 && \
+echo ""
 
 else
 
@@ -73,8 +73,8 @@ mkdir /mnt/boot > /dev/null 2>&1 && \
 mkdir /mnt/boot/EFI > /dev/null 2>&1 && \
 mkdir /mnt/home > /dev/null 2>&1 && \
 mount /dev/sda1 /mnt/boot/EFI > /dev/null 2>&1 && \
-mount /dev/sda3 /mnt/home > /dev/null 2>&1
-echo "";
+mount /dev/sda3 /mnt/home > /dev/null 2>&1 && \
+echo ""
 fi;
 
 
