@@ -104,6 +104,41 @@ echo "FALHOU" && exit
 fi;
 
 
+echo "escaneando hardware amd, sincronizando repositorios do pacman e instalando drivers amd";
+if lspci | grep -i amd > /dev/null 2>&1; then
+pacstrap /mnt --noconfirm \
+amd-ucode \
+vulkan-radeon \
+lib32-vulkan-radeon > /dev/null 2>&1
+else
+echo "NÃO ENCONTRADO" && echo ""
+fi;
+
+
+echo "escaneando hardware intel, sincronizando repositorios do pacman e instalando drivers intel";
+if lspci | grep -i intel > /dev/null 2>&1; then
+pacstrap /mnt --noconfirm \
+intel-ucode \
+vulkan-intel \
+lib32-vulkan-intel > /dev/null 2>&1
+else
+echo "NÃO ENCONTRADO" && echo ""
+fi;
+
+
+echo "escaneando hardware nvidia, sincronizando repositorios do pacman e instalando drivers nvidia";
+if lspci | grep -i nvidia > /dev/null 2>&1; then
+pacstrap /mnt --noconfirm \
+nvidia \
+nvidia-dkms \
+nvidia-utils \
+lib32-nvidia-utils \
+nvidia-settings > /dev/null 2>&1
+else
+echo "NÃO ENCONTRADO" && echo ""
+fi;
+
+
 echo "configurando partições no arquivo fstab";
 if genfstab -U -p /mnt > /mnt/etc/fstab; then
 echo ""
@@ -240,41 +275,6 @@ Include=/etc/pacman.d/mirrorlist" > /etc/pacman.conf; then
 echo ""
 else
 echo "FALHOU" && exit
-fi;
-
-
-echo "escaneando hardware amd, sincronizando repositorios do pacman e instalando drivers amd";
-if lspci | grep -i amd > /dev/null 2>&1; then
-pacman -Sy --noconfirm \
-amd-ucode \
-vulkan-radeon \
-lib32-vulkan-radeon > /dev/null 2>&1
-else
-echo "NÃO ENCONTRADO" && echo ""
-fi;
-
-
-echo "escaneando hardware intel, sincronizando repositorios do pacman e instalando drivers intel";
-if lspci | grep -i intel > /dev/null 2>&1; then
-pacman -Sy --noconfirm \
-intel-ucode \
-vulkan-intel \
-lib32-vulkan-intel > /dev/null 2>&1
-else
-echo "NÃO ENCONTRADO" && echo ""
-fi;
-
-
-echo "escaneando hardware nvidia, sincronizando repositorios do pacman e instalando drivers nvidia";
-if lspci | grep -i nvidia > /dev/null 2>&1; then
-pacman -Sy --noconfirm \
-nvidia \
-nvidia-dkms \
-nvidia-utils \
-lib32-nvidia-utils \
-nvidia-settings > /dev/null 2>&1
-else
-echo "NÃO ENCONTRADO" && echo ""
 fi;
 
 
