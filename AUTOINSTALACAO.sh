@@ -376,7 +376,7 @@ fi;
 
 
 echo "adicionando autostartx do kde plasma";
-if echo "sway > /dev/null 2>&1" > /home/bux/.bash_profile; then
+if echo "exec sway > /dev/null 2>&1" > /home/bux/.bash_profile; then
 echo ""
 else
 echo "FALHOU" && exit
