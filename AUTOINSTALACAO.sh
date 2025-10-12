@@ -90,7 +90,7 @@ sudo \
 git \
 fastfetch \
 mesa \
-plasma \
+sway \
 wayland \
 xorg-xwayland \
 foot \
@@ -376,7 +376,7 @@ fi;
 
 
 echo "adicionando autostartx do kde plasma";
-if echo "startplasma-wayland > /dev/null 2>&1" > /home/bux/.bash_profile; then
+if echo "sway > /dev/null 2>&1" > /home/bux/.bash_profile; then
 echo ""
 else
 echo "FALHOU" && exit
