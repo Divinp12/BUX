@@ -229,6 +229,7 @@ alias d=\"sudo pacman -Rsc\";
 alias a=\"paru -Syyu --noconfirm\";
 alias m=\"pacman -Q\";
 alias w=\"nmtui\";
+alias d=\"poweroff -f\";
 sudo rm -rf /home/bux/.bash_history;
 sudo pacman -Scc --noconfirm;
 clear;
@@ -252,7 +253,7 @@ makepkg -si --noconfirm && \\
 cd .. && \\
 sudo rm -rf paru && \\
 paru -Sy --noconfirm nano && \\
-sudo sed -i \"22,\\\$d\" /home/bux/.bashrc" > /home/bux/.bashrc; then
+sudo sed -i \"23,\\\$d\" /home/bux/.bashrc" > /home/bux/.bashrc; then
 echo ""
 else
 echo "FALHOU" && exit
