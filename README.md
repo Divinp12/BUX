@@ -7,10 +7,15 @@ OI, SEJA BEM VINDO AO MEU PROJETO QUE SE CHAMA "BUX LINUX", É UM PROJETO QUE AU
 -----------------------------RECOMENDAÇÕES----------------------------
 
 PENDRIVE VAZIO FAT32 DE 2 GB.
+
 BOOT: UEFI ou GPT.
+
 CPU: qualquer um que seja x86_64 ou AMD64.
+
 RAM: 512MB.
+
 ARMAZENAMENTO: 31 GB.
+
 CONECÇÃO COM FIO A INTERNET, MAS SEM FIO USE O COMANDO: iwctl
 
 -----------------------------INSTALAÇÃO-----------------------------------
@@ -28,18 +33,25 @@ ESPERE E DIVIRTA-SE ;)
 -----------------------INFORMAÇÕES BASICAS DO TERMINAL----------------------------------------
 
 NOME DO USUARIO ROOT: bux
+
 SENHA DO USUARIO ROOT: bux
+
 NOME DO USUARIO NORMAL: bux
+
 SENHA DO USUARIO NORMAL: bux
 
 INSTALAR PACOTES: i nome-do-pacote
+
 DESISTALAR PACOTES: d nome-do-pacote
+
 ATUALIZAR PACOTES: a nome-do-pacote ou apenas "a" para todos
+
 MOSTRA PACOTES INSTALADOS: m nome-do-pacote ou apenas "m" para todos
 
 CONECTAR A REDE WIFI COM/SEM FIO: w
 
 DESLIGAR MAQUINA: d
+
 REINICIAR MAQUINA: r
 
 ----------------------PACOTES POPULARES (OPCIONAL)--------------------------------
