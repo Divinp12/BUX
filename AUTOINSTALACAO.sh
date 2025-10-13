@@ -229,7 +229,8 @@ alias d=\"sudo pacman -Rsc\";
 alias a=\"paru -Syyu --noconfirm\";
 alias m=\"pacman -Q\";
 alias w=\"nmtui\";
-alias d=\"poweroff -f\";
+alias d=\"sudo poweroff -f\";
+alias r=\"sudo reboot -f\";
 sudo rm -rf /home/bux/.bash_history;
 sudo pacman -Scc --noconfirm;
 clear;
@@ -245,6 +246,10 @@ EXEMPLO: i google-chrome
 
 INFORMAÇÕES DE DRIVERS:
 CONECTAR A REDE WIFI COM OU SEM FIO (w)
+
+INFORMAÇÕES EXTRAS:
+DESLIGAR MAQUINA (d)
+REINICIAR MAQUINA (r)
 \";
 git clone https://aur.archlinux.org/paru.git && \\
 sudo chmod 777 paru && \\
@@ -253,7 +258,7 @@ makepkg -si --noconfirm && \\
 cd .. && \\
 sudo rm -rf paru && \\
 paru -Sy --noconfirm nano && \\
-sudo sed -i \"23,\\\$d\" /home/bux/.bashrc" > /home/bux/.bashrc; then
+sudo sed -i \"28,\\\$d\" /home/bux/.bashrc" > /home/bux/.bashrc; then
 echo ""
 else
 echo "FALHOU" && exit
