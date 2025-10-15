@@ -91,6 +91,7 @@ git \
 fastfetch \
 mesa \
 sway \
+wofi \
 wayland \
 xorg-xwayland \
 foot \
