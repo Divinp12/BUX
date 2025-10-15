@@ -390,6 +390,51 @@ echo "FALHOU" && exit
 fi;
 
 
+echo "adicionando diretorio de configuração do sway";
+if mkdir -p /home/bux/.config/sway; then
+echo ""
+else
+echo "FALHOU" && exit
+fi;
+
+
+echo "adicionando arquivo de configuração do sway";
+if echo "set \$mod Mod4
+
+default_border pixel 1
+default_floating_border none
+
+input * { pointer_accel 0 }
+
+output * bg #000000 solid_color
+output * { compositor none }
+
+bindsym \$mod+z exec foot
+
+bindsym \$mod+x kill
+
+bindsym \$mod+v exec wofi --show drun --no-dmenu
+
+bindsym \$mod+c reload
+
+bindsym \$mod+b fullscreen toggle
+
+# Special keys to adjust volume via PulseAudio
+bindsym --locked XF86AudioMute exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
+bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume \@DEFAULT_SINK@ -5%
+bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume \@DEFAULT_SINK@ +5%
+bindsym --locked XF86AudioMicMute exec pactl set-source-mute \@DEFAULT_SOURCE@ toggle
+# Special keys to adjust brightness via brightnessctl
+bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
+
+include /etc/sway/config.d/*" > /home/bux/.config/sway/config; then
+echo ""
+else
+echo "FALHOU" && exit
+fi;
+
+
 echo "adicionando autologin do tty1";
 if echo "[Unit]
 After=systemd-user-sessions.service plymouth-quit-wait.service
