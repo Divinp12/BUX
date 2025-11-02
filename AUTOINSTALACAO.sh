@@ -285,25 +285,6 @@ echo "FALHOU" && exit
 fi;
 
 
-echo "habilitando driver de wifi na inicialização do sistema";
-if systemctl enable NetworkManager > /dev/null 2>&1; then
-echo ""
-else
-echo "FALHOU" && exit
-fi;
-
-
-echo "desativando serviços inuteis na inicialização do sistema";
-if systemctl disable \
-NetworkManager-wait-online \
-systemd-networkd \
-systemd-timesyncd > /dev/null 2>&1; then
-echo ""
-else
-echo "FALHOU" && exit
-fi;
-
-
 echo "gerando imagens no inicializador do sistema";
 if mkinitcpio -P > /dev/null 2>&1; then
 echo ""
@@ -460,8 +441,21 @@ echo "FALHOU" && exit
 fi;
 
 
-echo "habilitando autologin na inicialização";
-if systemctl enable autologin.service; then
+echo "habilitando serviços uteis na inicialização do sistema";
+if systemctl enable \
+NetworkManager \
+autologin > /dev/null 2>&1; then
+echo ""
+else
+echo "FALHOU" && exit
+fi;
+
+
+echo "desativando serviços inuteis na inicialização do sistema";
+if systemctl disable \
+NetworkManager-wait-online \
+systemd-networkd \
+systemd-timesyncd > /dev/null 2>&1; then
 echo ""
 else
 echo "FALHOU" && exit
