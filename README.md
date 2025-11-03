@@ -20,7 +20,7 @@ CONECÇÃO COM FIO A INTERNET, MAS SEM FIO USE O COMANDO: iwctl
 
 -----------------------------INSTALAÇÃO-----------------------------------
 
-BAIXE A ISO DO ARCH LINUX NO LINK: https://mirror.ufscar.br/archlinux/iso/2025.10.01/archlinux-x86_64.iso
+BAIXE A ISO DO ARCH LINUX NO LINK: https://mirror.ufscar.br/archlinux/iso/2025.11.01/archlinux-x86_64.iso
 
 EXTRAIA OS ARQUIVOS DA ISO NO PENDRIVE
 
