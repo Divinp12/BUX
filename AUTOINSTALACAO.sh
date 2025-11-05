@@ -110,7 +110,8 @@ if lspci | grep -i amd > /dev/null 2>&1; then
 pacstrap /mnt --noconfirm \
 amd-ucode \
 vulkan-radeon \
-lib32-vulkan-radeon > /dev/null 2>&1
+lib32-vulkan-radeon > /dev/null 2>&1 && \
+echo ""
 else
 echo "NÃO ENCONTRADO" && echo ""
 fi;
@@ -121,7 +122,8 @@ if lspci | grep -i intel > /dev/null 2>&1; then
 pacstrap /mnt --noconfirm \
 intel-ucode \
 vulkan-intel \
-lib32-vulkan-intel > /dev/null 2>&1
+lib32-vulkan-intel > /dev/null 2>&1 && \
+echo ""
 else
 echo "NÃO ENCONTRADO" && echo ""
 fi;
@@ -134,7 +136,8 @@ nvidia \
 nvidia-dkms \
 nvidia-utils \
 lib32-nvidia-utils \
-nvidia-settings > /dev/null 2>&1
+nvidia-settings > /dev/null 2>&1 && \
+echo ""
 else
 echo "NÃO ENCONTRADO" && echo ""
 fi;
@@ -230,7 +233,7 @@ alias d=\"sudo pacman -Rsc\";
 alias a=\"paru -Syyu --noconfirm\";
 alias m=\"pacman -Q\";
 alias w=\"nmtui\";
-alias d=\"sudo poweroff -f\";
+alias p=\"sudo poweroff -f\";
 alias r=\"sudo reboot -f\";
 sudo rm -rf /home/bux/.bash_history;
 sudo pacman -Scc --noconfirm;
@@ -243,13 +246,13 @@ INSTALAR PACOTES (i nome-do-pacote)
 DESISTALAR PACOTES (d nome-do-pacote)
 ATUALIZAR PACOTES (a nome-do-pacote ou apenas a para todos)
 MOSTRA PACOTES INSTALADOS (m nome-do-pacote ou apenas m para todos)
-EXEMPLO: i google-chrome
+EXEMPLO: i firefox
 
 INFORMAÇÕES DE DRIVERS:
 CONECTAR A REDE WIFI COM OU SEM FIO (w)
 
 INFORMAÇÕES EXTRAS:
-DESLIGAR MAQUINA (d)
+DESLIGAR MAQUINA (p)
 REINICIAR MAQUINA (r)
 \";
 git clone https://aur.archlinux.org/paru.git && \\
