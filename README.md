@@ -56,11 +56,11 @@ REINICIAR MAQUINA: r
 
 ----------------------PACOTES POPULARES (OPCIONAL)--------------------------------
 
-google chrome = i google-chrome
+google chrome (PACOTE QUEBRADO) = i google-chrome
 
 firefox = i firefox
 
-media player (visualizador de audio e videos) = i vlc
+VLC (visualizador de audio e video) = i vlc
 
 libreoffice (visualizador/modificador gratis de pdf, word, etc) = i libreoffice-fresh
 
