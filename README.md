@@ -30,6 +30,20 @@ APÓS APARECER O "Root@Archiso" TIRE O PENDRIVE DO PC E DIGITE: pacman -Sy --noc
 
 ESPERE E DIVIRTA-SE ;)
 
+
+-----------------------INFORMAÇÕES BASICAS DO DESKTOP----------------------------------------
+
+ABRIR TERMINAL: CTRL + Z
+
+FECHAR PROGRAMA: CTRL + X "O CURSOR DO MOUSE PRECISA ESTA DENTRO DO ESPAÇO DO PROGRAMA"
+
+REINICIAR CONFIGURAÇÕES DO SWAY: CTRL + C
+
+ABRIR WOFI (MENU DE PROGRAMAS): CTRL + V
+
+ENTRA OU SAIR NO MODO TELA CHEIA: CTRL + B "O CURSOR DO MOUSE PRECISA ESTA DENTRO DO ESPAÇO DO PROGRAMA"
+
+
 -----------------------INFORMAÇÕES BASICAS DO TERMINAL----------------------------------------
 
 NOME DO USUARIO ROOT: bux
@@ -53,6 +67,7 @@ CONECTAR A REDE WIFI COM/SEM FIO: w
 DESLIGAR MAQUINA: d
 
 REINICIAR MAQUINA: r
+
 
 ----------------------PACOTES POPULARES (OPCIONAL)--------------------------------
 
@@ -131,6 +146,7 @@ BLUETOOTH (OPCIONAL)
 Para usar o Bluetooth é preciso ter o chip Bluetooth no seu hardware ou ter um dispositivo externo como USB Bluetooth. Porém pode haver uma imcompatibilidade dependendo da versão do Bluetooth.
 
 instalar: i bluez bluez-tools bluez-utils blueman && sudo systemctl start bluetooth && sudo systemctl enable bluetooth && echo "[Policy]" > /etc/bluetooth/main.conf && echo "AutoEnable=true" >> /etc/bluetooth/main.conf
+
 _________________________________________________________________________________________________________________________
 
 CASO NÃO TENHA O PACOTE QUE QUEIRA POR AQUI NESTA PÁGINA, PROCURE PELO SITE OFICIAL DO ARCH LINUX:
