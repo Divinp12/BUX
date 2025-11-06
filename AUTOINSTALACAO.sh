@@ -255,7 +255,7 @@ INFORMAÇÕES EXTRAS:
 DESLIGAR MAQUINA (p)
 REINICIAR MAQUINA (r)
 \";
-git clone https://aur.archlinux.org/paru.git && \\
+git clone https://aur.archlinux.org/paru.git > /dev/null 2>&1 && \\
 sudo chmod 777 paru && \\
 cd paru && \\
 makepkg -si --noconfirm && \\
