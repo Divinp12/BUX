@@ -81,6 +81,7 @@ UUID2=$(blkid -s UUID -o value /dev/sda2) && \
 grep -q "$UUID2" /mnt/etc/fstab || echo "UUID=$UUID2 / ext4 defaults 0 1" >> /mnt/etc/fstab && \
 UUID3=$(blkid -s UUID -o value /dev/sda3) && \
 grep -q "$UUID3" /mnt/etc/fstab || echo "UUID=$UUID3 /home ext4 defaults 0 2" >> /mnt/etc/fstab && \
+mount -a -v && \
 echo ""
 fi;
 
