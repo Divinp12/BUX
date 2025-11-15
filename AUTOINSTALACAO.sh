@@ -75,11 +75,11 @@ mkdir /mnt/home > /dev/null 2>&1 && \
 mount /dev/sda1 /mnt/boot/EFI > /dev/null 2>&1 && \
 mount /dev/sda3 /mnt/home > /dev/null 2>&1 && \
 mkdir -p /mnt/etc && \
-UUID1=$(blkid /dev/sda1 | grep -oP 'UUID="\K[^"]+') && \
+UUID1=$(blkid -s UUID /dev/sda1 | grep -oP 'UUID="\K[^"]+') && \
 grep -q "$UUID1" /mnt/etc/fstab || echo "UUID=$UUID1 /boot vfat defaults 0 1" > /mnt/etc/fstab && \
-UUID2=$(blkid /dev/sda2 | grep -oP 'UUID="\K[^"]+') && \
+UUID2=$(blkid -s UUID /dev/sda2 | grep -oP 'UUID="\K[^"]+') && \
 grep -q "$UUID2" /mnt/etc/fstab || echo "UUID=$UUID2 / ext4 defaults 0 1" >> /mnt/etc/fstab && \
-UUID3=$(blkid /dev/sda3 | grep -oP 'UUID="\K[^"]+') && \
+UUID3=$(blkid -s UUID /dev/sda3 | grep -oP 'UUID="\K[^"]+') && \
 grep -q "$UUID3" /mnt/etc/fstab || echo "UUID=$UUID3 /home ext4 defaults 0 2" >> /mnt/etc/fstab && \
 echo ""
 fi;
@@ -147,14 +147,6 @@ nvidia-settings > /dev/null 2>&1 && \
 echo ""
 else
 echo "NÃO ENCONTRADO" && echo ""
-fi;
-
-
-echo "configurando partições no arquivo fstab";
-if genfstab -U -p /mnt > /mnt/etc/fstab; then
-echo ""
-else
-echo "FALHOU" && exit
 fi;
 
 
