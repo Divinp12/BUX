@@ -54,10 +54,6 @@ mkdir /mnt/boot/EFI > /dev/null 2>&1 && \
 mkdir /mnt/home > /dev/null 2>&1 && \
 mount /dev/nvme0n1p1 /mnt/boot/EFI > /dev/null 2>&1 && \
 mount /dev/nvme0n1p3 /mnt/home > /dev/null 2>&1 && \
-mkdir -p /mnt/etc && \
-echo "/dev/nvme0n1p1 /boot vfat defaults 0 1
-/dev/nvme0n1p2 / ext4 defaults,noatime 0 1
-/dev/nvme0n1p3 /home ext4 defaults,noatime 0 2" > /mnt/etc/fstab && \
 echo ""
 
 else
@@ -78,10 +74,6 @@ mkdir /mnt/boot/EFI > /dev/null 2>&1 && \
 mkdir /mnt/home > /dev/null 2>&1 && \
 mount /dev/sda1 /mnt/boot/EFI > /dev/null 2>&1 && \
 mount /dev/sda3 /mnt/home > /dev/null 2>&1 && \
-mkdir -p /mnt/etc && \
-echo "/dev/sda1 /boot vfat defaults 0 1
-/dev/sda2 / ext4 defaults,noatime 0 1
-/dev/sda3 /home ext4 defaults,noatime 0 2" > /mnt/etc/fstab && \
 echo ""
 fi;
 
@@ -148,6 +140,14 @@ nvidia-settings > /dev/null 2>&1 && \
 echo ""
 else
 echo "NÃO ENCONTRADO" && echo ""
+fi;
+
+
+echo "configurando partições no arquivo fstab";
+if genfstab -U -p /mnt > /mnt/etc/fstab; then
+echo ""
+else
+echo "FALHOU" && exit
 fi;
 
 
