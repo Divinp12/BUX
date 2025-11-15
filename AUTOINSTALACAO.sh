@@ -74,6 +74,13 @@ mkdir /mnt/boot/EFI > /dev/null 2>&1 && \
 mkdir /mnt/home > /dev/null 2>&1 && \
 mount /dev/sda1 /mnt/boot/EFI > /dev/null 2>&1 && \
 mount /dev/sda3 /mnt/home > /dev/null 2>&1 && \
+mkdir -p /mnt/etc && \
+UUID1=$(blkid /dev/sda1 | grep -oP 'UUID="\K[^"]+') && \
+grep -q "$UUID1" /mnt/etc/fstab || echo "UUID=$UUID1 /boot vfat defaults 0 1" > /mnt/etc/fstab && \
+UUID2=$(blkid /dev/sda2 | grep -oP 'UUID="\K[^"]+') && \
+grep -q "$UUID2" /mnt/etc/fstab || echo "UUID=$UUID2 / ext4 defaults 0 1" >> /mnt/etc/fstab && \
+UUID3=$(blkid /dev/sda3 | grep -oP 'UUID="\K[^"]+') && \
+grep -q "$UUID3" /mnt/etc/fstab || echo "UUID=$UUID3 /home ext4 defaults 0 2" >> /mnt/etc/fstab && \
 echo ""
 fi;
 
