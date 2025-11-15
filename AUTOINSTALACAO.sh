@@ -407,6 +407,39 @@ echo "FALHOU" && exit
 fi;
 
 
+echo "adicionando diretorio de configuração extra do sway";
+if mkdir -p /etc/sway; then
+echo ""
+else
+echo "FALHOU" && exit
+fi;
+
+
+echo "adicionando arquivo de configuração extra do sway";
+if echo "set \$mod Mod4
+default_border pixel 1
+default_floating_border none
+input * { pointer_accel 0 }
+output * bg #000000 solid_color
+output * { compositor none }
+bindsym \$mod+z exec foot
+bindsym \$mod+x kill
+bindsym \$mod+v exec wofi --show drun --no-dmenu
+bindsym \$mod+c reload
+bindsym \$mod+b fullscreen toggle
+bindsym --locked XF86AudioMute exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
+bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume \@DEFAULT_SINK@ -5%
+bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume \@DEFAULT_SINK@ +5%
+bindsym --locked XF86AudioMicMute exec pactl set-source-mute \@DEFAULT_SOURCE@ toggle
+bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
+include /etc/sway/config.d/*" > /etc/sway/config; then
+echo ""
+else
+echo "FALHOU" && exit
+fi;
+
+
 echo "adicionando autologin do tty1";
 if echo "[Unit]
 After=systemd-user-sessions.service plymouth-quit-wait.service
