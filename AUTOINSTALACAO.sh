@@ -148,6 +148,75 @@ echo "NÃO ENCONTRADO" && echo ""
 fi;
 
 
+echo "adicionando espelho brasileiro";
+if echo "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist; then
+echo ""
+else
+echo "FALHOU" && exit
+fi;
+
+
+echo "sobscrevendo arquivo pacman.conf";
+if echo "[options]
+Architecture=auto
+CheckSpace
+ParallelDownloads=1
+SigLevel=Required DatabaseOptional
+LocalFileSigLevel=Optional
+[core]
+Include=/etc/pacman.d/mirrorlist
+[extra]
+Include=/etc/pacman.d/mirrorlist
+[multilib]
+Include=/etc/pacman.d/mirrorlist" > /etc/pacman.conf; then
+echo ""
+else
+echo "FALHOU" && exit
+fi;
+
+
+echo "sobscrevendo arquivo .bashrc";
+if echo "alias i=\"paru -Sy --noconfirm\";
+alias d=\"sudo pacman -Rsc\";
+alias a=\"paru -Syyu --noconfirm\";
+alias m=\"pacman -Q\";
+alias w=\"nmtui\";
+alias p=\"sudo poweroff -f\";
+alias r=\"sudo reboot -f\";
+sudo rm -rf /home/bux/.bash_history;
+sudo pacman -Scc --noconfirm;
+clear;
+sudo sleep 1;
+fastfetch;
+echo \"
+INFORMAÇÕES DE PACOTES:
+INSTALAR PACOTES (i nome-do-pacote)
+DESISTALAR PACOTES (d nome-do-pacote)
+ATUALIZAR PACOTES (a nome-do-pacote ou apenas a para todos)
+MOSTRA PACOTES INSTALADOS (m nome-do-pacote ou apenas m para todos)
+EXEMPLO: i firefox
+
+INFORMAÇÕES DE DRIVERS:
+CONECTAR A REDE WIFI COM OU SEM FIO (w)
+
+INFORMAÇÕES EXTRAS:
+DESLIGAR MAQUINA (p)
+REINICIAR MAQUINA (r)
+\";
+git clone https://aur.archlinux.org/paru.git > /dev/null 2>&1 && \\
+sudo chmod 777 paru && \\
+cd paru && \\
+makepkg -si --noconfirm && \\
+cd .. && \\
+sudo rm -rf paru && \\
+paru -Sy --noconfirm nano && \\
+sudo sed -i \"28,\\\$d\" /home/bux/.bashrc" > /home/bux/.bashrc; then
+echo ""
+else
+echo "FALHOU" && exit
+fi;
+
+
 echo "entrando no ambiente arch-chroot";
 arch-chroot /mnt bash -c '
 echo "";
@@ -210,75 +279,6 @@ fi;
 
 echo "sincronizando relogio";
 if hwclock --systohc > /dev/null 2>&1; then
-echo ""
-else
-echo "FALHOU" && exit
-fi;
-
-
-echo "adicionando espelho brasileiro";
-if echo "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist; then
-echo ""
-else
-echo "FALHOU" && exit
-fi;
-
-
-echo "sobscrevendo arquivo .bashrc";
-if echo "alias i=\"paru -Sy --noconfirm\";
-alias d=\"sudo pacman -Rsc\";
-alias a=\"paru -Syyu --noconfirm\";
-alias m=\"pacman -Q\";
-alias w=\"nmtui\";
-alias p=\"sudo poweroff -f\";
-alias r=\"sudo reboot -f\";
-sudo rm -rf /home/bux/.bash_history;
-sudo pacman -Scc --noconfirm;
-clear;
-sudo sleep 1;
-fastfetch;
-echo \"
-INFORMAÇÕES DE PACOTES:
-INSTALAR PACOTES (i nome-do-pacote)
-DESISTALAR PACOTES (d nome-do-pacote)
-ATUALIZAR PACOTES (a nome-do-pacote ou apenas a para todos)
-MOSTRA PACOTES INSTALADOS (m nome-do-pacote ou apenas m para todos)
-EXEMPLO: i firefox
-
-INFORMAÇÕES DE DRIVERS:
-CONECTAR A REDE WIFI COM OU SEM FIO (w)
-
-INFORMAÇÕES EXTRAS:
-DESLIGAR MAQUINA (p)
-REINICIAR MAQUINA (r)
-\";
-git clone https://aur.archlinux.org/paru.git > /dev/null 2>&1 && \\
-sudo chmod 777 paru && \\
-cd paru && \\
-makepkg -si --noconfirm && \\
-cd .. && \\
-sudo rm -rf paru && \\
-paru -Sy --noconfirm nano && \\
-sudo sed -i \"28,\\\$d\" /home/bux/.bashrc" > /home/bux/.bashrc; then
-echo ""
-else
-echo "FALHOU" && exit
-fi;
-
-
-echo "sobscrevendo arquivo pacman.conf";
-if echo "[options]
-Architecture=auto
-CheckSpace
-ParallelDownloads=1
-SigLevel=Required DatabaseOptional
-LocalFileSigLevel=Optional
-[core]
-Include=/etc/pacman.d/mirrorlist
-[extra]
-Include=/etc/pacman.d/mirrorlist
-[multilib]
-Include=/etc/pacman.d/mirrorlist" > /etc/pacman.conf; then
 echo ""
 else
 echo "FALHOU" && exit
