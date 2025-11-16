@@ -235,10 +235,10 @@ alias m=\"pacman -Q\";
 alias w=\"nmtui\";
 alias p=\"su -c \\"poweroff -f\\"\";
 alias r=\"su -c \\"reboot -f\\"\";
-su -c "rm -rf /home/bux/.bash_history";
-su -c "pacman -Scc --noconfirm";
+su -c \"rm -rf /home/bux/.bash_history\";
+su -c \"pacman -Scc --noconfirm\";
 clear;
-su -c "sleep 1";
+su -c \"sleep 1\";
 fastfetch;
 echo \"
 INFORMAÇÕES DE PACOTES:
@@ -256,13 +256,13 @@ DESLIGAR MAQUINA (p)
 REINICIAR MAQUINA (r)
 \";
 git clone https://aur.archlinux.org/paru.git > /dev/null 2>&1 && \\
-su -c "chmod 777 paru" && \\
+su -c \"chmod 777 paru\" && \\
 cd paru && \\
 makepkg -si --noconfirm && \\
 cd .. && \\
-su -c "rm -rf paru" && \\
+su -c \"rm -rf paru\" && \\
 paru -Sy --noconfirm nano && \\
-su -c \'sed -i \"28,\\\$d\" /home/bux/.bashrc\'" > /home/bux/.bashrc; then
+su -c \"sed -i \\"28,\\\$d\\" /home/bux/.bashrc\"" > /home/bux/.bashrc; then
 echo ""
 else
 echo "FALHOU" && exit
