@@ -6,7 +6,7 @@ echo "adicionando espelho brasileiro";
 if echo "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist; then
 echo ""
 else
-echo "FALHOU" && exit
+echo "ERRO" && exit
 fi;
 
 
@@ -25,7 +25,7 @@ Include=/etc/pacman.d/mirrorlist
 Include=/etc/pacman.d/mirrorlist" > /etc/pacman.conf; then
 echo ""
 else
-echo "FALHOU" && exit
+echo "ERRO" && exit
 fi;
 
 
@@ -33,7 +33,7 @@ echo "sincronizando repositorios do pacman";
 if pacman -Sy --noconfirm > /dev/null 2>&1; then
 echo ""
 else
-echo "FALHOU" && exit
+echo "ERRO" && exit
 fi;
 
 
@@ -101,7 +101,7 @@ grub-efi-x86_64 \
 efibootmgr > /dev/null 2>&1; then
 echo ""
 else
-echo "FALHOU" && exit
+echo "ERRO" && exit
 fi;
 
 
@@ -113,7 +113,7 @@ vulkan-radeon \
 lib32-vulkan-radeon > /dev/null 2>&1 && \
 echo ""
 else
-echo "NÃO ENCONTRADO" && echo ""
+echo "Ñ ENCONTRADO" && echo ""
 fi;
 
 
@@ -125,7 +125,7 @@ vulkan-intel \
 lib32-vulkan-intel > /dev/null 2>&1 && \
 echo ""
 else
-echo "NÃO ENCONTRADO" && echo ""
+echo "Ñ ENCONTRADO" && echo ""
 fi;
 
 
@@ -139,7 +139,7 @@ lib32-nvidia-utils \
 nvidia-settings > /dev/null 2>&1 && \
 echo ""
 else
-echo "NÃO ENCONTRADO" && echo ""
+echo "Ñ ENCONTRADO" && echo ""
 fi;
 
 
@@ -147,7 +147,7 @@ echo "configurando partições no arquivo fstab";
 if genfstab -U -p /mnt > /mnt/etc/fstab; then
 echo ""
 else
-echo "FALHOU" && exit
+echo "ERRO" && exit
 fi;
 
 
@@ -155,7 +155,7 @@ echo "adicionando espelho brasileiro";
 if echo "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /mnt/etc/pacman.d/mirrorlist; then
 echo ""
 else
-echo "FALHOU" && exit
+echo "ERRO" && exit
 fi;
 
 
@@ -174,7 +174,7 @@ Include=/etc/pacman.d/mirrorlist
 Include=/etc/pacman.d/mirrorlist" > /mnt/etc/pacman.conf; then
 echo ""
 else
-echo "FALHOU" && exit
+echo "ERRO" && exit
 fi;
 
 
@@ -186,7 +186,7 @@ echo "adicionando nome bux ao usuario root no arquivo hostname";
 if echo bux > /etc/hostname; then
 echo ""
 else
-echo "FALHOU" && exit
+echo "ERRO" && exit
 fi;
 
 
@@ -194,7 +194,7 @@ echo "adicionando senha bux ao usuario root";
 if echo -e "bux\nbux" | passwd root > /dev/null 2>&1; then
 echo ""
 else
-echo "FALHOU" && exit
+echo "ERRO" && exit
 fi;
 
 
@@ -202,7 +202,7 @@ echo "adicionando usuario normal com nome bux";
 if useradd -m -g users -G wheel bux; then
 echo ""
 else
-echo "FALHOU" && exit
+echo "ERRO" && exit
 fi;
 
 
@@ -210,7 +210,7 @@ echo "adicionando senha bux ao usuario normal";
 if echo -e "bux\nbux" | passwd bux > /dev/null 2>&1; then
 echo ""
 else
-echo "FALHOU" && exit
+echo "ERRO" && exit
 fi;
 
 
@@ -252,7 +252,7 @@ paru -Sy --noconfirm nano && \\
 sudo sed -i \"28,\\\$d\" /home/bux/.bashrc" > /home/bux/.bashrc; then
 echo ""
 else
-echo "FALHOU" && exit
+echo "ERRO" && exit
 fi;
 
 
@@ -260,7 +260,7 @@ echo "adicionando caracteres portugues brasileiro";
 if echo "pt_BR.UTF-8 UTF-8" > /etc/locale.gen; then
 echo ""
 else
-echo "FALHOU" && exit
+echo "ERRO" && exit
 fi;
 
 
@@ -268,7 +268,7 @@ echo "adicionando idioma portugues brasileiro";
 if echo "LANG=pt_BR.UTF-8" > /etc/locale.conf; then
 echo ""
 else
-echo "FALHOU" && exit
+echo "ERRO" && exit
 fi;
 
 
@@ -276,7 +276,7 @@ echo "aplicando caracteres portugues brasileiro";
 if locale-gen > /dev/null 2>&1; then
 echo ""
 else
-echo "FALHOU" && exit
+echo "ERRO" && exit
 fi;
 
 
@@ -284,7 +284,7 @@ echo "sincronizando relogio";
 if hwclock --systohc > /dev/null 2>&1; then
 echo ""
 else
-echo "FALHOU" && exit
+echo "ERRO" && exit
 fi;
 
 
@@ -292,7 +292,7 @@ echo "gerando imagens no inicializador do sistema";
 if mkinitcpio -P > /dev/null 2>&1; then
 echo ""
 else
-echo "FALHOU" && exit
+echo "ERRO" && exit
 fi;
 
 
@@ -308,7 +308,7 @@ GRUB_GFXPAYLOAD_LINUX=keep
 GRUB_DISABLE_RECOVERY=true" > /etc/default/grub; then
 echo ""
 else
-echo "FALHOU" && exit
+echo "ERRO" && exit
 fi;
 
 
@@ -316,7 +316,7 @@ echo "configurando grub";
 if grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=bux --recheck > /dev/null 2>&1; then
 echo ""
 else
-echo "FALHOU" && exit
+echo "ERRO" && exit
 fi;
 
 
@@ -324,7 +324,7 @@ echo "adicionando grub na inicialização";
 if grub-mkconfig -o /boot/grub/grub.cfg > /dev/null 2>&1; then
 echo ""
 else
-echo "FALHOU" && exit
+echo "ERRO" && exit
 fi;
 
 
@@ -334,7 +334,7 @@ if echo "127.0.0.1 localhost.localdomain localhost
 127.0.0.1 bux.localdomain bux" > /etc/hosts; then
 echo ""
 else
-echo "FALHOU" && exit
+echo "ERRO" && exit
 fi;
 
 
@@ -342,7 +342,7 @@ echo "adicionando usuario normal (bux) ao sudo no arquivo sudoers";
 if echo "bux ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers; then
 echo ""
 else
-echo "FALHOU" && exit
+echo "ERRO" && exit
 fi;
 
 
@@ -370,7 +370,7 @@ echo "adicionando autostartx do kde plasma";
 if echo "exec sway > /dev/null 2>&1" > /home/bux/.bash_profile; then
 echo ""
 else
-echo "FALHOU" && exit
+echo "ERRO" && exit
 fi;
 
 
@@ -378,7 +378,7 @@ echo "adicionando diretorio de configuração do sway";
 if mkdir -p /home/bux/.config/sway; then
 echo ""
 else
-echo "FALHOU" && exit
+echo "ERRO" && exit
 fi;
 
 
@@ -403,7 +403,7 @@ bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
 include /etc/sway/config.d/*" > /home/bux/.config/sway/config; then
 echo ""
 else
-echo "FALHOU" && exit
+echo "ERRO" && exit
 fi;
 
 
@@ -411,7 +411,7 @@ echo "adicionando diretorio de configuração extra do sway";
 if mkdir -p /etc/sway; then
 echo ""
 else
-echo "FALHOU" && exit
+echo "ERRO" && exit
 fi;
 
 
@@ -436,7 +436,7 @@ bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
 include /etc/sway/config.d/*" > /etc/sway/config; then
 echo ""
 else
-echo "FALHOU" && exit
+echo "ERRO" && exit
 fi;
 
 
@@ -461,7 +461,7 @@ StandardOutput=tty
 WantedBy=multi-user.target" > /etc/systemd/system/autologin.service; then
 echo ""
 else
-echo "FALHOU" && exit
+echo "ERRO" && exit
 fi;
 
 
@@ -471,7 +471,7 @@ NetworkManager \
 autologin > /dev/null 2>&1; then
 echo ""
 else
-echo "FALHOU" && exit
+echo "ERRO" && exit
 fi;
 
 
@@ -482,7 +482,7 @@ systemd-networkd \
 systemd-timesyncd > /dev/null 2>&1; then
 echo ""
 else
-echo "FALHOU" && exit
+echo "ERRO" && exit
 fi;'
 
 
@@ -490,7 +490,7 @@ echo "gravando dados da memoria no disco";
 if sync > /dev/null 2>&1; then
 echo ""
 else
-echo "FALHOU" && exit
+echo "ERRO" && exit
 fi;
 
 
