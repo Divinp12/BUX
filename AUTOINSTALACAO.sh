@@ -352,24 +352,24 @@ echo "ERRO" && exit
 fi;
 
 
-#echo "removendo linhas que começam com jogo da velha e espaços vazios";
-#if sed -i "/^\s*#/d; /^\s*$/d" \
-#/home/bux/.bash_profile \
-#/home/bux/.bash_logout \
-#/etc/sudoers \
-#/etc/sudo.conf \
-#/etc/environment \
-#/etc/gai.conf \
-#/etc/host.conf \
-#/etc/healthd.conf \
-#/etc/mkinitcpio.conf \
-#/etc/libva.conf \
-#/etc/vconsole.conf \
-#/etc/fuse.conf \
-#/etc/ts.conf \
-#/etc/fstab; then
-#echo ""
-#fi;
+echo "removendo linhas que começam com jogo da velha e espaços vazios";
+if sed -i "/^\s*#/d; /^\s*$/d" \
+/home/bux/.bash_profile \
+/home/bux/.bash_logout \
+/etc/sudoers \
+/etc/sudo.conf \
+/etc/environment \
+/etc/gai.conf \
+/etc/host.conf \
+/etc/healthd.conf \
+/etc/mkinitcpio.conf \
+/etc/libva.conf \
+/etc/vconsole.conf \
+/etc/fuse.conf \
+/etc/ts.conf \
+/etc/fstab; then
+echo ""
+fi;
 
 
 echo "adicionando autostartx do kde plasma";
@@ -488,37 +488,5 @@ echo "ERRO" && exit
 fi;
 
 
-echo "desmontando diretorio /mnt/boot/EFI";
-if umount /mnt/boot/EFI; then
-echo ""
-else
-echo "ERRO" && exit
-fi;
-
-
-echo "desmontando diretorio /mnt/boot";
-if umount /mnt/boot; then
-echo ""
-else
-echo "ERRO" && exit
-fi;
-
-
-echo "desmontando diretorio /mnt/home";
-if umount /mnt/home; then
-echo ""
-else
-echo "ERRO" && exit
-fi;
-
-
-echo "desmontando diretorio /mnt";
-if umount /mnt; then
-echo ""
-else
-echo "ERRO" && exit
-fi;
-
-
 echo "reiniciando";
-reboot -f;
+reboot;
