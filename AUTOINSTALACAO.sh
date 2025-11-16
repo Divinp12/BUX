@@ -97,7 +97,7 @@ xorg-xwayland \
 foot \
 pulseaudio \
 pavucontrol \
-grub-efi-x86_64 \
+grub \
 efibootmgr > /dev/null 2>&1; then
 echo ""
 else
