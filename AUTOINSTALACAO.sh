@@ -394,12 +394,6 @@ bindsym \$mod+x kill
 bindsym \$mod+v exec wofi --show drun --no-dmenu
 bindsym \$mod+c reload
 bindsym \$mod+b fullscreen toggle
-bindsym --locked XF86AudioMute exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
-bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume \@DEFAULT_SINK@ -5%
-bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume \@DEFAULT_SINK@ +5%
-bindsym --locked XF86AudioMicMute exec pactl set-source-mute \@DEFAULT_SOURCE@ toggle
-bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
-bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
 include /etc/sway/config.d/*" > /home/bux/.config/sway/config; then
 echo ""
 else
@@ -427,12 +421,6 @@ bindsym \$mod+x kill
 bindsym \$mod+v exec wofi --show drun --no-dmenu
 bindsym \$mod+c reload
 bindsym \$mod+b fullscreen toggle
-bindsym --locked XF86AudioMute exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
-bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume \@DEFAULT_SINK@ -5%
-bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume \@DEFAULT_SINK@ +5%
-bindsym --locked XF86AudioMicMute exec pactl set-source-mute \@DEFAULT_SOURCE@ toggle
-bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
-bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
 include /etc/sway/config.d/*" > /etc/sway/config; then
 echo ""
 else
