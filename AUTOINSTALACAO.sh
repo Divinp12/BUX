@@ -482,5 +482,11 @@ echo "ERRO" && exit
 fi;
 
 
+umount -R /mnt/boot/EFI && \
+umount -R /mnt/boot && \
+umount -R /mnt/home && \
+umount -R /mnt;
+
+
 echo "reiniciando";
 reboot -f;
