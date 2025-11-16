@@ -178,6 +178,16 @@ echo "ERRO" && exit
 fi;
 
 
+echo "adicionando conexão ipv6 no sistema";
+if echo "127.0.0.1 localhost.localdomain localhost
+::1 localhost.localdomain localhost
+127.0.0.1 bux.localdomain bux" > /mnt/etc/hosts; then
+echo ""
+else
+echo "ERRO" && exit
+fi;
+
+
 echo "entrando no ambiente arch-chroot";
 arch-chroot /mnt bash -c '
 echo "";
@@ -322,16 +332,6 @@ fi;
 
 echo "adicionando grub na inicialização";
 if grub-mkconfig -o /boot/grub/grub.cfg > /dev/null 2>&1; then
-echo ""
-else
-echo "ERRO" && exit
-fi;
-
-
-echo "adicionando conexão ipv6 no sistema";
-if echo "127.0.0.1 localhost.localdomain localhost
-::1 localhost.localdomain localhost
-127.0.0.1 bux.localdomain bux" > /etc/hosts; then
 echo ""
 else
 echo "ERRO" && exit
