@@ -323,7 +323,7 @@ fi;
 
 
 echo "configurando grub";
-if grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=bux --recheck > /dev/null 2>&1; then
+if grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=. --recheck > /dev/null 2>&1; then
 echo ""
 else
 echo "ERRO" && exit
