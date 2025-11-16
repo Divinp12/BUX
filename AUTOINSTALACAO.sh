@@ -17,7 +17,7 @@ CheckSpace
 ParallelDownloads=1
 SigLevel=Required DatabaseOptional
 LocalFileSigLevel=Optional
-IgnorePkg=sudo
+IgnorePkg=sudo sudo-rs
 [core]
 Include=/etc/pacman.d/mirrorlist
 [extra]
@@ -276,7 +276,7 @@ CheckSpace
 ParallelDownloads=1
 SigLevel=Required DatabaseOptional
 LocalFileSigLevel=Optional
-IgnorePkg=sudo
+IgnorePkg=sudo sudo-rs
 [core]
 Include=/etc/pacman.d/mirrorlist
 [extra]
