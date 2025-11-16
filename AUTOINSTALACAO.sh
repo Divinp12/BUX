@@ -74,11 +74,6 @@ mkdir /mnt/boot/EFI > /dev/null 2>&1 && \
 mkdir /mnt/home > /dev/null 2>&1 && \
 mount /dev/sda1 /mnt/boot/EFI > /dev/null 2>&1 && \
 mount /dev/sda3 /mnt/home > /dev/null 2>&1 && \
-mkdir -p /mnt/etc && \
-echo "UUID=$(blkid -s UUID -o value /dev/sda1) /boot/EFI vfat rw,relatime,noatime 0 2
-UUID=$(blkid -s UUID -o value /dev/sda2) / ext4 rw,relatime,noatime 0 1
-UUID=$(blkid -s UUID -o value /dev/sda3) /home ext4 rw,relatime,noatime 0 2" > /mnt/etc/fstab && \
-mount -a -v && \
 echo ""
 fi;
 
@@ -145,6 +140,14 @@ nvidia-settings > /dev/null 2>&1 && \
 echo ""
 else
 echo "NÃO ENCONTRADO" && echo ""
+fi;
+
+
+echo "configurando partições no arquivo fstab";
+if genfstab -U -p /mnt > /mnt/etc/fstab; then
+echo ""
+else
+echo "FALHOU" && exit
 fi;
 
 
