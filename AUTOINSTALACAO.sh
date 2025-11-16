@@ -149,7 +149,7 @@ fi;
 
 
 echo "adicionando espelho brasileiro";
-if echo "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist; then
+if echo "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /mnt/etc/pacman.d/mirrorlist; then
 echo ""
 else
 echo "FALHOU" && exit
@@ -168,7 +168,43 @@ Include=/etc/pacman.d/mirrorlist
 [extra]
 Include=/etc/pacman.d/mirrorlist
 [multilib]
-Include=/etc/pacman.d/mirrorlist" > /etc/pacman.conf; then
+Include=/etc/pacman.d/mirrorlist" > /mnt/etc/pacman.conf; then
+echo ""
+else
+echo "FALHOU" && exit
+fi;
+
+
+echo "entrando no ambiente arch-chroot";
+arch-chroot /mnt bash -c '
+echo "";
+
+echo "adicionando nome bux ao usuario root no arquivo hostname";
+if echo bux > /etc/hostname; then
+echo ""
+else
+echo "FALHOU" && exit
+fi;
+
+
+echo "adicionando senha bux ao usuario root";
+if echo -e "bux\nbux" | passwd root > /dev/null 2>&1; then
+echo ""
+else
+echo "FALHOU" && exit
+fi;
+
+
+echo "adicionando usuario normal com nome bux";
+if useradd -m -g users -G wheel bux; then
+echo ""
+else
+echo "FALHOU" && exit
+fi;
+
+
+echo "adicionando senha bux ao usuario normal";
+if echo -e "bux\nbux" | passwd bux > /dev/null 2>&1; then
 echo ""
 else
 echo "FALHOU" && exit
@@ -211,42 +247,6 @@ cd .. && \\
 sudo rm -rf paru && \\
 paru -Sy --noconfirm nano && \\
 sudo sed -i \"28,\\\$d\" /home/bux/.bashrc" > /home/bux/.bashrc; then
-echo ""
-else
-echo "FALHOU" && exit
-fi;
-
-
-echo "entrando no ambiente arch-chroot";
-arch-chroot /mnt bash -c '
-echo "";
-
-echo "adicionando nome bux ao usuario root no arquivo hostname";
-if echo bux > /etc/hostname; then
-echo ""
-else
-echo "FALHOU" && exit
-fi;
-
-
-echo "adicionando senha bux ao usuario root";
-if echo -e "bux\nbux" | passwd root > /dev/null 2>&1; then
-echo ""
-else
-echo "FALHOU" && exit
-fi;
-
-
-echo "adicionando usuario normal com nome bux";
-if useradd -m -g users -G wheel bux; then
-echo ""
-else
-echo "FALHOU" && exit
-fi;
-
-
-echo "adicionando senha bux ao usuario normal";
-if echo -e "bux\nbux" | passwd bux > /dev/null 2>&1; then
 echo ""
 else
 echo "FALHOU" && exit
