@@ -17,7 +17,6 @@ CheckSpace
 ParallelDownloads=1
 SigLevel=Required DatabaseOptional
 LocalFileSigLevel=Optional
-IgnorePkg=sudo sudo-rs audit apparmor
 [core]
 Include=/etc/pacman.d/mirrorlist
 [extra]
@@ -41,9 +40,9 @@ fi;
 echo "formatando 1 disco rigido valido";
 if wipefs -a /dev/nvme0n1p > /dev/null 2>&1; then
 parted -s /dev/nvme0n1p mklabel gpt && \
-parted -s /dev/nvme0n1p mkpart ESP fat32 1MiB 500MiB && \
+parted -s /dev/nvme0n1p mkpart ESP fat32 1MiB 400MiB && \
 parted -s /dev/nvme0n1p set 1 esp on && \
-parted -s /dev/nvme0n1p mkpart primary ext4 500MiB 30000MiB && \
+parted -s /dev/nvme0n1p mkpart primary ext4 400MiB 30000MiB && \
 parted -s /dev/nvme0n1p mkpart primary ext4 30000MiB 100% && \
 partprobe > /dev/null 2>&1 && \
 mkfs.fat -F32 /dev/nvme0n1p1 > /dev/null 2>&1 && \
@@ -61,9 +60,9 @@ else
 
 wipefs -a /dev/sda > /dev/null 2>&1 && \
 parted -s /dev/sda mklabel gpt && \
-parted -s /dev/sda mkpart ESP fat32 1MiB 500MiB && \
+parted -s /dev/sda mkpart ESP fat32 1MiB 400MiB && \
 parted -s /dev/sda set 1 esp on && \
-parted -s /dev/sda mkpart primary ext4 500MiB 30000MiB && \
+parted -s /dev/sda mkpart primary ext4 400MiB 30000MiB && \
 parted -s /dev/sda mkpart primary ext4 30000MiB 100% && \
 partprobe > /dev/null 2>&1 && \
 mkfs.fat -F32 /dev/sda1 > /dev/null 2>&1 && \
@@ -87,6 +86,7 @@ linux \
 linux-firmware \
 linux-headers \
 networkmanager \
+sudo \
 git \
 fastfetch \
 mesa \
@@ -140,14 +140,6 @@ nvidia-settings > /dev/null 2>&1 && \
 echo ""
 else
 echo "NÃO ENCONTRADO" && echo ""
-fi;
-
-
-echo "configurando partições no arquivo fstab";
-if genfstab -U -p /mnt > /mnt/etc/fstab; then
-echo ""
-else
-echo "FALHOU" && exit
 fi;
 
 
@@ -229,16 +221,16 @@ fi;
 
 echo "sobscrevendo arquivo .bashrc";
 if echo "alias i=\"paru -Sy --noconfirm\";
-alias d=\"su -c \\"pacman -Rsc\\"\";
+alias d=\"sudo pacman -Rsc\";
 alias a=\"paru -Syyu --noconfirm\";
 alias m=\"pacman -Q\";
 alias w=\"nmtui\";
-alias p=\"su -c \\"poweroff -f\\"\";
-alias r=\"su -c \\"reboot -f\\"\";
-su -c \"rm -rf /home/bux/.bash_history\";
-su -c \"pacman -Scc --noconfirm\";
+alias p=\"poweroff -f\";
+alias r=\"reboot -f\";
+sudo rm -rf /home/bux/.bash_history;
+sudo pacman -Scc --noconfirm;
 clear;
-su -c \"sleep 1\";
+sudo sleep 1;
 fastfetch;
 echo \"
 INFORMAÇÕES DE PACOTES:
@@ -256,13 +248,13 @@ DESLIGAR MAQUINA (p)
 REINICIAR MAQUINA (r)
 \";
 git clone https://aur.archlinux.org/paru.git > /dev/null 2>&1 && \\
-su -c \"chmod 777 paru\" && \\
+sudo chmod 777 paru && \\
 cd paru && \\
 makepkg -si --noconfirm && \\
 cd .. && \\
-su -c \"rm -rf paru\" && \\
+sudo rm -rf paru && \\
 paru -Sy --noconfirm nano && \\
-su -c \"sed -i \\"28,\\\$d\\" /home/bux/.bashrc\"" > /home/bux/.bashrc; then
+sudo sed -i \"28,\\\$d\" /home/bux/.bashrc" > /home/bux/.bashrc; then
 echo ""
 else
 echo "FALHOU" && exit
@@ -276,7 +268,6 @@ CheckSpace
 ParallelDownloads=1
 SigLevel=Required DatabaseOptional
 LocalFileSigLevel=Optional
-IgnorePkg=sudo sudo-rs audit apparmor
 [core]
 Include=/etc/pacman.d/mirrorlist
 [extra]
