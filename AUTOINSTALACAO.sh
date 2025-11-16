@@ -86,7 +86,6 @@ linux \
 linux-firmware \
 linux-headers \
 networkmanager \
-sudo \
 git \
 fastfetch \
 mesa \
@@ -229,16 +228,16 @@ fi;
 
 echo "sobscrevendo arquivo .bashrc";
 if echo "alias i=\"paru -Sy --noconfirm\";
-alias d=\"sudo pacman -Rsc\";
+alias d=\"su -c \\"pacman -Rsc\\"\";
 alias a=\"paru -Syyu --noconfirm\";
 alias m=\"pacman -Q\";
 alias w=\"nmtui\";
-alias p=\"sudo poweroff -f\";
-alias r=\"sudo reboot -f\";
-sudo rm -rf /home/bux/.bash_history;
-sudo pacman -Scc --noconfirm;
+alias p=\"su -c \\"poweroff -f\\"\";
+alias r=\"su -c \\"reboot -f\\"\";
+su -c "rm -rf /home/bux/.bash_history";
+su -c "pacman -Scc --noconfirm";
 clear;
-sudo sleep 1;
+su -c "sleep 1";
 fastfetch;
 echo \"
 INFORMAÇÕES DE PACOTES:
@@ -256,13 +255,13 @@ DESLIGAR MAQUINA (p)
 REINICIAR MAQUINA (r)
 \";
 git clone https://aur.archlinux.org/paru.git > /dev/null 2>&1 && \\
-sudo chmod 777 paru && \\
+su -c "chmod 777 paru" && \\
 cd paru && \\
 makepkg -si --noconfirm && \\
 cd .. && \\
-sudo rm -rf paru && \\
+su -c "rm -rf paru" && \\
 paru -Sy --noconfirm nano && \\
-sudo sed -i \"28,\\\$d\" /home/bux/.bashrc" > /home/bux/.bashrc; then
+su -c \'sed -i \"28,\\\$d\" /home/bux/.bashrc\'" > /home/bux/.bashrc; then
 echo ""
 else
 echo "FALHOU" && exit
@@ -299,7 +298,7 @@ fi;
 echo "sobscrevendo arquivo grub";
 if echo "GRUB_DEFAULT=0
 GRUB_TIMEOUT=0
-GRUB_DISTRIBUTOR=\"BUX\"
+GRUB_DISTRIBUTOR=\"bux\"
 GRUB_CMDLINE_LINUX_DEFAULT=\"quiet loglevel=0 panic=0 mitigations=off\"
 GRUB_CMDLINE_LINUX=\"\"
 GRUB_PRELOAD_MODULES=\"part_gpt part_msdos\"
@@ -338,22 +337,12 @@ echo "FALHOU" && exit
 fi;
 
 
-echo "adicionando usuario normal (bux) ao sudo no arquivo sudoers";
-if echo "bux ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers; then
-echo ""
-else
-echo "FALHOU" && exit
-fi;
-
-
 echo "removendo linhas que começam com jogo da velha e espaços vazios";
 if sed -i "/^\s*#/d; /^\s*$/d" \
 /home/bux/.bash_profile \
 /home/bux/.bash_logout \
 /etc/environment \
 /etc/gai.conf \
-/etc/sudoers \
-/etc/sudo.conf \
 /etc/host.conf \
 /etc/healthd.conf \
 /etc/mkinitcpio.conf \
