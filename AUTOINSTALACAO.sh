@@ -17,7 +17,7 @@ CheckSpace
 ParallelDownloads=1
 SigLevel=Required DatabaseOptional
 LocalFileSigLevel=Optional
-IgnorePkg=sudo sudo-rs audit
+IgnorePkg=sudo sudo-rs audit apparmor
 [core]
 Include=/etc/pacman.d/mirrorlist
 [extra]
@@ -276,7 +276,7 @@ CheckSpace
 ParallelDownloads=1
 SigLevel=Required DatabaseOptional
 LocalFileSigLevel=Optional
-IgnorePkg=sudo sudo-rs audit
+IgnorePkg=sudo sudo-rs audit apparmor
 [core]
 Include=/etc/pacman.d/mirrorlist
 [extra]
