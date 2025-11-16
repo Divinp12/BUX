@@ -298,6 +298,10 @@ echo "ERRO" && exit
 fi;
 
 
+echo "KEYMAP=br-abnt2
+FONT=lat9w-16" > /etc/vconsole.conf
+
+
 echo "gerando imagens no inicializador do sistema";
 if mkinitcpio -P > /dev/null 2>&1; then
 echo ""
@@ -346,24 +350,24 @@ echo "ERRO" && exit
 fi;
 
 
-echo "removendo linhas que começam com jogo da velha e espaços vazios";
-if sed -i "/^\s*#/d; /^\s*$/d" \
-/home/bux/.bash_profile \
-/home/bux/.bash_logout \
-/etc/sudoers \
-/etc/sudo.conf \
-/etc/environment \
-/etc/gai.conf \
-/etc/host.conf \
-/etc/healthd.conf \
-/etc/mkinitcpio.conf \
-/etc/libva.conf \
-/etc/vconsole.conf \
-/etc/fuse.conf \
-/etc/ts.conf \
-/etc/fstab; then
-echo ""
-fi;
+#echo "removendo linhas que começam com jogo da velha e espaços vazios";
+#if sed -i "/^\s*#/d; /^\s*$/d" \
+#/home/bux/.bash_profile \
+#/home/bux/.bash_logout \
+#/etc/sudoers \
+#/etc/sudo.conf \
+#/etc/environment \
+#/etc/gai.conf \
+#/etc/host.conf \
+#/etc/healthd.conf \
+#/etc/mkinitcpio.conf \
+#/etc/libva.conf \
+#/etc/vconsole.conf \
+#/etc/fuse.conf \
+#/etc/ts.conf \
+#/etc/fstab; then
+#echo ""
+#fi;
 
 
 echo "adicionando autostartx do kde plasma";
