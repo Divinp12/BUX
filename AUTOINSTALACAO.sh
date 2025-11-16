@@ -188,6 +188,15 @@ echo "ERRO" && exit
 fi;
 
 
+echo "sobrescrevendo arquivo vconsole.conf no diretorio /etc";
+if echo "KEYMAP=br-abnt2
+FONT=lat9w-16" > /etc/vconsole.conf; then
+echo ""
+else
+echo "ERRO" && exit
+fi;
+
+
 echo "entrando no ambiente arch-chroot";
 arch-chroot /mnt bash -c '
 echo "";
@@ -296,10 +305,6 @@ echo ""
 else
 echo "ERRO" && exit
 fi;
-
-
-echo "KEYMAP=br-abnt2
-FONT=lat9w-16" > /etc/vconsole.conf
 
 
 echo "gerando imagens no inicializador do sistema";
@@ -486,11 +491,37 @@ echo "ERRO" && exit
 fi;
 
 
-umount /mnt/boot/EFI && \
-umount /mnt/boot && \
-umount /mnt/home && \
-umount /mnt;
+echo "desmontando diretorio /mnt/boot/EFI";
+if umount /mnt/boot/EFI; then
+echo ""
+else
+echo "ERRO" && exit
+fi;
+
+
+echo "desmontando diretorio /mnt/boot";
+if umount /mnt/boot; then
+echo ""
+else
+echo "ERRO" && exit
+fi;
+
+
+echo "desmontando diretorio /mnt/home";
+if umount /mnt/home; then
+echo ""
+else
+echo "ERRO" && exit
+fi;
+
+
+echo "desmontando diretorio /mnt";
+if umount /mnt; then
+echo ""
+else
+echo "ERRO" && exit
+fi;
 
 
 echo "reiniciando";
-reboot;
+reboot -f;
