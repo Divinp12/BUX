@@ -17,6 +17,7 @@ CheckSpace
 ParallelDownloads=1
 SigLevel=Required DatabaseOptional
 LocalFileSigLevel=Optional
+IgnorePkg=sudo
 [core]
 Include=/etc/pacman.d/mirrorlist
 [extra]
@@ -275,6 +276,7 @@ CheckSpace
 ParallelDownloads=1
 SigLevel=Required DatabaseOptional
 LocalFileSigLevel=Optional
+IgnorePkg=sudo
 [core]
 Include=/etc/pacman.d/mirrorlist
 [extra]
