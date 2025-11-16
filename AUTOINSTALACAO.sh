@@ -330,10 +330,20 @@ echo "FALHOU" && exit
 fi;
 
 
+echo "adicionando usuario normal (bux) ao sudo no arquivo sudoers";
+if echo "bux ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers; then
+echo ""
+else
+echo "FALHOU" && exit
+fi;
+
+
 echo "removendo linhas que começam com jogo da velha e espaços vazios";
 if sed -i "/^\s*#/d; /^\s*$/d" \
 /home/bux/.bash_profile \
 /home/bux/.bash_logout \
+/etc/sudoers \
+/etc/sudo.conf \
 /etc/environment \
 /etc/gai.conf \
 /etc/host.conf \
