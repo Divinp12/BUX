@@ -54,6 +54,10 @@ mkdir /mnt/boot/EFI > /dev/null 2>&1 && \
 mkdir /mnt/home > /dev/null 2>&1 && \
 mount /dev/nvme0n1p1 /mnt/boot/EFI > /dev/null 2>&1 && \
 mount /dev/nvme0n1p3 /mnt/home > /dev/null 2>&1 && \
+echo "UUID=$(blkid -s UUID -o value /dev/nvme0n1p1) /boot/EFI vfat rw,relatime,noatime 0 2
+UUID=$(blkid -s UUID -o value /dev/nvme0n1p2) / ext4 rw,relatime,noatime 0 1
+UUID=$(blkid -s UUID -o value /dev/nvme0n1p3) /home ext4 rw,relatime,noatime 0 2" > /mnt/etc/fstab && \
+mount -a -v && \
 echo ""
 
 else
@@ -101,7 +105,7 @@ wayland \
 xorg-xwayland \
 foot \
 pulseaudio \
-pavucontrol \
+pamix \
 grub \
 efibootmgr > /dev/null 2>&1; then
 echo ""
