@@ -15,7 +15,7 @@ if echo "[options]
 Architecture=auto
 CheckSpace
 ParallelDownloads=1
-IgnorePkg=xorg-xwayland
+IgnorePkg=xorg-server xorg-xwayland
 SigLevel=Required DatabaseOptional
 LocalFileSigLevel=Optional
 [core]
@@ -164,7 +164,7 @@ if echo "[options]
 Architecture=auto
 CheckSpace
 ParallelDownloads=1
-IgnorePkg=xorg-xwayland
+IgnorePkg=xorg-server xorg-xwayland
 SigLevel=Required DatabaseOptional
 LocalFileSigLevel=Optional
 [core]
