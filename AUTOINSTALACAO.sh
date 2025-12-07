@@ -378,7 +378,7 @@ echo ""
 fi;
 
 
-echo "adicionando autostartx do kde plasma";
+echo "criando autostartx do sway";
 if echo "exec sway > /dev/null 2>&1" > /home/bux/.bash_profile; then
 echo ""
 else
@@ -386,7 +386,31 @@ echo "ERRO" && exit
 fi;
 
 
-echo "adicionando diretorio de configuração do sway";
+echo "criando diretorio /home/bux/.config";
+if mkdir -p /home/bux/.config; then
+echo ""
+else
+echo "ERRO" && exit
+fi;
+
+
+echo "adicionando permissões de usuario normal no diretorio /home/bux/.config";
+if chown -R bux /home/bux/.config; then
+echo ""
+else
+echo "ERRO" && exit
+fi;
+
+
+echo "alterando permissões de leitura e escrita no diretorio /home/bux/.config";
+if chmod -R u+rwX /home/bux/.config; then
+echo ""
+else
+echo "ERRO" && exit
+fi;
+
+
+echo "criando diretorio /home/bux/.config/sway";
 if mkdir -p /home/bux/.config/sway; then
 echo ""
 else
@@ -394,7 +418,7 @@ echo "ERRO" && exit
 fi;
 
 
-echo "adicionando arquivo de configuração do sway";
+echo "criando arquivo de configuração do sway";
 if echo "set \$mod Mod4
 default_border pixel 1
 default_floating_border none
@@ -465,22 +489,6 @@ StandardOutput=tty
 
 [Install]
 WantedBy=multi-user.target" > /etc/systemd/system/autologin.service; then
-echo ""
-else
-echo "ERRO" && exit
-fi;
-
-
-echo "adicionando permissões de usuario normal no diretorio /home/bux/.config";
-if chown -R bux /home/bux/.config; then
-echo ""
-else
-echo "ERRO" && exit
-fi;
-
-
-echo "alterando permissões de leitura e escrita no diretorio /home/bux/.config";
-if chmod -R u+rwX /home/bux/.config; then
 echo ""
 else
 echo "ERRO" && exit
