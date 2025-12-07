@@ -263,14 +263,14 @@ DESLIGAR MAQUINA (p)
 REINICIAR MAQUINA (r)
 \";
 clear && \\
-echo \"INSTALANDO PARU, NANO E PAMIX. ESTEJA CONECTADO COM A INTERNET\" && \\
+echo \"INSTALANDO PARU e NANO. ESTEJA CONECTADO COM A INTERNET\" && \\
 git clone https://aur.archlinux.org/paru.git > /dev/null 2>&1 && \\
 sudo chmod 777 paru && \\
 cd paru && \\
 makepkg -si --noconfirm && \\
 cd .. && \\
 sudo rm -rf paru && \\
-paru -Sy --noconfirm nano pamix && \\
+paru -Sy --noconfirm nano && \\
 sudo sed -i \"28,\\\$d\" /home/bux/.bashrc" > /home/bux/.bashrc; then
 echo ""
 else
@@ -406,6 +406,9 @@ bindsym \$mod+x kill
 bindsym \$mod+v exec wofi --show drun --no-dmenu
 bindsym \$mod+c reload
 bindsym \$mod+b fullscreen toggle
+bindsym \$mod+n exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym \$mod+m exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym \$mod+l exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 include /etc/sway/config.d/*" > /home/bux/.config/sway/config; then
 echo ""
 else
@@ -433,6 +436,9 @@ bindsym \$mod+x kill
 bindsym \$mod+v exec wofi --show drun --no-dmenu
 bindsym \$mod+c reload
 bindsym \$mod+b fullscreen toggle
+bindsym \$mod+n exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym \$mod+m exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym \$mod+l exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 include /etc/sway/config.d/*" > /etc/sway/config; then
 echo ""
 else
