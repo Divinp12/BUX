@@ -105,7 +105,6 @@ wayland \
 xorg-xwayland \
 foot \
 pulseaudio \
-pamix \
 grub \
 efibootmgr > /dev/null 2>&1; then
 echo ""
@@ -262,13 +261,15 @@ INFORMAÇÕES EXTRAS:
 DESLIGAR MAQUINA (p)
 REINICIAR MAQUINA (r)
 \";
+clear && \\
+echo \"INSTALANDO PARU, NANO E PAMIX. ESTEJA CONECTADO COM A INTERNET\" && \\
 git clone https://aur.archlinux.org/paru.git > /dev/null 2>&1 && \\
 sudo chmod 777 paru && \\
 cd paru && \\
 makepkg -si --noconfirm && \\
 cd .. && \\
 sudo rm -rf paru && \\
-paru -Sy --noconfirm nano && \\
+paru -Sy --noconfirm nano pamix && \\
 sudo sed -i \"28,\\\$d\" /home/bux/.bashrc" > /home/bux/.bashrc; then
 echo ""
 else
