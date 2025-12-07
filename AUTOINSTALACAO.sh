@@ -15,6 +15,7 @@ if echo "[options]
 Architecture=auto
 CheckSpace
 ParallelDownloads=1
+IgnorePkg=xorg-xwayland
 SigLevel=Required DatabaseOptional
 LocalFileSigLevel=Optional
 [core]
@@ -102,7 +103,6 @@ mesa \
 sway \
 wofi \
 wayland \
-xorg-xwayland \
 foot \
 pulseaudio \
 grub \
@@ -164,6 +164,7 @@ if echo "[options]
 Architecture=auto
 CheckSpace
 ParallelDownloads=1
+IgnorePkg=xorg-xwayland
 SigLevel=Required DatabaseOptional
 LocalFileSigLevel=Optional
 [core]
