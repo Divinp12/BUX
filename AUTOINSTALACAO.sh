@@ -471,6 +471,22 @@ echo "ERRO" && exit
 fi;
 
 
+echo "adicionando permissões de usuario normal no diretorio /home/bux/.config";
+if chown -R bux /home/bux/.config; then
+echo ""
+else
+echo "ERRO" && exit
+fi;
+
+
+echo "alterando permissões de leitura e escrita no diretorio /home/bux/.config";
+if chmod -R u+rwX /home/bux/.config; then
+echo ""
+else
+echo "ERRO" && exit
+fi;
+
+
 echo "habilitando serviços uteis na inicialização do sistema";
 if systemctl enable \
 NetworkManager \
