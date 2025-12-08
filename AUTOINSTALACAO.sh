@@ -430,8 +430,8 @@ bindsym \$mod+x kill
 bindsym \$mod+v exec wofi --show drun --no-dmenu
 bindsym \$mod+c reload
 bindsym \$mod+b fullscreen toggle
-bindsym \$mod+n exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym \$mod+m exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym \$mod+n exec pactl set-sink-volume @DEFAULT_SINK@ +1%
+bindsym \$mod+m exec pactl set-sink-volume @DEFAULT_SINK@ -1%
 bindsym \$mod+l exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 include /etc/sway/config.d/*" > /home/bux/.config/sway/config; then
 echo ""
@@ -460,8 +460,8 @@ bindsym \$mod+x kill
 bindsym \$mod+v exec wofi --show drun --no-dmenu
 bindsym \$mod+c reload
 bindsym \$mod+b fullscreen toggle
-bindsym \$mod+n exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym \$mod+m exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym \$mod+n exec pactl set-sink-volume @DEFAULT_SINK@ +1%
+bindsym \$mod+m exec pactl set-sink-volume @DEFAULT_SINK@ -1%
 bindsym \$mod+l exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 include /etc/sway/config.d/*" > /etc/sway/config; then
 echo ""
