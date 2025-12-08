@@ -321,7 +321,7 @@ echo "sobscrevendo arquivo grub";
 if echo "GRUB_DEFAULT=0
 GRUB_TIMEOUT=0
 GRUB_DISTRIBUTOR=\"bux\"
-GRUB_CMDLINE_LINUX_DEFAULT=\"quiet loglevel=0 panic=0 mitigations=off\"
+GRUB_CMDLINE_LINUX_DEFAULT=\"quiet loglevel=0 mitigations=off panic=0 nowatchdog nmi_watchdog=0 softlockup_panic=0 hardlockup_panic=0\"
 GRUB_CMDLINE_LINUX=\"\"
 GRUB_PRELOAD_MODULES=\"part_gpt part_msdos\"
 GRUB_GFXMODE=auto
