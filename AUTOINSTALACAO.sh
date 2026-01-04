@@ -423,14 +423,13 @@ default_floating_border none
 input * { pointer_accel 0 }
 output * bg #000000 solid_color
 output * { compositor none }
-bindsym \$mod+z exec foot
-bindsym \$mod+x kill
-bindsym \$mod+v exec wofi --show drun --no-dmenu
-bindsym \$mod+c reload
-bindsym \$mod+b fullscreen toggle
-bindsym \$mod+n exec pactl set-sink-volume @DEFAULT_SINK@ +1%
-bindsym \$mod+m exec pactl set-sink-volume @DEFAULT_SINK@ -1%
-bindsym \$mod+l exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym \$mod+z kill
+bindsym \$mod+x exec wofi --show drun --no-dmenu
+bindsym \$mod+v reload
+bindsym \$mod+c fullscreen toggle
+bindsym \$mod+b exec pactl set-sink-volume @DEFAULT_SINK@ +1%
+bindsym \$mod+n exec pactl set-sink-volume @DEFAULT_SINK@ -1%
+bindsym \$mod+m exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 include /etc/sway/config.d/*" > /home/bux/.config/sway/config; then
 echo ""
 else
@@ -453,14 +452,13 @@ default_floating_border none
 input * { pointer_accel 0 }
 output * bg #000000 solid_color
 output * { compositor none }
-bindsym \$mod+z exec foot
-bindsym \$mod+x kill
-bindsym \$mod+v exec wofi --show drun --no-dmenu
-bindsym \$mod+c reload
-bindsym \$mod+b fullscreen toggle
-bindsym \$mod+n exec pactl set-sink-volume @DEFAULT_SINK@ +1%
-bindsym \$mod+m exec pactl set-sink-volume @DEFAULT_SINK@ -1%
-bindsym \$mod+l exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym \$mod+z kill
+bindsym \$mod+x exec wofi --show drun --no-dmenu
+bindsym \$mod+v reload
+bindsym \$mod+c fullscreen toggle
+bindsym \$mod+b exec pactl set-sink-volume @DEFAULT_SINK@ +1%
+bindsym \$mod+n exec pactl set-sink-volume @DEFAULT_SINK@ -1%
+bindsym \$mod+m exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 include /etc/sway/config.d/*" > /etc/sway/config; then
 echo ""
 else
