@@ -103,7 +103,6 @@ sway \
 wofi \
 wayland \
 xorg-xwayland \
-foot \
 pulseaudio \
 grub \
 efibootmgr > /dev/null 2>&1; then
