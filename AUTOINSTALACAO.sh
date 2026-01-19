@@ -233,9 +233,9 @@ fi;
 
 
 echo "sobscrevendo arquivo .bashrc";
-if echo "alias i=\"paru -Sy --noconfirm\";
+if echo "alias i=\"sudo pacman -Sy --noconfirm\";
 alias d=\"sudo pacman -Rsc\";
-alias a=\"paru -Syyu --noconfirm\";
+alias a=\"sudo pacman -Syyu --noconfirm\";
 alias m=\"pacman -Q\";
 alias w=\"nmtui\";
 alias p=\"sudo poweroff -f\";
@@ -260,16 +260,7 @@ INFORMAÇÕES EXTRAS:
 DESLIGAR MAQUINA (p)
 REINICIAR MAQUINA (r)
 \";
-#clear && \\
-#echo \"INSTALANDO PARU e NANO. ESTEJA CONECTADO COM A INTERNET\" && \\
-#git clone https://aur.archlinux.org/paru.git > /dev/null 2>&1 && \\
-#sudo chmod 777 paru && \\
-#cd paru && \\
-#makepkg -si --noconfirm && \\
-#cd .. && \\
-#sudo rm -rf paru && \\
-#paru -Sy --noconfirm nano && \\
-#sudo sed -i \"28,\\\$d\" /home/bux/.bashrc" > /home/bux/.bashrc; then
+" > /home/bux/.bashrc; then
 echo ""
 else
 echo "ERRO" && exit
