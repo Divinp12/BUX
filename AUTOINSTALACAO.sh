@@ -368,7 +368,9 @@ fi;
 
 
 echo "criando autostartx do sway";
-if echo "exec sway > /dev/null 2>&1" > /home/bux/.bash_profile; then
+if echo "if [ \"$(tty)\" = \"/dev/tty1\" ]; then
+exec sway > /dev/null 2>&1
+fi" > /home/bux/.bash_profile; then
 echo ""
 else
 echo "ERRO" && exit
