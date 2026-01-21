@@ -232,41 +232,6 @@ echo "ERRO" && exit
 fi;
 
 
-echo "sobscrevendo arquivo .bashrc";
-if echo "alias i=\"sudo pacman -Sy --noconfirm\";
-alias d=\"sudo pacman -Rsc\";
-alias a=\"sudo pacman -Syyu --noconfirm\";
-alias m=\"pacman -Q\";
-alias w=\"nmtui\";
-alias p=\"sudo poweroff -f\";
-alias r=\"sudo reboot -f\";
-sudo rm -rf /home/bux/.bash_history;
-sudo pacman -Scc --noconfirm;
-clear;
-sudo sleep 1;
-fastfetch;
-echo \"
-INFORMAÇÕES DE PACOTES:
-INSTALAR PACOTES (i nome-do-pacote)
-DESISTALAR PACOTES (d nome-do-pacote)
-ATUALIZAR PACOTES (a nome-do-pacote ou apenas a para todos)
-MOSTRA PACOTES INSTALADOS (m nome-do-pacote ou apenas m para todos)
-EXEMPLO: i firefox
-
-INFORMAÇÕES DE DRIVERS:
-CONECTAR A REDE WIFI COM OU SEM FIO (w)
-
-INFORMAÇÕES EXTRAS:
-DESLIGAR MAQUINA (p)
-REINICIAR MAQUINA (r)
-\";
-" > /home/bux/.bashrc; then
-echo ""
-else
-echo "ERRO" && exit
-fi;
-
-
 echo "adicionando caracteres portugues brasileiro";
 if echo "pt_BR.UTF-8 UTF-8" > /etc/locale.gen; then
 echo ""
@@ -370,7 +335,34 @@ fi;
 echo "criando autostartx do sway";
 if echo "if [ \"$(tty)\" = \"/dev/tty1\" ]; then
 exec sway > /dev/null 2>&1
-fi" > /home/bux/.bash_profile; then
+fi;
+alias i=\"sudo pacman -Sy --noconfirm\";
+alias d=\"sudo pacman -Rsc\";
+alias a=\"sudo pacman -Syyu --noconfirm\";
+alias m=\"pacman -Q\";
+alias w=\"nmtui\";
+alias p=\"sudo poweroff -f\";
+alias r=\"sudo reboot -f\";
+sudo rm -rf /home/bux/.bash_history;
+sudo pacman -Scc --noconfirm;
+clear;
+sudo sleep 1;
+fastfetch;
+echo \"
+INFORMAÇÕES DE PACOTES:
+INSTALAR PACOTES (i nome-do-pacote)
+DESISTALAR PACOTES (d nome-do-pacote)
+ATUALIZAR PACOTES (a nome-do-pacote ou apenas a para todos)
+MOSTRA PACOTES INSTALADOS (m nome-do-pacote ou apenas m para todos)
+EXEMPLO: i firefox
+
+INFORMAÇÕES DE DRIVERS:
+CONECTAR A REDE WIFI COM OU SEM FIO (w)
+
+INFORMAÇÕES EXTRAS:
+DESLIGAR MAQUINA (p)
+REINICIAR MAQUINA (r)
+\";" > /home/bux/.bash_profile; then
 echo ""
 else
 echo "ERRO" && exit
