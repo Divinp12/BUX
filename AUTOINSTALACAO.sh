@@ -188,7 +188,7 @@ fi;
 
 
 echo "sobrescrevendo arquivo vconsole.conf no diretorio /etc";
-if echo "KEYMAP=br-abnt2
+if echo "KEYMAP=us-intl
 FONT=lat9w-16" > /mnt/etc/vconsole.conf; then
 echo ""
 else
