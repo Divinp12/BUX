@@ -333,7 +333,7 @@ fi;
 
 
 echo "criando autostartx do sway";
-if echo "if [ \"$(tty)\" = \"/dev/tty1\" ]; then
+if echo "if [ \"\$(tty)\" = \"/dev/tty1\" ]; then
 exec sway > /dev/null 2>&1
 fi;
 alias i=\"sudo pacman -Sy --noconfirm\";
