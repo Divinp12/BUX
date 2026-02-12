@@ -12,7 +12,7 @@ BOOT: UEFI ou GPT.
 
 CPU: qualquer um que seja x86_64 ou AMD64.
 
-RAM: 512MB.
+RAM: 1GB.
 
 ARMAZENAMENTO: 31 GB.
 
@@ -111,25 +111,15 @@ mupen64 (emulador de nintendo 64) = i mupen64plus-qt
 pcsx2 (emulador de playstation 2) = i pcsx2-git
 
 rpcs3 (emulador de playstation 3) = i rpcs3-git
- 
- 
- 
+
 sober (roblox player {funcionando}) = i flatpak && flatpak install --user https://sober.vinegarhq.org/sober.flatpakref -y
- 
- 
- 
+
 vinegar (roblox player {quebrado} e roblox studio {funcionando}) = i flatpak && flatpak install flathub org.vinegarhq.Vinegar -y
- 
- 
- 
-parsec = git clone https://aur.archlinux.org/parsec-bin.git && cd parsec-bin && makepkg -si --noconfirm && cd .. && sudo rm -rf parsec-bin
- 
- 
- 
-heroic games launcher (launcher nao oficial de epic games, GOG e amazon prime) = git clone https://aur.archlinux.org/heroic-games-launcher-bin.git && cd heroic-games-launcher-bin && makepkg -si --noconfirm && cd .. && sudo rm -rf heroic-games-launcher-bin
- 
- 
- 
+
+parsec = i parsec-bin
+
+heroic games launcher (launcher nao oficial de epic games, GOG e amazon prime) = i heroic-games-launcher-bin
+
 lutris = i lutris
 
 ____________________________________________________________________________________________________
