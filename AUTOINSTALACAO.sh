@@ -376,7 +376,7 @@ cd yay && \\
 makepkg -si --noconfirm && \\
 cd .. && \\
 sudo rm -rf yay && \\
-yay -Sy --noconfirm nano && \\
+yay -Sy --noconfirm nano --answerclean All --answerdiff None --answeredit None --answerrebuild None --save && \\
 sudo sed -i \"28,\\\$d\" /home/bux/.bashrc" > /home/bux/.bash_profile; then
 echo ""
 else
