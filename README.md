@@ -76,75 +76,41 @@ REINICIAR MAQUINA: r
 
 ----------------------PACOTES POPULARES (OPCIONAL)--------------------------------
 
-google chrome (PACOTE QUEBRADO) = git clone https://aur.archlinux.org/google-chrome.git && cd google-chrome && makepkg -si --noconfirm && cd .. && sudo rm -rf google-chrome
- 
- 
- 
+google chrome (PACOTE QUEBRADO) = i google-chrome
+
 firefox = i firefox
- 
- 
- 
+
 VLC (visualizador de audio e video) = i vlc
- 
- 
- 
-onlyoffice (visualizador/modificador gratis de pdf, word, etc) = git clone https://aur.archlinux.org/onlyoffice.git && cd onlyoffice && makepkg -si --noconfirm && cd .. && sudo rm -rf onlyoffice
- 
- 
- 
+
+onlyoffice (visualizador/modificador gratis de pdf, word, etc) = i onlyoffice
+
 visualizador de fotos = i ristretto
- 
- 
- 
+
 (des)compactador de arquivos = i xarchiver tar xz unzip unrar
- 
- 
- 
+
 obs studio = i obs-studio
- 
- 
- 
+
 wine (versão estável) = i wine wine-mono wine-gecko
- 
- 
- 
+
 telegram = i telegram-desktop
- 
- 
- 
+
 discord = i discord
- 
- 
- 
+
 steam = i steam
- 
- 
- 
-java (console) = git clone https://aur.archlinux.org/jdk.git && cd jdk && makepkg -si --noconfirm && cd .. && sudo rm -rf jdk
- 
- 
- 
-minecraft java (pirata) = git clone https://aur.archlinux.org/sklauncher-bin.git && cd sklauncher-bin && makepkg -si --noconfirm && cd .. && sudo rm -rf sklauncher-bin
- 
- 
- 
-minecraft java (original) = git clone https://aur.archlinux.org/minecraft-launcher.git && cd minecraft-launcher && makepkg -si --noconfirm && cd .. && sudo rm -rf minecraft-launcher
- 
- 
- 
-minecraft bedrock (original não oficial, precisa ter comprado pela play store) = git clone https://aur.archlinux.org/mcpelauncher-linux.git && cd mcpelauncher-linux && makepkg -si --noconfirm && cd .. && sudo rm -rf mcpelauncher-linux
- 
- 
- 
-mupen64 (emulador de nintendo 64) = git clone https://aur.archlinux.org/mupen64plus-qt.git && cd mupen64plus-qt && makepkg -si --noconfirm && cd .. && sudo rm -rf mupen64plus-qt
- 
- 
- 
-pcsx2 (emulador de playstation 2) = git clone https://aur.archlinux.org/pcsx2-git.git && cd pcsx2-git && makepkg -si --noconfirm && cd .. && sudo rm -rf pcsx2-git
- 
- 
- 
-rpcs3 (emulador de playstation 3) = git clone https://aur.archlinux.org/rpcs3-git.git && cd rpcs3-git && makepkg -si --noconfirm && cd .. && sudo rm -rf rpcs3-git
+
+java (console) = i jdk
+
+minecraft java (pirata) = i sklauncher-bin
+
+minecraft java (original) = i minecraft-launcher
+
+minecraft bedrock (original não oficial, precisa ter comprado pela play store) = i mcpelauncher-linux
+
+mupen64 (emulador de nintendo 64) = i mupen64plus-qt
+
+pcsx2 (emulador de playstation 2) = i pcsx2-git
+
+rpcs3 (emulador de playstation 3) = i rpcs3-git
  
  
  
