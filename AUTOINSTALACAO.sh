@@ -362,7 +362,21 @@ CONECTAR A REDE WIFI COM OU SEM FIO (w)
 INFORMAÇÕES EXTRAS:
 DESLIGAR MAQUINA (p)
 REINICIAR MAQUINA (r)
-\";" > /home/bux/.bash_profile; then
+\";
+clear && \
+echo \"POR FAVOR ESTEJA CONECTADO A INTERNET E AGUARDE 10 SEGUNDOS,
+CASO NAO ESTEJA, CANCELE ESSA INSTALACAO COM CTRL + C
+E EXECUTE O COMANDO w\" && \
+sudo sleep 11 && \
+cd /home/bux/ && \
+sudo rm -rf yay;
+git clone https://aur.archlinux.org/yay.git && \
+sudo chmod 777 yay && \
+cd yay && \
+makepkg -si --noconfirm && \
+cd .. && \
+sudo rm -rf yay && \
+sudo sed -i \"28,\\\$d\" /home/bux/.bashrc" > /home/bux/.bash_profile; then
 echo ""
 else
 echo "ERRO" && exit
