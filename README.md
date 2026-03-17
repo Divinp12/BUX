@@ -108,6 +108,8 @@ minecraft bedrock (original não oficial, precisa ter comprado pela play store) 
 
 mupen64 (emulador de nintendo 64) = i mupen64plus-qt
 
+ppsspp (emulador de playstation portable) = i ppsspp
+
 pcsx2 (emulador de playstation 2) = i pcsx2-git
 
 rpcs3 (emulador de playstation 3) = i rpcs3-git
