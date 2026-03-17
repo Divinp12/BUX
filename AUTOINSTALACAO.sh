@@ -1,17 +1,14 @@
 #!/bin/bash
-
+set -e
+trap 'echo "FALHOU no comando: $BASH_COMMAND"' ERR
 clear;
 
 echo "adicionando espelho brasileiro";
-if echo "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist; then
-echo ""
-else
-echo "ERRO" && exit
-fi;
+echo "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist;
 
 
 echo "sobscrevendo arquivo pacman.conf";
-if echo "[options]
+echo "[options]
 Architecture=auto
 CheckSpace
 ParallelDownloads=1
@@ -22,19 +19,11 @@ Include=/etc/pacman.d/mirrorlist
 [extra]
 Include=/etc/pacman.d/mirrorlist
 [multilib]
-Include=/etc/pacman.d/mirrorlist" > /etc/pacman.conf; then
-echo ""
-else
-echo "ERRO" && exit
-fi;
+Include=/etc/pacman.d/mirrorlist" > /etc/pacman.conf;
 
 
 echo "sincronizando repositorios do pacman";
-if pacman -Sy --noconfirm > /dev/null 2>&1; then
-echo ""
-else
-echo "ERRO" && exit
-fi;
+pacman -Sy --noconfirm > /dev/null 2>&1;
 
 
 echo "formatando 1 disco rigido valido";
@@ -88,7 +77,7 @@ fi;
 
 
 echo "instalando pacotes do sistema";
-if pacstrap /mnt --noconfirm \
+pacstrap /mnt --noconfirm \
 base \
 base-devel \
 linux \
@@ -105,11 +94,7 @@ wayland \
 xorg-xwayland \
 pulseaudio \
 grub \
-efibootmgr > /dev/null 2>&1; then
-echo ""
-else
-echo "ERRO" && exit
-fi;
+efibootmgr > /dev/null 2>&1;
 
 
 echo "escaneando hardware amd, sincronizando repositorios do pacman e instalando drivers amd";
@@ -151,15 +136,11 @@ fi;
 
 
 echo "adicionando espelho brasileiro";
-if echo "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /mnt/etc/pacman.d/mirrorlist; then
-echo ""
-else
-echo "ERRO" && exit
-fi;
+echo "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /mnt/etc/pacman.d/mirrorlist;
 
 
 echo "sobscrevendo arquivo pacman.conf";
-if echo "[options]
+echo "[options]
 Architecture=auto
 CheckSpace
 ParallelDownloads=1
@@ -170,110 +151,62 @@ Include=/etc/pacman.d/mirrorlist
 [extra]
 Include=/etc/pacman.d/mirrorlist
 [multilib]
-Include=/etc/pacman.d/mirrorlist" > /mnt/etc/pacman.conf; then
-echo ""
-else
-echo "ERRO" && exit
-fi;
+Include=/etc/pacman.d/mirrorlist" > /mnt/etc/pacman.conf;
 
 
 echo "adicionando conexão ipv6 no sistema";
-if echo "127.0.0.1 localhost.localdomain localhost
+echo "127.0.0.1 localhost.localdomain localhost
 ::1 localhost.localdomain localhost
-127.0.0.1 bux.localdomain bux" > /mnt/etc/hosts; then
-echo ""
-else
-echo "ERRO" && exit
-fi;
+127.0.0.1 bux.localdomain bux" > /mnt/etc/hosts;
 
 
 echo "sobrescrevendo arquivo vconsole.conf no diretorio /etc";
-if echo "KEYMAP=us
-FONT=lat9w-16" > /mnt/etc/vconsole.conf; then
-echo ""
-else
-echo "ERRO" && exit
-fi;
+echo "KEYMAP=us
+FONT=lat9w-16" > /mnt/etc/vconsole.conf;
 
 
 echo "entrando no ambiente arch-chroot";
 arch-chroot /mnt bash -c '
-echo "";
+
 
 echo "adicionando nome bux ao usuario root no arquivo hostname";
-if echo bux > /etc/hostname; then
-echo ""
-else
-echo "ERRO" && exit
-fi;
+echo bux > /etc/hostname;
 
 
 echo "adicionando senha bux ao usuario root";
-if echo -e "bux\nbux" | passwd root > /dev/null 2>&1; then
-echo ""
-else
-echo "ERRO" && exit
-fi;
+echo -e "bux\nbux" | passwd root > /dev/null 2>&1;
 
 
 echo "adicionando usuario normal com nome bux";
-if useradd -m -g users -G wheel bux; then
-echo ""
-else
-echo "ERRO" && exit
-fi;
+useradd -m -g users -G wheel bux;
 
 
 echo "adicionando senha bux ao usuario normal";
-if echo -e "bux\nbux" | passwd bux > /dev/null 2>&1; then
-echo ""
-else
-echo "ERRO" && exit
-fi;
+echo -e "bux\nbux" | passwd bux > /dev/null 2>&1;
 
 
 echo "adicionando caracteres portugues brasileiro";
-if echo "pt_BR.UTF-8 UTF-8" > /etc/locale.gen; then
-echo ""
-else
-echo "ERRO" && exit
-fi;
+echo "pt_BR.UTF-8 UTF-8" > /etc/locale.gen;
 
 
 echo "adicionando idioma portugues brasileiro";
-if echo "LANG=pt_BR.UTF-8" > /etc/locale.conf; then
-echo ""
-else
-echo "ERRO" && exit
-fi;
+echo "LANG=pt_BR.UTF-8" > /etc/locale.conf;
 
 
 echo "aplicando caracteres portugues brasileiro";
-if locale-gen > /dev/null 2>&1; then
-echo ""
-else
-echo "ERRO" && exit
-fi;
+locale-gen > /dev/null 2>&1;
 
 
 echo "sincronizando relogio";
-if hwclock --systohc > /dev/null 2>&1; then
-echo ""
-else
-echo "ERRO" && exit
-fi;
+hwclock --systohc > /dev/null 2>&1;
 
 
 echo "gerando imagens no inicializador do sistema";
-if mkinitcpio -P > /dev/null 2>&1; then
-echo ""
-else
-echo "ERRO" && exit
-fi;
+mkinitcpio -P > /dev/null 2>&1;
 
 
 echo "sobscrevendo arquivo grub";
-if echo "GRUB_DEFAULT=0
+echo "GRUB_DEFAULT=0
 GRUB_TIMEOUT=0
 GRUB_DISTRIBUTOR=\"bux\"
 GRUB_CMDLINE_LINUX_DEFAULT=\"quiet loglevel=0 mitigations=off nospectre_v1 nospectre_v2 spectre_v2=off spectre_bhi=off nopti pti=off nospec_store_bypass_disable l1tf=off mds=off tsx_async_abort=off srbds=off mmio_stale_data=off retbleed=off split_lock_detect=off split_lock_mitigate=0 bpf_jit_harden=0 nokaslr panic=0 debugfs=off audit=0 nowatchdog nmi_watchdog=0 softlockup_panic=0 hardlockup_panic=0 modprobe.blacklist=pcspkr,iTCO_wdt,iTCO_vendor_support,intel_oc_wdt\"
@@ -281,39 +214,23 @@ GRUB_CMDLINE_LINUX=\"\"
 GRUB_PRELOAD_MODULES=\"part_gpt part_msdos\"
 GRUB_GFXMODE=auto
 GRUB_GFXPAYLOAD_LINUX=keep
-GRUB_DISABLE_RECOVERY=true" > /etc/default/grub; then
-echo ""
-else
-echo "ERRO" && exit
-fi;
+GRUB_DISABLE_RECOVERY=true" > /etc/default/grub;
 
 
 echo "configurando grub";
-if grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=bux --recheck > /dev/null 2>&1; then
-echo ""
-else
-echo "ERRO" && exit
-fi;
+grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=bux --recheck > /dev/null 2>&1;
 
 
 echo "adicionando grub na inicialização";
-if grub-mkconfig -o /boot/grub/grub.cfg > /dev/null 2>&1; then
-echo ""
-else
-echo "ERRO" && exit
-fi;
+grub-mkconfig -o /boot/grub/grub.cfg > /dev/null 2>&1;
 
 
 echo "adicionando usuario normal (bux) ao sudo no arquivo sudoers";
-if echo "bux ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers; then
-echo ""
-else
-echo "ERRO" && exit
-fi;
+echo "bux ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers;
 
 
 echo "removendo linhas que começam com jogo da velha e espaços vazios";
-if sed -i "/^\s*#/d; /^\s*$/d" \
+sed -i "/^\s*#/d; /^\s*$/d" \
 /home/bux/.bash_profile \
 /home/bux/.bash_logout \
 /etc/sudoers \
@@ -327,13 +244,11 @@ if sed -i "/^\s*#/d; /^\s*$/d" \
 /etc/vconsole.conf \
 /etc/fuse.conf \
 /etc/ts.conf \
-/etc/fstab; then
-echo ""
-fi;
+/etc/fstab;
 
 
 echo "criando autostartx do sway";
-if echo "if [ \"\$(tty)\" = \"/dev/tty1\" ]; then
+echo "if [ \"\$(tty)\" = \"/dev/tty1\" ]; then
 exec sway > /dev/null 2>&1
 fi;
 alias i=\"yay -Sy --noconfirm\";
@@ -377,47 +292,27 @@ makepkg -si --noconfirm && \\
 cd .. && \\
 sudo rm -rf yay && \\
 yay -Sy --noconfirm nano --answerclean All --answerdiff None --answeredit None --save && \\
-sudo sed -i \"31,\\\$d\" /home/bux/.bash_profile" > /home/bux/.bash_profile; then
-echo ""
-else
-echo "ERRO" && exit
-fi;
+sudo sed -i \"31,\\\$d\" /home/bux/.bash_profile" > /home/bux/.bash_profile;
 
 
 echo "criando diretorio /home/bux/.config";
-if mkdir -p /home/bux/.config; then
-echo ""
-else
-echo "ERRO" && exit
-fi;
+mkdir -p /home/bux/.config;
 
 
 echo "adicionando permissões de usuario normal no diretorio /home/bux/.config";
-if chown -R bux /home/bux/.config; then
-echo ""
-else
-echo "ERRO" && exit
-fi;
+chown -R bux /home/bux/.config;
 
 
 echo "alterando permissões de leitura e escrita no diretorio /home/bux/.config";
-if chmod -R u+rwX /home/bux/.config; then
-echo ""
-else
-echo "ERRO" && exit
-fi;
+chmod -R u+rwX /home/bux/.config;
 
 
 echo "criando diretorio /home/bux/.config/sway";
-if mkdir -p /home/bux/.config/sway; then
-echo ""
-else
-echo "ERRO" && exit
-fi;
+mkdir -p /home/bux/.config/sway;
 
 
 echo "criando arquivo de configuração do sway";
-if echo "set \$mod Mod4
+echo "set \$mod Mod4
 default_border pixel 1
 default_floating_border none
 input * { pointer_accel 0 }
@@ -430,23 +325,15 @@ bindsym \$mod+c fullscreen toggle
 bindsym \$mod+b exec pactl set-sink-volume @DEFAULT_SINK@ +1%
 bindsym \$mod+n exec pactl set-sink-volume @DEFAULT_SINK@ -1%
 bindsym \$mod+m exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
-include /etc/sway/config.d/*" > /home/bux/.config/sway/config; then
-echo ""
-else
-echo "ERRO" && exit
-fi;
+include /etc/sway/config.d/*" > /home/bux/.config/sway/config;
 
 
 echo "adicionando diretorio de configuração extra do sway";
-if mkdir -p /etc/sway; then
-echo ""
-else
-echo "ERRO" && exit
-fi;
+mkdir -p /etc/sway;
 
 
 echo "adicionando arquivo de configuração extra do sway";
-if echo "set \$mod Mod4
+echo "set \$mod Mod4
 default_border pixel 1
 default_floating_border none
 input * { pointer_accel 0 }
@@ -459,15 +346,11 @@ bindsym \$mod+c fullscreen toggle
 bindsym \$mod+b exec pactl set-sink-volume @DEFAULT_SINK@ +1%
 bindsym \$mod+n exec pactl set-sink-volume @DEFAULT_SINK@ -1%
 bindsym \$mod+m exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
-include /etc/sway/config.d/*" > /etc/sway/config; then
-echo ""
-else
-echo "ERRO" && exit
-fi;
+include /etc/sway/config.d/*" > /etc/sway/config;
 
 
 echo "adicionando autologin do tty1";
-if echo "[Unit]
+echo "[Unit]
 After=systemd-user-sessions.service plymouth-quit-wait.service
 Before=getty.target
 
@@ -484,40 +367,24 @@ StandardInput=tty
 StandardOutput=tty
 
 [Install]
-WantedBy=multi-user.target" > /etc/systemd/system/autologin.service; then
-echo ""
-else
-echo "ERRO" && exit
-fi;
+WantedBy=multi-user.target" > /etc/systemd/system/autologin.service;
 
 
 echo "habilitando serviços uteis na inicialização do sistema";
-if systemctl enable \
+systemctl enable \
 NetworkManager \
-autologin > /dev/null 2>&1; then
-echo ""
-else
-echo "ERRO" && exit
-fi;
+autologin > /dev/null 2>&1;
 
 
 echo "desativando serviços inuteis na inicialização do sistema";
 if systemctl disable \
 NetworkManager-wait-online \
 systemd-networkd \
-systemd-timesyncd > /dev/null 2>&1; then
-echo ""
-else
-echo "ERRO" && exit
-fi;'
+systemd-timesyncd > /dev/null 2>&1;'
 
 
 echo "gravando dados da memoria no disco";
-if sync > /dev/null 2>&1; then
-echo ""
-else
-echo "ERRO" && exit
-fi;
+sync > /dev/null 2>&1;
 
 
 echo "reiniciando";
