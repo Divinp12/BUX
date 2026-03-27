@@ -31,21 +31,16 @@ if wipefs -a /dev/nvme0n1p > /dev/null 2>&1; then
 parted -s /dev/nvme0n1p mklabel gpt && \
 parted -s /dev/nvme0n1p mkpart ESP fat32 1MiB 100MiB && \
 parted -s /dev/nvme0n1p set 1 esp on && \
-parted -s /dev/nvme0n1p mkpart primary ext4 100MiB 30000MiB && \
-parted -s /dev/nvme0n1p mkpart primary ext4 30000MiB 100% && \
+parted -s /dev/nvme0n1p mkpart primary ext4 100MiB 100% && \
 partprobe > /dev/null 2>&1 && \
 mkfs.fat -F32 /dev/nvme0n1p1 > /dev/null 2>&1 && \
 mkfs.ext4 -F /dev/nvme0n1p2 > /dev/null 2>&1 && \
-mkfs.ext4 -F /dev/nvme0n1p3 > /dev/null 2>&1 && \
 mount /dev/nvme0n1p2 /mnt > /dev/null 2>&1 && \
 mkdir /mnt/boot > /dev/null 2>&1 && \
 mkdir /mnt/boot/EFI > /dev/null 2>&1 && \
-mkdir /mnt/home > /dev/null 2>&1 && \
 mount /dev/nvme0n1p1 /mnt/boot/EFI > /dev/null 2>&1 && \
-mount /dev/nvme0n1p3 /mnt/home > /dev/null 2>&1 && \
 echo "UUID=$(blkid -s UUID -o value /dev/nvme0n1p1) /boot/EFI vfat rw,relatime,noatime 0 2
-UUID=$(blkid -s UUID -o value /dev/nvme0n1p2) / ext4 rw,relatime,noatime 0 1
-UUID=$(blkid -s UUID -o value /dev/nvme0n1p3) /home ext4 rw,relatime,noatime 0 2" > /mnt/etc/fstab && \
+UUID=$(blkid -s UUID -o value /dev/nvme0n1p2) / ext4 rw,relatime,noatime 0 1" > /mnt/etc/fstab && \
 mount -a -v && \
 echo ""
 
@@ -55,22 +50,17 @@ wipefs -a /dev/sda > /dev/null 2>&1 && \
 parted -s /dev/sda mklabel gpt && \
 parted -s /dev/sda mkpart ESP fat32 1MiB 100MiB && \
 parted -s /dev/sda set 1 esp on && \
-parted -s /dev/sda mkpart primary ext4 100MiB 30000MiB && \
-parted -s /dev/sda mkpart primary ext4 30000MiB 100% && \
+parted -s /dev/sda mkpart primary ext4 100MiB 100% && \
 partprobe > /dev/null 2>&1 && \
 mkfs.fat -F32 /dev/sda1 > /dev/null 2>&1 && \
 mkfs.ext4 -F /dev/sda2 > /dev/null 2>&1 && \
-mkfs.ext4 -F /dev/sda3 > /dev/null 2>&1 && \
 mount /dev/sda2 /mnt > /dev/null 2>&1 && \
 mkdir /mnt/boot > /dev/null 2>&1 && \
 mkdir /mnt/boot/EFI > /dev/null 2>&1 && \
-mkdir /mnt/home > /dev/null 2>&1 && \
 mount /dev/sda1 /mnt/boot/EFI > /dev/null 2>&1 && \
-mount /dev/sda3 /mnt/home > /dev/null 2>&1 && \
 mkdir -p /mnt/etc && \
 echo "UUID=$(blkid -s UUID -o value /dev/sda1) /boot/EFI vfat rw,relatime,noatime 0 2
-UUID=$(blkid -s UUID -o value /dev/sda2) / ext4 rw,relatime,noatime 0 1
-UUID=$(blkid -s UUID -o value /dev/sda3) /home ext4 rw,relatime,noatime 0 2" > /mnt/etc/fstab && \
+UUID=$(blkid -s UUID -o value /dev/sda2) / ext4 rw,relatime,noatime 0 1" > /mnt/etc/fstab && \
 mount -a -v && \
 echo ""
 fi;
