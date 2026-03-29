@@ -29,9 +29,9 @@ pacman -Sy --noconfirm > /dev/null 2>&1;
 echo "formatando 1 disco rigido valido";
 if wipefs -a /dev/nvme0n1p > /dev/null 2>&1; then
 parted -s /dev/nvme0n1p mklabel gpt && \
-parted -s /dev/nvme0n1p mkpart ESP fat32 1MiB 100MiB && \
+parted -s /dev/nvme0n1p mkpart ESP fat32 1MiB 90MiB && \
 parted -s /dev/nvme0n1p set 1 esp on && \
-parted -s /dev/nvme0n1p mkpart primary ext4 100MiB 100% && \
+parted -s /dev/nvme0n1p mkpart primary ext4 90MiB 100% && \
 partprobe > /dev/null 2>&1 && \
 mkfs.fat -F32 /dev/nvme0n1p1 > /dev/null 2>&1 && \
 mkfs.ext4 -F /dev/nvme0n1p2 > /dev/null 2>&1 && \
@@ -48,9 +48,9 @@ else
 
 wipefs -a /dev/sda > /dev/null 2>&1 && \
 parted -s /dev/sda mklabel gpt && \
-parted -s /dev/sda mkpart ESP fat32 1MiB 100MiB && \
+parted -s /dev/sda mkpart ESP fat32 1MiB 90MiB && \
 parted -s /dev/sda set 1 esp on && \
-parted -s /dev/sda mkpart primary ext4 100MiB 100% && \
+parted -s /dev/sda mkpart primary ext4 90MiB 100% && \
 partprobe > /dev/null 2>&1 && \
 mkfs.fat -F32 /dev/sda1 > /dev/null 2>&1 && \
 mkfs.ext4 -F /dev/sda2 > /dev/null 2>&1 && \
