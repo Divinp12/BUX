@@ -17,8 +17,6 @@ LocalFileSigLevel=Optional
 [core]
 Include=/etc/pacman.d/mirrorlist
 [extra]
-Include=/etc/pacman.d/mirrorlist
-[multilib]
 Include=/etc/pacman.d/mirrorlist" > /etc/pacman.conf;
 
 
@@ -91,8 +89,7 @@ echo "escaneando hardware amd, sincronizando repositorios do pacman e instalando
 if lspci | grep -i amd > /dev/null 2>&1; then
 pacstrap /mnt --noconfirm \
 amd-ucode \
-vulkan-radeon \
-lib32-vulkan-radeon > /dev/null 2>&1 && \
+vulkan-radeon > /dev/null 2>&1 && \
 echo ""
 else
 echo "Ñ ENCONTRADO" && echo ""
@@ -103,8 +100,7 @@ echo "escaneando hardware intel, sincronizando repositorios do pacman e instalan
 if lspci | grep -i intel > /dev/null 2>&1; then
 pacstrap /mnt --noconfirm \
 intel-ucode \
-vulkan-intel \
-lib32-vulkan-intel > /dev/null 2>&1 && \
+vulkan-intel > /dev/null 2>&1 && \
 echo ""
 else
 echo "Ñ ENCONTRADO" && echo ""
@@ -117,7 +113,6 @@ pacstrap /mnt --noconfirm \
 nvidia \
 nvidia-dkms \
 nvidia-utils \
-lib32-nvidia-utils \
 nvidia-settings > /dev/null 2>&1 && \
 echo ""
 else
@@ -139,8 +134,6 @@ LocalFileSigLevel=Optional
 [core]
 Include=/etc/pacman.d/mirrorlist
 [extra]
-Include=/etc/pacman.d/mirrorlist
-[multilib]
 Include=/etc/pacman.d/mirrorlist" > /mnt/etc/pacman.conf;
 
 
