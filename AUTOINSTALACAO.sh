@@ -39,8 +39,7 @@ mkdir /mnt/boot/EFI > /dev/null 2>&1 && \
 mount /dev/nvme0n1p1 /mnt/boot/EFI > /dev/null 2>&1 && \
 echo "UUID=$(blkid -s UUID -o value /dev/nvme0n1p1) /boot/EFI vfat rw,noatime 0 2
 UUID=$(blkid -s UUID -o value /dev/nvme0n1p2) / ext4 rw,noatime 0 1" > /mnt/etc/fstab && \
-mount -a -v && \
-echo ""
+mount -a -v;
 
 else
 
@@ -59,8 +58,7 @@ mount /dev/sda1 /mnt/boot/EFI > /dev/null 2>&1 && \
 mkdir -p /mnt/etc && \
 echo "UUID=$(blkid -s UUID -o value /dev/sda1) /boot/EFI vfat rw,noatime 0 2
 UUID=$(blkid -s UUID -o value /dev/sda2) / ext4 rw,noatime 0 1" > /mnt/etc/fstab && \
-mount -a -v && \
-echo ""
+mount -a -v;
 fi;
 
 
@@ -89,10 +87,9 @@ echo "escaneando hardware amd, sincronizando repositorios do pacman e instalando
 if lspci | grep -i amd > /dev/null 2>&1; then
 pacstrap /mnt --noconfirm \
 amd-ucode \
-vulkan-radeon > /dev/null 2>&1 && \
-echo ""
+vulkan-radeon > /dev/null 2>&1;
 else
-echo "Ñ ENCONTRADO" && echo ""
+echo "Ñ ENCONTRADO";
 fi;
 
 
@@ -100,10 +97,9 @@ echo "escaneando hardware intel, sincronizando repositorios do pacman e instalan
 if lspci | grep -i intel > /dev/null 2>&1; then
 pacstrap /mnt --noconfirm \
 intel-ucode \
-vulkan-intel > /dev/null 2>&1 && \
-echo ""
+vulkan-intel > /dev/null 2>&1;
 else
-echo "Ñ ENCONTRADO" && echo ""
+echo "Ñ ENCONTRADO";
 fi;
 
 
@@ -113,10 +109,9 @@ pacstrap /mnt --noconfirm \
 nvidia \
 nvidia-dkms \
 nvidia-utils \
-nvidia-settings > /dev/null 2>&1 && \
-echo ""
+nvidia-settings > /dev/null 2>&1;
 else
-echo "Ñ ENCONTRADO" && echo ""
+echo "Ñ ENCONTRADO";
 fi;
 
 
@@ -201,7 +196,7 @@ GRUB_DISABLE_RECOVERY=true" > /etc/default/grub;
 
 
 echo "configurando grub";
-grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=bux --recheck > /dev/null 2>&1;
+grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=bux --recheck --removable > /dev/null 2>&1;
 
 
 echo "adicionando grub na inicialização";
