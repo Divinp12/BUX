@@ -129,7 +129,7 @@ MANGOHUD (OPCIONAL)
 
 Uma ferramenta de monitoramento de desempenho para jogos no Linux...
 
-Instalar: i mangohud lib32-mangohud
+Instalar: i mangohud
 
 Use na steam na “opções de inicialização”:
 
