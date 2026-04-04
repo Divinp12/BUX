@@ -354,7 +354,7 @@ systemd-timesyncd > /dev/null 2>&1;
 
 
 echo "desmontando diretorios";
-umount /tmp /var/cache /var/tmp /var/log /home/bux/.cache;
+umount -q /tmp /var/cache /var/tmp /var/log /home/bux/.cache;
 
 
 echo "deletando diretorios";
