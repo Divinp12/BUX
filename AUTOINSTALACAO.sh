@@ -42,7 +42,8 @@ UUID=$(blkid -s UUID -o value /dev/nvme0n1p2) / ext4 rw,noatime 0 1
 tmpfs /tmp tmpfs defaults,noatime,mode=1777,size=100% 0 0
 tmpfs /var/cache tmpfs defaults,noatime,mode=1777,size=100% 0 0
 tmpfs /var/tmp tmpfs defaults,noatime,mode=1777,size=100% 0 0
-tmpfs /var/log tmpfs defaults,noatime,mode=1777,size=100% 0 0" > /mnt/etc/fstab && \
+tmpfs /var/log tmpfs defaults,noatime,mode=1777,size=100% 0 0
+tmpfs /home/bux/.cache tmpfs defaults,noatime,mode=700,size=100% 0 0" > /mnt/etc/fstab && \
 mount -a -v;
 
 else
@@ -65,7 +66,8 @@ UUID=$(blkid -s UUID -o value /dev/sda2) / ext4 rw,noatime 0 1
 tmpfs /tmp tmpfs defaults,noatime,mode=1777,size=100% 0 0
 tmpfs /var/cache tmpfs defaults,noatime,mode=1777,size=100% 0 0
 tmpfs /var/tmp tmpfs defaults,noatime,mode=1777,size=100% 0 0
-tmpfs /var/log tmpfs defaults,noatime,mode=1777,size=100% 0 0" > /mnt/etc/fstab && \
+tmpfs /var/log tmpfs defaults,noatime,mode=1777,size=100% 0 0
+tmpfs /home/bux/.cache tmpfs defaults,noatime,mode=700,size=100% 0 0" > /mnt/etc/fstab && \
 mount -a -v;
 fi;
 
@@ -215,24 +217,6 @@ echo "adicionando usuario normal (bux) ao sudo no arquivo sudoers";
 echo "bux ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers;
 
 
-echo "removendo linhas que começam com jogo da velha e espaços vazios";
-sed -i "/^\s*#/d; /^\s*$/d" \
-/home/bux/.bash_profile \
-/home/bux/.bash_logout \
-/etc/sudoers \
-/etc/sudo.conf \
-/etc/environment \
-/etc/gai.conf \
-/etc/host.conf \
-/etc/healthd.conf \
-/etc/mkinitcpio.conf \
-/etc/libva.conf \
-/etc/vconsole.conf \
-/etc/fuse.conf \
-/etc/ts.conf \
-/etc/fstab;
-
-
 echo "criando autostartx do sway";
 echo "if [ \"\$(tty)\" = \"/dev/tty1\" ]; then
 exec sway > /dev/null 2>&1
@@ -363,10 +347,36 @@ autologin > /dev/null 2>&1;
 
 
 echo "desativando serviços inuteis na inicialização do sistema";
-if systemctl disable \
+systemctl disable \
 NetworkManager-wait-online \
 systemd-networkd \
-systemd-timesyncd > /dev/null 2>&1;'
+systemd-timesyncd > /dev/null 2>&1;
+
+
+echo "desmontando diretorios";
+umount /tmp /var/cache /var/tmp /var/log /home/bux/.cache;
+
+
+echo "deletando diretorios";
+rm -rf /tmp /var/cache /var/tmp /var/log /home/bux/.cache;
+
+
+echo "removendo linhas que começam com jogo da velha e espaços vazios";
+sed -i "/^\s*#/d; /^\s*$/d" \
+/home/bux/.bash_profile \
+/home/bux/.bash_logout \
+/etc/sudoers \
+/etc/sudo.conf \
+/etc/environment \
+/etc/gai.conf \
+/etc/host.conf \
+/etc/healthd.conf \
+/etc/mkinitcpio.conf \
+/etc/libva.conf \
+/etc/vconsole.conf \
+/etc/fuse.conf \
+/etc/ts.conf \
+/etc/fstab;'
 
 
 echo "gravando dados da memoria no disco";
