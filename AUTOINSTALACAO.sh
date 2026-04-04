@@ -40,7 +40,9 @@ mount /dev/nvme0n1p1 /mnt/boot/EFI > /dev/null 2>&1 && \
 echo "UUID=$(blkid -s UUID -o value /dev/nvme0n1p1) /boot/EFI vfat rw,noatime 0 2
 UUID=$(blkid -s UUID -o value /dev/nvme0n1p2) / ext4 rw,noatime 0 1
 tmpfs /tmp tmpfs defaults,noatime,mode=1777,size=100% 0 0
-tmpfs /var/cache tmpfs defaults,noatime,mode=1777,size=100% 0 0" > /mnt/etc/fstab && \
+tmpfs /var/cache tmpfs defaults,noatime,mode=0755,size=100% 0 0
+tmpfs /var/tmp tmpfs defaults,noatime,mode=1777,size=100% 0 0
+tmpfs /var/log tmpfs defaults,noatime,mode=0755,size=100% 0 0" > /mnt/etc/fstab && \
 mount -a -v;
 
 else
@@ -61,7 +63,9 @@ mkdir -p /mnt/etc && \
 echo "UUID=$(blkid -s UUID -o value /dev/sda1) /boot/EFI vfat rw,noatime 0 2
 UUID=$(blkid -s UUID -o value /dev/sda2) / ext4 rw,noatime 0 1
 tmpfs /tmp tmpfs defaults,noatime,mode=1777,size=100% 0 0
-tmpfs /var/cache tmpfs defaults,noatime,mode=1777,size=100% 0 0" > /mnt/etc/fstab && \
+tmpfs /var/cache tmpfs defaults,noatime,mode=0755,size=100% 0 0
+tmpfs /var/tmp tmpfs defaults,noatime,mode=1777,size=100% 0 0
+tmpfs /var/log tmpfs defaults,noatime,mode=0755,size=100% 0 0" > /mnt/etc/fstab && \
 mount -a -v;
 fi;
 
