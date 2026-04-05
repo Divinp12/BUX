@@ -371,8 +371,13 @@ echo "gravando dados da memoria no disco";
 sync > /dev/null 2>&1;
 
 
-echo "desmontando diretorio /mnt";
-umount -R /mnt;
+echo "desmontando diretorios tmpfs";
+umount -q \
+/mnt/tmp \
+/mnt/var/cache \
+/mnt/var/tmp \
+/mnt/var/log \
+/mnt/home/bux/.cache;
 
 
 echo "deletando diretorios tmpfs";
@@ -382,6 +387,10 @@ rm -rf \
 /mnt/var/tmp \
 /mnt/var/log \
 /mnt/home/bux/.cache;
+
+
+echo "desmontando diretorio /mnt";
+umount -R /mnt;
 
 
 echo "reiniciando forcadamente";
