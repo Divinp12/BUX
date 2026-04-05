@@ -220,6 +220,7 @@ echo "criando autostartx do sway";
 echo "if [ \"\$(tty)\" = \"/dev/tty1\" ]; then
 exec sway > /dev/null 2>&1
 fi;
+export SWAYSOCK=/run/user/1000/sway-ipc*;
 alias i=\"yay -Sy --noconfirm\";
 alias d=\"sudo pacman -Rsc\";
 alias a=\"yay -Syyu --noconfirm\";
