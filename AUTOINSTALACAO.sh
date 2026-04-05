@@ -371,13 +371,8 @@ echo "gravando dados da memoria no disco";
 sync > /dev/null 2>&1;
 
 
-echo "desmontando diretorios tmpfs";
-umount -q \
-/mnt/tmp \
-/mnt/var/cache \
-/mnt/var/tmp \
-/mnt/var/log \
-/mnt/home/bux/.cache;
+echo "desmontando diretorio /mnt";
+umount -R /mnt;
 
 
 echo "deletando diretorios tmpfs";
@@ -389,17 +384,5 @@ rm -rf \
 /mnt/home/bux/.cache;
 
 
-echo "desmontando diretorio /mnt/boot/EFI";
-umount /mnt/boot/EFI;
-
-
-echo "desmontando diretorio /mnt/boot";
-umount /mnt/boot;
-
-
-echo "desmontando diretorio /mnt";
-umount /mnt;
-
-
-echo "reiniciando forçadamente";
+echo "reiniciando forcadamente";
 reboot -f;
