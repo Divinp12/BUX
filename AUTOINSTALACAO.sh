@@ -393,5 +393,17 @@ rm -rf \
 /mnt/home/bux/.cache;
 
 
-echo "reiniciando";
+echo "desmontando diretorio /mnt/boot/EFI";
+umount /mnt/boot/EFI;
+
+
+echo "desmontando diretorio /mnt/boot";
+umount /mnt/boot;
+
+
+echo "desmontando diretorio /mnt";
+umount /mnt;
+
+
+echo "reiniciando forçadamente";
 reboot -f;
