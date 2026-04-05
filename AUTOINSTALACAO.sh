@@ -85,7 +85,6 @@ git \
 fastfetch \
 mesa \
 sway \
-wofi \
 wayland \
 xorg-xwayland \
 pulseaudio \
@@ -289,12 +288,11 @@ input * { pointer_accel 0 }
 output * bg #000000 solid_color
 output * { compositor none }
 bindsym \$mod+z kill
-bindsym \$mod+x exec wofi --show drun --no-dmenu
-bindsym \$mod+v reload
+bindsym \$mod+x reload
 bindsym \$mod+c fullscreen toggle
-bindsym \$mod+b exec pactl set-sink-volume @DEFAULT_SINK@ +1%
-bindsym \$mod+n exec pactl set-sink-volume @DEFAULT_SINK@ -1%
-bindsym \$mod+m exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym \$mod+v exec pactl set-sink-volume @DEFAULT_SINK@ +1%
+bindsym \$mod+b exec pactl set-sink-volume @DEFAULT_SINK@ -1%
+bindsym \$mod+n exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 include /etc/sway/config.d/*" > /home/bux/.config/sway/config;
 
 
@@ -310,12 +308,11 @@ input * { pointer_accel 0 }
 output * bg #000000 solid_color
 output * { compositor none }
 bindsym \$mod+z kill
-bindsym \$mod+x exec wofi --show drun --no-dmenu
-bindsym \$mod+v reload
+bindsym \$mod+x reload
 bindsym \$mod+c fullscreen toggle
-bindsym \$mod+b exec pactl set-sink-volume @DEFAULT_SINK@ +1%
-bindsym \$mod+n exec pactl set-sink-volume @DEFAULT_SINK@ -1%
-bindsym \$mod+m exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym \$mod+v exec pactl set-sink-volume @DEFAULT_SINK@ +1%
+bindsym \$mod+b exec pactl set-sink-volume @DEFAULT_SINK@ -1%
+bindsym \$mod+n exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 include /etc/sway/config.d/*" > /etc/sway/config;
 
 
@@ -355,7 +352,6 @@ systemd-timesyncd > /dev/null 2>&1;
 
 echo "removendo linhas que começam com jogo da velha e espaços vazios";
 sed -i "/^\s*#/d; /^\s*$/d" \
-/home/bux/.bash_profile \
 /home/bux/.bash_logout \
 /etc/sudoers \
 /etc/sudo.conf \
