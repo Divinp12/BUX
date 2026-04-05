@@ -353,14 +353,6 @@ systemd-networkd \
 systemd-timesyncd > /dev/null 2>&1;
 
 
-echo "desmontando diretorios";
-umount -q /tmp /var/cache /var/tmp /var/log /home/bux/.cache;
-
-
-echo "deletando diretorios";
-rm -rf /tmp /var/cache /var/tmp /var/log /home/bux/.cache;
-
-
 echo "removendo linhas que começam com jogo da velha e espaços vazios";
 sed -i "/^\s*#/d; /^\s*$/d" \
 /home/bux/.bash_profile \
@@ -383,5 +375,23 @@ echo "gravando dados da memoria no disco";
 sync > /dev/null 2>&1;
 
 
+echo "desmontando diretorios tmpfs";
+umount -q \
+/mnt/tmp \
+/mnt/var/cache \
+/mnt/var/tmp \
+/mnt/var/log \
+/mnt/home/bux/.cache;
+
+
+echo "deletando diretorios tmpfs";
+rm -rf \
+/mnt/tmp \
+/mnt/var/cache \
+/mnt/var/tmp \
+/mnt/var/log \
+/mnt/home/bux/.cache;
+
+
 echo "reiniciando";
-reboot;
+reboot -f;
