@@ -228,6 +228,7 @@ alias m=\"pacman -Q\";
 alias w=\"nmtui\";
 alias p=\"sudo poweroff -f\";
 alias r=\"sudo reboot -f\";
+alias e=\"swaymsg exec\";
 sudo rm -rf /home/bux/.bash_history;
 sudo pacman -Scc --noconfirm;
 clear;
