@@ -18,7 +18,7 @@ ARMAZENAMENTO: 4 GB.
 
 TENHA UM PENDRIVE VAZIO FAT32 DE 2 GB.
 
-BAIXE A ISO DO ARCH LINUX NO LINK: https://mirror.ufscar.br/archlinux/iso/2026.03.01/archlinux-x86_64.iso
+BAIXE A ISO DO ARCH LINUX NO LINK: https://mirror.ufscar.br/archlinux/iso/2026.04.01/archlinux-x86_64.iso
 
 EXTRAIA OS ARQUIVOS DA ISO NO PENDRIVE
 
