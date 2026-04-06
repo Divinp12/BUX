@@ -220,7 +220,7 @@ echo "criando autostartx do sway";
 echo "if [ \"\$(tty)\" = \"/dev/tty1\" ]; then
 exec sway > /dev/null 2>&1
 fi;
-export SWAYSOCK=/run/user/$(id -u)/sway-ipc.*.sock;
+export SWAYSOCK=/run/user/\$(id -u)/sway-ipc.*.sock;
 alias i=\"yay -Sy --noconfirm\";
 alias d=\"sudo pacman -Rsc\";
 alias a=\"yay -Syyu --noconfirm\";
@@ -248,6 +248,9 @@ CONECTAR A REDE WIFI COM OU SEM FIO (w)
 INFORMAÇÕES EXTRAS:
 DESLIGAR MAQUINA (p)
 REINICIAR MAQUINA (r)
+EXECUTAR PACOTE (e nome-do-pacote ou comando-especifico-de-execução)
+EXEMPLO 1: e firefox
+EXEMPLO 2: e flatpak run com.valvesoftware.Steam
 \";
 clear && \\
 echo \"POR FAVOR ESTEJA CONECTADO A INTERNET E AGUARDE 10 SEGUNDOS,
@@ -263,7 +266,7 @@ makepkg -si --noconfirm && \\
 cd .. && \\
 sudo rm -rf yay && \\
 yay -Sy --noconfirm nano --answerclean All --answerdiff None --answeredit None --save && \\
-sudo sed -i \"31,\\\$d\" /home/bux/.bash_profile" > /home/bux/.bash_profile;
+sudo sed -i \"34,\\\$d\" /home/bux/.bash_profile" > /home/bux/.bash_profile;
 
 
 echo "criando diretorio /home/bux/.config";
