@@ -325,7 +325,6 @@ echo "adicionando autologin do tty1";
 echo "[Unit]
 After=systemd-user-sessions.service plymouth-quit-wait.service
 Before=getty.target
-
 [Service]
 ExecStart=-/usr/bin/agetty --autologin bux --noclear tty1 linux
 Type=idle
@@ -337,7 +336,6 @@ TTYReset=yes
 TTYVHangup=yes
 StandardInput=tty
 StandardOutput=tty
-
 [Install]
 WantedBy=multi-user.target" > /etc/systemd/system/autologin.service;
 
