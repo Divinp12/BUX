@@ -266,7 +266,7 @@ makepkg -si --noconfirm && \\
 cd .. && \\
 sudo rm -rf yay && \\
 yay -Sy --noconfirm nano --answerclean All --answerdiff None --answeredit None --save && \\
-sudo sed -i \"34,\\\$d\" /home/bux/.bash_profile" > /home/bux/.bash_profile;
+sudo sed -i \"35,\\\$d\" /home/bux/.bash_profile" > /home/bux/.bash_profile;
 
 
 echo "criando diretorio /home/bux/.config";
