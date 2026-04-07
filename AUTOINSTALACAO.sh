@@ -399,4 +399,4 @@ umount -R /mnt;
 
 
 echo "reiniciando forcadamente";
-reboot -f;
+reboot;
