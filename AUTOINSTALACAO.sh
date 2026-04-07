@@ -212,8 +212,15 @@ echo "adicionando grub na inicialização";
 grub-mkconfig -o /boot/grub/grub.cfg > /dev/null 2>&1;
 
 
+echo "desativando serviços inuteis na inicialização do sistema";
+systemctl disable \
+NetworkManager-wait-online \
+systemd-networkd \
+systemd-timesyncd > /dev/null 2>&1;'
+
+
 echo "adicionando usuario normal (bux) ao sudo no arquivo sudoers";
-echo "bux ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers;
+echo "bux ALL=(ALL:ALL) NOPASSWD: ALL" >> /mnt/etc/sudoers;
 
 
 echo "criando autostartx do sway";
@@ -266,23 +273,23 @@ makepkg -si --noconfirm && \\
 cd .. && \\
 sudo rm -rf yay && \\
 yay -Sy --noconfirm nano --answerclean All --answerdiff None --answeredit None --save && \\
-sudo sed -i \"35,\\\$d\" /home/bux/.bash_profile" > /home/bux/.bash_profile;
+sudo sed -i \"35,\\\$d\" /home/bux/.bash_profile" > /mnt/home/bux/.bash_profile;
 
 
 echo "criando diretorio /home/bux/.config";
-mkdir -p /home/bux/.config;
+mkdir -p /mnt/home/bux/.config;
 
 
 echo "adicionando permissões de usuario normal no diretorio /home/bux/.config";
-chown -R bux /home/bux/.config;
+chown -R bux /mnt/home/bux/.config;
 
 
 echo "alterando permissões de leitura e escrita no diretorio /home/bux/.config";
-chmod -R u+rwX /home/bux/.config;
+chmod -R u+rwX /mnt/home/bux/.config;
 
 
 echo "criando diretorio /home/bux/.config/sway";
-mkdir -p /home/bux/.config/sway;
+mkdir -p /mnt/home/bux/.config/sway;
 
 
 echo "criando arquivo de configuração do sway";
@@ -298,11 +305,11 @@ bindsym \$mod+c fullscreen toggle
 bindsym \$mod+v exec pactl set-sink-volume @DEFAULT_SINK@ +1%
 bindsym \$mod+b exec pactl set-sink-volume @DEFAULT_SINK@ -1%
 bindsym \$mod+n exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
-include /etc/sway/config.d/*" > /home/bux/.config/sway/config;
+include /etc/sway/config.d/*" > /mnt/home/bux/.config/sway/config;
 
 
 echo "adicionando diretorio de configuração extra do sway";
-mkdir -p /etc/sway;
+mkdir -p /mnt/etc/sway;
 
 
 echo "adicionando arquivo de configuração extra do sway";
@@ -318,7 +325,7 @@ bindsym \$mod+c fullscreen toggle
 bindsym \$mod+v exec pactl set-sink-volume @DEFAULT_SINK@ +1%
 bindsym \$mod+b exec pactl set-sink-volume @DEFAULT_SINK@ -1%
 bindsym \$mod+n exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
-include /etc/sway/config.d/*" > /etc/sway/config;
+include /etc/sway/config.d/*" > /mnt/etc/sway/config;
 
 
 echo "adicionando autologin do tty1";
@@ -337,20 +344,13 @@ TTYVHangup=yes
 StandardInput=tty
 StandardOutput=tty
 [Install]
-WantedBy=multi-user.target" > /etc/systemd/system/autologin.service;
+WantedBy=multi-user.target" > /mnt/etc/systemd/system/getty@tty1.service.d/autologin.service;
 
 
-echo "habilitando serviços uteis na inicialização do sistema";
-systemctl enable \
-NetworkManager \
-autologin > /dev/null 2>&1;
+mkdir -p /mnt/etc/systemd/system/multi-user.target.wants
 
-
-echo "desativando serviços inuteis na inicialização do sistema";
-systemctl disable \
-NetworkManager-wait-online \
-systemd-networkd \
-systemd-timesyncd > /dev/null 2>&1;'
+ln -s /usr/lib/systemd/system/NetworkManager.service \
+/mnt/etc/systemd/system/multi-user.target.wants/NetworkManager.service
 
 
 echo "removendo linhas que começam com jogo da velha e espaços vazios";
