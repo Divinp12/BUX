@@ -350,24 +350,24 @@ echo "desativando serviços inuteis na inicialização do sistema";
 systemctl disable \
 NetworkManager-wait-online \
 systemd-networkd \
-systemd-timesyncd > /dev/null 2>&1;
+systemd-timesyncd > /dev/null 2>&1;'
 
 
 echo "removendo linhas que começam com jogo da velha e espaços vazios";
 sed -i "/^\s*#/d; /^\s*$/d" \
-/home/bux/.bash_logout \
-/etc/sudoers \
-/etc/sudo.conf \
-/etc/environment \
-/etc/gai.conf \
-/etc/host.conf \
-/etc/healthd.conf \
-/etc/mkinitcpio.conf \
-/etc/libva.conf \
-/etc/vconsole.conf \
-/etc/fuse.conf \
-/etc/ts.conf \
-/etc/fstab;'
+/mnt/home/bux/.bash_logout \
+/mnt/etc/sudoers \
+/mnt/etc/sudo.conf \
+/mnt/etc/environment \
+/mnt/etc/gai.conf \
+/mnt/etc/host.conf \
+/mnt/etc/healthd.conf \
+/mnt/etc/mkinitcpio.conf \
+/mnt/etc/libva.conf \
+/mnt/etc/vconsole.conf \
+/mnt/etc/fuse.conf \
+/mnt/etc/ts.conf \
+/mnt/etc/fstab;
 
 
 echo "gravando dados da memoria no disco";
