@@ -347,9 +347,9 @@ ln -s /usr/lib/systemd/system/NetworkManager.service \
 
 
 echo "desativando serviços inuteis na inicialização do sistema";
-rm -rf /mnt/etc/systemd/system/*.wants/NetworkManager-wait-online.service
-rm -f /mnt/etc/systemd/system/*.wants/systemd-networkd.service
-rm -f /mnt/etc/systemd/system/*.wants/systemd-timesyncd.service
+rm -rf /mnt/etc/systemd/system/*.wants/NetworkManager-wait-online.service \
+/mnt/etc/systemd/system/*.wants/systemd-networkd.service \
+/mnt/etc/systemd/system/*.wants/systemd-timesyncd.service
 
 
 echo "removendo linhas que começam com jogo da velha e espaços vazios";
