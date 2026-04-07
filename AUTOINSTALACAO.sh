@@ -205,7 +205,7 @@ GRUB_DISABLE_RECOVERY=true" > /etc/default/grub;
 
 
 echo "configurando grub";
-grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=bux --recheck --removable > /dev/null 2>&1;
+grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=bux --removable --recheck > /dev/null 2>&1;
 
 
 echo "adicionando grub na inicialização";
@@ -340,8 +340,11 @@ StandardOutput=tty
 WantedBy=multi-user.target" > /mnt/etc/systemd/system/getty@tty1.service.d/autologin.service;
 
 
-mkdir -p /mnt/etc/systemd/system/multi-user.target.wants
+echo "criando diretorio do systemd";
+mkdir -p /mnt/etc/systemd/system/multi-user.target.wants;
 
+
+echo "adicionando serviço NetworkManager na inicialização";
 ln -s /usr/lib/systemd/system/NetworkManager.service \
 /mnt/etc/systemd/system/multi-user.target.wants/NetworkManager.service
 
