@@ -209,14 +209,7 @@ grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=bux -
 
 
 echo "adicionando grub na inicialização";
-grub-mkconfig -o /boot/grub/grub.cfg > /dev/null 2>&1;
-
-
-echo "desativando serviços inuteis na inicialização do sistema";
-systemctl disable \
-NetworkManager-wait-online \
-systemd-networkd \
-systemd-timesyncd > /dev/null 2>&1;'
+grub-mkconfig -o /boot/grub/grub.cfg > /dev/null 2>&1;'
 
 
 echo "adicionando usuario normal (bux) ao sudo no arquivo sudoers";
@@ -351,6 +344,12 @@ mkdir -p /mnt/etc/systemd/system/multi-user.target.wants
 
 ln -s /usr/lib/systemd/system/NetworkManager.service \
 /mnt/etc/systemd/system/multi-user.target.wants/NetworkManager.service
+
+
+echo "desativando serviços inuteis na inicialização do sistema";
+rm -rf /mnt/etc/systemd/system/*.wants/NetworkManager-wait-online.service
+rm -f /mnt/etc/systemd/system/*.wants/systemd-networkd.service
+rm -f /mnt/etc/systemd/system/*.wants/systemd-timesyncd.service
 
 
 echo "removendo linhas que começam com jogo da velha e espaços vazios";
