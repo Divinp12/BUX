@@ -375,7 +375,7 @@ sed -i "/^\s*#/d; /^\s*$/d" \
 /mnt/etc/vconsole.conf \
 /mnt/etc/fuse.conf \
 /mnt/etc/ts.conf \
-/mnt/etc/fstab;
+/mnt/etc/fstab || true;
 
 
 echo "gravando dados da memoria no disco";
