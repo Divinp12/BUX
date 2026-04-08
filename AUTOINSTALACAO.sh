@@ -41,6 +41,8 @@ NoExtract=usr/share/locale/w*
 NoExtract=usr/share/locale/x*
 NoExtract=usr/share/locale/y*
 NoExtract=usr/share/locale/z*
+NoExtract=usr/share/gtk-doc/*
+NoExtract=usr/share/backgrounds/*
 [core]
 Include=/etc/pacman.d/mirrorlist
 [extra]
@@ -189,6 +191,8 @@ NoExtract=usr/share/locale/w*
 NoExtract=usr/share/locale/x*
 NoExtract=usr/share/locale/y*
 NoExtract=usr/share/locale/z*
+NoExtract=usr/share/gtk-doc/*
+NoExtract=usr/share/backgrounds/*
 [core]
 Include=/etc/pacman.d/mirrorlist
 [extra]
