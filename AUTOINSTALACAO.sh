@@ -14,6 +14,9 @@ CheckSpace
 ParallelDownloads=1
 SigLevel=Required DatabaseOptional
 LocalFileSigLevel=Optional
+NoExtract=usr/share/man/*.*
+NoExtract=usr/share/doc/*.*
+NoExtract=usr/share/info/*.*
 [core]
 Include=/etc/pacman.d/mirrorlist
 [extra]
@@ -135,6 +138,9 @@ CheckSpace
 ParallelDownloads=1
 SigLevel=Required DatabaseOptional
 LocalFileSigLevel=Optional
+NoExtract=usr/share/man/*.*
+NoExtract=usr/share/doc/*.*
+NoExtract=usr/share/info/*.*
 [core]
 Include=/etc/pacman.d/mirrorlist
 [extra]
