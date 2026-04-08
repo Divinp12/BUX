@@ -436,7 +436,7 @@ umount -R \
 /mnt/var/cache \
 /mnt/var/tmp \
 /mnt/var/log \
-/mnt/home/bux;
+/mnt/home/bux/.cache || true;
 
 
 echo "deletando diretorios tmpfs";
