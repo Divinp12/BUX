@@ -343,7 +343,7 @@ TTYVHangup=yes
 StandardInput=tty
 StandardOutput=tty
 [Install]
-WantedBy=multi-user.target" > /mnt/etc/systemd/system/autologin.service;
+WantedBy=multi-user.target" > /mnt/etc/systemd/system/multi-user.target.wants/autologin.service;
 
 
 echo "criando diretorio do systemd";
