@@ -147,23 +147,12 @@ Include=/etc/pacman.d/mirrorlist
 Include=/etc/pacman.d/mirrorlist" > /mnt/etc/pacman.conf;
 
 
-echo "adicionando conexão ipv6 no sistema";
-echo "127.0.0.1 localhost.localdomain localhost
-::1 localhost.localdomain localhost
-127.0.0.1 bux.localdomain bux" > /mnt/etc/hosts;
-
-
-echo "sobrescrevendo arquivo vconsole.conf no diretorio /etc";
-echo "KEYMAP=us
-FONT=lat9w-16" > /mnt/etc/vconsole.conf;
+echo "adicionando nome bux ao usuario root no arquivo hostname";
+echo bux > /mnt/etc/hostname;
 
 
 echo "entrando no ambiente arch-chroot";
 arch-chroot /mnt bash -c '
-
-
-echo "adicionando nome bux ao usuario root no arquivo hostname";
-echo bux > /etc/hostname;
 
 
 echo "adicionando senha bux ao usuario root";
@@ -211,11 +200,22 @@ GRUB_DISABLE_RECOVERY=true" > /etc/default/grub;
 
 
 echo "configurando grub";
-grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=bux --removable --recheck > /dev/null 2>&1;
+grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=bux --recheck > /dev/null 2>&1;
 
 
 echo "adicionando grub na inicialização";
 grub-mkconfig -o /boot/grub/grub.cfg > /dev/null 2>&1;'
+
+
+echo "adicionando conexão ipv6 no sistema";
+echo "127.0.0.1 localhost.localdomain localhost
+::1 localhost.localdomain localhost
+127.0.0.1 bux.localdomain bux" > /mnt/etc/hosts;
+
+
+echo "sobrescrevendo arquivo vconsole.conf no diretorio /etc";
+echo "KEYMAP=us
+FONT=lat9w-16" > /mnt/etc/vconsole.conf;
 
 
 echo "adicionando usuario normal (bux) ao sudo no arquivo sudoers";
@@ -280,7 +280,7 @@ mkdir -p /mnt/home/bux/.config;
 
 
 echo "adicionando permissões de usuario normal no diretorio /home/bux/.config";
-chown -R bux /mnt/home/bux/.config;
+chown -R 1000:1000 /mnt/home/bux/.config;
 
 
 echo "alterando permissões de leitura e escrita no diretorio /home/bux/.config";
@@ -343,7 +343,7 @@ TTYVHangup=yes
 StandardInput=tty
 StandardOutput=tty
 [Install]
-WantedBy=multi-user.target" > /mnt/etc/systemd/system/getty@tty1.service.d/autologin.service;
+WantedBy=multi-user.target" > /mnt/etc/systemd/system/autologin.service;
 
 
 echo "criando diretorio do systemd";
@@ -383,12 +383,12 @@ sync > /dev/null 2>&1;
 
 
 echo "desmontando diretorios tmpfs";
-umount -q \
+umount -R \
 /mnt/tmp \
 /mnt/var/cache \
 /mnt/var/tmp \
 /mnt/var/log \
-/mnt/home/bux/.cache;
+/mnt/home/bux;
 
 
 echo "deletando diretorios tmpfs";
