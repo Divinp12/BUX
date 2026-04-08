@@ -4,7 +4,7 @@ trap 'echo "FALHOU no comando: $BASH_COMMAND"' ERR
 clear;
 
 echo "adicionando espelho brasileiro";
-echo "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist;
+echo "Server=https://archlinux.c3sl.ufpr.br/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist;
 
 
 echo "sobscrevendo arquivo pacman.conf";
@@ -125,7 +125,7 @@ fi;
 
 
 echo "adicionando espelho brasileiro";
-echo "Server=https://mirror.ufscar.br/archlinux/\$repo/os/\$arch" > /mnt/etc/pacman.d/mirrorlist;
+echo "Server=https://archlinux.c3sl.ufpr.br/\$repo/os/\$arch" > /mnt/etc/pacman.d/mirrorlist;
 
 
 echo "sobscrevendo arquivo pacman.conf";
