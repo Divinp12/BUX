@@ -43,6 +43,8 @@ NoExtract=usr/share/locale/y*
 NoExtract=usr/share/locale/z*
 NoExtract=usr/share/gtk-doc/*
 NoExtract=usr/share/backgrounds/*
+NoExtract=usr/share/metainfo/*
+NoExtract=usr/share/bash-completion/*
 [core]
 Include=/etc/pacman.d/mirrorlist
 [extra]
@@ -193,6 +195,8 @@ NoExtract=usr/share/locale/y*
 NoExtract=usr/share/locale/z*
 NoExtract=usr/share/gtk-doc/*
 NoExtract=usr/share/backgrounds/*
+NoExtract=usr/share/metainfo/*
+NoExtract=usr/share/bash-completion/*
 [core]
 Include=/etc/pacman.d/mirrorlist
 [extra]
