@@ -282,7 +282,6 @@ echo "criando autostartx do sway";
 echo "if [ \"\$(tty)\" = \"/dev/tty1\" ]; then
 exec sway > /dev/null 2>&1
 fi;
-export SWAYSOCK=/run/user/\$(id -u)/sway-ipc.*.sock;
 alias i=\"yay -Sy --noconfirm\";
 alias d=\"sudo pacman -Rsc\";
 alias a=\"yay -Syyu --noconfirm\";
@@ -290,7 +289,7 @@ alias m=\"pacman -Q\";
 alias w=\"nmtui\";
 alias p=\"sudo poweroff -f\";
 alias r=\"sudo reboot -f\";
-alias e=\"swaymsg exec\";
+alias e=\"SWAYSOCK=\$(echo /run/user/1000/sway-ipc.*.sock) swaymsg exec\";
 sudo rm -rf /home/bux/.bash_history;
 sudo pacman -Scc --noconfirm;
 clear;
@@ -328,7 +327,7 @@ makepkg -si --noconfirm && \\
 cd .. && \\
 sudo rm -rf yay && \\
 yay -Sy --noconfirm nano --answerclean All --answerdiff None --answeredit None --save && \\
-sudo sed -i \"36,\\\$d\" /home/bux/.bash_profile" > /mnt/home/bux/.bash_profile;
+sudo sed -i \"35,\\\$d\" /home/bux/.bash_profile" > /mnt/home/bux/.bash_profile;
 
 
 echo "criando diretorio /home/bux/.config";
