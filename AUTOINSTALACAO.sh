@@ -293,7 +293,9 @@ alias m=\"pacman -Q\";
 alias w=\"nmtui\";
 alias p=\"sudo poweroff -f\";
 alias r=\"sudo reboot -f\";
-alias e=\"SWAYSOCK=\$(echo /run/user/1000/sway-ipc.*.sock) swaymsg exec\";
+e() {
+SWAYSOCK=\$(ls /run/user/1000/sway-ipc.*.sock) swaymsg exec \"sh -c \\"$*\\"\"
+}
 sudo rm -rf /home/bux/.bash_history;
 sudo pacman -Scc --noconfirm;
 clear;
