@@ -294,7 +294,7 @@ alias w=\"nmtui\";
 alias p=\"sudo poweroff -f\";
 alias r=\"sudo reboot -f\";
 e() {
-SWAYSOCK=\$(ls /run/user/1000/sway-ipc.*.sock) swaymsg exec \"sh -c \\"$*\\"\"
+SWAYSOCK=\$(ls /run/user/1000/sway-ipc.*.sock) swaymsg exec \"sh -c \\\"\$*\\\"\"
 };
 sudo rm -rf /home/bux/.bash_history;
 sudo pacman -Scc --noconfirm;
@@ -333,7 +333,7 @@ makepkg -si --noconfirm && \\
 cd .. && \\
 sudo rm -rf yay && \\
 yay -Sy --noconfirm nano --answerclean All --answerdiff None --answeredit None --save && \\
-sudo sed -i \"35,\\\$d\" /home/bux/.bash_profile" > /mnt/home/bux/.bash_profile;
+sudo sed -i \"37,\\\$d\" /home/bux/.bash_profile" > /mnt/home/bux/.bash_profile;
 
 
 echo "criando diretorio /home/bux/.config";
