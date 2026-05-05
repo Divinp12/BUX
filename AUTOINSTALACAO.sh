@@ -146,7 +146,6 @@ fastfetch \
 mesa \
 sway \
 wayland \
-xorg-xwayland \
 pulseaudio \
 grub \
 efibootmgr > /dev/null 2>&1;
