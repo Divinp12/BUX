@@ -499,28 +499,40 @@ echo "gravando dados da memoria no disco";
 sync > /dev/null 2>&1;
 
 
-echo "desmontando diretorios tmpfs";
-umount -R \
-/mnt/tmp \
-/mnt/var/cache \
-/mnt/var/tmp \
-/mnt/var/log \
-/var/lib/systemd/coredump \
-/var/lib/systemd/catalog \
-/var/lib/pacman/sync \
-/mnt/home/bux/.cache || true;
-
-
 echo "deletando diretorios tmpfs";
 rm -rf \
 /mnt/tmp \
 /mnt/var/cache \
 /mnt/var/tmp \
 /mnt/var/log \
-/var/lib/systemd/coredump \
-/var/lib/systemd/catalog \
-/var/lib/pacman/sync \
-/mnt/home/bux/.cache;
+/mnt/var/lib/systemd/coredump \
+/mnt/var/lib/systemd/catalog \
+/mnt/var/lib/pacman/sync \
+/mnt/home/bux/.cache || true
+
+
+echo "desmontando diretorios tmpfs";
+umount -R \
+/mnt/tmp \
+/mnt/var/cache \
+/mnt/var/tmp \
+/mnt/var/log \
+/mnt/var/lib/systemd/coredump \
+/mnt/var/lib/systemd/catalog \
+/mnt/var/lib/pacman/sync \
+/mnt/home/bux/.cache || true;
+
+
+echo "deletando diretorios tmpfs novamente";
+rm -rf \
+/mnt/tmp \
+/mnt/var/cache \
+/mnt/var/tmp \
+/mnt/var/log \
+/mnt/var/lib/systemd/coredump \
+/mnt/var/lib/systemd/catalog \
+/mnt/var/lib/pacman/sync \
+/mnt/home/bux/.cache || true
 
 
 echo "desmontando diretorio /mnt";
