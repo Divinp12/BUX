@@ -495,10 +495,6 @@ sed -i "/^\s*#/d; /^\s*$/d" \
 /mnt/etc/fstab || true;
 
 
-echo "gravando dados da memoria no disco";
-sync > /dev/null 2>&1;
-
-
 echo "deletando diretorios tmpfs";
 rm -rf \
 /mnt/tmp \
@@ -535,8 +531,12 @@ rm -rf \
 /mnt/home/bux/.cache || true
 
 
+echo "gravando dados da memoria no disco";
+sync > /dev/null 2>&1;
+
+
 echo "desmontando diretorio /mnt";
-umount -R /mnt;
+umount -R /mnt || true;
 
 
 echo "reiniciando forcadamente";
