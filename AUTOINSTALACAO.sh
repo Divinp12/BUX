@@ -254,6 +254,15 @@ Include=/etc/pacman.d/mirrorlist
 Include=/etc/pacman.d/mirrorlist" > /mnt/etc/pacman.conf;
 
 
+echo "criando pasta systemd no diretorio /mnt/etc";
+mkdir -p /mnt/etc/systemd;
+
+
+echo "desativando geração de arquivos em /var/lib/systemd/coredump";
+echo "Storage=none
+ProcessSizeMax=0" > /mnt/etc/systemd/coredump.conf;
+
+
 echo "adicionando nome bux ao usuario root no arquivo hostname";
 echo bux > /mnt/etc/hostname;
 
@@ -496,6 +505,9 @@ umount -R \
 /mnt/var/cache \
 /mnt/var/tmp \
 /mnt/var/log \
+/var/lib/systemd/coredump \
+/var/lib/systemd/catalog \
+/var/lib/pacman/sync \
 /mnt/home/bux/.cache || true;
 
 
@@ -505,6 +517,9 @@ rm -rf \
 /mnt/var/cache \
 /mnt/var/tmp \
 /mnt/var/log \
+/var/lib/systemd/coredump \
+/var/lib/systemd/catalog \
+/var/lib/pacman/sync \
 /mnt/home/bux/.cache;
 
 
