@@ -97,6 +97,9 @@ tmpfs /tmp tmpfs defaults,nosuid,nodev,noatime,mode=1777,size=100% 0 0
 tmpfs /var/cache tmpfs defaults,nosuid,nodev,noatime,size=100% 0 0
 tmpfs /var/tmp tmpfs defaults,nosuid,nodev,noatime,mode=1777,size=100% 0 0
 tmpfs /var/log tmpfs defaults,nosuid,nodev,noatime,size=100% 0 0
+tmpfs /var/lib/systemd/coredump tmpfs rw,nosuid,nodev,noexec,noatime,mode=0755,size=100% 0 0
+tmpfs /var/lib/systemd/catalog tmpfs rw,nosuid,nodev,noexec,noatime,mode=0755,size=100% 0 0
+tmpfs /var/lib/pacman/sync tmpfs rw,nosuid,nodev,noexec,noatime,mode=0755,size=100% 0 0
 tmpfs /home/bux/.cache tmpfs defaults,nosuid,nodev,noatime,uid=1000,gid=1000,mode=700,size=100% 0 0" > /mnt/etc/fstab && \
 mount -a -v;
 
@@ -121,6 +124,9 @@ tmpfs /tmp tmpfs defaults,nosuid,nodev,noatime,mode=1777,size=100% 0 0
 tmpfs /var/cache tmpfs defaults,nosuid,nodev,noatime,size=100% 0 0
 tmpfs /var/tmp tmpfs defaults,nosuid,nodev,noatime,mode=1777,size=100% 0 0
 tmpfs /var/log tmpfs defaults,nosuid,nodev,noatime,size=100% 0 0
+tmpfs /var/lib/systemd/coredump tmpfs rw,nosuid,nodev,noexec,noatime,mode=0755,size=100% 0 0
+tmpfs /var/lib/systemd/catalog tmpfs rw,nosuid,nodev,noexec,noatime,mode=0755,size=100% 0 0
+tmpfs /var/lib/pacman/sync tmpfs rw,nosuid,nodev,noexec,noatime,mode=0755,size=100% 0 0
 tmpfs /home/bux/.cache tmpfs defaults,nosuid,nodev,noatime,uid=1000,gid=1000,mode=700,size=100% 0 0" > /mnt/etc/fstab && \
 mount -a -v;
 fi;
