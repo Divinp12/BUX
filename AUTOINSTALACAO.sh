@@ -259,8 +259,14 @@ mkdir -p /mnt/etc/systemd;
 
 
 echo "desativando geração de arquivos em /var/lib/systemd/coredump";
-echo "Storage=none
+echo "[Coredump]
+Storage=none
 ProcessSizeMax=0" > /mnt/etc/systemd/coredump.conf;
+
+
+echo "desativando armazenamento de logs";
+echo "[Journal]
+Storage=none" > /etc/systemd/journald.conf;
 
 
 echo "adicionando nome bux ao usuario root no arquivo hostname";
