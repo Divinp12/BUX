@@ -266,7 +266,7 @@ ProcessSizeMax=0" > /mnt/etc/systemd/coredump.conf;
 
 echo "desativando armazenamento de logs";
 echo "[Journal]
-Storage=none" > /etc/systemd/journald.conf;
+Storage=none" > /mnt/etc/systemd/journald.conf;
 
 
 echo "adicionando nome bux ao usuario root no arquivo hostname";
