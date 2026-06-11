@@ -68,6 +68,12 @@ NoExtract=usr/share/metainfo/*
 NoExtract=usr/share/bash-completion/*
 NoExtract=usr/share/fish/*
 NoExtract=usr/share/zsh/*
+NoExtract=usr/lib/modules/*/kernel/drivers/infiniband/*
+NoExtract=usr/lib/modules/*/kernel/drivers/xen/*
+NoExtract=usr/lib/modules/*/kernel/drivers/watchdog/*
+NoExtract=usr/lib/modules/*/kernel/drivers/gpu/drm/xen/*
+NoExtract=usr/lib/modules/*/kernel/drivers/gpu/drm/hyperv/*
+NoExtract=usr/lib/modules/*/kernel/drivers/media/radio/*
 [core]
 Include=/etc/pacman.d/mirrorlist
 [extra]
@@ -248,6 +254,12 @@ NoExtract=usr/share/metainfo/*
 NoExtract=usr/share/bash-completion/*
 NoExtract=usr/share/fish/*
 NoExtract=usr/share/zsh/*
+NoExtract=usr/lib/modules/*/kernel/drivers/infiniband/*
+NoExtract=usr/lib/modules/*/kernel/drivers/xen/*
+NoExtract=usr/lib/modules/*/kernel/drivers/watchdog/*
+NoExtract=usr/lib/modules/*/kernel/drivers/gpu/drm/xen/*
+NoExtract=usr/lib/modules/*/kernel/drivers/gpu/drm/hyperv/*
+NoExtract=usr/lib/modules/*/kernel/drivers/media/radio/*
 [core]
 Include=/etc/pacman.d/mirrorlist
 [extra]
