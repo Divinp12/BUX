@@ -74,6 +74,7 @@ NoExtract=usr/lib/modules/*/kernel/drivers/watchdog/*
 NoExtract=usr/lib/modules/*/kernel/drivers/gpu/drm/xen/*
 NoExtract=usr/lib/modules/*/kernel/drivers/gpu/drm/hyperv/*
 NoExtract=usr/lib/modules/*/kernel/drivers/media/radio/*
+NoExtract=usr/lib/modules/*/kernel/drivers/media/cec/*
 [core]
 Include=/etc/pacman.d/mirrorlist
 [extra]
@@ -260,6 +261,7 @@ NoExtract=usr/lib/modules/*/kernel/drivers/watchdog/*
 NoExtract=usr/lib/modules/*/kernel/drivers/gpu/drm/xen/*
 NoExtract=usr/lib/modules/*/kernel/drivers/gpu/drm/hyperv/*
 NoExtract=usr/lib/modules/*/kernel/drivers/media/radio/*
+NoExtract=usr/lib/modules/*/kernel/drivers/media/cec/*
 [core]
 Include=/etc/pacman.d/mirrorlist
 [extra]
