@@ -77,6 +77,9 @@ NoExtract=usr/lib/modules/*/kernel/drivers/media/radio/*
 NoExtract=usr/lib/modules/*/kernel/drivers/media/cec/*
 NoExtract=usr/lib/modules/*/kernel/drivers/ata/pata_*
 NoExtract=usr/lib/modules/*/kernel/drivers/macintosh/*
+NoExtract=usr/lib/modules/*/kernel/drivers/firewire/*
+NoExtract=usr/lib/modules/*/kernel/drivers/isdn/*
+NoExtract=usr/lib/modules/*/kernel/drivers/nfc/*
 [core]
 Include=/etc/pacman.d/mirrorlist
 [extra]
@@ -266,6 +269,9 @@ NoExtract=usr/lib/modules/*/kernel/drivers/media/radio/*
 NoExtract=usr/lib/modules/*/kernel/drivers/media/cec/*
 NoExtract=usr/lib/modules/*/kernel/drivers/ata/pata_*
 NoExtract=usr/lib/modules/*/kernel/drivers/macintosh/*
+NoExtract=usr/lib/modules/*/kernel/drivers/firewire/*
+NoExtract=usr/lib/modules/*/kernel/drivers/isdn/*
+NoExtract=usr/lib/modules/*/kernel/drivers/nfc/*
 [core]
 Include=/etc/pacman.d/mirrorlist
 [extra]
