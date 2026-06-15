@@ -14,6 +14,7 @@ CheckSpace
 ParallelDownloads=1
 SigLevel=Required DatabaseOptional
 LocalFileSigLevel=Optional
+NoExtract=usr/lib32/*
 NoExtract=usr/share/man/*
 NoExtract=usr/share/doc/*
 NoExtract=usr/share/info/*
@@ -247,6 +248,7 @@ CheckSpace
 ParallelDownloads=1
 SigLevel=Required DatabaseOptional
 LocalFileSigLevel=Optional
+NoExtract=usr/lib32/*
 NoExtract=usr/share/man/*
 NoExtract=usr/share/doc/*
 NoExtract=usr/share/info/*
