@@ -85,7 +85,6 @@ NoExtract=usr/lib/modules/*/kernel/drivers/gpu/drm/ast/*
 NoExtract=usr/lib/modules/*/kernel/drivers/gpu/drm/mgag200/*
 NoExtract=usr/lib/modules/*/kernel/drivers/gpu/drm/gma500/*
 NoExtract=usr/lib/modules/*/kernel/drivers/media/radio/*
-NoExtract=usr/lib/modules/*/kernel/drivers/media/cec/*
 NoExtract=usr/lib/modules/*/kernel/drivers/ata/pata_*
 NoExtract=usr/lib/modules/*/kernel/drivers/macintosh/*
 NoExtract=usr/lib/modules/*/kernel/drivers/firewire/*
@@ -196,7 +195,6 @@ linux-headers \
 networkmanager \
 sudo \
 git \
-fastfetch \
 mesa \
 sway \
 wayland \
@@ -319,7 +317,6 @@ NoExtract=usr/lib/modules/*/kernel/drivers/gpu/drm/ast/*
 NoExtract=usr/lib/modules/*/kernel/drivers/gpu/drm/mgag200/*
 NoExtract=usr/lib/modules/*/kernel/drivers/gpu/drm/gma500/*
 NoExtract=usr/lib/modules/*/kernel/drivers/media/radio/*
-NoExtract=usr/lib/modules/*/kernel/drivers/media/cec/*
 NoExtract=usr/lib/modules/*/kernel/drivers/ata/pata_*
 NoExtract=usr/lib/modules/*/kernel/drivers/macintosh/*
 NoExtract=usr/lib/modules/*/kernel/drivers/firewire/*
@@ -460,6 +457,7 @@ alias i=\"yay -Sy --noconfirm\";
 alias d=\"sudo pacman -Rsc\";
 alias a=\"yay -Syyu --noconfirm\";
 alias m=\"pacman -Q\";
+alias q=\"pacman -Q | wc -l\";
 alias w=\"nmtui\";
 alias p=\"sudo poweroff -f\";
 alias r=\"sudo reboot -f\";
@@ -495,6 +493,7 @@ CASO NAO ESTEJA, CANCELE ESSA INSTALACAO COM CTRL + C
 E EXECUTE O COMANDO w\" && \\
 sudo sleep 11 && \\
 cd /home/bux/ && \\
+sudo pacman -Sy && \
 sudo rm -rf yay;
 git clone https://aur.archlinux.org/yay.git && \\
 sudo chmod 777 yay && \\
@@ -503,7 +502,7 @@ makepkg -si --noconfirm && \\
 cd .. && \\
 sudo rm -rf yay && \\
 yay -Sy --noconfirm nano --answerclean All --answerdiff None --answeredit None --save && \\
-sudo sed -i \"37,\\\$d\" /home/bux/.bash_profile" > /mnt/home/bux/.bash_profile;
+sudo sed -i \"38,\\\$d\" /home/bux/.bash_profile" > /mnt/home/bux/.bash_profile;
 
 
 echo "criando diretorio /home/bux/.config";
