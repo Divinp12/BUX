@@ -467,8 +467,6 @@ SWAYSOCK=\$(ls /run/user/1000/sway-ipc.*.sock) swaymsg exec \"sh -c \\\"\$*\\\"\
 sudo rm -rf /home/bux/.bash_history;
 sudo pacman -Scc --noconfirm;
 clear;
-sudo sleep 1;
-fastfetch;
 echo \"
 INFORMAÇÕES DE PACOTES:
 INSTALAR PACOTES (i nome-do-pacote)
@@ -502,7 +500,7 @@ makepkg -si --noconfirm && \\
 cd .. && \\
 sudo rm -rf yay && \\
 yay -Sy --noconfirm nano --answerclean All --answerdiff None --answeredit None --save && \\
-sudo sed -i \"38,\\\$d\" /home/bux/.bash_profile" > /mnt/home/bux/.bash_profile;
+sudo sed -i \"36,\\\$d\" /home/bux/.bash_profile" > /mnt/home/bux/.bash_profile;
 
 
 echo "criando diretorio /home/bux/.config";
