@@ -167,7 +167,7 @@ parted -s /dev/sda set 1 esp on && \
 parted -s /dev/sda mkpart primary ext4 90MiB 100% && \
 partprobe > /dev/null 2>&1 && \
 mkfs.fat -F32 /dev/sda1 > /dev/null 2>&1 && \
-mkfs.btrfs -F /dev/sda2 > /dev/null 2>&1 && \
+mkfs.btrfs -f /dev/sda2 > /dev/null 2>&1 && \
 mount /dev/sda2 /mnt > /dev/null 2>&1 && \
 mkdir /mnt/boot > /dev/null 2>&1 && \
 mkdir /mnt/boot/EFI > /dev/null 2>&1 && \
