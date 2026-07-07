@@ -168,7 +168,7 @@ parted -s /dev/sda mkpart primary ext4 90MiB 100% && \
 partprobe > /dev/null 2>&1 && \
 mkfs.fat -F32 /dev/sda1 > /dev/null 2>&1 && \
 mkfs.btrfs -f /dev/sda2 > /dev/null 2>&1 && \
-mount /dev/sda2 /mnt > /dev/null 2>&1 && \
+mount -o rw,compress-force=zstd:22,noatime /dev/sda2 /mnt > /dev/null 2>&1 && \
 mkdir /mnt/boot > /dev/null 2>&1 && \
 mkdir /mnt/boot/EFI > /dev/null 2>&1 && \
 mount /dev/sda1 /mnt/boot/EFI > /dev/null 2>&1 && \
@@ -183,7 +183,6 @@ tmpfs /var/lib/systemd/coredump tmpfs rw,nosuid,nodev,noexec,noatime,mode=0755,s
 tmpfs /var/lib/systemd/catalog tmpfs rw,nosuid,nodev,noexec,noatime,mode=0755,size=100% 0 0
 tmpfs /var/lib/pacman/sync tmpfs rw,nosuid,nodev,noexec,noatime,mode=0755,size=100% 0 0
 tmpfs /home/bux/.cache tmpfs defaults,nosuid,nodev,noatime,uid=1000,gid=1000,mode=700,size=100% 0 0" > /mnt/etc/fstab && \
-mount -o rw,compress-force=zstd:22,noatime /dev/sda2 /mnt && \
 mount -a -v;
 fi;
 
