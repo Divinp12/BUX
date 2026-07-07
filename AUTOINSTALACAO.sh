@@ -167,14 +167,14 @@ parted -s /dev/sda set 1 esp on && \
 parted -s /dev/sda mkpart primary ext4 90MiB 100% && \
 partprobe > /dev/null 2>&1 && \
 mkfs.fat -F32 /dev/sda1 > /dev/null 2>&1 && \
-mkfs.ext4 -F /dev/sda2 > /dev/null 2>&1 && \
+mkfs.btrfs -F /dev/sda1 > /dev/null 2>&1 && \
 mount /dev/sda2 /mnt > /dev/null 2>&1 && \
 mkdir /mnt/boot > /dev/null 2>&1 && \
 mkdir /mnt/boot/EFI > /dev/null 2>&1 && \
 mount /dev/sda1 /mnt/boot/EFI > /dev/null 2>&1 && \
 mkdir -p /mnt/etc && \
 echo "UUID=$(blkid -s UUID -o value /dev/sda1) /boot/EFI vfat rw,noatime 0 2
-UUID=$(blkid -s UUID -o value /dev/sda2) / ext4 rw,noatime 0 1
+UUID=$(blkid -s UUID -o value /dev/sda2) / btrfs rw,compress-force=zstd:22,noatime 0 1
 tmpfs /tmp tmpfs defaults,nosuid,nodev,noatime,mode=1777,size=100% 0 0
 tmpfs /var/cache tmpfs defaults,nosuid,nodev,noatime,size=100% 0 0
 tmpfs /var/tmp tmpfs defaults,nosuid,nodev,noatime,mode=1777,size=100% 0 0
@@ -183,6 +183,7 @@ tmpfs /var/lib/systemd/coredump tmpfs rw,nosuid,nodev,noexec,noatime,mode=0755,s
 tmpfs /var/lib/systemd/catalog tmpfs rw,nosuid,nodev,noexec,noatime,mode=0755,size=100% 0 0
 tmpfs /var/lib/pacman/sync tmpfs rw,nosuid,nodev,noexec,noatime,mode=0755,size=100% 0 0
 tmpfs /home/bux/.cache tmpfs defaults,nosuid,nodev,noatime,uid=1000,gid=1000,mode=700,size=100% 0 0" > /mnt/etc/fstab && \
+mount -o rw,compress-force=zstd:22,noatime /dev/sda2 /mnt && \
 mount -a -v;
 fi;
 
