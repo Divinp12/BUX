@@ -454,7 +454,10 @@ echo "bux ALL=(ALL:ALL) NOPASSWD: ALL" >> /mnt/etc/sudoers;
 
 
 echo "criando autostartx do sway";
-echo "if [ \"\$(tty)\" = \"/dev/tty1\" ]; then
+echo "export HISTSIZE=0
+export HISTFILESIZE=0
+unset HISTFILE
+if [ \"\$(tty)\" = \"/dev/tty1\" ]; then
 exec sway > /dev/null 2>&1
 fi;
 alias i=\"yay -Sy --noconfirm\";
