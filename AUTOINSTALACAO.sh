@@ -454,11 +454,9 @@ echo "bux ALL=(ALL:ALL) NOPASSWD: ALL" >> /mnt/etc/sudoers;
 
 
 echo "criando autostartx do sway";
-echo "export HISTSIZE=0
-export HISTFILESIZE=0
-unset HISTFILE
-export XDG_RUNTIME_DIR=/run/user/1000
-export WAYLAND_DISPLAY=wayland-1
+echo "export HISTSIZE=0;
+export HISTFILESIZE=0;
+unset HISTFILE;
 if [ \"\$(tty)\" = \"/dev/tty1\" ]; then
 exec sway > /dev/null 2>&1
 fi;
@@ -471,7 +469,7 @@ alias w=\"nmtui\";
 alias p=\"sudo poweroff -f\";
 alias r=\"sudo reboot -f\";
 e() {
-SWAYSOCK=\$(ls /run/user/1000/sway-ipc.*.sock) swaymsg exec \"sh -c \\\"\$*\\\"\"
+XDG_RUNTIME_DIR=/run/user/1000 WAYLAND_DISPLAY=wayland-1 SWAYSOCK=\$(ls /run/user/1000/sway-ipc.*.sock) swaymsg exec \"sh -c \\\"\$*\\\"\"
 };
 sudo rm -rf /home/bux/.bash_history;
 sudo pacman -Scc --noconfirm;
