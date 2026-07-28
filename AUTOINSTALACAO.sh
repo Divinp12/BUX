@@ -499,7 +499,9 @@ alias w=\"nmtui\";
 alias p=\"sudo poweroff -f\";
 alias r=\"sudo reboot -f\";
 e() {
-XDG_RUNTIME_DIR=/run/user/1000 WAYLAND_DISPLAY=wayland-1 SWAYSOCK=\$(ls /run/user/1000/sway-ipc.*.sock) swaymsg exec \"sh -c \\\"\$*\\\"\"
+export XDG_RUNTIME_DIR=/run/user/1000 && \
+export WAYLAND_DISPLAY=wayland-1 && \
+SWAYSOCK=\$(ls /run/user/1000/sway-ipc.*.sock) swaymsg exec \"sh -c \\\"\$*\\\"\"
 };
 sudo rm -rf /home/bux/.bash_history;
 sudo pacman -Scc --noconfirm;
@@ -537,7 +539,7 @@ makepkg -si --noconfirm && \\
 cd .. && \\
 sudo rm -rf yay && \\
 yay -Sy --noconfirm nano --answerclean All --answerdiff None --answeredit None --save && \\
-sudo sed -i \"39,\\\$d\" /home/bux/.bash_profile" > /mnt/home/bux/.bash_profile;
+sudo sed -i \"41,\\\$d\" /home/bux/.bash_profile" > /mnt/home/bux/.bash_profile;
 
 
 echo "criando diretorio /home/bux/.config";
