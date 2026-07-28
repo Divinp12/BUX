@@ -499,8 +499,8 @@ alias w=\"nmtui\";
 alias p=\"sudo poweroff -f\";
 alias r=\"sudo reboot -f\";
 e() {
-export XDG_RUNTIME_DIR=/run/user/1000 && \
-export WAYLAND_DISPLAY=wayland-1 && \
+export XDG_RUNTIME_DIR=/run/user/1000 && \\
+export WAYLAND_DISPLAY=wayland-1 && \\
 SWAYSOCK=\$(ls /run/user/1000/sway-ipc.*.sock) swaymsg exec \"sh -c \\\"\$*\\\"\"
 };
 sudo rm -rf /home/bux/.bash_history;
