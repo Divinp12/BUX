@@ -138,6 +138,8 @@ NoExtract=usr/lib/firmware/ath6k/*
 NoExtract=usr/lib/firmware/ti-connectivity/*
 NoExtract=usr/lib/firmware/dvb-*
 NoExtract=usr/lib/firmware/tigon/*
+NoExtract=usr/lib/firmware/dpaa2/*
+NoExtract=usr/lib/firmware/nxp/*
 [core]
 Include=/etc/pacman.d/mirrorlist
 [extra]
@@ -387,6 +389,8 @@ NoExtract=usr/lib/firmware/ath6k/*
 NoExtract=usr/lib/firmware/ti-connectivity/*
 NoExtract=usr/lib/firmware/dvb-*
 NoExtract=usr/lib/firmware/tigon/*
+NoExtract=usr/lib/firmware/dpaa2/*
+NoExtract=usr/lib/firmware/nxp/*
 [core]
 Include=/etc/pacman.d/mirrorlist
 [extra]
