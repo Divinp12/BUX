@@ -199,7 +199,8 @@ tmpfs /var/log tmpfs defaults,nosuid,nodev,noatime,size=100% 0 0
 tmpfs /var/lib/systemd/coredump tmpfs rw,nosuid,nodev,noexec,noatime,mode=0755,size=100% 0 0
 tmpfs /var/lib/systemd/catalog tmpfs rw,nosuid,nodev,noexec,noatime,mode=0755,size=100% 0 0
 tmpfs /var/lib/pacman/sync tmpfs rw,nosuid,nodev,noexec,noatime,mode=0755,size=100% 0 0
-tmpfs /home/bux/.cache tmpfs defaults,nosuid,nodev,noatime,uid=1000,gid=1000,mode=700,size=100% 0 0" > /mnt/etc/fstab && \
+tmpfs /home/bux/.cache tmpfs defaults,nosuid,nodev,noatime,uid=1000,gid=1000,mode=700,size=100% 0 0
+tmpfs /FIRMWARE tmpfs" > /mnt/etc/fstab && \
 mount -a -v;
 fi;
 
@@ -492,6 +493,9 @@ echo "export HISTSIZE=0;
 export HISTFILESIZE=0;
 unset HISTFILE;
 if [ \"\$(tty)\" = \"/dev/tty1\" ]; then
+sudo mkdir -p /FIRMWARE && \\
+sudo cp -a /usr/lib/firmware/. /FIRMWARE/ && \\
+sudo mount --bind /FIRMWARE /usr/lib/firmware && \\
 exec sway > /dev/null 2>&1
 fi;
 alias i=\"yay -Sy --noconfirm\";
