@@ -201,7 +201,8 @@ tmpfs /var/lib/systemd/catalog tmpfs rw,nosuid,nodev,noexec,noatime,mode=0755,si
 tmpfs /var/lib/pacman/sync tmpfs rw,nosuid,nodev,noexec,noatime,mode=0755,size=100% 0 0
 tmpfs /home/bux/.cache tmpfs defaults,nosuid,nodev,noatime,uid=1000,gid=1000,mode=700,size=100% 0 0
 tmpfs /FIRMWARE tmpfs defaults,rw,nosuid,nodev,noexec,noatime,mode=1777,size=100% 0 0
-tmpfs /MODULES tmpfs defaults,rw,nosuid,nodev,noexec,noatime,mode=1777,size=100% 0 0" > /mnt/etc/fstab && \
+tmpfs /MODULES tmpfs defaults,rw,nosuid,nodev,noexec,noatime,mode=1777,size=100% 0 0
+tmpfs /FONTS tmpfs defaults,rw,nosuid,nodev,noexec,noatime,mode=1777,size=100% 0 0" > /mnt/etc/fstab && \
 mount -a -v;
 fi;
 
@@ -500,6 +501,9 @@ sudo mount --bind /FIRMWARE /usr/lib/firmware && \\
 sudo mkdir -p /MODULES && \\
 sudo cp -a /usr/lib/modules/. /MODULES/ && \\
 sudo mount --bind /MODULES /usr/lib/modules && \\
+sudo mkdir -p /FONTS && \\
+sudo cp -a /usr/share/fonts/. /FONTS/ && \\
+sudo mount --bind /FONTS /usr/share/fonts && \\
 exec sway > /dev/null 2>&1
 fi;
 alias i=\"yay -Sy --noconfirm\";
@@ -551,7 +555,7 @@ makepkg -si --noconfirm && \\
 cd .. && \\
 sudo rm -rf yay && \\
 yay -Sy --noconfirm nano --answerclean All --answerdiff None --answeredit None --save && \\
-sudo sed -i \"47,\\\$d\" /home/bux/.bash_profile" > /mnt/home/bux/.bash_profile;
+sudo sed -i \"50,\\\$d\" /home/bux/.bash_profile" > /mnt/home/bux/.bash_profile;
 
 
 echo "criando diretorio /home/bux/.config";
