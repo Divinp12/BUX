@@ -200,7 +200,9 @@ tmpfs /var/lib/systemd/coredump tmpfs rw,nosuid,nodev,noexec,noatime,mode=0755,s
 tmpfs /var/lib/systemd/catalog tmpfs rw,nosuid,nodev,noexec,noatime,mode=0755,size=100% 0 0
 tmpfs /var/lib/pacman/sync tmpfs rw,nosuid,nodev,noexec,noatime,mode=0755,size=100% 0 0
 tmpfs /home/bux/.cache tmpfs defaults,nosuid,nodev,noatime,uid=1000,gid=1000,mode=700,size=100% 0 0
-tmpfs /FIRMWARE tmpfs defaults,rw,nosuid,nodev,noexec,noatime,mode=1777,size=100% 0 0" > /mnt/etc/fstab && \
+tmpfs /FIRMWARE tmpfs defaults,rw,nosuid,nodev,noexec,noatime,mode=1777,size=100% 0 0
+tmpfs /MODULES tmpfs defaults,rw,nosuid,nodev,noexec,noatime,mode=1777,size=100% 0 0" > /mnt/etc/fstab && \
+
 mount -a -v;
 fi;
 
@@ -496,6 +498,9 @@ if [ \"\$(tty)\" = \"/dev/tty1\" ]; then
 sudo mkdir -p /FIRMWARE && \\
 sudo cp -a /usr/lib/firmware/. /FIRMWARE/ && \\
 sudo mount --bind /FIRMWARE /usr/lib/firmware && \\
+sudo mkdir -p /MODULES && \\
+sudo cp -a /usr/lib/modules/. /MODULES/ && \\
+sudo mount --bind /MODULES /usr/lib/modules && \\
 exec sway > /dev/null 2>&1
 fi;
 alias i=\"yay -Sy --noconfirm\";
