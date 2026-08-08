@@ -202,7 +202,6 @@ tmpfs /var/lib/pacman/sync tmpfs rw,nosuid,nodev,noexec,noatime,mode=0755,size=1
 tmpfs /home/bux/.cache tmpfs defaults,nosuid,nodev,noatime,uid=1000,gid=1000,mode=700,size=100% 0 0
 tmpfs /FIRMWARE tmpfs defaults,rw,nosuid,nodev,noexec,noatime,mode=1777,size=100% 0 0
 tmpfs /MODULES tmpfs defaults,rw,nosuid,nodev,noexec,noatime,mode=1777,size=100% 0 0" > /mnt/etc/fstab && \
-
 mount -a -v;
 fi;
 
