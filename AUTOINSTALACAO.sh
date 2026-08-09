@@ -140,6 +140,11 @@ NoExtract=usr/lib/firmware/dvb-*
 NoExtract=usr/lib/firmware/tigon/*
 NoExtract=usr/lib/firmware/dpaa2/*
 NoExtract=usr/lib/firmware/nxp/*
+NoExtract=usr/lib/firmware/dabusb/*
+NoExtract=usr/lib/firmware/3com/*
+NoExtract=usr/lib/firmware/go7007/*
+NoExtract=usr/lib/firmware/keyspan/*
+NoExtract=usr/lib/firmware/keyspan_pda/*
 [core]
 Include=/etc/pacman.d/mirrorlist
 [extra]
@@ -395,6 +400,11 @@ NoExtract=usr/lib/firmware/dvb-*
 NoExtract=usr/lib/firmware/tigon/*
 NoExtract=usr/lib/firmware/dpaa2/*
 NoExtract=usr/lib/firmware/nxp/*
+NoExtract=usr/lib/firmware/dabusb/*
+NoExtract=usr/lib/firmware/3com/*
+NoExtract=usr/lib/firmware/go7007/*
+NoExtract=usr/lib/firmware/keyspan/*
+NoExtract=usr/lib/firmware/keyspan_pda/*
 [core]
 Include=/etc/pacman.d/mirrorlist
 [extra]
