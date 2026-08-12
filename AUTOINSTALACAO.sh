@@ -209,7 +209,8 @@ tmpfs /home/bux/.cache tmpfs defaults,nosuid,nodev,noatime,uid=1000,gid=1000,mod
 tmpfs /FIRMWARE tmpfs defaults,rw,nosuid,nodev,noexec,noatime,mode=1777,size=100% 0 0
 tmpfs /MODULES tmpfs defaults,rw,nosuid,nodev,noexec,noatime,mode=1777,size=100% 0 0
 tmpfs /FONTS tmpfs defaults,rw,nosuid,nodev,noexec,noatime,mode=1777,size=100% 0 0
-tmpfs /LOCALE tmpfs defaults,rw,nosuid,nodev,noexec,noatime,mode=1777,size=100% 0 0" > /mnt/etc/fstab && \
+tmpfs /LOCALE tmpfs defaults,rw,nosuid,nodev,noexec,noatime,mode=1777,size=100% 0 0
+tmpfs /LOCALE-LIB tmpfs defaults,rw,nosuid,nodev,noexec,noatime,mode=1777,size=100% 0 0" > /mnt/etc/fstab && \
 mount -a -v;
 fi;
 
@@ -520,6 +521,9 @@ sudo mount --bind /FONTS /usr/share/fonts && \\
 sudo mkdir -p /LOCALE && \\
 sudo cp -a /usr/share/locale/. /LOCALE/ && \\
 sudo mount --bind /LOCALE /usr/share/locale && \\
+sudo mkdir -p /LOCALE-LIB && \\
+sudo cp -a /usr/lib/locale/. /LOCALE-LIB/ && \\
+sudo mount --bind /LOCALE-LIB /usr/lib/locale && \\
 exec sway > /dev/null 2>&1
 fi;
 alias i=\"yay -Sy --noconfirm\";
