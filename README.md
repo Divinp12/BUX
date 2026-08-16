@@ -132,12 +132,10 @@ Uma ferramenta de monitoramento de desempenho para jogos no Linux...
 Instalar: i mangohud
 
 Use na steam na “opções de inicialização”:
-
-PARA VULKAN/DXVK OU OPENGL É mangohud %command%
+mangohud %command%
 
 Use em jogos “executáveis”:
-
-PARA VULKAN/DXVK OU OPENGL É mangohud NOME_DO_JOGO OU COMANDO_DE_EXECUÇÃO
+mangohud NOME_DO_JOGO OU COMANDO_DE_EXECUÇÃO
 
 PARA MAIS INFORMAÇÕES ACESSE: https://github.com/flightlessmango/MangoHud
 
