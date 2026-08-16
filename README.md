@@ -131,13 +131,9 @@ Uma ferramenta de monitoramento de desempenho para jogos no Linux...
 
 Instalar: i mangohud
 
-Use na steam na “opções de inicialização”:
+Use na steam na “opções de inicialização” = mangohud %command%
 
-mangohud %command%
-
-Use em jogos “executáveis”:
-
-mangohud NOME_DO_JOGO OU COMANDO_DE_EXECUÇÃO
+Use em jogos “executáveis” = mangohud COMANDO_DE_EXECUÇÃO
 
 PARA MAIS INFORMAÇÕES ACESSE: https://github.com/flightlessmango/MangoHud
 
