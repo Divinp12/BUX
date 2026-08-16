@@ -133,15 +133,11 @@ Instalar: i mangohud
 
 Use na steam na “opções de inicialização”:
 
-PARA OPENGL É mangohud --dlsym %command%
-
-PARA VULKAN OU DXVK É mangohud %command%
+PARA VULKAN/DXVK OU OPENGL É mangohud %command%
 
 Use em jogos “executáveis”:
 
-PARA OPENGL É mangohud --dlsym NOME_DO_JOGO OU COMANDO_DE_EXECUÇÃO
-
-PARA VULKAN OU DXVK É mangohud NOME_DO_JOGO OU COMANDO_DE_EXECUÇÃO
+PARA VULKAN/DXVK OU OPENGL É mangohud NOME_DO_JOGO OU COMANDO_DE_EXECUÇÃO
 
 PARA MAIS INFORMAÇÕES ACESSE: https://github.com/flightlessmango/MangoHud
 
