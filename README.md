@@ -114,7 +114,7 @@ pcsx2 (emulador de playstation 2) = i pcsx2-git
 
 rpcs3 (emulador de playstation 3) = i rpcs3-git
 
-sober (roblox player {funcionando}) = i flatpak && flatpak install --user https://sober.vinegarhq.org/sober.flatpakref -y
+sober (roblox player {funcionando}) = i flatpak && flatpak install flathub org.vinegarhq.Sober -y
 
 vinegar (roblox player {quebrado} e roblox studio {funcionando}) = i flatpak && flatpak install flathub org.vinegarhq.Vinegar -y
 
