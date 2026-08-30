@@ -10,9 +10,9 @@ BOOT: UEFI ou GPT.
 
 CPU: qualquer um que seja x86_64 ou AMD64.
 
-RAM: 1 GB.
+RAM: 512 MB.
 
-ARMAZENAMENTO: 4 GB.
+ARMAZENAMENTO: 2 GB.
 
 -----------------------------INSTALAÇÃO-----------------------------------
 
