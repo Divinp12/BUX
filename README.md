@@ -7,49 +7,77 @@ OI, SEJA BEM VINDO AO MEU PROJETO QUE SE CHAMA "BUX LINUX", É UM PROJETO QUE AU
 -----------------------------REQUISITOS MINIMOS--------------------------
 
 BOOT: UEFI ou GPT.
+
 CPU: qualquer um que seja x86_64 ou AMD64.
+
 RAM: 512 MB.
+
 ARMAZENAMENTO: 2 GB.
 
 -----------------------------INSTALAÇÃO-----------------------------------
 
 TENHA UM PENDRIVE VAZIO FAT32 DE 2 GB.
+
 BAIXE A ISO: https://archlinux.c3sl.ufpr.br/iso/2026.08.01/archlinux-x86_64.iso
+
 EXTRAIA OS ARQUIVOS DA ISO NO PENDRIVE.
+
 REINICIE O PC E INICIE O PENDRIVE COMO UEFI OU GPT (BIOS MBR / LEGACY NÃO FUNCIONA).
+
 CONECTE A INTERNET. CASO ESTEJA USANDO CABO CAT OU USB, PROSSIGA A INSTALAÇÃO, MAS SEM FIO USE O COMANDO: iwctl
+
 APÓS APARECER O "Root@Archiso" TIRE O PENDRIVE DO PC E DIGITE: pacman -Sy --noconfirm git; git clone https://github.com/Divinp12/BUX; mv B*/A* ~; chmod 777 A*; ./A*
+
 ESPERE E DIVIRTA-SE ;)
 
 -----------------------INFORMAÇÕES BASICAS DO DESKTOP----------------------------------------
 
 ABRIR/TROCAR TERMINAIS (TTY1, TTY2, TTY3, ...): CTRL + ALT + F1 ATÉ F12, POR PADRÃO O SWAY É EXECUTADO EM TTY1
+
 FECHAR PROGRAMA: SUPER + Z "CURSOR PRECISA ESTA NO ESPAÇO DA JANELA"
+
 REINICIAR CONFIGURAÇÕES DO SWAY: SUPER + X
+
 ENTRA OU SAIR NO MODO TELA CHEIA: SUPER + C "CURSOR PRECISA ESTA NO ESPAÇO DA JANELA"
+
 AUMENTAR VOLUME DO SOM: SUPER + V
+
 DIMINUIR VOLUME DO SOM: SUPER + B
+
 MUTAR MICROFONE: SUPER + N
+
 DESLIGAR MAQUINA: SUPER + 1
+
 REINICIAR MAQUINA: SUPER + 2
 
+
 ADICIONE ATALHOS DO SWAY NO ARQUIVO DE CONFIGURAÇÃO
-NO DIRETÓRIO /home/bux/.config/sway/config,
+NO DIRETÓRIO /home/bux/.config/sway/config
+
 EXEMPLO DE ATALHO PARA ABRIR FIREFOX:
 bindsym \$mod+f firefox
+
 AO RECARREGAR COM SUPER + X E EXECUTAR SUPER + F,
 IRÁ ABRIR O FIREFOX CASO ESTEJA INSTADO NO SISTEMA.
 
 -----------------------INFORMAÇÕES BASICAS DO TERMINAL---------------------------------------
 
 NOME DO USUARIO ROOT: bux
+
 SENHA DO USUARIO ROOT: bux
+
 NOME DO USUARIO NORMAL: bux
+
 SENHA DO USUARIO NORMAL: bux
+
 INSTALAR PACOTES: i nome-do-pacote
+
 DESISTALAR PACOTES: d nome-do-pacote
+
 ATUALIZAR PACOTES: a nome-do-pacote ou apenas "a" para todos
+
 MOSTRA PACOTES INSTALADOS: m nome-do-pacote ou apenas "m" para todos
+
 CONECTAR A REDE WIFI COM/SEM FIO: w
 
 ----------------------PACOTES POPULARES (OPCIONAL)--------------------------------
