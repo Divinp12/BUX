@@ -208,12 +208,7 @@ tmpfs /var/log tmpfs defaults,nosuid,nodev,noatime,size=100% 0 0
 tmpfs /var/lib/systemd/coredump tmpfs rw,nosuid,nodev,noexec,noatime,mode=0755,size=100% 0 0
 tmpfs /var/lib/systemd/catalog tmpfs rw,nosuid,nodev,noexec,noatime,mode=0755,size=100% 0 0
 tmpfs /var/lib/pacman/sync tmpfs rw,nosuid,nodev,noexec,noatime,mode=0755,size=100% 0 0
-tmpfs /home/bux/.cache tmpfs defaults,nosuid,nodev,noatime,uid=1000,gid=1000,mode=700,size=100% 0 0
-tmpfs /FIRMWARE tmpfs defaults,rw,nosuid,nodev,noexec,noatime,mode=1777,size=100% 0 0
-tmpfs /MODULES tmpfs defaults,rw,nosuid,nodev,noexec,noatime,mode=1777,size=100% 0 0
-tmpfs /FONTS tmpfs defaults,rw,nosuid,nodev,noexec,noatime,mode=1777,size=100% 0 0
-tmpfs /LOCALE tmpfs defaults,rw,nosuid,nodev,noexec,noatime,mode=1777,size=100% 0 0
-tmpfs /LOCALE-LIB tmpfs defaults,rw,nosuid,nodev,noexec,noatime,mode=1777,size=100% 0 0" > /mnt/etc/fstab && \
+tmpfs /home/bux/.cache tmpfs defaults,nosuid,nodev,noatime,uid=1000,gid=1000,mode=700,size=100% 0 0" > /mnt/etc/fstab && \
 mount -a -v;
 fi;
 
@@ -515,21 +510,6 @@ echo "export HISTSIZE=0;
 export HISTFILESIZE=0;
 unset HISTFILE;
 if [ \"\$(tty)\" = \"/dev/tty1\" ]; then
-sudo mkdir -p /FIRMWARE && \\
-sudo cp -a /usr/lib/firmware/. /FIRMWARE/ && \\
-sudo mount --bind /FIRMWARE /usr/lib/firmware && \\
-sudo mkdir -p /MODULES && \\
-sudo cp -a /usr/lib/modules/. /MODULES/ && \\
-sudo mount --bind /MODULES /usr/lib/modules && \\
-sudo mkdir -p /FONTS && \\
-sudo cp -a /usr/share/fonts/. /FONTS/ && \\
-sudo mount --bind /FONTS /usr/share/fonts && \\
-sudo mkdir -p /LOCALE && \\
-sudo cp -a /usr/share/locale/. /LOCALE/ && \\
-sudo mount --bind /LOCALE /usr/share/locale && \\
-sudo mkdir -p /LOCALE-LIB && \\
-sudo cp -a /usr/lib/locale/. /LOCALE-LIB/ && \\
-sudo mount --bind /LOCALE-LIB /usr/lib/locale && \\
 exec sway > /dev/null 2>&1
 fi;
 alias i=\"yay -Sy --noconfirm\";
@@ -538,13 +518,6 @@ alias a=\"yay -Syyu --noconfirm\";
 alias m=\"pacman -Q\";
 alias q=\"pacman -Q | wc -l\";
 alias w=\"nmtui\";
-alias p=\"sudo poweroff -f\";
-alias r=\"sudo reboot -f\";
-e() {
-export XDG_RUNTIME_DIR=/run/user/1000 && \\
-export WAYLAND_DISPLAY=wayland-1 && \\
-SWAYSOCK=\$(ls /run/user/1000/sway-ipc.*.sock) swaymsg exec \"sh -c \\\"\$*\\\"\"
-};
 sudo rm -rf /home/bux/.bash_history;
 sudo pacman -Scc --noconfirm;
 clear;
@@ -560,9 +533,7 @@ INFORMAÇÕES DE DRIVERS:
 CONECTAR A REDE WIFI COM OU SEM FIO (w)
 
 INFORMAÇÕES EXTRAS:
-DESLIGAR MAQUINA (p)
-REINICIAR MAQUINA (r)
-EXECUTAR PACOTE (e nome-do-pacote ou comando-especifico-de-execução)
+ADICIONE ATALHOS DO SWAY NO ARQUIVO DE CONFIGURAÇÃO.
 EXEMPLO 1: e firefox
 EXEMPLO 2: e flatpak run com.valvesoftware.Steam
 \";
@@ -581,7 +552,7 @@ makepkg -si --noconfirm && \\
 cd .. && \\
 sudo rm -rf yay && \\
 yay -Sy --noconfirm nano --answerclean All --answerdiff None --answeredit None --save && \\
-sudo sed -i \"50,\\\$d\" /home/bux/.bash_profile" > /mnt/home/bux/.bash_profile;
+sudo sed -i \"40,\\\$d\" /home/bux/.bash_profile" > /mnt/home/bux/.bash_profile;
 
 
 echo "criando diretorio /home/bux/.config";
@@ -613,6 +584,8 @@ bindsym \$mod+c fullscreen toggle
 bindsym \$mod+v exec pactl set-sink-volume @DEFAULT_SINK@ +1%
 bindsym \$mod+b exec pactl set-sink-volume @DEFAULT_SINK@ -1%
 bindsym \$mod+n exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym \$mod+1 poweroff
+bindsym \$mod+2 reboot
 include /etc/sway/config.d/*" > /mnt/home/bux/.config/sway/config;
 
 
@@ -633,6 +606,8 @@ bindsym \$mod+c fullscreen toggle
 bindsym \$mod+v exec pactl set-sink-volume @DEFAULT_SINK@ +1%
 bindsym \$mod+b exec pactl set-sink-volume @DEFAULT_SINK@ -1%
 bindsym \$mod+n exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym \$mod+1 poweroff
+bindsym \$mod+2 reboot
 include /etc/sway/config.d/*" > /mnt/etc/sway/config;
 
 
