@@ -226,15 +226,12 @@ git \
 mesa \
 sway \
 wayland \
-pulseaudio \
-grub \
-efibootmgr > /dev/null 2>&1;
+pulseaudio > /dev/null 2>&1;
 
 
 echo "escaneando hardware amd, sincronizando repositorios do pacman e instalando drivers amd";
 if lspci | grep -i amd > /dev/null 2>&1; then
 pacstrap /mnt --noconfirm \
-amd-ucode \
 vulkan-radeon > /dev/null 2>&1;
 else
 echo "Ñ ENCONTRADO";
@@ -244,7 +241,6 @@ fi;
 echo "escaneando hardware intel, sincronizando repositorios do pacman e instalando drivers intel";
 if lspci | grep -i intel > /dev/null 2>&1; then
 pacstrap /mnt --noconfirm \
-intel-ucode \
 vulkan-intel > /dev/null 2>&1;
 else
 echo "Ñ ENCONTRADO";
