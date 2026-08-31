@@ -463,27 +463,28 @@ hwclock --systohc > /dev/null 2>&1;
 
 
 echo "gerando imagens no inicializador do sistema";
-mkinitcpio -P > /dev/null 2>&1;
+mkinitcpio -P > /dev/null 2>&1;'
 
 
-echo "sobscrevendo arquivo grub";
-echo "GRUB_DEFAULT=0
-GRUB_TIMEOUT=0
-GRUB_DISTRIBUTOR=\"bux\"
-GRUB_CMDLINE_LINUX_DEFAULT=\"quiet loglevel=0 mitigations=off nospectre_v1 nospectre_v2 spectre_v2=off spectre_bhi=off nopti pti=off nospec_store_bypass_disable l1tf=off mds=off tsx_async_abort=off srbds=off mmio_stale_data=off retbleed=off split_lock_detect=off split_lock_mitigate=0 bpf_jit_harden=0 nokaslr panic=0 debugfs=off audit=0 nowatchdog nmi_watchdog=0 softlockup_panic=0 hardlockup_panic=0 modprobe.blacklist=pcspkr,iTCO_wdt,iTCO_vendor_support,intel_oc_wdt\"
-GRUB_CMDLINE_LINUX=\"\"
-GRUB_PRELOAD_MODULES=\"part_gpt part_msdos\"
-GRUB_GFXMODE=auto
-GRUB_GFXPAYLOAD_LINUX=keep
-GRUB_DISABLE_RECOVERY=true" > /etc/default/grub;
+echo "configurando systemd-boot";
+bootctl --esp-path=/mnt/boot/EFI install;
 
 
-echo "configurando grub";
-grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=bux --recheck > /dev/null 2>&1;
+echo "adicionando diretorio /boot/EFI/loader/entries";
+mkdir -p /boot/EFI/loader/entries;
 
 
-echo "adicionando grub na inicialização";
-grub-mkconfig -o /boot/grub/grub.cfg > /dev/null 2>&1;'
+echo "adicionando arquivo de configuração do systemd-boot em /boot/EFI/loader/entries/arch.conf";
+echo "title BUX
+linux /vmlinuz-linux
+initrd /initramfs-linux.img
+options root=UUID=$(blkid -s UUID -o value /dev/sda2) rw" > /boot/EFI/loader/entries/arch.conf;
+
+
+echo "adicionando arquivo de configuração do systemd-boot em /boot/EFI/loader/loader.conf";
+echo "default arch.conf
+timeout 0
+editor no" > /boot/EFI/loader/loader.conf
 
 
 echo "adicionando conexão ipv6 no sistema";
