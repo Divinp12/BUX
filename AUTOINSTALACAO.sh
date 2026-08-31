@@ -160,25 +160,25 @@ pacman -Sy --noconfirm > /dev/null 2>&1;
 
 
 if wipefs -a /dev/nvme0n1 > /dev/null 2>&1; then
-DISCO="/dev/nvme0n1"
+DISC="/dev/nvme0n1"
 BOOT="/dev/nvme0n1p1"
 ROOT="/dev/nvme0n1p2"
 else
-wipefs -a /dev/nvme0n1 > /dev/null 2>&1;
-DISCO="/dev/sda"
+wipefs -a /dev/sda > /dev/null 2>&1;
+DISC="/dev/sda"
 BOOT="/dev/sda1"
 ROOT="/dev/sda2"
 fi;
 
 
 echo "formatando 1 disco rigido valido";
-parted -s /dev/sda mklabel gpt && \
-parted -s /dev/sda mkpart ESP fat32 1MiB 70MiB && \
-parted -s /dev/sda set 1 esp on && \
-parted -s /dev/sda mkpart primary ext4 70MiB 100% && \
+parted -s "$DISC" mklabel gpt && \
+parted -s "$DISC" mkpart ESP fat32 1MiB 70MiB && \
+parted -s "$DISC" set 1 esp on && \
+parted -s "$DISC" mkpart primary ext4 70MiB 100% && \
 partprobe > /dev/null 2>&1 && \
-mkfs.fat -F32 /dev/sda1 > /dev/null 2>&1 && \
-mkfs.btrfs -f /dev/sda2 > /dev/null 2>&1 && \
+mkfs.fat -F32 "$BOOT" > /dev/null 2>&1 && \
+mkfs.btrfs -f "$ROOT" > /dev/null 2>&1 && \
 mount -o rw,compress-force=zstd:22,noatime /dev/sda2 /mnt > /dev/null 2>&1 && \
 mkdir /mnt/boot > /dev/null 2>&1 && \
 mkdir /mnt/boot/EFI > /dev/null 2>&1 && \
