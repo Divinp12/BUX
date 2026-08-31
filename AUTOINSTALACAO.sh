@@ -160,12 +160,14 @@ pacman -Sy --noconfirm > /dev/null 2>&1;
 
 
 if wipefs -a /dev/nvme0n1 > /dev/null 2>&1; then
-ESP_PART="/dev/nvme0n1p1"
-ROOT_PART="/dev/nvme0n1p2"
+DISCO="/dev/nvme0n1"
+BOOT="/dev/nvme0n1p1"
+ROOT="/dev/nvme0n1p2"
 else
 wipefs -a /dev/nvme0n1 > /dev/null 2>&1;
-ESP_PART="/dev/sda1"
-ROOT_PART="/dev/sda2"
+DISCO="/dev/sda"
+BOOT="/dev/sda1"
+ROOT="/dev/sda2"
 fi;
 
 
