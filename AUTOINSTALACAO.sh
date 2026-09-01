@@ -179,13 +179,13 @@ parted -s "$DISC" mkpart primary ext4 70MiB 100% && \
 partprobe > /dev/null 2>&1 && \
 mkfs.fat -F32 "$BOOT" > /dev/null 2>&1 && \
 mkfs.btrfs -f "$ROOT" > /dev/null 2>&1 && \
-mount -o rw,compress-force=zstd:22,noatime /dev/sda2 /mnt > /dev/null 2>&1 && \
+mount -o rw,compress-force=zstd:22,noatime "$ROOT" /mnt > /dev/null 2>&1 && \
 mkdir /mnt/boot > /dev/null 2>&1 && \
 mkdir /mnt/boot/EFI > /dev/null 2>&1 && \
-mount /dev/sda1 /mnt/boot/EFI > /dev/null 2>&1 && \
+mount "$BOOT" /mnt/boot/EFI > /dev/null 2>&1 && \
 mkdir -p /mnt/etc && \
-echo "UUID=$(blkid -s UUID -o value /dev/sda1) /boot/EFI vfat rw,noatime 0 2
-UUID=$(blkid -s UUID -o value /dev/sda2) / btrfs rw,compress-force=zstd:22,noatime 0 1
+echo "UUID=$(blkid -s UUID -o value "$BOOT") /boot/EFI vfat rw,noatime 0 2
+UUID=$(blkid -s UUID -o value "$ROOT") / btrfs rw,compress-force=zstd:22,noatime 0 1
 tmpfs /tmp tmpfs defaults,nosuid,nodev,noatime,mode=1777,size=100% 0 0
 tmpfs /var/cache tmpfs defaults,nosuid,nodev,noatime,size=100% 0 0
 tmpfs /var/tmp tmpfs defaults,nosuid,nodev,noatime,mode=1777,size=100% 0 0
@@ -462,7 +462,7 @@ echo "adicionando arquivo de configuração do systemd-boot em /mnt/boot/EFI/loa
 echo "title BUX
 linux /vmlinuz-linux
 initrd /initramfs-linux.img
-options root=UUID=$(blkid -s UUID -o value /dev/sda2) rw" > /mnt/boot/EFI/loader/entries/arch.conf;
+options root=UUID=$(blkid -s UUID -o value "$ROOT") rw" > /mnt/boot/EFI/loader/entries/arch.conf;
 
 
 echo "adicionando arquivo de configuração do systemd-boot em /mnt/boot/EFI/loader/loader.conf";
