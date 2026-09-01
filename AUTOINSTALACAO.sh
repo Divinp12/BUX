@@ -177,6 +177,8 @@ partprobe > /dev/null 2>&1 && \
 mkfs.fat -F32 "$BOOT" > /dev/null 2>&1 && \
 mkfs.btrfs -f "$ROOT" > /dev/null 2>&1 && \
 mount -o rw,compress-force=zstd:22,noatime "$ROOT" /mnt > /dev/null 2>&1 && \
+mkdir -p /mnt/tmp && \
+mount -t tmpfs -o defaults,nosuid,nodev,noatime,mode=1777,size=100% tmpfs /mnt/tmp && \
 mkdir /mnt/boot > /dev/null 2>&1 && \
 mkdir /mnt/boot/EFI > /dev/null 2>&1 && \
 mount "$BOOT" /mnt/boot/EFI > /dev/null 2>&1 && \
