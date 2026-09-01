@@ -187,6 +187,7 @@ mkdir -p /mnt/var/log && \
 mount -t tmpfs -o defaults,nosuid,nodev,noatime,size=100% tmpfs /mnt/var/log && \
 mkdir -p /mnt/var/lib/systemd/coredump && \
 mount -t tmpfs -o rw,nosuid,nodev,noexec,noatime,mode=0755,size=100% tmpfs /mnt/var/lib/systemd/coredump && \
+mkdir -p /mnt/var/lib/systemd/catalog && \
 
 
 tmpfs /var/lib/systemd/catalog tmpfs rw,nosuid,nodev,noexec,noatime,mode=0755,size=100%
