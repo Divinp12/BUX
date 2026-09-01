@@ -179,6 +179,21 @@ mkfs.btrfs -f "$ROOT" > /dev/null 2>&1 && \
 mount -o rw,compress-force=zstd:22,noatime "$ROOT" /mnt > /dev/null 2>&1 && \
 mkdir -p /mnt/tmp && \
 mount -t tmpfs -o defaults,nosuid,nodev,noatime,mode=1777,size=100% tmpfs /mnt/tmp && \
+mkdir -p /mnt/var/cache && \
+mount -t tmpfs -o defaults,nosuid,nodev,noatime,size=100% tmpfs /mnt/var/cache && \
+mkdir -p /mnt/var/tmp && \
+mount -t tmpfs -o defaults,nosuid,nodev,noatime,mode=1777,size=100% tmpfs /mnt/var/tmp && \
+mkdir -p /mnt/var/log && \
+mount -t tmpfs -o defaults,nosuid,nodev,noatime,size=100% tmpfs /mnt/var/log && \
+mkdir -p /mnt/var/lib/systemd/coredump && \
+mount -t tmpfs -o rw,nosuid,nodev,noexec,noatime,mode=0755,size=100% tmpfs /mnt/var/lib/systemd/coredump && \
+
+
+tmpfs /var/lib/systemd/catalog tmpfs rw,nosuid,nodev,noexec,noatime,mode=0755,size=100%
+tmpfs /var/lib/pacman/sync tmpfs rw,nosuid,nodev,noexec,noatime,mode=0755,size=100%
+tmpfs /home/bux/.cache tmpfs defaults,nosuid,nodev,noatime,uid=1000,gid=1000,mode=700,size=100%
+
+
 mkdir /mnt/boot > /dev/null 2>&1 && \
 mkdir /mnt/boot/EFI > /dev/null 2>&1 && \
 mount "$BOOT" /mnt/boot/EFI > /dev/null 2>&1 && \
