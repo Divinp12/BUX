@@ -422,6 +422,18 @@ echo "[Journal]
 Storage=none" > /mnt/etc/systemd/journald.conf;
 
 
+echo "MODULES=()
+BINARIES=()
+FILES=()
+HOOKS=(base systemd autodetect modconf kms keyboard sd-vconsole block filesystems)
+COMPRESSION=\"zstd\"" > /mnt/etc/mkinitcpio.conf;
+
+
+echo "sobrescrevendo arquivo vconsole.conf no diretorio /etc";
+echo "KEYMAP=us
+FONT=lat9w-16" > /mnt/etc/vconsole.conf;
+
+
 echo "adicionando nome bux ao usuario root no arquivo hostname";
 echo bux > /mnt/etc/hostname;
 
@@ -487,11 +499,6 @@ echo "adicionando conexão ipv6 no sistema";
 echo "127.0.0.1 localhost.localdomain localhost
 ::1 localhost.localdomain localhost
 127.0.0.1 bux.localdomain bux" > /mnt/etc/hosts;
-
-
-echo "sobrescrevendo arquivo vconsole.conf no diretorio /etc";
-echo "KEYMAP=us
-FONT=lat9w-16" > /mnt/etc/vconsole.conf;
 
 
 echo "adicionando usuario normal (bux) ao sudo no arquivo sudoers";
@@ -669,39 +676,15 @@ sed -i "/^\s*#/d; /^\s*$/d" \
 
 
 echo "deletando diretorios tmpfs";
-rm -rf \
-/mnt/tmp \
-/mnt/var/cache \
-/mnt/var/tmp \
-/mnt/var/log \
-/mnt/var/lib/systemd/coredump \
-/mnt/var/lib/systemd/catalog \
-/mnt/var/lib/pacman/sync \
-/mnt/home/bux/.cache || true
+rm -rf /mnt/home/bux/.cache || true
 
 
 echo "desmontando diretorios tmpfs";
-umount -R \
-/mnt/tmp \
-/mnt/var/cache \
-/mnt/var/tmp \
-/mnt/var/log \
-/mnt/var/lib/systemd/coredump \
-/mnt/var/lib/systemd/catalog \
-/mnt/var/lib/pacman/sync \
-/mnt/home/bux/.cache || true;
+umount -R /mnt/home/bux/.cache || true;
 
 
 echo "deletando diretorios tmpfs novamente";
-rm -rf \
-/mnt/tmp \
-/mnt/var/cache \
-/mnt/var/tmp \
-/mnt/var/log \
-/mnt/var/lib/systemd/coredump \
-/mnt/var/lib/systemd/catalog \
-/mnt/var/lib/pacman/sync \
-/mnt/home/bux/.cache || true
+rm -rf /mnt/home/bux/.cache || true
 
 
 echo "gravando dados da memoria no disco";
