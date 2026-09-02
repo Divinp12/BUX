@@ -588,7 +588,7 @@ echo "adicionando diretorio de configuração extra do sway";
 mkdir -p /mnt/etc/sway;
 
 
-echo "criando arquivo de configuração do sway";
+echo "criando arquivo de configuração do sway nos diretorios /mnt/home/bux/.config/sway/config e /mnt/etc/sway/config";
 echo "set \$mod Mod4
 default_border pixel 1
 default_floating_border none
