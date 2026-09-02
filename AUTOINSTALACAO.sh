@@ -467,15 +467,15 @@ locale-gen > /dev/null 2>&1;
 
 
 echo "sincronizando relogio";
-hwclock --systohc > /dev/null 2>&1;
+hwclock --systohc > /dev/null 2>&1;'
 
 
 echo "gerando imagens no inicializador do sistema";
-mkinitcpio -P > /dev/null 2>&1;'
+mkinitcpio -P -r /mnt > /dev/null 2>&1;
 
 
 echo "configurando systemd-boot";
-bootctl --esp-path=/mnt/boot/EFI install;
+bootctl --esp-path=/mnt/boot install;
 
 
 echo "adicionando diretorio /mnt/boot/EFI/loader/entries";
