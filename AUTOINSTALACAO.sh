@@ -584,6 +584,10 @@ echo "criando diretorio /home/bux/.config/sway";
 mkdir -p /mnt/home/bux/.config/sway;
 
 
+echo "adicionando diretorio de configuração extra do sway";
+mkdir -p /mnt/etc/sway;
+
+
 echo "criando arquivo de configuração do sway";
 echo "set \$mod Mod4
 default_border pixel 1
@@ -599,29 +603,9 @@ bindsym \$mod+b exec pactl set-sink-volume @DEFAULT_SINK@ -1%
 bindsym \$mod+n exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 bindsym \$mod+1 poweroff
 bindsym \$mod+2 reboot
-include /etc/sway/config.d/*" > /mnt/home/bux/.config/sway/config;
-
-
-echo "adicionando diretorio de configuração extra do sway";
-mkdir -p /mnt/etc/sway;
-
-
-echo "adicionando arquivo de configuração extra do sway";
-echo "set \$mod Mod4
-default_border pixel 1
-default_floating_border none
-input * { pointer_accel 0 }
-output * bg #000000 solid_color
-output * { compositor none }
-bindsym \$mod+z kill
-bindsym \$mod+x reload
-bindsym \$mod+c fullscreen toggle
-bindsym \$mod+v exec pactl set-sink-volume @DEFAULT_SINK@ +1%
-bindsym \$mod+b exec pactl set-sink-volume @DEFAULT_SINK@ -1%
-bindsym \$mod+n exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
-bindsym \$mod+1 poweroff
-bindsym \$mod+2 reboot
-include /etc/sway/config.d/*" > /mnt/etc/sway/config;
+include /etc/sway/config.d/*" | tee \
+/mnt/home/bux/.config/sway/config \
+/mnt/etc/sway/config > /dev/null 2>&1;
 
 
 echo "adicionando autologin do tty1";
