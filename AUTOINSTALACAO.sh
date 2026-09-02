@@ -193,9 +193,8 @@ mkdir -p /mnt/var/lib/pacman/sync && \
 mount -t tmpfs -o rw,nosuid,nodev,noexec,noatime,mode=0755,size=100% tmpfs /mnt/var/lib/pacman/sync && \
 mkdir -p /mnt/home/bux/.cache && \
 mount -t tmpfs -o defaults,nosuid,nodev,noatime,uid=1000,gid=1000,mode=700,size=100% tmpfs /mnt/home/bux/.cache && \
-mkdir /mnt/boot > /dev/null 2>&1 && \
-mkdir /mnt/boot/EFI > /dev/null 2>&1 && \
-mount "$BOOT" /mnt/boot/EFI > /dev/null 2>&1 && \
+mkdir -p /mnt/boot > /dev/null 2>&1 && \
+mount "$BOOT" /mnt/boot > /dev/null 2>&1 && \
 mkdir -p /mnt/etc && \
 echo "UUID=$(blkid -s UUID -o value "$BOOT") /boot/EFI vfat rw,noatime 0 2
 UUID=$(blkid -s UUID -o value "$ROOT") / btrfs rw,compress-force=zstd:22,noatime 0 1
@@ -422,11 +421,18 @@ echo "[Journal]
 Storage=none" > /mnt/etc/systemd/journald.conf;
 
 
+echo "adicionando arquivo mkinitcpio.conf no diretorio /mnt/etc";
 echo "MODULES=()
 BINARIES=()
 FILES=()
 HOOKS=(base systemd autodetect modconf kms keyboard sd-vconsole block filesystems)
 COMPRESSION=\"zstd\"" > /mnt/etc/mkinitcpio.conf;
+
+
+echo "adicionando arquivo linux.preset no diretorio /etc/mkinitcpio.d";
+echo "ALL_kver=\"/boot/vmlinuz-linux\"
+PRESETS=('default')
+default_image=\"/boot/initramfs-linux.img\"" > /etc/mkinitcpio.d/linux.preset;
 
 
 echo "sobrescrevendo arquivo vconsole.conf no diretorio /etc";
