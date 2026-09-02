@@ -434,6 +434,14 @@ echo "KEYMAP=us
 FONT=lat9w-16" > /mnt/etc/vconsole.conf;
 
 
+echo "adicionando caracteres portugues brasileiro";
+echo "pt_BR.UTF-8 UTF-8" > /mnt/etc/locale.gen;
+
+
+echo "adicionando idioma portugues brasileiro";
+echo "LANG=pt_BR.UTF-8" > /mnt/etc/locale.conf;
+
+
 echo "adicionando nome bux ao usuario root no arquivo hostname";
 echo bux > /mnt/etc/hostname;
 
@@ -452,14 +460,6 @@ useradd -m -g users -G wheel bux;
 
 echo "adicionando senha bux ao usuario normal";
 echo -e "bux\nbux" | passwd bux > /dev/null 2>&1;
-
-
-echo "adicionando caracteres portugues brasileiro";
-echo "pt_BR.UTF-8 UTF-8" > /etc/locale.gen;
-
-
-echo "adicionando idioma portugues brasileiro";
-echo "LANG=pt_BR.UTF-8" > /etc/locale.conf;
 
 
 echo "aplicando caracteres portugues brasileiro";
@@ -673,18 +673,6 @@ sed -i "/^\s*#/d; /^\s*$/d" \
 /mnt/etc/fuse.conf \
 /mnt/etc/ts.conf \
 /mnt/etc/fstab || true;
-
-
-echo "deletando diretorios tmpfs";
-rm -rf /mnt/home/bux/.cache || true
-
-
-echo "desmontando diretorios tmpfs";
-umount -R /mnt/home/bux/.cache || true;
-
-
-echo "deletando diretorios tmpfs novamente";
-rm -rf /mnt/home/bux/.cache || true
 
 
 echo "gravando dados da memoria no disco";
