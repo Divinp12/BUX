@@ -479,20 +479,20 @@ bootctl --esp-path=/mnt/boot install;
 
 
 echo "adicionando diretorio /mnt/boot/EFI/loader/entries";
-mkdir -p /mnt/boot/EFI/loader/entries;
+mkdir -p /mnt/boot/loader/entries;
 
 
 echo "adicionando arquivo de configuração do systemd-boot em /mnt/boot/EFI/loader/entries/arch.conf";
 echo "title BUX
 linux /vmlinuz-linux
 initrd /initramfs-linux.img
-options root=UUID=$(blkid -s UUID -o value "$ROOT") rw" > /mnt/boot/EFI/loader/entries/arch.conf;
+options root=UUID=$(blkid -s UUID -o value "$ROOT") rw" > /mnt/boot/loader/entries/arch.conf;
 
 
 echo "adicionando arquivo de configuração do systemd-boot em /mnt/boot/EFI/loader/loader.conf";
 echo "default arch.conf
 timeout 0
-editor no" > /mnt/boot/EFI/loader/loader.conf
+editor no" > /mnt/boot/loader/loader.conf
 
 
 echo "adicionando conexão ipv6 no sistema";
