@@ -481,7 +481,7 @@ mkinitcpio -P > /dev/null 2>&1;'
 
 
 echo "configurando systemd-boot";
-bootctl --esp-path=/mnt/boot install;
+bootctl --esp-path=/mnt/boot install > /dev/null 2>&1;
 
 
 echo "adicionando diretorio /mnt/boot/EFI/loader/entries";
@@ -567,6 +567,7 @@ sudo rm -rf /home/bux/yay;
 sudo git clone https://aur.archlinux.org/yay.git && \\
 sudo chmod 777 yay && \\
 cd yay && \\
+sudo pacman -Sy --noconfirm go && \\
 makepkg -si --noconfirm && \\
 cd .. && \\
 sudo rm -rf yay && \\
