@@ -467,11 +467,11 @@ locale-gen > /dev/null 2>&1;
 
 
 echo "sincronizando relogio";
-hwclock --systohc > /dev/null 2>&1;'
+hwclock --systohc > /dev/null 2>&1;
 
 
 echo "gerando imagens no inicializador do sistema";
-mkinitcpio -P -r /mnt > /dev/null 2>&1;
+mkinitcpio -P > /dev/null 2>&1;'
 
 
 echo "configurando systemd-boot";
@@ -557,8 +557,8 @@ E EXECUTE O COMANDO w\" && \\
 sudo sleep 11 && \\
 cd /home/bux/ && \\
 sudo pacman -Sy && \
-sudo rm -rf yay;
-git clone https://aur.archlinux.org/yay.git && \\
+sudo rm -rf /home/bux/yay;
+sudo git clone https://aur.archlinux.org/yay.git && \\
 sudo chmod 777 yay && \\
 cd yay && \\
 makepkg -si --noconfirm && \\
