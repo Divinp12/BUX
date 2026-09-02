@@ -615,6 +615,10 @@ include /etc/sway/config.d/*" | tee \
 /mnt/etc/sway/config > /dev/null 2>&1;
 
 
+echo "criando diretorio do systemd";
+mkdir -p /mnt/etc/systemd/system/multi-user.target.wants;
+
+
 echo "adicionando autologin do tty1";
 echo "[Unit]
 After=systemd-user-sessions.service plymouth-quit-wait.service
@@ -631,11 +635,12 @@ TTYVHangup=yes
 StandardInput=tty
 StandardOutput=tty
 [Install]
-WantedBy=multi-user.target" > /mnt/etc/systemd/system/multi-user.target.wants/autologin.service;
+WantedBy=multi-user.target" > /mnt/etc/systemd/system/autologin.service
 
 
-echo "criando diretorio do systemd";
-mkdir -p /mnt/etc/systemd/system/multi-user.target.wants;
+echo "adicionando autologin na inicialização";
+ln -s /mnt/etc/systemd/system/autologin.service \
+/mnt/etc/systemd/system/multi-user.target.wants/autologin.service;
 
 
 echo "adicionando serviço NetworkManager na inicialização";
