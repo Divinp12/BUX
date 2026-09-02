@@ -158,6 +158,7 @@ echo "sincronizando repositorios do pacman";
 pacman -Sy --noconfirm > /dev/null 2>&1;
 
 
+echo "formatando 1 disco rigido valido";
 if wipefs -a /dev/nvme0n1 > /dev/null 2>&1; then
 DISC="/dev/nvme0n1"
 BOOT="/dev/nvme0n1p1"
@@ -167,10 +168,7 @@ wipefs -a /dev/sda > /dev/null 2>&1;
 DISC="/dev/sda"
 BOOT="/dev/sda1"
 ROOT="/dev/sda2"
-fi;
-
-
-echo "formatando 1 disco rigido valido";
+fi && \
 parted -s "$DISC" mklabel gpt && \
 parted -s "$DISC" mkpart ESP fat32 1MiB 70MiB && \
 parted -s "$DISC" set 1 esp on && \
@@ -193,6 +191,8 @@ mkdir -p /mnt/var/lib/systemd/catalog && \
 mount -t tmpfs -o rw,nosuid,nodev,noexec,noatime,mode=0755,size=100% tmpfs /mnt/var/lib/systemd/catalog && \
 mkdir -p /mnt/var/lib/pacman/sync && \
 mount -t tmpfs -o rw,nosuid,nodev,noexec,noatime,mode=0755,size=100% tmpfs /mnt/var/lib/pacman/sync && \
+mkdir -p /mnt/home/bux/.cache && \
+mount -t tmpfs -o defaults,nosuid,nodev,noatime,uid=1000,gid=1000,mode=700,size=100% tmpfs /mnt/home/bux/.cache && \
 mkdir /mnt/boot > /dev/null 2>&1 && \
 mkdir /mnt/boot/EFI > /dev/null 2>&1 && \
 mount "$BOOT" /mnt/boot/EFI > /dev/null 2>&1 && \
