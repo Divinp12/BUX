@@ -12,7 +12,7 @@ echo "[options]
 Architecture=auto
 CheckSpace
 ParallelDownloads=1
-SigLevel=Required DatabaseOptional
+SigLevel=Never
 LocalFileSigLevel=Optional
 NoExtract=usr/lib32/*
 NoExtract=usr/bin/mkfs.ext2/*
@@ -264,7 +264,7 @@ echo "[options]
 Architecture=auto
 CheckSpace
 ParallelDownloads=1
-SigLevel=Required DatabaseOptional
+SigLevel=Never
 LocalFileSigLevel=Optional
 NoExtract=usr/lib32/*
 NoExtract=usr/bin/mkfs.ext2/*
