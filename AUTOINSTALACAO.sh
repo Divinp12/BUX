@@ -13,7 +13,7 @@ Architecture=auto
 CheckSpace
 ParallelDownloads=1
 SigLevel=Never
-LocalFileSigLevel=Optional
+LocalFileSigLevel=Never
 NoExtract=usr/lib32/*
 NoExtract=usr/bin/mkfs.ext2/*
 NoExtract=usr/bin/mkfs.ext3/*
@@ -265,7 +265,7 @@ Architecture=auto
 CheckSpace
 ParallelDownloads=1
 SigLevel=Never
-LocalFileSigLevel=Optional
+LocalFileSigLevel=Never
 NoExtract=usr/lib32/*
 NoExtract=usr/bin/mkfs.ext2/*
 NoExtract=usr/bin/mkfs.ext3/*
