@@ -279,6 +279,7 @@ NoExtract=usr/share/man/*
 NoExtract=usr/share/doc/*
 NoExtract=usr/share/info/*
 NoExtract=usr/share/locale/a*
+NoExtract=usr/share/locale/b*
 NoExtract=usr/share/locale/c*
 NoExtract=usr/share/locale/d*
 NoExtract=usr/share/locale/ee/*
