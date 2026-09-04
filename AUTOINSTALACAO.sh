@@ -14,6 +14,7 @@ CheckSpace
 ParallelDownloads=1
 SigLevel=Never
 LocalFileSigLevel=Never
+RemoteFileSigLevel=Never
 NoExtract=usr/lib32/*
 NoExtract=usr/bin/mkfs.ext2/*
 NoExtract=usr/bin/mkfs.ext3/*
