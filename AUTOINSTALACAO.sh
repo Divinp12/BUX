@@ -191,8 +191,6 @@ mkdir -p /mnt/var/lib/systemd/catalog && \
 mount -t tmpfs -o rw,nosuid,nodev,noexec,noatime,mode=0755,size=100% tmpfs /mnt/var/lib/systemd/catalog && \
 mkdir -p /mnt/var/lib/pacman/sync && \
 mount -t tmpfs -o rw,nosuid,nodev,noexec,noatime,mode=0755,size=100% tmpfs /mnt/var/lib/pacman/sync && \
-mkdir -p /mnt/home/bux/.cache && \
-mount -t tmpfs -o defaults,nosuid,nodev,noatime,uid=1000,gid=1000,mode=700,size=100% tmpfs /mnt/home/bux/.cache && \
 mkdir -p /mnt/boot > /dev/null 2>&1 && \
 mount "$BOOT" /mnt/boot > /dev/null 2>&1 && \
 mkdir -p /mnt/etc && \
