@@ -492,7 +492,7 @@ echo "adicionando arquivo de configuração do systemd-boot em /mnt/boot/EFI/loa
 echo "title BUX
 linux /vmlinuz-linux
 initrd /initramfs-linux.img
-options root=UUID=$(blkid -s UUID -o value "$ROOT") rw quiet loglevel=3 systemd.show_status=false rd.systemd.show_status=false" > /mnt/boot/loader/entries/arch.conf;
+options root=UUID=$(blkid -s UUID -o value "$ROOT") rw quiet loglevel=3 systemd.show_status=false rd.systemd.show_status=false mitigations=off nospectre_v1 nospectre_v2 spectre_v2=off spectre_bhi=off nopti pti=off nospec_store_bypass_disable l1tf=off mds=off tsx_async_abort=off srbds=off mmio_stale_data=off retbleed=off split_lock_detect=off split_lock_mitigate=0 bpf_jit_harden=0 nokaslr panic=0 debugfs=off audit=0 nowatchdog nmi_watchdog=0 softlockup_panic=0 hardlockup_panic=0 modprobe.blacklist=pcspkr,iTCO_wdt,iTCO_vendor_support,intel_oc_wdt" > /mnt/boot/loader/entries/arch.conf;
 
 
 echo "adicionando arquivo de configuração do systemd-boot em /mnt/boot/EFI/loader/loader.conf";
