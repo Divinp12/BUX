@@ -526,6 +526,18 @@ sed -i "/^\s*#/d; /^\s*$/d" \
 /mnt/etc/fstab || true;
 
 
+echo "deletando diretorios tmpfs";
+rm -rf /mnt/home/bux/.cache || true
+
+
+echo "desmontando diretorios tmpfs";
+umount -R /mnt/home/bux/.cache || true;
+
+
+echo "deletando diretorios tmpfs novamente";
+rm -rf /mnt/home/bux/.cache || true
+
+
 echo "gravando dados da memoria no disco";
 sync > /dev/null 2>&1;
 
