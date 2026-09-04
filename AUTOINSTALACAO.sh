@@ -492,7 +492,7 @@ echo "adicionando arquivo de configuração do systemd-boot em /mnt/boot/EFI/loa
 echo "title BUX
 linux /vmlinuz-linux
 initrd /initramfs-linux.img
-options root=UUID=$(blkid -s UUID -o value "$ROOT") rw" > /mnt/boot/loader/entries/arch.conf;
+options root=UUID=$(blkid -s UUID -o value "$ROOT") rw quiet loglevel=3 systemd.show_status=false rd.systemd.show_status=false" > /mnt/boot/loader/entries/arch.conf;
 
 
 echo "adicionando arquivo de configuração do systemd-boot em /mnt/boot/EFI/loader/loader.conf";
