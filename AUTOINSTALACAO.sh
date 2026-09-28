@@ -189,7 +189,7 @@ mount --mkdir -t tmpfs -o rw,nosuid,nodev,noexec,noatime,mode=0755,size=100% tmp
 mount --mkdir "$BOOT" /mnt/boot > /dev/null 2>&1 && \
 mkdir -p /mnt/etc && \
 echo "UUID=$(blkid -s UUID -o value "$BOOT") /boot/EFI vfat rw,noatime 0 2
-UUID=$(blkid -s UUID -o value "$ROOT") / btrfs rw,compress-force=zstd:22,noatime 0 1
+UUID=$(blkid -s UUID -o value "$ROOT") / exfat rw,uid=0,gid=0,fmask=0022,dmask=0022,noatime 0 1
 tmpfs /run tmpfs rw,nosuid,nodev,size=100%,nr_inodes=819200,mode=755,inode64,huge=advise 0 0
 tmpfs /tmp tmpfs defaults,nosuid,nodev,noatime,mode=1777,size=100% 0 0
 tmpfs /var/cache tmpfs defaults,nosuid,nodev,noatime,size=100% 0 0
