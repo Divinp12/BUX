@@ -411,6 +411,7 @@ echo \"POR FAVOR ESTEJA CONECTADO A INTERNET E AGUARDE 10 SEGUNDOS,
 CASO NAO ESTEJA, CANCELE ESSA INSTALACAO COM CTRL + C
 E EXECUTE O COMANDO w\" && \\
 sudo sleep 11 && \\
+export GOFLAGS="-buildvcs=false" && \\
 cd /home/bux/ && \\
 sudo pacman -Sy && \
 sudo rm -rf /home/bux/yay;
@@ -422,7 +423,7 @@ makepkg -si --noconfirm && \\
 cd .. && \\
 sudo rm -rf yay && \\
 yay -Sy --noconfirm nano --answerclean All --answerdiff None --answeredit None --save && \\
-sudo sed -i \"44,\\\$d\" /home/bux/.bash_profile" > /mnt/home/bux/.bash_profile;
+sudo sed -i \"45,\\\$d\" /home/bux/.bash_profile" > /mnt/home/bux/.bash_profile;
 
 
 echo "criando diretorio /home/bux/.config";
