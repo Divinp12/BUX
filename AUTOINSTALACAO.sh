@@ -176,7 +176,7 @@ parted -s "$DISC" set 1 esp on && \
 parted -s "$DISC" mkpart primary ext4 70MiB 100% && \
 partprobe > /dev/null 2>&1 && \
 mkfs.fat -F32 "$BOOT" > /dev/null 2>&1 && \
-mkfs.btrfs -f "$ROOT" > /dev/null 2>&1 && \
+mkfs.exfat -f "$ROOT" > /dev/null 2>&1 && \
 mount -o rw,compress-force=zstd:22,noatime "$ROOT" /mnt > /dev/null 2>&1 && \
 mount --mkdir -t tmpfs -o rw,nosuid,nodev,size=100%,nr_inodes=819200,mode=755,inode64,huge=advise tmpfs /mnt/run && \
 mount --mkdir -t tmpfs -o defaults,nosuid,nodev,noatime,mode=1777,size=100% tmpfs /mnt/tmp && \
