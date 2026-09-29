@@ -176,9 +176,9 @@ parted -s "$DISC" set 1 esp on && \
 parted -s "$DISC" mkpart primary ext4 70MiB 100% && \
 partprobe > /dev/null 2>&1 && \
 mkfs.fat -F32 "$BOOT" > /dev/null 2>&1 && \
-mkfs.exfat -f "$ROOT" > /dev/null 2>&1 && \
-mount -t exfat "$ROOT" /mnt > /dev/null 2>&1 && \
-mount --mkdir -t tmpfs -o rw,nosuid,nodev,size=100%,nr_inodes=819200,mode=755,inode64,huge=advise tmpfs /mnt/run && \
+mkfs.ext4 -O ^has_journal "$ROOT" > /dev/null 2>&1 && \
+mount -o rw,noatime "$ROOT" /mnt > /dev/null 2>&1 && \
+mount --mkdir -t tmpfs -o rw,nosuid,nodev,noatime,size=100%,nr_inodes=819200,mode=755,inode64,huge=advise tmpfs /mnt/run && \
 mount --mkdir -t tmpfs -o defaults,nosuid,nodev,noatime,mode=1777,size=100% tmpfs /mnt/tmp && \
 mount --mkdir -t tmpfs -o defaults,nosuid,nodev,noatime,size=100% tmpfs /mnt/var/cache && \
 mount --mkdir -t tmpfs -o defaults,nosuid,nodev,noatime,mode=1777,size=100% tmpfs /mnt/var/tmp && \
@@ -189,7 +189,7 @@ mount --mkdir -t tmpfs -o rw,nosuid,nodev,noexec,noatime,mode=0755,size=100% tmp
 mount --mkdir "$BOOT" /mnt/boot > /dev/null 2>&1 && \
 mkdir -p /mnt/etc && \
 echo "UUID=$(blkid -s UUID -o value "$BOOT") /boot/EFI vfat rw,noatime 0 2
-UUID=$(blkid -s UUID -o value "$ROOT") / exfat rw,uid=0,gid=0,fmask=0022,dmask=0022,noatime 0 1
+UUID=$(blkid -s UUID -o value "$ROOT") / ext4 defaults,rw,noatime 0 1
 tmpfs /run tmpfs rw,nosuid,nodev,noatime,size=100%,nr_inodes=819200,mode=755,inode64,huge=advise 0 0
 tmpfs /tmp tmpfs defaults,nosuid,nodev,noatime,mode=1777,size=100% 0 0
 tmpfs /var/cache tmpfs defaults,nosuid,nodev,noatime,size=100% 0 0
