@@ -150,41 +150,6 @@ tmpfs /home/bux/.cache tmpfs defaults,nosuid,nodev,noatime,uid=1000,gid=1000,mod
 mount -a -v;
 
 
-wget -P /tmp https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.2.6.tar.xz && \
-tar xvpf /tmp/linux-*.tar.xz -C /tmp --xattrs-include='*.*' --numeric-owner && \
-rm -rf /tmp/linux-*.tar.xz && \
-make -C /tmp/linux-* tinyconfig && \
-KCONFIG_CONFIG=/tmp/linux-*/.config /tmp/linux-*/scripts/config \
-  --enable 64BIT \
-  --enable ACPI \
-  --enable EFI \
-  --enable EFI_STUB \
-  --enable CMDLINE_BOOL \
-  --enable BINFMT_SCRIPT \
-  --enable PROC_FS \
-  --enable SYSFS \
-  --enable DEVTMPFS \
-  --enable EXT4_FS \
-  --enable VFAT_FS \
-  --enable NLS_CODEPAGE_437 \
-  --enable NLS_ISO8859_1 \
-  --enable UNIX \
-  --enable PACKET \
-  --enable FUTEX \
-  --enable PRINTK \
-  --enable USB \
-  --enable USB_XHCI_HCD \
-  --enable USB_STORAGE \
-  --enable SCSI \
-  --enable BLK_DEV_SD \
-  --disable MODULES \
-  --set-str CMDLINE 'root=/dev/sda2 rootwait rw console=ttyS0,115200 init=/bin/sh' && \
-make -C /tmp/linux-* olddefconfig && \
-make -C /tmp/linux-* -j$(nproc) && \
-mv /tmp/linux-*/arch/x86/boot/bzImage /boot/EFI && \
-mv /boot/EFI/bzImage /boot/EFI/vmlinuz-bux;
-
-
 echo "instalando pacotes do sistema";
 pacstrap /mnt --noconfirm \
 base \
@@ -197,7 +162,8 @@ git \
 mesa \
 sway \
 wayland \
-pulseaudio > /dev/null 2>&1;
+pulseaudio \
+wget > /dev/null 2>&1;
 
 
 echo "escaneando hardware amd, sincronizando repositorios do pacman e instalando drivers amd";
@@ -262,9 +228,9 @@ COMPRESSION=\"zstd\"" > /mnt/etc/mkinitcpio.conf;
 
 
 echo "adicionando arquivo linux.preset no diretorio /etc/mkinitcpio.d";
-echo "ALL_kver=\"/boot/vmlinuz-linux\"
+echo "ALL_kver=\"/boot/vmlinuz-bux\"
 PRESETS=('default')
-default_image=\"/boot/initramfs-linux.img\"" > /etc/mkinitcpio.d/linux.preset;
+default_image=\"\"" > /etc/mkinitcpio.d/linux.preset;
 
 
 echo "sobrescrevendo arquivo vconsole.conf no diretorio /etc";
@@ -287,12 +253,12 @@ echo bux > /mnt/etc/hostname;
 echo "entrando no ambiente arch-chroot";
 arch-chroot /mnt bash -c '
 
-
-wget -P /tmp https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.2.6.tar.xz && \
-tar xvpf /tmp/linux-*.tar.xz -C /tmp --xattrs-include="*.*" --numeric-owner && \
-rm -rf /tmp/linux-*.tar.xz && \
-make -C /tmp/linux-* tinyconfig && \
-KCONFIG_CONFIG=/tmp/linux-*/.config /tmp/linux-*/scripts/config \
+mkdir -p /KERNEL && \
+wget -P /KERNEL https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.2.6.tar.xz && \
+tar xvpf /KERNEL/linux-*.tar.xz -C /tmp --xattrs-include="*.*" --numeric-owner && \
+rm -rf /KERNEL/linux-*.tar.xz && \
+make -C /KERNEL/linux-* O=/KERNEL tinyconfig && \
+KCONFIG_CONFIG=/KERNEL/linux-*/.config /KERNEL/linux-*/scripts/config \
   --enable 64BIT \
   --enable ACPI \
   --enable EFI \
@@ -317,9 +283,9 @@ KCONFIG_CONFIG=/tmp/linux-*/.config /tmp/linux-*/scripts/config \
   --enable BLK_DEV_SD \
   --disable MODULES \
   --set-str CMDLINE 'root=/dev/sda2 rootwait rw console=ttyS0,115200 init=/bin/sh' && \
-make -C /tmp/linux-* olddefconfig && \
-make -C /tmp/linux-* -j$(nproc) && \
-mv /tmp/linux-*/arch/x86/boot/bzImage /boot/EFI && \
+make -C /KERNEL/linux-* O=/KERNEL olddefconfig && \
+make -C /KERNEL/linux-* O=/KERNEL -j$(nproc) && \
+mv /KERNEL/linux-*/arch/x86/boot/bzImage /boot/EFI && \
 mv /boot/EFI/bzImage /boot/EFI/vmlinuz-bux;
 
 
@@ -357,8 +323,7 @@ mkdir -p /mnt/boot/loader/entries;
 
 echo "adicionando arquivo de configuração do systemd-boot em /mnt/boot/EFI/loader/entries/arch.conf";
 echo "title BUX
-linux /vmlinuz-linux
-initrd /initramfs-linux.img
+linux /vmlinuz-bux
 options root=UUID=$(blkid -s UUID -o value "$ROOT") rw quiet loglevel=3 systemd.show_status=false rd.systemd.show_status=false mitigations=off nospectre_v1 nospectre_v2 spectre_v2=off spectre_bhi=off nopti pti=off nospec_store_bypass_disable l1tf=off mds=off tsx_async_abort=off srbds=off mmio_stale_data=off retbleed=off split_lock_detect=off split_lock_mitigate=0 bpf_jit_harden=0 nokaslr panic=0 debugfs=off audit=0 nowatchdog nmi_watchdog=0 softlockup_panic=0 hardlockup_panic=0 modprobe.blacklist=pcspkr,iTCO_wdt,iTCO_vendor_support,intel_oc_wdt" > /mnt/boot/loader/entries/arch.conf;
 
 
