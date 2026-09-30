@@ -255,7 +255,7 @@ arch-chroot /mnt bash -c '
 
 mkdir -p /KERNEL && \
 wget -P /KERNEL https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.2.6.tar.xz && \
-tar xvpf /KERNEL/linux-*.tar.xz -C /tmp --xattrs-include="*.*" --numeric-owner && \
+tar xvpf /KERNEL/linux-*.tar.xz -C /KERNEL --xattrs-include="*.*" --numeric-owner && \
 rm -rf /KERNEL/linux-*.tar.xz && \
 make -C /KERNEL/linux-* O=/KERNEL tinyconfig && \
 KCONFIG_CONFIG=/KERNEL/linux-*/.config /KERNEL/linux-*/scripts/config \
