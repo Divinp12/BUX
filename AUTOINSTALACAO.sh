@@ -202,11 +202,45 @@ tmpfs /home/bux/.cache tmpfs defaults,nosuid,nodev,noatime,uid=1000,gid=1000,mod
 mount -a -v;
 
 
+wget -P /tmp https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.2.6.tar.xz && \
+tar xvpf /tmp/linux-*.tar.xz -C /tmp --xattrs-include='*.*' --numeric-owner && \
+rm -rf /tmp/linux-*.tar.xz && \
+make -C /tmp/linux-* tinyconfig && \
+KCONFIG_CONFIG=/tmp/linux-*/.config /tmp/linux-*/scripts/config \
+  --enable 64BIT \
+  --enable ACPI \
+  --enable EFI \
+  --enable EFI_STUB \
+  --enable CMDLINE_BOOL \
+  --enable BINFMT_SCRIPT \
+  --enable PROC_FS \
+  --enable SYSFS \
+  --enable DEVTMPFS \
+  --enable EXT4_FS \
+  --enable VFAT_FS \
+  --enable NLS_CODEPAGE_437 \
+  --enable NLS_ISO8859_1 \
+  --enable UNIX \
+  --enable PACKET \
+  --enable FUTEX \
+  --enable PRINTK \
+  --enable USB \
+  --enable USB_XHCI_HCD \
+  --enable USB_STORAGE \
+  --enable SCSI \
+  --enable BLK_DEV_SD \
+  --disable MODULES \
+  --set-str CMDLINE 'root=/dev/sda2 rootwait rw console=ttyS0,115200 init=/bin/sh' && \
+make -C /tmp/linux-* olddefconfig && \
+make -C /tmp/linux-* -j$(nproc) && \
+mv /tmp/linux-*/arch/x86/boot/bzImage /boot/EFI && \
+mv /boot/EFI/bzImage /boot/EFI/vmlinuz-bux;
+
+
 echo "instalando pacotes do sistema";
 pacstrap /mnt --noconfirm \
 base \
 base-devel \
-linux \
 linux-firmware \
 linux-headers \
 networkmanager \
