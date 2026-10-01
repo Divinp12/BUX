@@ -277,6 +277,8 @@ KCONFIG_CONFIG=/KERNEL/linux-*/.config /KERNEL/linux-*/scripts/config \
   --enable PACKET \
   --enable FUTEX \
   --enable PRINTK \
+  --enable ATA \
+  --enable SATA_AHCI \
   --enable USB \
   --enable USB_XHCI_HCD \
   --enable USB_STORAGE \
