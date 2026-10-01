@@ -285,11 +285,10 @@ KCONFIG_CONFIG=/KERNEL/linux-*/.config /KERNEL/linux-*/scripts/config \
   --enable SCSI \
   --enable BLK_DEV_SD \
   --disable MODULES \
-  --set-str CMDLINE 'root=/dev/sda2 rootwait rw console=ttyS0,115200 init=/bin/sh' && \
+  --set-str CMDLINE "root=/dev/sda2 rootwait rw console=ttyS0,115200 init=/bin/sh" && \
 make -C /KERNEL/linux-* O=/KERNEL/linux-* olddefconfig && \
 make -C /KERNEL/linux-* O=/KERNEL/linux-* -j$(nproc) && \
-mv /KERNEL/linux-*/arch/x86/boot/bzImage /boot/EFI && \
-mv /boot/EFI/bzImage /boot/EFI/vmlinuz-bux;
+cp /KERNEL/linux-*/arch/x86/boot/bzImage /boot/EFI/vmlinuz-bux;
 
 
 echo "adicionando senha bux ao usuario root";
