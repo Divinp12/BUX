@@ -259,7 +259,7 @@ wget -P /KERNEL https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.2.6.tar.xz 
 tar xvpf /KERNEL/linux-*.tar.xz -C /KERNEL --xattrs-include="*.*" --numeric-owner && \
 rm -rf /KERNEL/linux-*.tar.xz && \
 make -C /KERNEL/linux-* O=/KERNEL tinyconfig && \
-KCONFIG_CONFIG=/KERNEL/linux-*/.config /KERNEL/linux-*/scripts/config \
+KCONFIG_CONFIG=/KERNEL/.config /KERNEL/linux-*/scripts/config \
   --enable 64BIT \
   --enable ACPI \
   --enable EFI \
