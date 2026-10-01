@@ -258,8 +258,8 @@ mkdir -p /KERNEL && \
 wget -P /KERNEL https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.2.6.tar.xz && \
 tar xvpf /KERNEL/linux-*.tar.xz -C /KERNEL --xattrs-include="*.*" --numeric-owner && \
 rm -rf /KERNEL/linux-*.tar.xz && \
-make -C /KERNEL/linux-* O=/KERNEL tinyconfig && \
-KCONFIG_CONFIG=/KERNEL/.config /KERNEL/linux-*/scripts/config \
+make -C /KERNEL/linux-* O=/KERNEL/linux-* tinyconfig && \
+KCONFIG_CONFIG=/KERNEL/linux-*/.config /KERNEL/linux-*/scripts/config \
   --enable 64BIT \
   --enable ACPI \
   --enable EFI \
@@ -286,8 +286,8 @@ KCONFIG_CONFIG=/KERNEL/.config /KERNEL/linux-*/scripts/config \
   --enable BLK_DEV_SD \
   --disable MODULES \
   --set-str CMDLINE 'root=/dev/sda2 rootwait rw console=ttyS0,115200 init=/bin/sh' && \
-make -C /KERNEL/linux-* O=/KERNEL olddefconfig && \
-make -C /KERNEL/linux-* O=/KERNEL -j$(nproc) && \
+make -C /KERNEL/linux-* O=/KERNEL/linux-* olddefconfig && \
+make -C /KERNEL/linux-* O=/KERNEL/linux-* -j$(nproc) && \
 mv /KERNEL/linux-*/arch/x86/boot/bzImage /boot/EFI && \
 mv /boot/EFI/bzImage /boot/EFI/vmlinuz-bux;
 
