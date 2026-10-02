@@ -255,7 +255,7 @@ echo "entrando no ambiente arch-chroot";
 arch-chroot /mnt bash -c '
 
 mkdir -p /KERNEL && \
-wget -P /KERNEL https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.2.6.tar.xz && \
+wget -P /KERNEL https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.2.8.tar.xz && \
 tar xvpf /KERNEL/linux-*.tar.xz -C /KERNEL --xattrs-include="*.*" --numeric-owner && \
 rm -rf /KERNEL/linux-*.tar.xz && \
 make -C /KERNEL/linux-* tinyconfig && \
@@ -269,6 +269,7 @@ make -C /KERNEL/linux-* tinyconfig && \
 --enable PROC_FS \
 --enable SYSFS \
 --enable DEVTMPFS \
+--enable DEVTMPFS_MOUNT \
 --enable EXT4_FS \
 --enable VFAT_FS \
 --enable NLS_CODEPAGE_437 \
