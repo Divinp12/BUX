@@ -288,7 +288,7 @@ make -C /KERNEL/linux-* tinyconfig && \
   --set-str CMDLINE "root=/dev/sda2 rootwait rw console=ttyS0,115200 init=/bin/sh" && \
 make -C /KERNEL/linux-* olddefconfig && \
 make -C /KERNEL/linux-* -j$(nproc) && \
-cp /KERNEL/linux-*/arch/x86/boot/bzImage /boot/EFI/vmlinuz-bux;
+cp /KERNEL/linux-*/arch/x86/boot/bzImage /boot/vmlinuz-bux;
 
 
 echo "adicionando senha bux ao usuario root";
