@@ -259,7 +259,7 @@ wget -P /KERNEL https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.2.8.tar.xz 
 tar xvpf /KERNEL/linux-*.tar.xz -C /KERNEL --xattrs-include="*.*" --numeric-owner && \
 rm -rf /KERNEL/linux-*.tar.xz && \
 make -C /KERNEL/linux-* tinyconfig && \
-/KERNEL/linux-*/scripts/config \
+KCONFIG_CONFIG=/KERNEL/linux-*/.config /KERNEL/linux-*/scripts/config \
 --enable 64BIT \
 --enable ACPI \
 --enable EFI \
@@ -319,11 +319,7 @@ locale-gen > /dev/null 2>&1;
 
 
 echo "sincronizando relogio";
-hwclock --systohc > /dev/null 2>&1;
-
-
-echo "gerando imagens no inicializador do sistema";
-mkinitcpio -P > /dev/null 2>&1;'
+hwclock --systohc > /dev/null 2>&1;'
 
 
 echo "configurando systemd-boot";
