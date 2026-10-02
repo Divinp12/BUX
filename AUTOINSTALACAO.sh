@@ -286,6 +286,14 @@ make -C /KERNEL/linux-* tinyconfig && \
 --enable BLK_DEV_SD \
 --enable VT \
 --enable VT_CONSOLE \
+--enable DRM \
+--enable DRM_KMS_HELPER \
+--enable DRM_I915 \
+--enable DRM_XE \
+--enable DRM_AMDGPU \
+--enable DRM_NOUVEAU \
+--enable FB \
+--enable FB_EFI \
 --disable MODULES \
 --set-str CMDLINE "root=/dev/sda2 rootwait rw console=tty1 init=/bin/sh" && \
 make -C /KERNEL/linux-* olddefconfig && \
