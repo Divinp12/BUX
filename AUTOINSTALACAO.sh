@@ -260,32 +260,34 @@ tar xvpf /KERNEL/linux-*.tar.xz -C /KERNEL --xattrs-include="*.*" --numeric-owne
 rm -rf /KERNEL/linux-*.tar.xz && \
 make -C /KERNEL/linux-* tinyconfig && \
 /KERNEL/linux-*/scripts/config \
-  --enable 64BIT \
-  --enable ACPI \
-  --enable EFI \
-  --enable EFI_STUB \
-  --enable CMDLINE_BOOL \
-  --enable BINFMT_SCRIPT \
-  --enable PROC_FS \
-  --enable SYSFS \
-  --enable DEVTMPFS \
-  --enable EXT4_FS \
-  --enable VFAT_FS \
-  --enable NLS_CODEPAGE_437 \
-  --enable NLS_ISO8859_1 \
-  --enable UNIX \
-  --enable PACKET \
-  --enable FUTEX \
-  --enable PRINTK \
-  --enable ATA \
-  --enable SATA_AHCI \
-  --enable USB \
-  --enable USB_XHCI_HCD \
-  --enable USB_STORAGE \
-  --enable SCSI \
-  --enable BLK_DEV_SD \
-  --disable MODULES \
-  --set-str CMDLINE "root=/dev/sda2 rootwait rw console=ttyS0,115200 init=/bin/sh" && \
+--enable 64BIT \
+--enable ACPI \
+--enable EFI \
+--enable EFI_STUB \
+--enable CMDLINE_BOOL \
+--enable BINFMT_SCRIPT \
+--enable PROC_FS \
+--enable SYSFS \
+--enable DEVTMPFS \
+--enable EXT4_FS \
+--enable VFAT_FS \
+--enable NLS_CODEPAGE_437 \
+--enable NLS_ISO8859_1 \
+--enable UNIX \
+--enable PACKET \
+--enable FUTEX \
+--enable PRINTK \
+--enable ATA \
+--enable SATA_AHCI \
+--enable USB \
+--enable USB_XHCI_HCD \
+--enable USB_STORAGE \
+--enable SCSI \
+--enable BLK_DEV_SD \
+--enable VT \
+--enable VT_CONSOLE \
+--disable MODULES \
+--set-str CMDLINE "root=/dev/sda2 rootwait rw console=tty1 init=/bin/sh" && \
 make -C /KERNEL/linux-* olddefconfig && \
 make -C /KERNEL/linux-* -j$(nproc) && \
 cp /KERNEL/linux-*/arch/x86/boot/bzImage /boot/vmlinuz-bux;
