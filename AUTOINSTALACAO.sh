@@ -1473,10 +1473,8 @@ sed -i -E \
 -e 's/^(# ?)?(CONFIG_BPF_UNPRIV_DEFAULT_OFF)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_BPF_PRELOAD)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_BPF_LSM)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_MODULES)(=.*| is not set)?$/\2=n/' \
 /KERNEL/linux-*/.config && \
-KCONFIG_CONFIG=/KERNEL/linux-*/.config /KERNEL/linux-*/scripts/config \
--d MODULES \
---set-str CMDLINE "root=/dev/sda2 rootwait rw console=tty1 init=/bin/sh" && \
 make -C /KERNEL/linux-* olddefconfig && \
 make -C /KERNEL/linux-* -j$(nproc) && \
 cp /KERNEL/linux-*/arch/x86/boot/bzImage /boot/vmlinuz-bux;
