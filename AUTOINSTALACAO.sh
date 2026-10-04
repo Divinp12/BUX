@@ -1420,8 +1420,8 @@ options root=UUID=$(blkid -s UUID -o value "$ROOT") rw quiet loglevel=3" > /mnt/
 
 echo "adicionando arquivo de configuração do systemd-boot em /mnt/boot/EFI/loader/loader.conf";
 echo "default arch.conf
-timeout 0
-editor no" > /mnt/boot/loader/loader.conf
+timeout 8
+editor yes" > /mnt/boot/loader/loader.conf
 
 
 echo "adicionando conexão ipv6 no sistema";
