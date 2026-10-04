@@ -260,7 +260,7 @@ tar xvpf /KERNEL/linux-*.tar.xz -C /KERNEL --xattrs-include="*.*" --numeric-owne
 rm -rf /KERNEL/linux-*.tar.xz && \
 make -C /KERNEL/linux-* defconfig && \
 sed -i -E \
--e 's/^(# ?)?(CONFIG_(ZPOOL|SWAP|ZSWAP|ZSMALLOC|ZRAM|MITIGATION|SUSPEND|HIBERNATE|WATCHDOG[A-Z0-9_]*))(=[ymn]| is not set)$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_(ZPOOL|SWAP|ZSWAP|ZSMALLOC|ZRAM|MITIGATION|SUSPEND|HIBERNATE|WATCHDOG|EXT2|EXT3|JFS|XFS[A-Z0-9_]*))(=[ymn]| is not set)$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_CPU_MITIGATIONS)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_ARCH_HIBERNATION_HEADER)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_SOFT_WATCHDOG)(=.*| is not set)?$/\2=n/' \
@@ -330,31 +330,9 @@ sed -i -E \
 -e 's/^(# ?)?(CONFIG_SIEMENS_SIMATIC_IPC_WDT)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_MEN_A21_WDT)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_XEN_WDT)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_EXT2_FS)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_EXT3_FS)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_JBD2)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_JBD2_DEBUG)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_FS_MBCACHE)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_JFS_FS)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_JFS_POSIX_ACL)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_JFS_SECURITY)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_JFS_DEBUG)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_JFS_STATISTICS)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_XFS_FS)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_XFS_SUPPORT_V4)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_XFS_SUPPORT_ASCII_CI)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_XFS_QUOTA)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_XFS_POSIX_ACL)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_XFS_RT)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_XFS_DRAIN_INTENTS)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_XFS_LIVE_HOOKS)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_XFS_MEMORY_BUFS)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_XFS_BTREE_IN_MEM)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_XFS_ONLINE_SCRUB)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_XFS_ONLINE_SCRUB_STATS)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_XFS_ONLINE_REPAIR)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_XFS_WARN)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_XFS_DEBUG)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_GFS2_FS)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_GFS2_FS_LOCKING_DLM)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_OCFS2_FS)(=.*| is not set)?$/\2=n/' \
