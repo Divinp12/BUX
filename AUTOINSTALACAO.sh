@@ -270,6 +270,7 @@ KCONFIG_CONFIG=/KERNEL/linux-*/.config /KERNEL/linux-*/scripts/config \
 -e SYSFS \
 -e DEVTMPFS \
 -e DEVTMPFS_MOUNT \
+-e BLOCK \
 -e EXT4_FS \
 -e VFAT_FS \
 -e NLS_CODEPAGE_437 \
