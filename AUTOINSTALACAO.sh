@@ -284,6 +284,10 @@ KCONFIG_CONFIG=/KERNEL/linux-*/.config /KERNEL/linux-*/scripts/config \
 -e USB \
 -e USB_XHCI_HCD \
 -e USB_STORAGE \
+-e USB_UAS \
+-e USB_HID \
+-e HID \
+-e HID_GENERIC \
 -e SCSI \
 -e BLK_DEV_SD \
 -e VT \
