@@ -295,6 +295,7 @@ KCONFIG_CONFIG=/KERNEL/linux-*/.config /KERNEL/linux-*/scripts/config \
 -e DRM_NOUVEAU \
 -e FB \
 -e FB_EFI \
+-e FRAMEBUFFER_CONSOLE \
 -d MODULES \
 --set-str CMDLINE "root=/dev/sda2 rootwait rw console=tty1 init=/bin/sh" && \
 make -C /KERNEL/linux-* olddefconfig && \
