@@ -279,12 +279,14 @@ KCONFIG_CONFIG=/KERNEL/linux-*/.config /KERNEL/linux-*/scripts/config \
 -e NLS_ISO8859_1 \
 -e UNIX \
 -e PACKET \
+-e NET \
 -e FUTEX \
 -e PRINTK \
 -e ATA \
 -e SATA_AHCI \
 -e INPUT \
 -e INPUT_KEYBOARD \
+-e KEYBOARD_ATKBD \
 -e SERIO \
 -e SERIO_I8042 \
 -e USB \
@@ -310,6 +312,7 @@ KCONFIG_CONFIG=/KERNEL/linux-*/.config /KERNEL/linux-*/scripts/config \
 -e FB \
 -e FB_EFI \
 -e FRAMEBUFFER_CONSOLE \
+-e X86_SYSFB \
 -d MODULES \
 --set-str CMDLINE "root=/dev/sda2 rootwait rw console=tty1 init=/bin/sh" && \
 make -C /KERNEL/linux-* olddefconfig && \
