@@ -275,6 +275,7 @@ KCONFIG_CONFIG=/KERNEL/linux-*/.config /KERNEL/linux-*/scripts/config \
 -e BLOCK \
 -e EXT4_FS \
 -e VFAT_FS \
+-e TMPFS \
 -e NLS_CODEPAGE_437 \
 -e NLS_ISO8859_1 \
 -e UNIX \
