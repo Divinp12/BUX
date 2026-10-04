@@ -260,28 +260,9 @@ tar xvpf /KERNEL/linux-*.tar.xz -C /KERNEL --xattrs-include="*.*" --numeric-owne
 rm -rf /KERNEL/linux-*.tar.xz && \
 make -C /KERNEL/linux-* defconfig && \
 sed -i -E \
--e 's/^(# ?)?(CONFIG_(ZPOOL|SWAP|ZSWAP|ZSMALLOC|ZRAM|MITIGATION[A-Z0-9_]*))(=[ymn]| is not set)$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_(ZPOOL|SWAP|ZSWAP|ZSMALLOC|ZRAM|MITIGATION|SUSPEND|HIBERNATE|WATCHDOG[A-Z0-9_]*))(=[ymn]| is not set)$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_CPU_MITIGATIONS)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_SUSPEND)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_SUSPEND_FREEZER)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_ARCH_HIBERNATION_HEADER)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_HIBERNATE_CALLBACKS)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_HIBERNATION)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_HIBERNATION_SNAPSHOT_DEV)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_HIBERNATION_COMP_LZO)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_HIBERNATION_COMP_LZ4)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_WATCHDOG)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_WATCHDOG_CORE)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_WATCHDOG_NOWAYOUT)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_WATCHDOG_HANDLE_BOOT_ENABLED)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_WATCHDOG_SYSFS)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_WATCHDOG_HRTIMER_PRETIMEOUT)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_WATCHDOG_PRETIMEOUT_GOV)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_WATCHDOG_PRETIMEOUT_GOV_SEL)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_WATCHDOG_PRETIMEOUT_GOV_NOOP)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_WATCHDOG_PRETIMEOUT_GOV_PANIC)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_WATCHDOG_PRETIMEOUT_DEFAULT_GOV_NOOP)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_WATCHDOG_PRETIMEOUT_DEFAULT_GOV_PANIC)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_SOFT_WATCHDOG)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_SOFT_WATCHDOG_PRETIMEOUT)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_CROS_EC_WATCHDOG)(=.*| is not set)?$/\2=n/' \
