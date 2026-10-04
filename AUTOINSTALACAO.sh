@@ -282,6 +282,7 @@ KCONFIG_CONFIG=/KERNEL/linux-*/.config /KERNEL/linux-*/scripts/config \
 -e NET \
 -e FUTEX \
 -e PRINTK \
+-e SMP \
 -e ATA \
 -e SATA_AHCI \
 -e INPUT \
