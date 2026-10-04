@@ -260,8 +260,7 @@ tar xvpf /KERNEL/linux-*.tar.xz -C /KERNEL --xattrs-include="*.*" --numeric-owne
 rm -rf /KERNEL/linux-*.tar.xz && \
 make -C /KERNEL/linux-* defconfig && \
 sed -i -E \
--e 's/^(# ?)?(CONFIG_ZPOOL)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_SWAP)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_(ZPOOL|SWAP|ZSWAP[A-Z0-9_]*))(=[ymn]| is not set)$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_ZSWAP)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_ZSWAP_DEFAULT_ON)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_ZSWAP_SHRINKER_DEFAULT_ON)(=.*| is not set)?$/\2=n/' \
