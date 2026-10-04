@@ -283,6 +283,10 @@ KCONFIG_CONFIG=/KERNEL/linux-*/.config /KERNEL/linux-*/scripts/config \
 -e PRINTK \
 -e ATA \
 -e SATA_AHCI \
+-e INPUT \
+-e INPUT_KEYBOARD \
+-e SERIO \
+-e SERIO_I8042 \
 -e USB \
 -e USB_SUPPORT \
 -e USB_XHCI_PCI \
