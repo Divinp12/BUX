@@ -261,11 +261,13 @@ rm -rf /KERNEL/linux-*.tar.xz && \
 make -C /KERNEL/linux-* tinyconfig && \
 KCONFIG_CONFIG=/KERNEL/linux-*/.config /KERNEL/linux-*/scripts/config \
 -e 64BIT \
+-e PCI \
 -e ACPI \
 -e EFI \
 -e EFI_STUB \
 -e CMDLINE_BOOL \
 -e BINFMT_SCRIPT \
+-e BINFMT_ELF \
 -e PROC_FS \
 -e SYSFS \
 -e DEVTMPFS \
@@ -282,6 +284,8 @@ KCONFIG_CONFIG=/KERNEL/linux-*/.config /KERNEL/linux-*/scripts/config \
 -e ATA \
 -e SATA_AHCI \
 -e USB \
+-e USB_SUPPORT \
+-e USB_XHCI_PCI \
 -e USB_XHCI_HCD \
 -e USB_STORAGE \
 -e USB_UAS \
@@ -290,6 +294,7 @@ KCONFIG_CONFIG=/KERNEL/linux-*/.config /KERNEL/linux-*/scripts/config \
 -e HID_GENERIC \
 -e SCSI \
 -e BLK_DEV_SD \
+-e TTY \
 -e VT \
 -e VT_CONSOLE \
 -e DRM \
