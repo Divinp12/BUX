@@ -262,6 +262,7 @@ make -C /KERNEL/linux-* tinyconfig && \
 KCONFIG_CONFIG=/KERNEL/linux-*/.config /KERNEL/linux-*/scripts/config \
 -e 64BIT \
 -e PCI \
+-e PCI_MSI \
 -e ACPI \
 -e EFI \
 -e EFI_STUB \
