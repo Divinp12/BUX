@@ -259,17 +259,7 @@ wget -P /KERNEL https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.2.8.tar.xz 
 tar xvpf /KERNEL/linux-*.tar.xz -C /KERNEL --xattrs-include="*.*" --numeric-owner && \
 rm -rf /KERNEL/linux-*.tar.xz && \
 make -C /KERNEL/linux-* defconfig && \
-
-
-#!/bin/bash
-
-clear && \
-cd /home/bux/ && \
-sudo pacman -Sy --noconfirm bc coreutils cpio gettext initramfs kmod libelf ncurses pahole perl python3 tar xz && \
-git clone https://gitlab.archlinux.org/archlinux/packaging/packages/linux.git && \
-#-e 's/^(# ?)?(testandoollll)(=.*| is not set)?$/\2=n/' \
-
-sudo sed -i -E \
+sed -i -E \
 -e 's/^(# ?)?(CONFIG_ZPOOL)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_SWAP)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_ZSWAP)(=.*| is not set)?$/\2=n/' \
