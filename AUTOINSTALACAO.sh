@@ -1168,7 +1168,7 @@ mkdir -p /mnt/boot/loader/entries;
 echo "adicionando arquivo de configuração do systemd-boot em /mnt/boot/EFI/loader/entries/arch.conf";
 echo "title BUX
 linux /vmlinuz-bux
-options root=UUID=$(blkid -s UUID -o value "$ROOT") rw quiet loglevel=3 console=tty1" > /mnt/boot/loader/entries/arch.conf;
+options root=PARTUUID=$(blkid -s PARTUUID -o value "$ROOT") rw quiet loglevel=3 console=tty1" > /mnt/boot/loader/entries/arch.conf;
 
 
 echo "adicionando arquivo de configuração do systemd-boot em /mnt/boot/EFI/loader/loader.conf";
