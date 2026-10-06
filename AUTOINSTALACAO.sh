@@ -136,8 +136,8 @@ mount --mkdir -t tmpfs -o rw,nosuid,nodev,noexec,noatime,mode=0755,size=100% tmp
 mount --mkdir -t tmpfs -o rw,nosuid,nodev,noexec,noatime,mode=0755,size=100% tmpfs /mnt/var/lib/pacman/sync && \
 mount --mkdir "$BOOT" /mnt/boot > /dev/null 2>&1 && \
 mkdir -p /mnt/etc && \
-echo "UUID=$(blkid -s UUID -o value "$BOOT") /boot/EFI vfat rw,noatime 0 2
-UUID=$(blkid -s UUID -o value "$ROOT") / ext4 defaults,rw,noatime 0 1
+echo "PARTUUID=$(blkid -s PARTUUID -o value "$BOOT") /boot/EFI vfat rw,noatime 0 2
+PARTUUID=$(blkid -s PARTUUID -o value "$ROOT") / ext4 defaults,rw,noatime 0 1
 tmpfs /run tmpfs rw,nosuid,nodev,noatime,size=100%,nr_inodes=819200,mode=755,inode64,huge=advise 0 0
 tmpfs /tmp tmpfs defaults,nosuid,nodev,noatime,mode=1777,size=100% 0 0
 tmpfs /var/cache tmpfs defaults,nosuid,nodev,noatime,size=100% 0 0
@@ -1510,7 +1510,7 @@ mkdir -p /mnt/boot/loader/entries;
 echo "adicionando arquivo de configuração do systemd-boot em /mnt/boot/EFI/loader/entries/arch.conf";
 echo "title BUX
 linux /vmlinuz-bux
-options root=PARTUUID=$(blkid -s PARTUUID -o value "$ROOT") rw quiet loglevel=3 init=/bin/bash console=tty1" > /mnt/boot/loader/entries/arch.conf;
+options root=PARTUUID=$(blkid -s PARTUUID -o value "$ROOT") rootfstype=ext4 rootwait rw quiet loglevel=3 init=/bin/bash console=tty1" > /mnt/boot/loader/entries/arch.conf;
 
 
 echo "adicionando arquivo de configuração do systemd-boot em /mnt/boot/EFI/loader/loader.conf";
