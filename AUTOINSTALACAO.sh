@@ -1476,6 +1476,9 @@ sed -i -E \
 -e 's/^(# ?)?(CONFIG_MODULES)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_DRM_FBDEV_EMULATION)(=.*| is not set)?$/\2=y/' \
 -e 's/^(# ?)?(CONFIG_IWLWIFI)(=.*| is not set)?$/\2=y/' \
+-e 's/^(# ?)?(CONFIG_WLAN)(=.*| is not set)?$/\2=y/' \
+-e 's/^(# ?)?(CONFIG_WLAN_VENDOR_INTEL)(=.*| is not set)?$/\2=y/' \
+-e 's/^(# ?)?(CONFIG_RFKILL)(=.*| is not set)?$/\2=y/' \
 /KERNEL/linux-*/.config && \
 make -C /KERNEL/linux-* -j$(nproc) && \
 cp /KERNEL/linux-*/arch/x86/boot/bzImage /boot/vmlinuz-bux;
