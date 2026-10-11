@@ -252,7 +252,7 @@ echo bux > /mnt/etc/hostname;
 
 
 echo "entrando no ambiente arch-chroot";
-arch-chroot /mnt bash -c '
+arch-chroot /mnt bash -c "
 
 mkdir -p /KERNEL && \
 wget -P /KERNEL https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.2.8.tar.xz && \
@@ -1474,11 +1474,12 @@ sed -i -E \
 -e 's/^(# ?)?(CONFIG_BPF_PRELOAD)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_BPF_LSM)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_MODULES)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_DRM_FBDEV_EMULATION)(=.*| is not set)?$/\2=y/' \
 /KERNEL/linux-*/.config && \
 make -C /KERNEL/linux-* -j$(nproc) && \
 cp /KERNEL/linux-*/arch/x86/boot/bzImage /boot/vmlinuz-bux;
-
-
+"
+arch-chroot /mnt bash -c '
 echo "adicionando senha bux ao usuario root";
 echo -e "bux\nbux" | passwd root > /dev/null 2>&1;
 
