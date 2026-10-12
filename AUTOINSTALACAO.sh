@@ -260,6 +260,8 @@ tar xvpf /KERNEL/linux-*.tar.xz -C /KERNEL --xattrs-include="*.*" --numeric-owne
 rm -rf /KERNEL/linux-*.tar.xz && \
 make -C /KERNEL/linux-* defconfig && \
 sed -i -E \
+-e 's/^(# ?)?(CONFIG_MODULES)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_LOGO)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_ZPOOL)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_SWAP)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_ZSWAP)(=.*| is not set)?$/\2=n/' \
@@ -1473,12 +1475,22 @@ sed -i -E \
 -e 's/^(# ?)?(CONFIG_BPF_UNPRIV_DEFAULT_OFF)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_BPF_PRELOAD)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_BPF_LSM)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_MODULES)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_DRM_FBDEV_EMULATION)(=.*| is not set)?$/\2=y/' \
 -e 's/^(# ?)?(CONFIG_IWLWIFI)(=.*| is not set)?$/\2=y/' \
 -e 's/^(# ?)?(CONFIG_WLAN)(=.*| is not set)?$/\2=y/' \
 -e 's/^(# ?)?(CONFIG_WLAN_VENDOR_INTEL)(=.*| is not set)?$/\2=y/' \
 -e 's/^(# ?)?(CONFIG_RFKILL)(=.*| is not set)?$/\2=y/' \
+-e 's/^(# ?)?(CONFIG_FB)(=.*| is not set)?$/\2=y/' \
+-e 's/^(# ?)?(CONFIG_FB_EFI)(=.*| is not set)?$/\2=y/' \
+-e 's/^(# ?)?(CONFIG_FB_DEVICE)(=.*| is not set)?$/\2=y/' \
+-e 's/^(# ?)?(CONFIG_DRM_FBDEV_EMULATION)(=.*| is not set)?$/\2=y/' \
+-e 's/^(# ?)?(CONFIG_DRM_FBDEV_OVERALLOC)(=.*| is not set)?$/\2=100/' \
+-e 's/^(# ?)?(CONFIG_DRM_CLIENT_LOG)(=.*| is not set)?$/\2=y/' \
+-e 's/^(# ?)?(CONFIG_DRM_CLIENT_DEFAULT_FBDEV)(=.*| is not set)?$/\2=y/' \
+-e 's/^(# ?)?(CONFIG_FRAMEBUFFER_CONSOLE)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_FRAMEBUFFER_CONSOLE_LEGACY_ACCELERATION)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_FRAMEBUFFER_CONSOLE_DETECT_PRIMARY)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_FRAMEBUFFER_CONSOLE_ROTATION)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_FRAMEBUFFER_CONSOLE_DEFERRED_TAKEOVER)(=.*| is not set)?$/\2=n/' \
 /KERNEL/linux-*/.config && \
 make -C /KERNEL/linux-* -j$(nproc) && \
 cp /KERNEL/linux-*/arch/x86/boot/bzImage /boot/vmlinuz-bux;
