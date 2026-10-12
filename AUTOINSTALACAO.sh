@@ -260,6 +260,7 @@ tar xvpf /KERNEL/linux-*.tar.xz -C /KERNEL --xattrs-include="*.*" --numeric-owne
 rm -rf /KERNEL/linux-*.tar.xz && \
 make -C /KERNEL/linux-* defconfig && \
 sed -i -E \
+-e '/^\s*$/d' \
 -e 's/^(# ?)?(CONFIG_MODULES)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_LOGO)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_ZPOOL)(=.*| is not set)?$/\2=n/' \
