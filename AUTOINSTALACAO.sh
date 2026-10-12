@@ -287,6 +287,10 @@ sed -i -E \
 -e 's/^(# ?)?(CONFIG_VHOST_[^= ]+)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_VIRTIO)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_VIRTIO_[^= ]+)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_KVM)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_KVM_[^= ]+)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_HAVE_KVM)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_HAVE_KVM_[^= ]+)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_NFC)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_NFC_[^= ]+)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_DVB)(=.*| is not set)?$/\2=n/' \
@@ -388,7 +392,6 @@ sed -i -E \
 -e 's/^(# ?)?(CONFIG_NIC7018_WDT)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_SIEMENS_SIMATIC_IPC_WDT)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_MEN_A21_WDT)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_XEN_WDT)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_EXT2_FS)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_EXT3_FS)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_JBD2)(=.*| is not set)?$/\2=n/' \
@@ -640,47 +643,8 @@ sed -i -E \
 -e 's/^(# ?)?(CONFIG_SECTION_MISMATCH_WARN_ONLY)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_OBJTOOL)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_OBJTOOL_WERROR)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_KVM_COMMON)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_HAVE_KVM_PFNCACHE)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_HAVE_KVM_IRQCHIP)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_HAVE_KVM_IRQ_ROUTING)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_HAVE_KVM_DIRTY_RING)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_HAVE_KVM_DIRTY_RING_TSO)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_HAVE_KVM_DIRTY_RING_ACQ_REL)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_KVM_MMIO)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_KVM_ASYNC_PF)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_HAVE_KVM_MSI)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_HAVE_KVM_READONLY_MEM)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_HAVE_KVM_CPU_RELAX_INTERCEPT)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_KVM_VFIO)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_KVM_GENERIC_DIRTYLOG_READ_PROTECT)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_KVM_GENERIC_PRE_FAULT_MEMORY)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_KVM_COMPAT)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_HAVE_KVM_IRQ_BYPASS)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_HAVE_KVM_NO_POLL)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_KVM_XFER_TO_GUEST_WORK)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_HAVE_KVM_PM_NOTIFIER)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_KVM_GENERIC_HARDWARE_ENABLING)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_KVM_GENERIC_MMU_NOTIFIER)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_KVM_ELIDE_TLB_FLUSH_IF_YOUNG)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_KVM_MMU_LOCKLESS_AGING)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_KVM_GENERIC_MEMORY_ATTRIBUTES)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_KVM_PRIVATE_MEM)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_KVM_GENERIC_PRIVATE_MEM)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_HAVE_KVM_ARCH_GMEM_PREPARE)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_HAVE_KVM_ARCH_GMEM_INVALIDATE)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_VIRTUALIZATION)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_KVM_X86)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_KVM)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_KVM_INTEL)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_X86_SGX_KVM)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_KVM_AMD)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_KVM_AMD_SEV)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_KVM_IOAPIC)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_KVM_SMM)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_KVM_HYPERV)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_KVM_XEN)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_KVM_EXTERNAL_WRITE_TRACKING)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_HYPERVISOR_GUEST)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_PARAVIRT)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_PARAVIRT_XXL)(=.*| is not set)?$/\2=n/' \
