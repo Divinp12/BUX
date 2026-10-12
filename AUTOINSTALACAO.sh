@@ -1520,8 +1520,8 @@ options root=PARTUUID=$(blkid -s PARTUUID -o value "$ROOT") rootfstype=ext4 root
 
 echo "adicionando arquivo de configuração do systemd-boot em /mnt/boot/EFI/loader/loader.conf";
 echo "default arch.conf
-timeout 8
-editor yes" > /mnt/boot/loader/loader.conf
+timeout 0
+editor no" > /mnt/boot/loader/loader.conf
 
 
 echo "adicionando conexão ipv6 no sistema";
@@ -1660,6 +1660,21 @@ StandardInput=tty
 StandardOutput=tty
 [Install]
 WantedBy=multi-user.target" > /mnt/etc/systemd/system/autologin.service
+
+
+echo "adicionando autostart do iwlwifi";
+echo "[Unit]
+Description=Religar o iwlwifi com o firmware disponivel
+After=local-fs.target
+Before=NetworkManager.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=-/usr/bin/bash -c 'echo 0000:00:14.3 > /sys/bus/pci/drivers/iwlwifi/bind'
+
+[Install]
+WantedBy=multi-user.target" > /etc/systemd/system/iwlwifi-bind.service
 
 
 echo "adicionando autologin na inicialização";
