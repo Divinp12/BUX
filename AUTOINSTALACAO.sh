@@ -303,6 +303,10 @@ sed -i -E \
 -e 's/^(# ?)?(CONFIG_YENTA_[^= ]+)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_BT)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_BT_[^= ]+)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_MISDN)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_MISDN_[^= ]+)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_PPS)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_PPS_[^= ]+)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_MODULES)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_LOGO)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_ZPOOL)(=.*| is not set)?$/\2=n/' \
@@ -759,24 +763,6 @@ sed -i -E \
 -e 's/^(# ?)?(CONFIG_I82092)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_PCCARD_NONSTATIC)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_RAPIDIO)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_MISDN_HFCPCI)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_MISDN_HFCMULTI)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_MISDN_HFCUSB)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_MISDN_AVMFRITZ)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_MISDN_SPEEDFAX)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_MISDN_INFINEON)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_MISDN_W6692)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_MISDN_NETJET)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_MISDN_HDLC)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_MISDN_IPAC)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_MISDN_ISAR)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_PPS_CLIENT_KTIMER)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_PPS_CLIENT_LDISC)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_PPS_CLIENT_PARPORT)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_PPS_CLIENT_GPIO)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_PPS_GENERATOR)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_PPS_GENERATOR_DUMMY)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_PPS_GENERATOR_TIO)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_PTP_1588_CLOCK)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_PTP_1588_CLOCK_OPTIONAL)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_DP83640_PHY)(=.*| is not set)?$/\2=n/' \
