@@ -841,6 +841,11 @@ sed -i -E \
 /KERNEL/linux-*/.config && \
 make -C /KERNEL/linux-* -j$(nproc) && \
 cp /KERNEL/linux-*/arch/x86/boot/bzImage /boot/vmlinuz-bux;
+
+
+mkdir -p /FIRMWARE && \
+git clone --depth 1 --branch 20260916 https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git /FIRMWARE && \
+make -C /FIRMWARE -j$(nproc) FIRMWAREDIR=/usr/lib/firmware install;
 "
 arch-chroot /mnt bash -c '
 echo "adicionando senha bux ao usuario root";
