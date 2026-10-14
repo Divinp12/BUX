@@ -784,6 +784,14 @@ sed -i -E \
 -e 's/^(# ?)?(CONFIG_FRAMEBUFFER_CONSOLE_DETECT_PRIMARY)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_FRAMEBUFFER_CONSOLE_ROTATION)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_FRAMEBUFFER_CONSOLE_DEFERRED_TAKEOVER)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_NAMESPACES)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_UTS_NS)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_TIME_NS)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_TIME_NS_VDSO)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_IPC_NS)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_USER_NS)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_PID_NS)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_NET_NS)(=.*| is not set)?$/\2=n/' \
 /KERNEL/linux-*/.config && \
 make -C /KERNEL/linux-* -j$(nproc) && \
 cp /KERNEL/linux-*/arch/x86/boot/bzImage /boot/vmlinuz-bux;
