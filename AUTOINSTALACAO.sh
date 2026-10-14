@@ -311,13 +311,14 @@ sed -i -E \
 -e 's/^(# ?)?(CONFIG_LOGO)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_ZPOOL)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_SUSPEND)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_SUSPEND_FREEZER)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_SUSPEND_[^= ]+)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_ARCH_HIBERNATION_HEADER)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_HIBERNATE_CALLBACKS)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_HIBERNATION)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_HIBERNATION_SNAPSHOT_DEV)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_HIBERNATION_COMP_LZO)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_HIBERNATION_COMP_LZ4)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_HIBERNATION_[^= ]+)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_EXT2_FS)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_EXT2_[^= ]+)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_EXT3_FS)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_EXT3_[^= ]+)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_WATCHDOG)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_WATCHDOG_CORE)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_WATCHDOG_NOWAYOUT)(=.*| is not set)?$/\2=n/' \
@@ -396,8 +397,6 @@ sed -i -E \
 -e 's/^(# ?)?(CONFIG_NIC7018_WDT)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_SIEMENS_SIMATIC_IPC_WDT)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_MEN_A21_WDT)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_EXT2_FS)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_EXT3_FS)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_JBD2)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_JBD2_DEBUG)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_FS_MBCACHE)(=.*| is not set)?$/\2=n/' \
@@ -638,7 +637,6 @@ sed -i -E \
 -e 's/^(# ?)?(CONFIG_AS_HAS_NON_CONST_ULEB128)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_PAHOLE_HAS_SPLIT_BTF)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_PAHOLE_HAS_LANG_EXCLUDE)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_MODULE_ALLOW_BTF_MISMATCH)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_GDB_SCRIPTS)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_FRAME_WARN)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_STRIP_ASM_SYMS)(=.*| is not set)?$/\2=n/' \
