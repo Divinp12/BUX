@@ -305,17 +305,7 @@ sed -i -E \
 -e 's/^(# ?)?(CONFIG_EXT3_FS)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_EXT3_[^= ]+)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_WATCHDOG)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_WATCHDOG_CORE)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_WATCHDOG_NOWAYOUT)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_WATCHDOG_HANDLE_BOOT_ENABLED)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_WATCHDOG_SYSFS)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_WATCHDOG_HRTIMER_PRETIMEOUT)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_WATCHDOG_PRETIMEOUT_GOV)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_WATCHDOG_PRETIMEOUT_GOV_SEL)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_WATCHDOG_PRETIMEOUT_GOV_NOOP)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_WATCHDOG_PRETIMEOUT_GOV_PANIC)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_WATCHDOG_PRETIMEOUT_DEFAULT_GOV_NOOP)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_WATCHDOG_PRETIMEOUT_DEFAULT_GOV_PANIC)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_WATCHDOG_[^= ]+)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_SOFT_WATCHDOG)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_SOFT_WATCHDOG_PRETIMEOUT)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_CROS_EC_WATCHDOG)(=.*| is not set)?$/\2=n/' \
