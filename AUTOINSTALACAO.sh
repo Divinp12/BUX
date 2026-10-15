@@ -154,8 +154,7 @@ bc > /dev/null 2>&1;
 
 echo "escaneando hardware amd, sincronizando repositorios do pacman e instalando drivers amd";
 if lspci | grep -i amd > /dev/null 2>&1; then
-pacstrap /mnt --noconfirm \
-vulkan-radeon > /dev/null 2>&1;
+pacstrap /mnt --noconfirm vulkan-radeon > /dev/null 2>&1;
 else
 echo "Ñ ENCONTRADO";
 fi;
@@ -163,8 +162,7 @@ fi;
 
 echo "escaneando hardware intel, sincronizando repositorios do pacman e instalando drivers intel";
 if lspci | grep -i intel > /dev/null 2>&1; then
-pacstrap /mnt --noconfirm \
-vulkan-intel > /dev/null 2>&1;
+pacstrap /mnt --noconfirm vulkan-intel > /dev/null 2>&1;
 else
 echo "Ñ ENCONTRADO";
 fi;
@@ -172,11 +170,7 @@ fi;
 
 echo "escaneando hardware nvidia, sincronizando repositorios do pacman e instalando drivers nvidia";
 if lspci | grep -i nvidia > /dev/null 2>&1; then
-pacstrap /mnt --noconfirm \
-nvidia \
-nvidia-dkms \
-nvidia-utils \
-nvidia-settings > /dev/null 2>&1;
+pacstrap /mnt --noconfirm vulkan-nouveau > /dev/null 2>&1;
 else
 echo "Ñ ENCONTRADO";
 fi;
