@@ -332,6 +332,14 @@ sed -i -E \
 -e 's/^(# ?)?(CONFIG_SECURITY_SELINUX_[^= ]+)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_IOMMU)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_IOMMU_[^= ]+)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_ATH5K)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_ATH5K_[^= ]+)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_ATH9K)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_ATH9K_[^= ]+)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_TABLET)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_TABLET_[^= ]+)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_CEC)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_CEC_[^= ]+)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_WATCHDOG)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_WATCHDOG_[^= ]+)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_SOFT_WATCHDOG)(=.*| is not set)?$/\2=n/' \
@@ -416,12 +424,6 @@ sed -i -E \
 -e 's/^(# ?)?(CONFIG_ZISOFS)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_UDF_FS)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_INPUT_TABLET)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_TABLET_USB_ACECAD)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_TABLET_USB_AIPTEK)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_TABLET_USB_HANWANG)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_TABLET_USB_KBTAB)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_TABLET_USB_PEGASUS)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_TABLET_SERIAL_WACOM4)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_INPUT_TOUCHSCREEN)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_AFE4403)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_AFE4404)(=.*| is not set)?$/\2=n/' \
@@ -591,18 +593,8 @@ sed -i -E \
 -e 's/^(# ?)?(CONFIG_IOMMUFD_DRIVER_CORE)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_IOMMUFD)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_IRQ_REMAP)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_CEC_CORE)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_CEC_NOTIFIER)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_CEC_PIN)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_MEDIA_CEC_RC)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_CEC_PIN_ERROR_INJ)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_MEDIA_CEC_SUPPORT)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_CEC_CH7322)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_CEC_NXP_TDA9950)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_CEC_CROS_EC)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_CEC_GPIO)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_CEC_SECO)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_CEC_SECO_RC)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_USB_EXTRON_DA_HD_4K_PLUS_CEC)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_USB_PULSE8_CEC)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_USB_RAINSHADOW_CEC)(=.*| is not set)?$/\2=n/' \
