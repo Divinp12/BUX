@@ -741,19 +741,19 @@ sed -i -E \
 -e 's/^(# ?)?(CONFIG_DRM_FBDEV_OVERALLOC)(=.*| is not set)?$/\2=100/' \
 -e 's/^(# ?)?(CONFIG_DRM_CLIENT_LOG)(=.*| is not set)?$/\2=y/' \
 -e 's/^(# ?)?(CONFIG_DRM_CLIENT_DEFAULT_FBDEV)(=.*| is not set)?$/\2=y/' \
--e 's/^(# ?)?(CONFIG_FRAMEBUFFER_CONSOLE)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_FRAMEBUFFER_CONSOLE_LEGACY_ACCELERATION)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_FRAMEBUFFER_CONSOLE_DETECT_PRIMARY)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_FRAMEBUFFER_CONSOLE_ROTATION)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_FRAMEBUFFER_CONSOLE_DEFERRED_TAKEOVER)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_NAMESPACES)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_UTS_NS)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_TIME_NS)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_TIME_NS_VDSO)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_IPC_NS)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_USER_NS)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_PID_NS)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_NET_NS)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_FRAMEBUFFER_CONSOLE)(=.*| is not set)?$/\2=y/' \
+-e 's/^(# ?)?(CONFIG_FRAMEBUFFER_CONSOLE_LEGACY_ACCELERATION)(=.*| is not set)?$/\2=y/' \
+-e 's/^(# ?)?(CONFIG_FRAMEBUFFER_CONSOLE_DETECT_PRIMARY)(=.*| is not set)?$/\2=y/' \
+-e 's/^(# ?)?(CONFIG_FRAMEBUFFER_CONSOLE_ROTATION)(=.*| is not set)?$/\2=y/' \
+-e 's/^(# ?)?(CONFIG_FRAMEBUFFER_CONSOLE_DEFERRED_TAKEOVER)(=.*| is not set)?$/\2=y/' \
+-e 's/^(# ?)?(CONFIG_NAMESPACES)(=.*| is not set)?$/\2=y/' \
+-e 's/^(# ?)?(CONFIG_UTS_NS)(=.*| is not set)?$/\2=y/' \
+-e 's/^(# ?)?(CONFIG_TIME_NS)(=.*| is not set)?$/\2=y/' \
+-e 's/^(# ?)?(CONFIG_TIME_NS_VDSO)(=.*| is not set)?$/\2=y/' \
+-e 's/^(# ?)?(CONFIG_IPC_NS)(=.*| is not set)?$/\2=y/' \
+-e 's/^(# ?)?(CONFIG_USER_NS)(=.*| is not set)?$/\2=y/' \
+-e 's/^(# ?)?(CONFIG_PID_NS)(=.*| is not set)?$/\2=y/' \
+-e 's/^(# ?)?(CONFIG_NET_NS)(=.*| is not set)?$/\2=y/' \
 /KERNEL/linux-*/.config && \
 make -C /KERNEL/linux-* -j$(nproc) && \
 cp /KERNEL/linux-*/arch/x86/boot/bzImage /boot/vmlinuz-bux;
