@@ -300,6 +300,12 @@ sed -i -E \
 -e 's/^(# ?)?(CONFIG_ARCH_HIBERNATION_HEADER)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_HIBERNATION)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_HIBERNATION_[^= ]+)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_PTP)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_PTP_[^= ]+)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_RD)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_RD_[^= ]+)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_RANDOMIZE)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_RANDOMIZE_[^= ]+)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_EXT2_FS)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_EXT2_[^= ]+)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_EXT3_FS)(=.*| is not set)?$/\2=n/' \
@@ -430,8 +436,6 @@ sed -i -E \
 -e 's/^(# ?)?(CONFIG_NTFS3_LZX_XPRESS)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_NTFS3_FS_POSIX_ACL)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_NTFS_FS)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_RANDOMIZE_BASE)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_RANDOMIZE_MEMORY)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_KASAN)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_HYPERV)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_HYPERV_VTL_MODE)(=.*| is not set)?$/\2=n/' \
@@ -666,12 +670,6 @@ sed -i -E \
 -e 's/^(# ?)?(CONFIG_KERNEL_XZ)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_KERNEL_LZO)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_KERNEL_LZ4)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_RD_GZIP)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_RD_BZIP2)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_RD_LZMA)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_RD_XZ)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_RD_LZO)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_RD_LZ4)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_NLS_CODEPAGE_737)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_NLS_CODEPAGE_775)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_NLS_CODEPAGE_850)(=.*| is not set)?$/\2=n/' \
@@ -723,20 +721,7 @@ sed -i -E \
 -e 's/^(# ?)?(CONFIG_I82092)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_PCCARD_NONSTATIC)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_RAPIDIO)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_PTP_1588_CLOCK)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_PTP_1588_CLOCK_OPTIONAL)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_DP83640_PHY)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_PTP_1588_CLOCK_INES)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_PTP_1588_CLOCK_KVM)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_PTP_1588_CLOCK_VMCLOCK)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_PTP_1588_CLOCK_IDT82P33)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_PTP_1588_CLOCK_IDTCM)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_PTP_1588_CLOCK_FC3W)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_PTP_1588_CLOCK_MOCK)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_PTP_1588_CLOCK_VMW)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_PTP_1588_CLOCK_OCP)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_PTP_DFL_TOD)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_PTP_NETC_V4_TIMER)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_DPLL)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_ZL3073X)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_ZL3073X_I2C)(=.*| is not set)?$/\2=n/' \
