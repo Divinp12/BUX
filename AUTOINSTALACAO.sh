@@ -139,8 +139,8 @@ echo "instalando pacotes do sistema";
 pacstrap /mnt --noconfirm \
 base \
 base-devel \
-linux-firmware \
-linux-headers \
+gcc \
+glibc \
 networkmanager \
 sudo \
 git \
