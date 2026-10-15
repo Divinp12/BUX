@@ -306,6 +306,12 @@ sed -i -E \
 -e 's/^(# ?)?(CONFIG_RD_[^= ]+)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_RANDOMIZE)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_RANDOMIZE_[^= ]+)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_CRASH)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_CRASH_[^= ]+)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_KEXEC)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_KEXEC_[^= ]+)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_LIVEUPDATE)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_LIVEUPDATE_[^= ]+)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_EXT2_FS)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_EXT2_[^= ]+)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_EXT3_FS)(=.*| is not set)?$/\2=n/' \
@@ -730,6 +736,7 @@ sed -i -E \
 -e 's/^(# ?)?(CONFIG_BPF_UNPRIV_DEFAULT_OFF)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_BPF_PRELOAD)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_BPF_LSM)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_VMCORE_INFO)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_IWLWIFI)(=.*| is not set)?$/\2=y/' \
 -e 's/^(# ?)?(CONFIG_WLAN)(=.*| is not set)?$/\2=y/' \
 -e 's/^(# ?)?(CONFIG_WLAN_VENDOR_INTEL)(=.*| is not set)?$/\2=y/' \
