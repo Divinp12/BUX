@@ -306,16 +306,32 @@ sed -i -E \
 -e 's/^(# ?)?(CONFIG_KEXEC_[^= ]+)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_LIVEUPDATE)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_LIVEUPDATE_[^= ]+)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_EXT2_FS)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_EXT2)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_EXT2_[^= ]+)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_EXT3_FS)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_EXT3)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_EXT3_[^= ]+)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_XFS_FS)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_XFS)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_XFS_[^= ]+)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_BCACHEFS_FS)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_BCACHEFS)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_BCACHEFS_[^= ]+)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_F2FS_FS)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_F2FS)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_F2FS_[^= ]+)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_JFS)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_JFS_[^= ]+)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_GFS2)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_GFS2_[^= ]+)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_OCFS2)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_OCFS2_[^= ]+)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_BTRFS)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_BTRFS_[^= ]+)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_JBD2)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_JBD2_[^= ]+)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_HYPERV)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_HYPERV_[^= ]+)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_SECURITY_SELINUX)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_SECURITY_SELINUX_[^= ]+)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_IOMMU)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_IOMMU_[^= ]+)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_WATCHDOG)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_WATCHDOG_[^= ]+)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_SOFT_WATCHDOG)(=.*| is not set)?$/\2=n/' \
@@ -384,29 +400,7 @@ sed -i -E \
 -e 's/^(# ?)?(CONFIG_NIC7018_WDT)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_SIEMENS_SIMATIC_IPC_WDT)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_MEN_A21_WDT)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_JBD2)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_JBD2_DEBUG)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_FS_MBCACHE)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_JFS_FS)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_JFS_POSIX_ACL)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_JFS_SECURITY)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_JFS_DEBUG)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_JFS_STATISTICS)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_GFS2_FS)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_GFS2_FS_LOCKING_DLM)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_OCFS2_FS)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_OCFS2_FS_O2CB)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_OCFS2_FS_USERSPACE_CLUSTER)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_OCFS2_FS_STATS)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_OCFS2_DEBUG_MASKLOG)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_OCFS2_DEBUG_FS)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_BTRFS_FS)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_BTRFS_FS_POSIX_ACL)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_BTRFS_FS_RUN_SANITY_TESTS)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_BTRFS_DEBUG)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_BTRFS_ASSERT)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_BTRFS_EXPERIMENTAL)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_BTRFS_FS_REF_VERIFY)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_NILFS2_FS)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_NTFS3_FS)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_NTFS3_64BIT_CLUSTER)(=.*| is not set)?$/\2=n/' \
@@ -414,18 +408,8 @@ sed -i -E \
 -e 's/^(# ?)?(CONFIG_NTFS3_FS_POSIX_ACL)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_NTFS_FS)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_KASAN)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_HYPERV)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_HYPERV_VTL_MODE)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_HYPERV_TIMER)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_HYPERV_UTILS)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_HYPERV_BALLOON)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_MSHV_ROOT)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_AUDIT)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_SECURITY_SELINUX)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_SECURITY_SELINUX_BOOTPARAM)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_SECURITY_SELINUX_DEVELOP)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_SECURITY_SELINUX_AVC_STATS)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_SECURITY_SELINUX_DEBUG)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_A11Y_BRAILLE_CONSOLE)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_ISO9660_FS)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_JOLIET)(=.*| is not set)?$/\2=n/' \
@@ -595,18 +579,7 @@ sed -i -E \
 -e 's/^(# ?)?(CONFIG_PARAVIRT_XXL)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_PARAVIRT_DEBUG)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_PARAVIRT_SPINLOCKS)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_IOMMU_IOVA)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_IOMMU_API)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_IOMMUFD_DRIVER)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_IOMMU_SUPPORT)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_IOMMU_IO_PGTABLE)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_IOMMU_DEBUGFS)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_IOMMU_DEFAULT_DMA_STRICT)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_IOMMU_DEFAULT_DMA_LAZY)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_IOMMU_DEFAULT_PASSTHROUGH)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_IOMMU_DMA)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_IOMMU_SVA)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_IOMMU_IOPF)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_AMD_IOMMU)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_DMAR_TABLE)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_INTEL_IOMMU)(=.*| is not set)?$/\2=n/' \
@@ -618,8 +591,6 @@ sed -i -E \
 -e 's/^(# ?)?(CONFIG_IOMMUFD_DRIVER_CORE)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_IOMMUFD)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_IRQ_REMAP)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_HYPERV_IOMMU)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_VIRTIO_IOMMU)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_CEC_CORE)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_CEC_NOTIFIER)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_CEC_PIN)(=.*| is not set)?$/\2=n/' \
