@@ -737,6 +737,8 @@ sed -i -E \
 -e 's/^(# ?)?(CONFIG_BPF_PRELOAD)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_BPF_LSM)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_VMCORE_INFO)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_BLK_DEV_INITRD)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_INITRAMFS_SOURCE)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_IWLWIFI)(=.*| is not set)?$/\2=y/' \
 -e 's/^(# ?)?(CONFIG_WLAN)(=.*| is not set)?$/\2=y/' \
 -e 's/^(# ?)?(CONFIG_WLAN_VENDOR_INTEL)(=.*| is not set)?$/\2=y/' \
