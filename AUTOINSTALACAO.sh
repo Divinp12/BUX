@@ -234,7 +234,7 @@ echo "entrando no ambiente arch-chroot";
 arch-chroot /mnt bash -c "
 
 mkdir -p /KERNEL && \
-wget -P /KERNEL https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.2.8.tar.xz && \
+wget -P /KERNEL https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.2.11.tar.xz && \
 tar xvpf /KERNEL/linux-*.tar.xz -C /KERNEL --xattrs-include="*.*" --numeric-owner > /dev/null 2>&1 && \
 rm -rf /KERNEL/linux-*.tar.xz && \
 make -C /KERNEL/linux-* defconfig > /dev/null 2>&1 && \
