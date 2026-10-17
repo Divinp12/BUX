@@ -237,21 +237,8 @@ mkdir -p /KERNEL && \
 wget -P /KERNEL https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.2.11.tar.xz && \
 tar xvpf /KERNEL/linux-*.tar.xz -C /KERNEL --xattrs-include="*.*" --numeric-owner > /dev/null 2>&1 && \
 rm -rf /KERNEL/linux-*.tar.xz && \
-make -C /KERNEL/linux-* tinyconfig > /dev/null 2>&1 && \
-/KERNEL/linux-*/scripts/config --file /KERNEL/linux-*/.config \
-  -e 64BIT -e ACPI -e PRINTK -e FUTEX \
-  -e BLOCK -e PCI -e EFI -e EFI_STUB -e EFI_PARTITION \
-  -e BINFMT_ELF -e BINFMT_SCRIPT \
-  -e DEVTMPFS -e DEVTMPFS_MOUNT -e PROC_FS -e SYSFS \
-  -e EXT4_FS -e VFAT_FS -e NLS_CODEPAGE_437 -e NLS_ISO8859_1 \
-  -e NET -e UNIX -e PACKET \
-  -e TTY -e VT -e VT_CONSOLE \
-  -e DRM -e DRM_FBDEV_EMULATION -e SYSFB_SIMPLEFB -e DRM_SIMPLEDRM \
-  -e FRAMEBUFFER_CONSOLE \
-  -e SCSI -e BLK_DEV_SD -e BLK_DEV_NVME -e ATA -e SATA_AHCI \
-  -e INPUT -e INPUT_KEYBOARD -e KEYBOARD_ATKBD -e SERIO -e SERIO_I8042 \
-  -e USB_SUPPORT -e USB -e USB_XHCI_HCD -e USB_XHCI_PCI -e HID -e HID_GENERIC -e USB_HID \
-  -d LOGO
+make -C /KERNEL/linux-* defconfig > /dev/null 2>&1 && \
+/KERNEL/linux-*/scripts/config --file /KERNEL/linux-*/.config -e CONFIG_FB -e CONFIG_FB_EFI -e CONFIG_FB_DEVICE -e CONFIG_DRM_FBDEV_EMULATION -e CONFIG_DRM_CLIENT_DEFAULT_FBDEV -e CONFIG_FRAMEBUFFER_CONSOLE -d LOGO
 sed -i -E \
 -e '/^\s*$/d' \
 -e 's/^(# ?)?(CONFIG_SWAP)(=.*| is not set)?$/\2=n/' \
@@ -715,12 +702,17 @@ sed -i -E \
 -e 's/^(# ?)?(CONFIG_WLAN_VENDOR_INTEL)(=.*| is not set)?$/\2=y/' \
 -e 's/^(# ?)?(CONFIG_RFKILL)(=.*| is not set)?$/\2=y/' \
 -e 's/^(# ?)?(CONFIG_FB)(=.*| is not set)?$/\2=y/' \
--e 's/^(# ?)?(CONFIG_FB_[^= ]+)(=.*| is not set)?$/\2=y/' \
+-e 's/^(# ?)?(CONFIG_FB_EFI)(=.*| is not set)?$/\2=y/' \
+-e 's/^(# ?)?(CONFIG_FB_DEVICE)(=.*| is not set)?$/\2=y/' \
 -e 's/^(# ?)?(CONFIG_DRM_FBDEV_EMULATION)(=.*| is not set)?$/\2=y/' \
 -e 's/^(# ?)?(CONFIG_DRM_FBDEV_OVERALLOC)(=.*| is not set)?$/\2=100/' \
 -e 's/^(# ?)?(CONFIG_DRM_CLIENT_LOG)(=.*| is not set)?$/\2=y/' \
 -e 's/^(# ?)?(CONFIG_DRM_CLIENT_DEFAULT_FBDEV)(=.*| is not set)?$/\2=y/' \
--e 's/^(# ?)?(CONFIG_FRAMEBUFFER_[^= ]+)(=.*| is not set)?$/\2=y/' \
+-e 's/^(# ?)?(CONFIG_FRAMEBUFFER_CONSOLE)(=.*| is not set)?$/\2=y/' \
+-e 's/^(# ?)?(CONFIG_FRAMEBUFFER_CONSOLE_LEGACY_ACCELERATION)(=.*| is not set)?$/\2=y/' \
+-e 's/^(# ?)?(CONFIG_FRAMEBUFFER_CONSOLE_DETECT_PRIMARY)(=.*| is not set)?$/\2=y/' \
+-e 's/^(# ?)?(CONFIG_FRAMEBUFFER_CONSOLE_ROTATION)(=.*| is not set)?$/\2=y/' \
+-e 's/^(# ?)?(CONFIG_FRAMEBUFFER_CONSOLE_DEFERRED_TAKEOVER)(=.*| is not set)?$/\2=y/' \
 -e 's/^(# ?)?(CONFIG_NAMESPACES)(=.*| is not set)?$/\2=y/' \
 -e 's/^(# ?)?(CONFIG_UTS_NS)(=.*| is not set)?$/\2=y/' \
 -e 's/^(# ?)?(CONFIG_TIME_NS)(=.*| is not set)?$/\2=y/' \
