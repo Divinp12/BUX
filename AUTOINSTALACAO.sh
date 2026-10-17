@@ -727,7 +727,8 @@ cp /KERNEL/linux-*/arch/x86/boot/bzImage /boot/vmlinuz-bux;
 
 mkdir -p /FIRMWARE && \
 git clone --filter=blob:none --no-checkout --depth=1 https://gitlab.com/kernel-firmware/linux-firmware.git /FIRMWARE && \
-git -C /FIRMWARE sparse-checkout set --no-cone '/*' '!/ath3k-1.fw' '!/bnx2x' '!/cxgb3' '!/cxgb4' '!/wil6210.*' '!/ath6k' '!/ti-connectivity' '!/dvb-*' '!/tigon' '!/dpaa2' '!/nxp' '!/dabusb' '!/3com' '!/go7007' '!/keyspan' '!/keyspan_pda' && \
+git -C /FIRMWARE sparse-checkout set --no-cone '/*' '!/ath3k-1.fw' '!/bnx2x' '!/cxgb3' '!/cxgb4' '!/wil6210.*' '!/ath6k' '!/ti-connectivity' '!/dvb-*' '!/tigon' '!/dpaa2' '!/nxp' '!/dabusb' '!/3com' '!/go7007' '!/keyspan' '!/keyspan_pda' '!/mellanox' && \
+
 git -C /FIRMWARE checkout && \
 mv /FIRMWARE/* /usr/lib/firmware;
 "
