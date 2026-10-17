@@ -726,7 +726,9 @@ cp /KERNEL/linux-*/arch/x86/boot/bzImage /boot/vmlinuz-bux;
 
 
 mkdir -p /FIRMWARE && \
-git clone --depth 1 --branch 20260916 https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git /FIRMWARE && \
+git clone --filter=blob:none --no-checkout --depth=1 https://gitlab.com/kernel-firmware/linux-firmware.git /FIRMWARE && \
+git -C /FIRMWARE sparse-checkout set --no-cone '/*' '!/ath3k-1.fw' && \
+git -C /FIRMWARE checkout && \
 make -C /FIRMWARE -j$(nproc) FIRMWAREDIR=/usr/lib/firmware install;
 "
 arch-chroot /mnt bash -c '
