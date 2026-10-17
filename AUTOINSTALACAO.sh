@@ -237,7 +237,21 @@ mkdir -p /KERNEL && \
 wget -P /KERNEL https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.2.11.tar.xz && \
 tar xvpf /KERNEL/linux-*.tar.xz -C /KERNEL --xattrs-include="*.*" --numeric-owner > /dev/null 2>&1 && \
 rm -rf /KERNEL/linux-*.tar.xz && \
-make -C /KERNEL/linux-* defconfig > /dev/null 2>&1 && \
+make -C /KERNEL/linux-* tinyconfig > /dev/null 2>&1 && \
+/KERNEL/linux-*/scripts/config --file /KERNEL/linux-*/.config \
+  -e 64BIT -e ACPI -e PRINTK -e FUTEX \
+  -e BLOCK -e PCI -e EFI -e EFI_STUB -e EFI_PARTITION \
+  -e BINFMT_ELF -e BINFMT_SCRIPT \
+  -e DEVTMPFS -e DEVTMPFS_MOUNT -e PROC_FS -e SYSFS \
+  -e EXT4_FS -e VFAT_FS -e NLS_CODEPAGE_437 -e NLS_ISO8859_1 \
+  -e NET -e UNIX -e PACKET \
+  -e TTY -e VT -e VT_CONSOLE \
+  -e DRM -e DRM_FBDEV_EMULATION -e SYSFB_SIMPLEFB -e DRM_SIMPLEDRM \
+  -e FRAMEBUFFER_CONSOLE \
+  -e SCSI -e BLK_DEV_SD -e BLK_DEV_NVME -e ATA -e SATA_AHCI \
+  -e INPUT -e INPUT_KEYBOARD -e KEYBOARD_ATKBD -e SERIO -e SERIO_I8042 \
+  -e USB_SUPPORT -e USB -e USB_XHCI_HCD -e USB_XHCI_PCI -e HID -e HID_GENERIC -e USB_HID \
+  -d LOGO
 sed -i -E \
 -e '/^\s*$/d' \
 -e 's/^(# ?)?(CONFIG_SWAP)(=.*| is not set)?$/\2=n/' \
@@ -716,6 +730,7 @@ sed -i -E \
 -e 's/^(# ?)?(CONFIG_PID_NS)(=.*| is not set)?$/\2=y/' \
 -e 's/^(# ?)?(CONFIG_NET_NS)(=.*| is not set)?$/\2=y/' \
 /KERNEL/linux-*/.config && \
+make -C /KERNEL/linux-* olddefconfig && \
 make -C /KERNEL/linux-* -j$(nproc) && \
 cp /KERNEL/linux-*/arch/x86/boot/bzImage /boot/vmlinuz-bux;
 
