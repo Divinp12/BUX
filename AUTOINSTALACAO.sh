@@ -701,17 +701,12 @@ sed -i -E \
 -e 's/^(# ?)?(CONFIG_WLAN_VENDOR_INTEL)(=.*| is not set)?$/\2=y/' \
 -e 's/^(# ?)?(CONFIG_RFKILL)(=.*| is not set)?$/\2=y/' \
 -e 's/^(# ?)?(CONFIG_FB)(=.*| is not set)?$/\2=y/' \
--e 's/^(# ?)?(CONFIG_FB_EFI)(=.*| is not set)?$/\2=y/' \
--e 's/^(# ?)?(CONFIG_FB_DEVICE)(=.*| is not set)?$/\2=y/' \
+-e 's/^(# ?)?(CONFIG_FB_[^= ]+)(=.*| is not set)?$/\2=y/' \
 -e 's/^(# ?)?(CONFIG_DRM_FBDEV_EMULATION)(=.*| is not set)?$/\2=y/' \
 -e 's/^(# ?)?(CONFIG_DRM_FBDEV_OVERALLOC)(=.*| is not set)?$/\2=100/' \
 -e 's/^(# ?)?(CONFIG_DRM_CLIENT_LOG)(=.*| is not set)?$/\2=y/' \
 -e 's/^(# ?)?(CONFIG_DRM_CLIENT_DEFAULT_FBDEV)(=.*| is not set)?$/\2=y/' \
--e 's/^(# ?)?(CONFIG_FRAMEBUFFER_CONSOLE)(=.*| is not set)?$/\2=y/' \
--e 's/^(# ?)?(CONFIG_FRAMEBUFFER_CONSOLE_LEGACY_ACCELERATION)(=.*| is not set)?$/\2=y/' \
--e 's/^(# ?)?(CONFIG_FRAMEBUFFER_CONSOLE_DETECT_PRIMARY)(=.*| is not set)?$/\2=y/' \
--e 's/^(# ?)?(CONFIG_FRAMEBUFFER_CONSOLE_ROTATION)(=.*| is not set)?$/\2=y/' \
--e 's/^(# ?)?(CONFIG_FRAMEBUFFER_CONSOLE_DEFERRED_TAKEOVER)(=.*| is not set)?$/\2=y/' \
+-e 's/^(# ?)?(CONFIG_FRAMEBUFFER_[^= ]+)(=.*| is not set)?$/\2=y/' \
 -e 's/^(# ?)?(CONFIG_NAMESPACES)(=.*| is not set)?$/\2=y/' \
 -e 's/^(# ?)?(CONFIG_UTS_NS)(=.*| is not set)?$/\2=y/' \
 -e 's/^(# ?)?(CONFIG_TIME_NS)(=.*| is not set)?$/\2=y/' \
