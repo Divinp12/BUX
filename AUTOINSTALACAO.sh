@@ -343,6 +343,8 @@ sed -i -E \
 -e 's/^(# ?)?(CONFIG_TABLET_[^= ]+)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_CEC)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_CEC_[^= ]+)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_NLS_MAC)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_NLS_MAC_[^= ]+)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_WATCHDOG)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_WATCHDOG_[^= ]+)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_SOFT_WATCHDOG)(=.*| is not set)?$/\2=n/' \
@@ -648,17 +650,6 @@ sed -i -E \
 -e 's/^(# ?)?(CONFIG_NLS_ISO8859_15)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_NLS_KOI8_R)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_NLS_KOI8_U)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_NLS_MAC_ROMAN)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_NLS_MAC_CELTIC)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_NLS_MAC_CENTEURO)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_NLS_MAC_CROATIAN)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_NLS_MAC_CYRILLIC)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_NLS_MAC_GAELIC)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_NLS_MAC_GREEK)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_NLS_MAC_ICELAND)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_NLS_MAC_INUIT)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_NLS_MAC_ROMANIAN)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_NLS_MAC_TURKISH)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_NLS_UCS2_UTILS)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_PD6729)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_I82092)(=.*| is not set)?$/\2=n/' \
