@@ -229,6 +229,7 @@ echo "LANG=pt_BR.UTF-8" > /mnt/etc/locale.conf;
 echo "adicionando nome bux ao usuario root no arquivo hostname";
 echo bux > /mnt/etc/hostname;
 
+
 echo "adicionando particao tmpfs com diretorio /mnt/KERNEL";
 mount --mkdir -t tmpfs -o defaults,nosuid,nodev,noatime,size=100% tmpfs /mnt/KERNEL;
 
