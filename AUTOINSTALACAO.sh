@@ -345,6 +345,8 @@ sed -i -E \
 -e 's/^(# ?)?(CONFIG_CEC_[^= ]+)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_NLS_MAC)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_NLS_MAC_[^= ]+)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_NLS_ISO8859)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_NLS_ISO8859_[^= ]+)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_WATCHDOG)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_WATCHDOG_[^= ]+)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_SOFT_WATCHDOG)(=.*| is not set)?$/\2=n/' \
@@ -634,20 +636,8 @@ sed -i -E \
 -e 's/^(# ?)?(CONFIG_NLS_CODEPAGE_932)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_NLS_CODEPAGE_949)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_NLS_CODEPAGE_874)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_NLS_ISO8859_8)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_NLS_CODEPAGE_1250)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_NLS_CODEPAGE_1251)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_NLS_ISO8859_1)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_NLS_ISO8859_2)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_NLS_ISO8859_3)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_NLS_ISO8859_4)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_NLS_ISO8859_5)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_NLS_ISO8859_6)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_NLS_ISO8859_7)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_NLS_ISO8859_9)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_NLS_ISO8859_13)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_NLS_ISO8859_14)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_NLS_ISO8859_15)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_NLS_KOI8_R)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_NLS_KOI8_U)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_NLS_UCS2_UTILS)(=.*| is not set)?$/\2=n/' \
