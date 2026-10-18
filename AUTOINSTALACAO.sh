@@ -240,23 +240,7 @@ arch-chroot /mnt bash -c "
 wget -P /KERNEL https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.2.11.tar.xz && \
 tar xvpf /KERNEL/linux-*.tar.xz -C /KERNEL --xattrs-include="*.*" --numeric-owner > /dev/null 2>&1 && \
 rm -rf /KERNEL/linux-*.tar.xz && \
-make -C /KERNEL/linux-* defconfig > /dev/null 2>&1 && \
-/KERNEL/linux-*/scripts/config --file /KERNEL/linux-*/.config \
--e CONFIG_FB \
--e CONFIG_FB_EFI \
--e CONFIG_FB_DEVICE \
--e CONFIG_DRM_FBDEV_EMULATION \
--e CONFIG_DRM_CLIENT_DEFAULT_FBDEV \
--e CONFIG_FRAMEBUFFER_CONSOLE \
--e USB_SUPPORT \
--e USB \
--e USB_XHCI_HCD \
--e USB_XHCI_PCI \
--e USB_STORAGE \
--e USB_UAS \
--e SCSI \
--e BLK_DEV_SD \
--d LOGO
+make -C /KERNEL/linux-* allmodconfig > /dev/null 2>&1 && \
 sed -i -E \
 -e '/^\s*$/d' \
 -e 's/^(# ?)?(CONFIG_SWAP)(=.*| is not set)?$/\2=n/' \
@@ -740,7 +724,6 @@ sed -i -E \
 -e 's/^(# ?)?(CONFIG_PID_NS)(=.*| is not set)?$/\2=y/' \
 -e 's/^(# ?)?(CONFIG_NET_NS)(=.*| is not set)?$/\2=y/' \
 /KERNEL/linux-*/.config && \
-make -C /KERNEL/linux-* olddefconfig && \
 make -C /KERNEL/linux-* -j$(nproc) && \
 cp /KERNEL/linux-*/arch/x86/boot/bzImage /boot/vmlinuz-bux;
 
