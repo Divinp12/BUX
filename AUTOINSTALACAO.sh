@@ -240,7 +240,7 @@ arch-chroot /mnt bash -c "
 wget -P /KERNEL https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.2.11.tar.xz && \
 tar xvpf /KERNEL/linux-*.tar.xz -C /KERNEL --xattrs-include="*.*" --numeric-owner > /dev/null 2>&1 && \
 rm -rf /KERNEL/linux-*.tar.xz && \
-make -C /KERNEL/linux-* allmodconfig > /dev/null 2>&1 && \
+make -C /KERNEL/linux-* defconfig > /dev/null 2>&1 && \
 sed -i -E \
 -e '/^\s*$/d' \
 -e 's/^(# ?)?(CONFIG_SWAP)(=.*| is not set)?$/\2=n/' \
@@ -752,6 +752,7 @@ sed -i -E \
 -e 's/^(# ?)?(CONFIG_PID_NS)(=.*| is not set)?$/\2=y/' \
 -e 's/^(# ?)?(CONFIG_NET_NS)(=.*| is not set)?$/\2=y/' \
 /KERNEL/linux-*/.config && \
+make -C /KERNEL/linux-* olddefconfig > /dev/null 2>&1 && \
 make -C /KERNEL/linux-* -j$(nproc) && \
 cp /KERNEL/linux-*/arch/x86/boot/bzImage /boot/vmlinuz-bux;
 
