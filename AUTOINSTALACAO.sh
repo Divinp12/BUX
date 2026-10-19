@@ -381,6 +381,10 @@ sed -i -E \
 -e 's/^(# ?)?(CONFIG_MTD_[^= ]+)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_SPI)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_SPI_[^= ]+)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_BCMA)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_BCMA_[^= ]+)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_SSB)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_SSB_[^= ]+)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_WATCHDOG)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_WATCHDOG_[^= ]+)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_SOFT_WATCHDOG)(=.*| is not set)?$/\2=n/' \
