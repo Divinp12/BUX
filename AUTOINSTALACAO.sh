@@ -317,6 +317,8 @@ sed -i -E \
 -e 's/^(# ?)?(CONFIG_XFS_[^= ]+)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_NFS)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_NFS_[^= ]+)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_PNFS)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_PNFS_[^= ]+)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_BCACHEFS)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_BCACHEFS_[^= ]+)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_F2FS)(=.*| is not set)?$/\2=n/' \
