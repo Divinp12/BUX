@@ -361,6 +361,20 @@ sed -i -E \
 -e 's/^(# ?)?(CRYPTO_TEST_[^= ]+)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CRYPTO_STATS)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CRYPTO_STATS_[^= ]+)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_STACKPROTECTOR)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_STACKPROTECTOR_[^= ]+)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_HAVE_STACKPROTECTOR)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_HAVE_STACKPROTECTOR_[^= ]+)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_HW_RANDOM)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_HW_RANDOM_[^= ]+)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_SERIAL)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_SERIAL_[^= ]+)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_POWER_RESET)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_POWER_RESET_[^= ]+)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_W1_SLAVE)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_W1_SLAVE_[^= ]+)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_MTD)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_MTD_[^= ]+)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_WATCHDOG)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_WATCHDOG_[^= ]+)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_SOFT_WATCHDOG)(=.*| is not set)?$/\2=n/' \
