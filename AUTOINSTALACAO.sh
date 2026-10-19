@@ -320,6 +320,8 @@ sed -i -E \
 -e 's/^(# ?)?(CONFIG_ROOT_NFS)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_PNFS)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_PNFS_[^= ]+)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_SUNRPC)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_SUNRPC_[^= ]+)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_BCACHEFS)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_BCACHEFS_[^= ]+)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_F2FS)(=.*| is not set)?$/\2=n/' \
