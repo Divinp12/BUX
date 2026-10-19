@@ -347,6 +347,20 @@ sed -i -E \
 -e 's/^(# ?)?(CONFIG_NLS_MAC_[^= ]+)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_NLS_ISO8859)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_NLS_ISO8859_[^= ]+)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CRYPTO_DEV)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CRYPTO_DEV_[^= ]+)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CRYPTO_HW)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CRYPTO_HW_[^= ]+)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CRYPTO_FIPS)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CRYPTO_FIPS_[^= ]+)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CRYPTO_ANSI_CPRNG)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CRYPTO_ANSI_CPRNG_[^= ]+)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CRYPTO_BENCHMARK)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CRYPTO_BENCHMARK_[^= ]+)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CRYPTO_TEST)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CRYPTO_TEST_[^= ]+)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CRYPTO_STATS)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CRYPTO_STATS_[^= ]+)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_WATCHDOG)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_WATCHDOG_[^= ]+)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_SOFT_WATCHDOG)(=.*| is not set)?$/\2=n/' \
