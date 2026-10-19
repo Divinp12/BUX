@@ -337,8 +337,12 @@ sed -i -E \
 -e 's/^(# ?)?(CONFIG_IOMMU_[^= ]+)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_ATH5K)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_ATH5K_[^= ]+)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_ATH6KL)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_ATH6KL_[^= ]+)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_ATH9K)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_ATH9K_[^= ]+)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_ATH10K)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_ATH10K_[^= ]+)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_TABLET)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_TABLET_[^= ]+)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_CEC)(=.*| is not set)?$/\2=n/' \
@@ -371,10 +375,12 @@ sed -i -E \
 -e 's/^(# ?)?(CONFIG_SERIAL_[^= ]+)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_POWER_RESET)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_POWER_RESET_[^= ]+)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_W1_SLAVE)(=.*| is not set)?$/\2=n/' \
--e 's/^(# ?)?(CONFIG_W1_SLAVE_[^= ]+)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_W1)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_W1_[^= ]+)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_MTD)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_MTD_[^= ]+)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_SPI)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_SPI_[^= ]+)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_WATCHDOG)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_WATCHDOG_[^= ]+)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_SOFT_WATCHDOG)(=.*| is not set)?$/\2=n/' \
