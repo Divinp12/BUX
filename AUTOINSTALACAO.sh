@@ -329,6 +329,8 @@ sed -i -E \
 -e 's/^(# ?)?(CONFIG_OCFS2_[^= ]+)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_BTRFS)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_BTRFS_[^= ]+)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_LOCKD)(=.*| is not set)?$/\2=n/' \
+-e 's/^(# ?)?(CONFIG_LOCKD_[^= ]+)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_JBD2)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_JBD2_[^= ]+)(=.*| is not set)?$/\2=n/' \
 -e 's/^(# ?)?(CONFIG_HYPERV)(=.*| is not set)?$/\2=n/' \
