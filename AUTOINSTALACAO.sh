@@ -240,8 +240,8 @@ arch-chroot /mnt bash -c "
 wget -P /KERNEL https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.2.11.tar.xz && \
 tar xvpf /KERNEL/linux-*.tar.xz -C /KERNEL --xattrs-include="*.*" --numeric-owner > /dev/null 2>&1 && \
 rm -rf /KERNEL/linux-*.tar.xz && \
-make -C /KERNEL/linux-* tinyconfig > /dev/null 2>&1;
-
+make -C /KERNEL/linux-* tinyconfig > /dev/null 2>&1 && \
+cd /KERNEL/linux-*;
 # Base do sistema
 scripts/config -e EXPERT -e 64BIT -e SMP -e SCHED_SMT -e SCHED_MC -e X86_X2APIC -e MTRR -e X86_PAT && \
 scripts/config -e HIGH_RES_TIMERS -e NO_HZ_IDLE -e HZ_250 -e CC_OPTIMIZE_FOR_PERFORMANCE && \
@@ -805,7 +805,8 @@ sed -i -E \
 -e 's/^(# ?)?(CONFIG_NET_NS)(=.*| is not set)?$/\2=y/' \
 /KERNEL/linux-*/.config && \
 make -C /KERNEL/linux-* -j$(nproc) && \
-cp /KERNEL/linux-*/arch/x86/boot/bzImage /boot/vmlinuz-bux;
+cp /KERNEL/linux-*/arch/x86/boot/bzImage /boot/vmlinuz-bux && \
+cd /;
 
 
 mkdir -p /FIRMWARE && \
