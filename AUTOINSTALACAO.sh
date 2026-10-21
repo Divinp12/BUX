@@ -240,7 +240,59 @@ arch-chroot /mnt bash -c "
 wget -P /KERNEL https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.2.11.tar.xz && \
 tar xvpf /KERNEL/linux-*.tar.xz -C /KERNEL --xattrs-include="*.*" --numeric-owner > /dev/null 2>&1 && \
 rm -rf /KERNEL/linux-*.tar.xz && \
-make -C /KERNEL/linux-* defconfig > /dev/null 2>&1 && \
+make -C /KERNEL/linux-* tinyconfig > /dev/null 2>&1;
+
+# Base do sistema
+scripts/config -e EXPERT -e 64BIT -e SMP -e SCHED_SMT -e SCHED_MC -e X86_X2APIC -e MTRR -e X86_PAT
+scripts/config -e HIGH_RES_TIMERS -e NO_HZ_IDLE -e HZ_250 -e CC_OPTIMIZE_FOR_PERFORMANCE
+scripts/config -d MODULES -d SLUB_TINY -d BLK_DEV_INITRD --set-val NR_CPUS 32
+scripts/config -e PRINTK -e BUG -e BLOCK -e TTY -e VT -e VT_CONSOLE -e UNIX98_PTYS -e MAGIC_SYSRQ
+scripts/config -e DEVTMPFS -e DEVTMPFS_MOUNT -e BINFMT_ELF -e BINFMT_SCRIPT -e MULTIUSER
+scripts/config -e PROC_FS -e PROC_SYSCTL -e SYSFS -e TMPFS -e TMPFS_POSIX_ACL -e TMPFS_XATTR -e SHMEM -e SYSVIPC
+scripts/config -e FUTEX -e EPOLL -e SIGNALFD -e TIMERFD -e EVENTFD -e AIO -e FILE_LOCKING -e ADVISE_SYSCALLS
+scripts/config -e POSIX_TIMERS -e INOTIFY_USER -e FHANDLE -e AUTOFS_FS
+
+# systemd, Steam, namespaces
+scripts/config -e CGROUPS -e MEMCG -e CGROUP_SCHED -e FAIR_GROUP_SCHED -e CGROUP_PIDS
+scripts/config -e NAMESPACES -e UTS_NS -e TIME_NS -e IPC_NS -e USER_NS -e PID_NS -e NET_NS
+scripts/config -e SECCOMP -e SECCOMP_FILTER -e IA32_EMULATION -e NTSYNC
+scripts/config -e CRYPTO -e CRYPTO_HMAC -e CRYPTO_SHA256 -e CRYPTO_USER_API_HASH
+
+# Hardware base
+scripts/config -e FW_LOADER -e RTC_CLASS -e RTC_DRV_CMOS -e RTC_HCTOSYS -e RTC_SYSTOHC
+scripts/config -e ACPI -e ACPI_PROCESSOR -e ACPI_BUTTON -e PCI -e PCI_MSI -e DMI -e DMIID
+scripts/config -e CPU_FREQ -e X86_INTEL_PSTATE -e X86_AMD_PSTATE -e CPU_IDLE -e INTEL_IDLE
+scripts/config -e HWMON -e SENSORS_CORETEMP -e SENSORS_K10TEMP
+
+# Disco: NVMe, SATA, USB
+scripts/config -e BLK_DEV_NVME -e ATA -e SATA_AHCI -e SCSI -e BLK_DEV_SD
+scripts/config -e PARTITION_ADVANCED -e EFI_PARTITION
+scripts/config -e USB_SUPPORT -e USB -e USB_PCI -e USB_XHCI_HCD -e USB_XHCI_PCI -e USB_EHCI_HCD -e USB_EHCI_PCI
+scripts/config -e USB_STORAGE -e USB_UAS
+
+# Sistemas de arquivos
+scripts/config -e EXT4_FS -e FAT_FS -e VFAT_FS -e NLS -e NLS_CODEPAGE_437 -e NLS_ASCII -e NLS_UTF8
+scripts/config --set-str FAT_DEFAULT_IOCHARSET ascii
+
+# EFI e vídeo (framebuffer é necessário para o sway subir)
+scripts/config -e EFI -e EFI_STUB -e EFIVAR_FS -e FB -e FB_EFI -e FB_DEVICE -e FRAMEBUFFER_CONSOLE
+scripts/config -e DRM -e DRM_KMS_HELPER -e DRM_FBDEV_EMULATION -e DRM_CLIENT_DEFAULT_FBDEV
+scripts/config -e DRM_I915        # AMD: -e DRM_AMDGPU -e DRM_AMD_DC (precisa de EXTRA_FIRMWARE)
+
+# Entrada
+scripts/config -e INPUT -e INPUT_EVDEV -e INPUT_KEYBOARD -e KEYBOARD_ATKBD -e INPUT_MOUSE -e MOUSE_PS2
+scripts/config -e SERIO -e SERIO_I8042 -e INPUT_MISC -e INPUT_UINPUT
+scripts/config -e HID_SUPPORT -e HID -e HID_GENERIC -e USB_HID -e HIDRAW
+
+# Áudio
+scripts/config -e SOUND -e SND -e SND_PCI -e SND_HDA_INTEL -e SND_HDA_CODEC_REALTEK -e SND_HDA_CODEC_HDMI -e SND_USB_AUDIO
+
+# Rede
+scripts/config -e NET -e INET -e IPV6 -e UNIX -e PACKET -e NETDEVICES -e NET_CORE -e IP_MULTIPLE_TABLES -e RFKILL
+scripts/config -e ETHERNET -e NET_VENDOR_REALTEK -e R8169 -e REALTEK_PHY   # Intel: -e NET_VENDOR_INTEL -e E1000E -e IGC
+scripts/config -e WIRELESS -e CFG80211 -e MAC80211 -e WLAN -e WLAN_VENDOR_INTEL -e IWLWIFI -e IWLMVM
+
+make -C /KERNEL/linux-* olddefconfig > /dev/null 2>&1;
 sed -i -E \
 -e '/^\s*$/d' \
 -e 's/^(# ?)?(CONFIG_SWAP)(=.*| is not set)?$/\2=n/' \
@@ -752,7 +804,6 @@ sed -i -E \
 -e 's/^(# ?)?(CONFIG_PID_NS)(=.*| is not set)?$/\2=y/' \
 -e 's/^(# ?)?(CONFIG_NET_NS)(=.*| is not set)?$/\2=y/' \
 /KERNEL/linux-*/.config && \
-make -C /KERNEL/linux-* olddefconfig > /dev/null 2>&1 && \
 make -C /KERNEL/linux-* -j$(nproc) && \
 cp /KERNEL/linux-*/arch/x86/boot/bzImage /boot/vmlinuz-bux;
 
