@@ -289,7 +289,7 @@ scripts/config -e SOUND -e SND -e SND_PCI -e SND_HDA_INTEL -e SND_HDA_CODEC_REAL
 
 # Rede
 scripts/config -e NET -e INET -e IPV6 -e UNIX -e PACKET -e NETDEVICES -e NET_CORE -e IP_MULTIPLE_TABLES -e RFKILL && \
-scripts/config -e ETHERNET -e NET_VENDOR_REALTEK -e R8169 -e REALTEK_PHY   # Intel: -e NET_VENDOR_INTEL -e E1000E -e IGC && \
+scripts/config -e ETHERNET -e NET_VENDOR_REALTEK -e R8169 -e REALTEK_PHY && \
 scripts/config -e WIRELESS -e CFG80211 -e MAC80211 -e WLAN -e WLAN_VENDOR_INTEL -e IWLWIFI -e IWLMVM;
 
 make -C /KERNEL/linux-* olddefconfig > /dev/null 2>&1;
