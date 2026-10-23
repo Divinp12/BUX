@@ -487,21 +487,6 @@ StandardOutput=tty
 WantedBy=multi-user.target" > /mnt/etc/systemd/system/autologin.service
 
 
-echo "adicionando autostart do iwlwifi";
-echo "[Unit]
-Description=Religar o iwlwifi com o firmware disponivel
-After=local-fs.target
-Before=NetworkManager.service
-
-[Service]
-Type=oneshot
-RemainAfterExit=yes
-ExecStart=-/usr/bin/bash -c 'echo 0000:00:14.3 > /sys/bus/pci/drivers/iwlwifi/bind'
-
-[Install]
-WantedBy=multi-user.target" > /etc/systemd/system/iwlwifi-bind.service
-
-
 echo "adicionando autologin na inicialização";
 ln -s /mnt/etc/systemd/system/autologin.service \
 /mnt/etc/systemd/system/multi-user.target.wants/autologin.service;
