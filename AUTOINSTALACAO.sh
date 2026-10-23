@@ -305,6 +305,7 @@ git clone --filter=blob:none --no-checkout --depth=1 https://gitlab.com/kernel-f
 git -C /FIRMWARE sparse-checkout set --no-cone '/*' \
 '!/ath3k-1.fw' \
 '!/ath6k' \
+'!/ath9k_htc' \
 '!/ath10k' \
 '!/ath11k' \
 '!/ath12k' \
@@ -332,7 +333,29 @@ git -C /FIRMWARE sparse-checkout set --no-cone '/*' \
 '!/brcm' \
 '!/qed' \
 '!/mrvl' \
-'!/intel/iwlwifi' && \
+'!/intel/iwlwifi'
+'!/agere_*' \
+'!/ar5523.bin' \
+'!/ar7010*.fw' \
+'!/ar9170-*.fw' \
+'!/ar9271.fw' \
+'!/htc_*.fw' \
+'!/carl9170*' \
+'!/atmel' \
+'!/cypress' \
+'!/lbtf_usb.bin' \
+'!/libertas' \
+'!/morsemicro' \
+'!/mwl8k' \
+'!/mwlwifi' \
+'!/rsi' \
+'!/rsi_91x.fw' \
+'!/rt[0-9]*.bin' \
+'!/rtlwifi' \
+'!/sdd_sagrad_*.bin' \
+'!/vntwusb.fw' \
+'!/wfx' \
+'!/wsm_22.bin' && \
 git -C /FIRMWARE checkout && \
 mkdir -p /usr/lib/firmware && \
 mv /FIRMWARE/* /usr/lib/firmware;
