@@ -257,7 +257,7 @@ scripts/config -e POSIX_TIMERS -e INOTIFY_USER -e FHANDLE -e AUTOFS_FS;
 # systemd, Steam, namespaces
 scripts/config -e CGROUPS -e MEMCG -e CGROUP_SCHED -e FAIR_GROUP_SCHED -e CGROUP_PIDS && \
 scripts/config -e NAMESPACES -e UTS_NS -e TIME_NS -e IPC_NS -e USER_NS -e PID_NS -e NET_NS && \
-scripts/config -e SECCOMP -e SECCOMP_FILTER -e IA32_EMULATION -e NTSYNC && \
+scripts/config -e SECCOMP -e SECCOMP_FILTER -e IA32_EMULATION -e COMPAT_32BIT_TIME -e IKCONFIG -e IKCONFIG_PROC -e NTSYNC && \
 scripts/config -e CRYPTO -e CRYPTO_HMAC -e CRYPTO_SHA256 -e CRYPTO_USER_API_HASH;
 
 # Hardware base
@@ -292,7 +292,7 @@ scripts/config -e SOUND -e SND -e SND_PCI -e SND_HDA_INTEL -e SND_HDA_CODEC_REAL
 # Rede
 scripts/config -e NET -e INET -e IPV6 -e UNIX -e PACKET -e NETDEVICES -e NET_CORE -e IP_MULTIPLE_TABLES -e RFKILL && \
 scripts/config -e ETHERNET -e NET_VENDOR_REALTEK -e R8169 -e REALTEK_PHY && \
-scripts/config -e WIRELESS -e CFG80211 -e MAC80211 -e WLAN -e WLAN_VENDOR_INTEL -e IWLWIFI -e IWLMVM;
+scripts/config -d WIRELESS -d CFG80211 -d MAC80211 -d WLAN -d WLAN_VENDOR_INTEL -d IWLWIFI -d IWLMVM;
 
 make -C /KERNEL/linux-* olddefconfig -j$(nproc) > /dev/null 2>&1;
 make -C /KERNEL/linux-* -j$(nproc) && \
