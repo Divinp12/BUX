@@ -279,7 +279,7 @@ scripts/config --set-str FAT_DEFAULT_IOCHARSET ascii;
 # EFI e vídeo (framebuffer é necessário para o sway subir)
 scripts/config -e EFI -e EFI_STUB -e EFIVAR_FS -e FB -e FB_EFI -e FB_DEVICE -e FRAMEBUFFER_CONSOLE && \
 scripts/config -e DRM -e DRM_KMS_HELPER -e DRM_FBDEV_EMULATION -e DRM_CLIENT_DEFAULT_FBDEV && \
-scripts/config -e DRM_I915;        # AMD: -e DRM_AMDGPU -e DRM_AMD_DC (precisa de EXTRA_FIRMWARE)
+scripts/config -e DRM_I915 -e DRM_XE -e DRM_AMDGPU -e DRM_AMD_DC -e DRM_NOUVEAU -e EXTRA_FIRMWARE;
 
 # Entrada
 scripts/config -e INPUT -e INPUT_EVDEV -e INPUT_KEYBOARD -e KEYBOARD_ATKBD -e INPUT_MOUSE -e MOUSE_PS2 && \
