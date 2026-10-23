@@ -302,7 +302,37 @@ cd /;
 
 mkdir -p /FIRMWARE && \
 git clone --filter=blob:none --no-checkout --depth=1 https://gitlab.com/kernel-firmware/linux-firmware.git /FIRMWARE && \
-git -C /FIRMWARE sparse-checkout set --no-cone '/*' '!/ath3k-1.fw' '!/bnx2x' '!/cxgb3' '!/cxgb4' '!/wil6210.*' '!/ath6k' '!/ti-connectivity' '!/dvb-*' '!/tigon' '!/dpaa2' '!/nxp' '!/dabusb' '!/3com' '!/go7007' '!/keyspan' '!/keyspan_pda' '!/mellanox' '!/qcom' '!/netronome' '!/brcm' '!/qed' '!/mrvl' '!/ath10k' '!/intel/iwlwifi' && \
+git -C /FIRMWARE sparse-checkout set --no-cone '/*' \
+'!/ath3k-1.fw' \
+'!/ath6k' \
+'!/ath10k' \
+'!/ath11k' \
+'!/ath12k' \
+'!/mediatek' \
+'!/rtw88' \
+'!/rtw89' \
+'!/bnx2x' \
+'!/cxgb3' \
+'!/cxgb4' \
+'!/wil6210.*' \
+'!/ti-connectivity' \
+'!/dvb-*' \
+'!/dvb_*' \
+'!/tigon' \
+'!/dpaa2' \
+'!/nxp' \
+'!/dabusb' \
+'!/3com' \
+'!/go7007' \
+'!/keyspan' \
+'!/keyspan_pda' \
+'!/mellanox' \
+'!/qcom' \
+'!/netronome' \
+'!/brcm' \
+'!/qed' \
+'!/mrvl' \
+'!/intel/iwlwifi' && \
 git -C /FIRMWARE checkout && \
 mkdir -p /usr/lib/firmware && \
 mv /FIRMWARE/* /usr/lib/firmware;
