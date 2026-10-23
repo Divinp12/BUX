@@ -333,7 +333,7 @@ git -C /FIRMWARE sparse-checkout set --no-cone '/*' \
 '!/brcm' \
 '!/qed' \
 '!/mrvl' \
-'!/intel/iwlwifi'
+'!/intel/iwlwifi' \
 '!/agere_*' \
 '!/ar5523.bin' \
 '!/ar7010*.fw' \
