@@ -236,10 +236,9 @@ mount --mkdir -t tmpfs -o defaults,nosuid,nodev,noatime,size=100% tmpfs /mnt/COM
 
 echo "entrando no ambiente arch-chroot";
 arch-chroot /mnt bash -c "
-
-wget -P /COMPILACAO https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.2.11.tar.xz && \
-tar xvpf /COMPILACAO/linux-*.tar.xz -C /KERNEL --xattrs-include="*.*" --numeric-owner > /dev/null 2>&1 && \
-rm -rf /COMPILACAO/linux-*.tar.xz && \
+git clone --filter=blob:none --no-checkout --depth=1 https://github.com/torvalds/linux /COMPILACAO && \
+git -C /COMPILACAO sparse-checkout set --no-cone '/*' \
+'!/ath3k-1.fw' \
 make -C /COMPILACAO/linux-* mrproper > /dev/null 2>&1 && \
 make -C /COMPILACAO/linux-* clean > /dev/null 2>&1 && \
 make -C /COMPILACAO/linux-* tinyconfig > /dev/null 2>&1 && \
@@ -300,8 +299,6 @@ cp /COMPILACAO/linux-*/arch/x86/boot/bzImage /boot/vmlinuz-bux && \
 rm -rf /COMPILACAO/* && \
 cd /;
 
-
-mkdir -p /COMPILACAO && \
 git clone --filter=blob:none --no-checkout --depth=1 https://gitlab.com/kernel-firmware/linux-firmware.git /COMPILACAO && \
 git -C /COMPILACAO sparse-checkout set --no-cone '/*' \
 '!/ath3k-1.fw' \
