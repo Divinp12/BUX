@@ -231,19 +231,19 @@ echo bux > /mnt/etc/hostname;
 
 
 echo "adicionando particao tmpfs com diretorio /mnt/KERNEL";
-mount --mkdir -t tmpfs -o defaults,nosuid,nodev,noatime,size=100% tmpfs /mnt/KERNEL;
+mount --mkdir -t tmpfs -o defaults,nosuid,nodev,noatime,size=100% tmpfs /mnt/COMPILACAO;
 
 
 echo "entrando no ambiente arch-chroot";
 arch-chroot /mnt bash -c "
 
-wget -P /KERNEL https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.2.11.tar.xz && \
-tar xvpf /KERNEL/linux-*.tar.xz -C /KERNEL --xattrs-include="*.*" --numeric-owner > /dev/null 2>&1 && \
-rm -rf /KERNEL/linux-*.tar.xz && \
-make -C /KERNEL/linux-* mrproper > /dev/null 2>&1 && \
-make -C /KERNEL/linux-* clean > /dev/null 2>&1 && \
-make -C /KERNEL/linux-* tinyconfig > /dev/null 2>&1 && \
-cd /KERNEL/linux-*;
+wget -P /COMPILACAO https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.2.11.tar.xz && \
+tar xvpf /COMPILACAO/linux-*.tar.xz -C /KERNEL --xattrs-include="*.*" --numeric-owner > /dev/null 2>&1 && \
+rm -rf /COMPILACAO/linux-*.tar.xz && \
+make -C /COMPILACAO/linux-* mrproper > /dev/null 2>&1 && \
+make -C /COMPILACAO/linux-* clean > /dev/null 2>&1 && \
+make -C /COMPILACAO/linux-* tinyconfig > /dev/null 2>&1 && \
+cd /COMPILACAO/linux-*;
 # Base do sistema
 scripts/config -e EXPERT -e 64BIT -e SMP -e SCHED_SMT -e SCHED_MC -e X86_X2APIC -e MTRR -e X86_PAT && \
 scripts/config -e HIGH_RES_TIMERS -e NO_HZ_IDLE -e HZ_250 -e CC_OPTIMIZE_FOR_PERFORMANCE && \
@@ -294,15 +294,16 @@ scripts/config -e NET -e INET -e IPV6 -e UNIX -e PACKET -e NETDEVICES -e NET_COR
 scripts/config -e ETHERNET -e NET_VENDOR_REALTEK -e R8169 -e REALTEK_PHY && \
 scripts/config -d WIRELESS -d CFG80211 -d MAC80211 -d WLAN -d WLAN_VENDOR_INTEL -d IWLWIFI -d IWLMVM;
 
-make -C /KERNEL/linux-* olddefconfig -j$(nproc) > /dev/null 2>&1;
-make -C /KERNEL/linux-* -j$(nproc) && \
-cp /KERNEL/linux-*/arch/x86/boot/bzImage /boot/vmlinuz-bux && \
+make -C /COMPILACAO/linux-* olddefconfig -j$(nproc) > /dev/null 2>&1;
+make -C /COMPILACAO/linux-* -j$(nproc) && \
+cp /COMPILACAO/linux-*/arch/x86/boot/bzImage /boot/vmlinuz-bux && \
+rm -rf /COMPILACAO/* && \
 cd /;
 
 
-mkdir -p /FIRMWARE && \
-git clone --filter=blob:none --no-checkout --depth=1 https://gitlab.com/kernel-firmware/linux-firmware.git /FIRMWARE && \
-git -C /FIRMWARE sparse-checkout set --no-cone '/*' \
+mkdir -p /COMPILACAO && \
+git clone --filter=blob:none --no-checkout --depth=1 https://gitlab.com/kernel-firmware/linux-firmware.git /COMPILACAO && \
+git -C /COMPILACAO sparse-checkout set --no-cone '/*' \
 '!/ath3k-1.fw' \
 '!/ath6k' \
 '!/ath9k_htc' \
@@ -356,9 +357,9 @@ git -C /FIRMWARE sparse-checkout set --no-cone '/*' \
 '!/vntwusb.fw' \
 '!/wfx' \
 '!/wsm_22.bin' && \
-git -C /FIRMWARE checkout && \
+git -C /COMPILACAO checkout && \
 mkdir -p /usr/lib/firmware && \
-mv /FIRMWARE/* /usr/lib/firmware;
+mv /COMPILACAO/* /usr/lib/firmware;
 "
 
 arch-chroot /mnt bash -c '
