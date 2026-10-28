@@ -240,7 +240,7 @@ git clone --filter=blob:none --no-checkout --depth=1 https://github.com/torvalds
 git -C /COMPILACAO sparse-checkout set --no-cone '/*' \
 '!/Documentation/*/' \
 '!/arch/*/' '/arch/x86/' \
-'!/fs/{ntfs}/**/*.[ch]' \
+'!/fs/ntfs/**/*.[ch]' \
 '!/fs/btrfs/**/*.[ch]' \
 '!/fs/xfs/**/*.[ch]' \
 '!/fs/f2fs/**/*.[ch]' \
