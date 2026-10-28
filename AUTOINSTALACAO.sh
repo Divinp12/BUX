@@ -238,10 +238,20 @@ echo "entrando no ambiente arch-chroot";
 arch-chroot /mnt bash -c "
 git clone --filter=blob:none --no-checkout --depth=1 https://github.com/torvalds/linux /COMPILACAO && \
 git -C /COMPILACAO sparse-checkout set --no-cone '/*' \
-'!/Documentation/*' \
+'!/Documentation/*/' \
 '!/arch/*/' '/arch/x86/' \
-'!/fs/{btrfs,xfs,f2fs,nfs,ocfs2,ntfs}/**/*.[ch]' \
-'!/drivers/{infiniband,watchdog,xen,virt,virtio,vhost}/**/*.[ch]' \
+'!/fs/{ntfs}/**/*.[ch]' \
+'!/fs/btrfs/**/*.[ch]' \
+'!/fs/xfs/**/*.[ch]' \
+'!/fs/f2fs/**/*.[ch]' \
+'!/fs/nfs/**/*.[ch]' \
+'!/fs/ocfs2/**/*.[ch]' \
+'!/drivers/infiniband/**/*.[ch]' \
+'!/drivers/watchdog/**/*.[ch]' \
+'!/drivers/xen/**/*.[ch]' \
+'!/drivers/virt/**/*.[ch]' \
+'!/drivers/virtio/**/*.[ch]' \
+'!/drivers/vhost/**/*.[ch]' \
 '!/net/bluetooth/**/*.[ch]' && \
 git -C /COMPILACAO checkout && \
 make -C /COMPILACAO mrproper > /dev/null 2>&1 && \
