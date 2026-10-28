@@ -238,7 +238,7 @@ echo "entrando no ambiente arch-chroot";
 arch-chroot /mnt bash -c "
 git clone --filter=blob:none --no-checkout --depth=1 https://github.com/torvalds/linux /COMPILACAO && \
 git -C /COMPILACAO sparse-checkout set --no-cone '/*' \
-'!/Documentation' \
+'!/Documentation/*' \
 '!/drivers/infiniband/**/*.[ch]' \
 '!/net/bluetooth/**/*.[ch]' && \
 git -C /COMPILACAO checkout && \
