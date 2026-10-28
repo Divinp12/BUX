@@ -240,8 +240,8 @@ git clone --filter=blob:none --no-checkout --depth=1 https://github.com/torvalds
 git -C /COMPILACAO sparse-checkout set --no-cone '/*' \
 '!/Documentation/*' \
 '!/arch/*/' '/arch/x86/' \
-'!/fs/{btrfs,xfs,f2fs}/**/*.[ch]' \
-'!/drivers/infiniband/**/*.[ch]' \
+'!/fs/{btrfs,xfs,f2fs,nfs,ocfs2,ntfs}/**/*.[ch]' \
+'!/drivers/{infiniband,watchdog,xen,virt,virtio,vhost}/**/*.[ch]' \
 '!/net/bluetooth/**/*.[ch]' && \
 git -C /COMPILACAO checkout && \
 make -C /COMPILACAO mrproper > /dev/null 2>&1 && \
