@@ -244,10 +244,10 @@ git -C /COMPILACAO sparse-checkout set --no-cone '/*' \
 '!/drivers/infiniband/**/*.[ch]' \
 '!/net/bluetooth/**/*.[ch]' && \
 git -C /COMPILACAO checkout && \
-make -C /COMPILACAO/linux* mrproper > /dev/null 2>&1 && \
-make -C /COMPILACAO/linux* clean > /dev/null 2>&1 && \
-make -C /COMPILACAO/linux* tinyconfig > /dev/null 2>&1 && \
-cd /COMPILACAO/linux*;
+make -C /COMPILACAO mrproper > /dev/null 2>&1 && \
+make -C /COMPILACAO clean > /dev/null 2>&1 && \
+make -C /COMPILACAO tinyconfig > /dev/null 2>&1 && \
+cd /COMPILACAO;
 # Base do sistema
 scripts/config -e EXPERT -e 64BIT -e SMP -e SCHED_SMT -e SCHED_MC -e X86_X2APIC -e MTRR -e X86_PAT && \
 scripts/config -e HIGH_RES_TIMERS -e NO_HZ_IDLE -e HZ_250 -e CC_OPTIMIZE_FOR_PERFORMANCE && \
@@ -298,9 +298,9 @@ scripts/config -e NET -e INET -e IPV6 -e UNIX -e PACKET -e NETDEVICES -e NET_COR
 scripts/config -e ETHERNET -e NET_VENDOR_REALTEK -e R8169 -e REALTEK_PHY && \
 scripts/config -d WIRELESS -d CFG80211 -d MAC80211 -d WLAN -d WLAN_VENDOR_INTEL -d IWLWIFI -d IWLMVM;
 
-make -C /COMPILACAO/linux* olddefconfig -j$(nproc) > /dev/null 2>&1;
-make -C /COMPILACAO/linux* -j$(nproc) && \
-cp /COMPILACAO/linux*/arch/x86/boot/bzImage /boot/vmlinuz-bux && \
+make -C /COMPILACAO olddefconfig -j$(nproc) > /dev/null 2>&1;
+make -C /COMPILACAO -j$(nproc) && \
+cp /COMPILACAO/arch/x86/boot/bzImage /boot/vmlinuz-bux && \
 rm -rf /COMPILACAO/* && \
 cd /;
 
