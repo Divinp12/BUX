@@ -5,7 +5,7 @@ clear;
 
 
 echo "encerrando processos desnecessarios";
-systemctl stop systemd-timesyncd;
+systemctl stop sshd systemd-timesyncd;
 
 
 echo "removendo o diretorio /var/cache/pacman/pkg";
