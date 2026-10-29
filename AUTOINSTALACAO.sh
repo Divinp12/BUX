@@ -269,6 +269,13 @@ git -C /COMPILACAO sparse-checkout set --no-cone '/*' \
 '!/drivers/virt/**/*.[ch]' \
 '!/drivers/virtio/**/*.[ch]' \
 '!/drivers/vhost/**/*.[ch]' \
+'!/drivers/pinctrl/**/*.[ch]' \
+'!/drivers/leds/**/*.[ch]' \
+'!/drivers/clk/**/*.[ch]' \
+'!/drivers/spi/**/*.[ch]' \
+'!/drivers/gpio/**/*.[ch]' \
+'!/drivers/regulator/**/*.[ch]' \
+'!/drivers/media/**/*.[ch]' \
 '!/drivers/net/wireless/**/*.[ch]' \
 '!/net/wireless/**/*.[ch]' \
 '!/net/bluetooth/**/*.[ch]' && \
