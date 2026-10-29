@@ -89,7 +89,21 @@ Include=/etc/pacman.d/mirrorlist" > /etc/pacman.conf;
 
 
 echo "sincronizando repositorios do pacman";
-pacman -Sy --noconfirm > /dev/null 2>&1;
+pacman -Sy --needed --noconfirm \
+gcc \
+binutils \
+make \
+bison \
+flex \
+bc \
+libelf \
+openssl \
+perl \
+pkgconf > /dev/null 2>&1;
+
+
+echo "removendo o diretorio /var/cache/pacman/pkg";
+rm -rf /var/cache/pacman/pkg/*;
 
 
 echo "formatando 1 disco rigido valido";
