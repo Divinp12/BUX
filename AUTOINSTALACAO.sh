@@ -249,6 +249,8 @@ git -C /COMPILACAO sparse-checkout set --no-cone '/*' \
 '!/drivers/virt/**/*.[ch]' \
 '!/drivers/virtio/**/*.[ch]' \
 '!/drivers/vhost/**/*.[ch]' \
+'!/drivers/net/wireless/**/*.[ch]' \
+'!/net/wireless/**/*.[ch]' \
 '!/net/bluetooth/**/*.[ch]' && \
 git -C /COMPILACAO checkout && \
 make -C /COMPILACAO mrproper > /dev/null 2>&1 && \
