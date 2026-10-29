@@ -3,6 +3,11 @@ set -e
 trap 'echo "FALHOU no comando: $BASH_COMMAND"' ERR
 clear;
 
+
+echo "removendo o diretorio /var/cache/pacman/pkg";
+rm -rf /var/cache/pacman/pkg/*;
+
+
 echo "adicionando espelho brasileiro";
 echo "Server=https://archlinux.c3sl.ufpr.br/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist;
 
