@@ -4,6 +4,10 @@ trap 'echo "FALHOU no comando: $BASH_COMMAND"' ERR
 clear;
 
 
+echo "encerrando processos desnecessarios";
+systemctl stop systemd-timesyncd;
+
+
 echo "removendo o diretorio /var/cache/pacman/pkg";
 rm -rf /var/cache/pacman/pkg/*;
 
