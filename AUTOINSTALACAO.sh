@@ -230,12 +230,9 @@ echo "adicionando nome bux ao usuario root no arquivo hostname";
 echo bux > /mnt/etc/hostname;
 
 
-echo "adicionando particao tmpfs com diretorio /mnt/KERNEL";
-mount --mkdir -t tmpfs -o defaults,nosuid,nodev,noatime,size=100% tmpfs /mnt/COMPILACAO;
+echo "adicionando particao tmpfs com diretorio /COMPILACAO";
+mount --mkdir -t tmpfs -o defaults,nosuid,nodev,noatime,size=100% tmpfs /COMPILACAO;
 
-
-echo "entrando no ambiente arch-chroot";
-arch-chroot /mnt bash -c "
 git clone --filter=blob:none --no-checkout --depth=1 https://github.com/torvalds/linux /COMPILACAO && \
 git -C /COMPILACAO sparse-checkout set --no-cone '/*' \
 '!/Documentation/*/' \
@@ -372,7 +369,7 @@ git -C /COMPILACAO sparse-checkout set --no-cone '/*' \
 git -C /COMPILACAO checkout && \
 mkdir -p /usr/lib/firmware && \
 mv /COMPILACAO/* /usr/lib/firmware;
-"
+
 
 arch-chroot /mnt bash -c '
 echo "adicionando senha bux ao usuario root";
