@@ -283,7 +283,7 @@ git -C /mnt/COMPILACAO checkout;
 
 
 echo "aplicando configuracao minima de kernel";
-make -C /mnt/COMPILACAO tinyconfig > /dev/null 2>&1;
+arch-chroot /mnt bash -c 'make -C /COMPILACAO tinyconfig > /dev/null 2>&1';
 
 
 cd /mnt/COMPILACAO;
@@ -339,11 +339,11 @@ scripts/config -d WIRELESS -d CFG80211 -d MAC80211 -d WLAN -d WLAN_VENDOR_INTEL 
 
 
 echo "configurando dependencias linux";
-make -C /mnt/COMPILACAO olddefconfig -j$(nproc) > /dev/null 2>&1;
+arch-chroot /mnt bash -c 'make -C /COMPILACAO olddefconfig -j$(nproc) > /dev/null 2>&1';
 
 
 echo "compilando linux";
-make -C /mnt/COMPILACAO -j$(nproc);
+arch-chroot /mnt bash -c 'make -C /COMPILACAO -j$(nproc)';
 
 
 echo "copiando linux pro diretorio /boot";
