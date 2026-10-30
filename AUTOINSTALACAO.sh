@@ -353,11 +353,11 @@ make -C /mnt/COMPILACAO -j$(nproc);
 
 
 echo "copiando linux pro diretorio /boot";
-cp /COMPILACAO/arch/x86/boot/bzImage /boot/vmlinuz-bux;
+cp /mnt/COMPILACAO/arch/x86/boot/bzImage /mnt/boot/vmlinuz-bux;
 
 
 echo "excluindo diretorio /COMPILACAO";
-rm -rf /COMPILACAO;
+rm -rf /mnt/COMPILACAO;
 
 
 cd /;
