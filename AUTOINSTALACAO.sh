@@ -258,6 +258,8 @@ git -C /mnt/COMPILACAO sparse-checkout set --no-cone '/*' \
 '!/fs/f2fs/**/*.[ch]' \
 '!/fs/nfs/**/*.[ch]' \
 '!/fs/ocfs2/**/*.[ch]' \
+'!/fs/smb/**/*.[ch]' \
+'!/fs/nfsd/**/*.[ch]' \
 '!/drivers/infiniband/**/*.[ch]' \
 '!/drivers/watchdog/**/*.[ch]' \
 '!/drivers/xen/**/*.[ch]' \
