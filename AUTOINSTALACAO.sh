@@ -432,25 +432,24 @@ echo "baixando firmware";
 git -C /mnt/usr/lib/firmware checkout;
 
 
-arch-chroot /mnt bash -c '
 echo "adicionando senha bux ao usuario root";
-echo -e "bux\nbux" | passwd root > /dev/null 2>&1;
+arch-chroot /mnt bash -c 'echo -e "bux\nbux" | passwd root > /dev/null 2>&1';
 
 
 echo "adicionando usuario normal com nome bux";
-useradd -m -g users -G wheel bux;
+arch-chroot /mnt bash -c 'useradd -m -g users -G wheel bux';
 
 
 echo "adicionando senha bux ao usuario normal";
-echo -e "bux\nbux" | passwd bux > /dev/null 2>&1;
+arch-chroot /mnt bash -c 'echo -e "bux\nbux" | passwd bux > /dev/null 2>&1';
 
 
 echo "aplicando caracteres portugues brasileiro";
-locale-gen > /dev/null 2>&1;
+arch-chroot /mnt bash -c 'locale-gen > /dev/null 2>&1';
 
 
 echo "sincronizando relogio";
-hwclock --systohc > /dev/null 2>&1;'
+arch-chroot /mnt bash -c 'hwclock --systohc > /dev/null 2>&1';
 
 
 echo "configurando systemd-boot";
