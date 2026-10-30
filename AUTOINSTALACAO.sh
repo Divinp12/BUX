@@ -282,6 +282,14 @@ echo "baixando codigo fonte do linux";
 git -C /mnt/COMPILACAO checkout;
 
 
+echo "adicionando diretorio /mnt/COMPILACAO/arch/um/scripts";
+mkdir -p /mnt/COMPILACAO/arch/um/scripts;
+
+
+echo "criando arquivo Makefile.rules vazio";
+touch /mnt/COMPILACAO/arch/um/scripts/Makefile.rules;
+
+
 echo "aplicando configuracao minima de kernel";
 arch-chroot /mnt bash -c 'make -C /COMPILACAO tinyconfig > /dev/null 2>&1';
 
