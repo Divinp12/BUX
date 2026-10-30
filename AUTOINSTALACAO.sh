@@ -97,6 +97,10 @@ Include=/etc/pacman.d/mirrorlist
 Include=/etc/pacman.d/mirrorlist" > /etc/pacman.conf;
 
 
+echo "sincronizando repositorios e instalando git";
+pacman -Sy --needed --noconfirm git;
+
+
 echo "formatando 1 disco rigido valido";
 if wipefs -a /dev/nvme0n1 > /dev/null 2>&1; then
 DISC="/dev/nvme0n1"
@@ -244,7 +248,7 @@ git clone --filter=blob:none --no-checkout --depth=1 https://github.com/torvalds
 
 
 echo "configurando diretorios do kernel linux";
-git -C /COMPILACAO sparse-checkout set --no-cone '/*' \
+git -C /mnt/COMPILACAO sparse-checkout set --no-cone '/*' \
 '!/Documentation/*/' \
 '!/arch/*/' '/arch/x86/' \
 '!/tools/testing/**/*.[ch]' \
@@ -273,20 +277,22 @@ git -C /COMPILACAO sparse-checkout set --no-cone '/*' \
 
 
 echo "baixando codigo fonte do linux";
-git -C /COMPILACAO checkout;
+git -C /mnt/COMPILACAO checkout;
 
 
 echo "limpando codigo fonte do linux";
-make -C /COMPILACAO mrproper > /dev/null 2>&1;
+make -C /mnt/COMPILACAO mrproper > /dev/null 2>&1;
 
 
 echo "limpando novamente codigo fonte do linux";
-make -C /COMPILACAO clean > /dev/null 2>&1;
+make -C /mnt/COMPILACAO clean > /dev/null 2>&1;
 
 
 echo "aplicando configuracao minima de kernel";
-make -C /COMPILACAO tinyconfig > /dev/null 2>&1;
-cd /COMPILACAO;
+make -C /mnt/COMPILACAO tinyconfig > /dev/null 2>&1;
+
+
+cd /mnt/COMPILACAO;
 # Base do sistema
 scripts/config -e EXPERT -e 64BIT -e SMP -e SCHED_SMT -e SCHED_MC -e X86_X2APIC -e MTRR -e X86_PAT && \
 scripts/config -e HIGH_RES_TIMERS -e NO_HZ_IDLE -e HZ_250 -e CC_OPTIMIZE_FOR_PERFORMANCE && \
@@ -337,14 +343,36 @@ scripts/config -e NET -e INET -e IPV6 -e UNIX -e PACKET -e NETDEVICES -e NET_COR
 scripts/config -e ETHERNET -e NET_VENDOR_REALTEK -e R8169 -e REALTEK_PHY && \
 scripts/config -d WIRELESS -d CFG80211 -d MAC80211 -d WLAN -d WLAN_VENDOR_INTEL -d IWLWIFI -d IWLMVM;
 
-make -C /COMPILACAO olddefconfig -j$(nproc) > /dev/null 2>&1;
-make -C /COMPILACAO -j$(nproc) && \
-cp /COMPILACAO/arch/x86/boot/bzImage /boot/vmlinuz-bux && \
-rm -rf /COMPILACAO/* && \
+
+echo "configurando dependencias linux";
+make -C /mnt/COMPILACAO olddefconfig -j$(nproc) > /dev/null 2>&1;
+
+
+echo "compilando linux";
+make -C /mnt/COMPILACAO -j$(nproc);
+
+
+echo "copiando linux pro diretorio /boot";
+cp /COMPILACAO/arch/x86/boot/bzImage /boot/vmlinuz-bux;
+
+
+echo "excluindo diretorio /COMPILACAO";
+rm -rf /COMPILACAO;
+
+
 cd /;
 
-git clone --filter=blob:none --no-checkout --depth=1 https://gitlab.com/kernel-firmware/linux-firmware.git /COMPILACAO && \
-git -C /COMPILACAO sparse-checkout set --no-cone '/*' \
+
+echo "criando diretorio /usr/lib/firmware";
+mkdir -p /mnt/usr/lib/firmware;
+
+
+echo "baixando informacoes do repositorio de firmware";
+git clone --filter=blob:none --no-checkout --depth=1 https://gitlab.com/kernel-firmware/linux-firmware.git /mnt/usr/lib/firmware;
+
+
+echo "configurando diretorios de firmware";
+git -C /mnt/usr/lib/firmware sparse-checkout set --no-cone '/*' \
 '!/ath3k-1.fw' \
 '!/ath6k' \
 '!/ath9k_htc' \
@@ -397,10 +425,11 @@ git -C /COMPILACAO sparse-checkout set --no-cone '/*' \
 '!/sdd_sagrad_*.bin' \
 '!/vntwusb.fw' \
 '!/wfx' \
-'!/wsm_22.bin' && \
-git -C /COMPILACAO checkout && \
-mkdir -p /usr/lib/firmware && \
-mv /COMPILACAO/* /usr/lib/firmware;
+'!/wsm_22.bin';
+
+
+echo "baixando firmware";
+git -C /mnt/usr/lib/firmware checkout;
 
 
 arch-chroot /mnt bash -c '
