@@ -235,10 +235,15 @@ echo "adicionando nome bux ao usuario root no arquivo hostname";
 echo bux > /mnt/etc/hostname;
 
 
-echo "adicionando particao tmpfs com diretorio /mnt/COMPILACAO";
+echo "adicionando pasta COMPILACAO no diretorio /mnt";
 mkdir -p /mnt/COMPILACAO;
 
-git clone --filter=blob:none --no-checkout --depth=1 https://github.com/torvalds/linux /mnt/COMPILACAO && \
+
+echo "baixando informacoes do repositorio codigo fonte do linux";
+git clone --filter=blob:none --no-checkout --depth=1 https://github.com/torvalds/linux /mnt/COMPILACAO;
+
+
+echo "configurando diretorios do kernel linux";
 git -C /COMPILACAO sparse-checkout set --no-cone '/*' \
 '!/Documentation/*/' \
 '!/arch/*/' '/arch/x86/' \
@@ -264,11 +269,23 @@ git -C /COMPILACAO sparse-checkout set --no-cone '/*' \
 '!/drivers/media/**/*.[ch]' \
 '!/drivers/net/wireless/**/*.[ch]' \
 '!/net/wireless/**/*.[ch]' \
-'!/net/bluetooth/**/*.[ch]' && \
-git -C /COMPILACAO checkout && \
-make -C /COMPILACAO mrproper > /dev/null 2>&1 && \
-make -C /COMPILACAO clean > /dev/null 2>&1 && \
-make -C /COMPILACAO tinyconfig > /dev/null 2>&1 && \
+'!/net/bluetooth/**/*.[ch]';
+
+
+echo "baixando codigo fonte do linux";
+git -C /COMPILACAO checkout;
+
+
+echo "limpando codigo fonte do linux";
+make -C /COMPILACAO mrproper > /dev/null 2>&1;
+
+
+echo "limpando novamente codigo fonte do linux";
+make -C /COMPILACAO clean > /dev/null 2>&1;
+
+
+echo "aplicando configuracao minima de kernel";
+make -C /COMPILACAO tinyconfig > /dev/null 2>&1;
 cd /COMPILACAO;
 # Base do sistema
 scripts/config -e EXPERT -e 64BIT -e SMP -e SCHED_SMT -e SCHED_MC -e X86_X2APIC -e MTRR -e X86_PAT && \
