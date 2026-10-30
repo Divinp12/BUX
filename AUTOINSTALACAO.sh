@@ -346,6 +346,10 @@ scripts/config -e ETHERNET -e NET_VENDOR_REALTEK -e R8169 -e REALTEK_PHY && \
 scripts/config -d WIRELESS -d CFG80211 -d MAC80211 -d WLAN -d WLAN_VENDOR_INTEL -d IWLWIFI -d IWLMVM;
 
 
+#LEDS
+scripts/config -d NEW_LEDS -d LEDS_CLASS -d LEDS_TRIGGERS -d RFKILL_LEDS -d SND_HDA_GENERIC_LEDS -d INPUT_LEDS;
+
+
 echo "configurando dependencias linux";
 arch-chroot /mnt bash -c 'make -C /COMPILACAO olddefconfig -j$(nproc) > /dev/null 2>&1';
 
