@@ -97,24 +97,6 @@ Include=/etc/pacman.d/mirrorlist
 Include=/etc/pacman.d/mirrorlist" > /etc/pacman.conf;
 
 
-echo "sincronizando repositorios do pacman";
-pacman -Sy --needed --noconfirm \
-gcc \
-binutils \
-make \
-bison \
-flex \
-bc \
-libelf \
-openssl \
-perl \
-pkgconf > /dev/null 2>&1;
-
-
-echo "removendo o diretorio /var/cache/pacman/pkg";
-rm -rf /var/cache/pacman/pkg/*;
-
-
 echo "formatando 1 disco rigido valido";
 if wipefs -a /dev/nvme0n1 > /dev/null 2>&1; then
 DISC="/dev/nvme0n1"
@@ -253,10 +235,10 @@ echo "adicionando nome bux ao usuario root no arquivo hostname";
 echo bux > /mnt/etc/hostname;
 
 
-echo "adicionando particao tmpfs com diretorio /COMPILACAO";
-mount --mkdir -t tmpfs -o defaults,nosuid,nodev,noatime,size=100% tmpfs /COMPILACAO;
+echo "adicionando particao tmpfs com diretorio /mnt/COMPILACAO";
+mkdir -p /mnt/COMPILACAO;
 
-git clone --filter=blob:none --no-checkout --depth=1 https://github.com/torvalds/linux /COMPILACAO && \
+git clone --filter=blob:none --no-checkout --depth=1 https://github.com/torvalds/linux /mnt/COMPILACAO && \
 git -C /COMPILACAO sparse-checkout set --no-cone '/*' \
 '!/Documentation/*/' \
 '!/arch/*/' '/arch/x86/' \
