@@ -282,14 +282,6 @@ echo "baixando codigo fonte do linux";
 git -C /mnt/COMPILACAO checkout;
 
 
-echo "limpando codigo fonte do linux";
-make -C /mnt/COMPILACAO mrproper > /dev/null 2>&1;
-
-
-echo "limpando novamente codigo fonte do linux";
-make -C /mnt/COMPILACAO clean > /dev/null 2>&1;
-
-
 echo "aplicando configuracao minima de kernel";
 make -C /mnt/COMPILACAO tinyconfig > /dev/null 2>&1;
 
