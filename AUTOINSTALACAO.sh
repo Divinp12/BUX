@@ -272,7 +272,6 @@ git -C /mnt/COMPILACAO sparse-checkout set --no-cone '/*' \
 '!/drivers/spi/**/*.[ch]' \
 '!/drivers/gpio/**/*.[ch]' \
 '!/drivers/regulator/**/*.[ch]' \
-'!/drivers/media/**/*.[ch]' \
 '!/drivers/net/wireless/**/*.[ch]' \
 '!/net/wireless/**/*.[ch]' \
 '!/net/bluetooth/**/*.[ch]';
