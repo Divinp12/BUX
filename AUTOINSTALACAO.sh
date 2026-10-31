@@ -338,7 +338,7 @@ scripts/config -e SERIO -e SERIO_I8042 -e INPUT_MISC -e INPUT_UINPUT && \
 scripts/config -e HID_SUPPORT -e HID -e HID_GENERIC -e USB_HID -e HIDRAW;
 
 # Áudio
-scripts/config -e SOUND -e SND -e SND_PCI -e SND_HDA_INTEL -e SND_HDA_CODEC_REALTEK -e SND_HDA_CODEC_HDMI -e SND_USB_AUDIO;
+scripts/config -e SOUND -e SND -e SND_PCI -e SND_HDA_INTEL -d SND_HDA_CODEC_REALTEK -d SND_HDA_GENERIC -e SND_HDA_CODEC_HDMI -e SND_USB_AUDIO;
 
 # Rede
 scripts/config -e NET -e INET -e IPV6 -e UNIX -e PACKET -e NETDEVICES -e NET_CORE -e IP_MULTIPLE_TABLES -e RFKILL && \
@@ -347,7 +347,7 @@ scripts/config -d WIRELESS -d CFG80211 -d MAC80211 -d WLAN -d WLAN_VENDOR_INTEL 
 
 
 #LEDS
-scripts/config -d NEW_LEDS -d LEDS_CLASS -d LEDS_TRIGGERS -d RFKILL_LEDS -d SND_HDA_GENERIC_LEDS -d INPUT_LEDS;
+scripts/config -d NEW_LEDS -d LEDS_CLASS -d LEDS_TRIGGERS -d RFKILL_LEDS -d SND_HDA_GENERIC_LEDS -d SND_CTL_LED -d INPUT_LEDS;
 
 
 echo "configurando dependencias linux";
