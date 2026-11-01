@@ -185,60 +185,6 @@ echo "Ñ ENCONTRADO";
 fi;
 
 
-echo "adicionando espelho brasileiro";
-cp -a /etc/pacman.d/mirrorlist /mnt/etc/pacman.d/mirrorlist;
-
-
-echo "sobscrevendo arquivo pacman.conf";
-cp -a /etc/pacman.conf /mnt/etc/pacman.conf
-
-
-echo "criando pasta systemd no diretorio /mnt/etc";
-mkdir -p /mnt/etc/systemd;
-
-
-echo "desativando geração de arquivos em /var/lib/systemd/coredump";
-echo "[Coredump]
-Storage=none
-ProcessSizeMax=0" > /mnt/etc/systemd/coredump.conf;
-
-
-echo "desativando armazenamento de logs";
-echo "[Journal]
-Storage=none" > /mnt/etc/systemd/journald.conf;
-
-
-echo "adicionando arquivo mkinitcpio.conf no diretorio /mnt/etc";
-echo "MODULES=()
-BINARIES=()
-FILES=()
-HOOKS=(base systemd autodetect modconf kms keyboard sd-vconsole block filesystems)
-COMPRESSION=\"\"" > /mnt/etc/mkinitcpio.conf;
-
-
-echo "adicionando arquivo linux.preset no diretorio /etc/mkinitcpio.d";
-echo "ALL_kver=\"/boot/vmlinuz-bux\"
-PRESETS=('default')
-default_image=\"\"" > /etc/mkinitcpio.d/linux.preset;
-
-
-echo "sobrescrevendo arquivo vconsole.conf no diretorio /etc";
-echo "KEYMAP=us
-FONT=lat9w-16" > /mnt/etc/vconsole.conf;
-
-
-echo "adicionando caracteres portugues brasileiro";
-echo "pt_BR.UTF-8 UTF-8" > /mnt/etc/locale.gen;
-
-
-echo "adicionando idioma portugues brasileiro";
-echo "LANG=pt_BR.UTF-8" > /mnt/etc/locale.conf;
-
-
-echo "adicionando nome bux ao usuario root no arquivo hostname";
-echo bux > /mnt/etc/hostname;
-
-
 echo "adicionando pasta COMPILACAO no diretorio /mnt";
 mkdir -p /mnt/COMPILACAO;
 
@@ -435,6 +381,60 @@ git -C /mnt/usr/lib/firmware sparse-checkout set --no-cone '/*' \
 
 echo "baixando firmware";
 git -C /mnt/usr/lib/firmware checkout;
+
+
+echo "adicionando espelho brasileiro";
+cp -a /etc/pacman.d/mirrorlist /mnt/etc/pacman.d/mirrorlist;
+
+
+echo "sobscrevendo arquivo pacman.conf";
+cp -a /etc/pacman.conf /mnt/etc/pacman.conf
+
+
+echo "criando pasta systemd no diretorio /mnt/etc";
+mkdir -p /mnt/etc/systemd;
+
+
+echo "desativando geração de arquivos em /var/lib/systemd/coredump";
+echo "[Coredump]
+Storage=none
+ProcessSizeMax=0" > /mnt/etc/systemd/coredump.conf;
+
+
+echo "desativando armazenamento de logs";
+echo "[Journal]
+Storage=none" > /mnt/etc/systemd/journald.conf;
+
+
+echo "adicionando arquivo mkinitcpio.conf no diretorio /mnt/etc";
+echo "MODULES=()
+BINARIES=()
+FILES=()
+HOOKS=(base systemd autodetect modconf kms keyboard sd-vconsole block filesystems)
+COMPRESSION=\"\"" > /mnt/etc/mkinitcpio.conf;
+
+
+echo "adicionando arquivo linux.preset no diretorio /etc/mkinitcpio.d";
+echo "ALL_kver=\"/boot/vmlinuz-bux\"
+PRESETS=('default')
+default_image=\"\"" > /etc/mkinitcpio.d/linux.preset;
+
+
+echo "sobrescrevendo arquivo vconsole.conf no diretorio /etc";
+echo "KEYMAP=us
+FONT=lat9w-16" > /mnt/etc/vconsole.conf;
+
+
+echo "adicionando caracteres portugues brasileiro";
+echo "pt_BR.UTF-8 UTF-8" > /mnt/etc/locale.gen;
+
+
+echo "adicionando idioma portugues brasileiro";
+echo "LANG=pt_BR.UTF-8" > /mnt/etc/locale.conf;
+
+
+echo "adicionando nome bux ao usuario root no arquivo hostname";
+echo bux > /mnt/etc/hostname;
 
 
 echo "adicionando senha bux ao usuario root";
