@@ -198,6 +198,8 @@ git -C /mnt/COMPILACAO sparse-checkout set --no-cone '/*' \
 '!/Documentation/*/' \
 '!/arch/*/' '/arch/x86/' '/arch/**/Kconfig*' \
 '!/tools/testing/**/*.[ch]' \
+'!/fs/exfat/**/*.[ch]' \
+'!/fs/ntfs3/**/*.[ch]' \
 '!/fs/ntfs/**/*.[ch]' \
 '!/fs/btrfs/**/*.[ch]' \
 '!/fs/xfs/**/*.[ch]' \
