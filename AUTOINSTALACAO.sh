@@ -240,10 +240,8 @@ touch /mnt/COMPILACAO/arch/um/scripts/Makefile.rules;
 echo "aplicando configuracao minima de kernel";
 arch-chroot /mnt bash -c 'make -C /COMPILACAO tinyconfig > /dev/null 2>&1';
 
-
-cd /mnt/COMPILACAO;
 # Base do sistema
-scripts/config -e EXPERT -e 64BIT -e SMP -e SCHED_SMT -e SCHED_MC -e X86_X2APIC -e MTRR -e X86_PAT \
+/mnt/COMPILACAO/scripts/config --file /mnt/COMPILACAO/.config -e EXPERT -e 64BIT -e SMP -e SCHED_SMT -e SCHED_MC -e X86_X2APIC -e MTRR -e X86_PAT \
 -e HIGH_RES_TIMERS -e NO_HZ_IDLE -e HZ_250 -e CC_OPTIMIZE_FOR_PERFORMANCE \
 -d MODULES -d SLUB_TINY -d BLK_DEV_INITRD --set-val NR_CPUS 32 \
 -e PRINTK -e BUG -e BLOCK -e TTY -e VT -e VT_CONSOLE -e UNIX98_PTYS -e MAGIC_SYSRQ \
@@ -253,48 +251,48 @@ scripts/config -e EXPERT -e 64BIT -e SMP -e SCHED_SMT -e SCHED_MC -e X86_X2APIC 
 -e POSIX_TIMERS -e INOTIFY_USER -e FHANDLE -e AUTOFS_FS;
 
 # systemd, Steam, namespaces
-scripts/config -e CGROUPS -e MEMCG -e CGROUP_SCHED -e FAIR_GROUP_SCHED -e CGROUP_PIDS \
+/mnt/COMPILACAO/scripts/config --file /mnt/COMPILACAO/.config -e CGROUPS -e MEMCG -e CGROUP_SCHED -e FAIR_GROUP_SCHED -e CGROUP_PIDS \
 -e NAMESPACES -e UTS_NS -e TIME_NS -e IPC_NS -e USER_NS -e PID_NS -e NET_NS \
 -e SECCOMP -e SECCOMP_FILTER -e IA32_EMULATION -e COMPAT_32BIT_TIME -e IKCONFIG -e IKCONFIG_PROC -e NTSYNC \
 -e CRYPTO -e CRYPTO_HMAC -e CRYPTO_SHA256 -e CRYPTO_USER_API_HASH;
 
 # Hardware base
-scripts/config -e FW_LOADER -e RTC_CLASS -e RTC_DRV_CMOS -e RTC_HCTOSYS -e RTC_SYSTOHC \
+/mnt/COMPILACAO/scripts/config --file /mnt/COMPILACAO/.config -e FW_LOADER -e RTC_CLASS -e RTC_DRV_CMOS -e RTC_HCTOSYS -e RTC_SYSTOHC \
 -e ACPI -e ACPI_PROCESSOR -e ACPI_BUTTON -e PCI -e PCI_MSI -e DMI -e DMIID \
 -e CPU_FREQ -e X86_INTEL_PSTATE -e X86_AMD_PSTATE -e CPU_IDLE -e INTEL_IDLE \
 -e HWMON -e SENSORS_CORETEMP -e SENSORS_K10TEMP;
 
 # Disco: NVMe, SATA, USB
-scripts/config -e BLK_DEV_NVME -e ATA -e SATA_AHCI -e SCSI -e BLK_DEV_SD \
+/mnt/COMPILACAO/scripts/config --file /mnt/COMPILACAO/.config -e BLK_DEV_NVME -e ATA -e SATA_AHCI -e SCSI -e BLK_DEV_SD \
 -e PARTITION_ADVANCED -e EFI_PARTITION \
 -e USB_SUPPORT -e USB -e USB_PCI -e USB_XHCI_HCD -e USB_XHCI_PCI -e USB_EHCI_HCD -e USB_EHCI_PCI \
 -e USB_STORAGE -e USB_UAS;
 
 # Sistemas de arquivos
-scripts/config -e EXT4_FS -e FAT_FS -e VFAT_FS -e NLS -e NLS_CODEPAGE_437 -e NLS_ASCII -e NLS_UTF8 \
+/mnt/COMPILACAO/scripts/config --file /mnt/COMPILACAO/.config -e EXT4_FS -e FAT_FS -e VFAT_FS -e NLS -e NLS_CODEPAGE_437 -e NLS_ASCII -e NLS_UTF8 \
 --set-str FAT_DEFAULT_IOCHARSET ascii;
 
 # EFI e vídeo (framebuffer é necessário para o sway subir)
-scripts/config -e EFI -e EFI_STUB -e EFIVAR_FS -e FB -e FB_EFI -e FB_DEVICE -e FRAMEBUFFER_CONSOLE \
+/mnt/COMPILACAO/scripts/config --file /mnt/COMPILACAO/.config -e EFI -e EFI_STUB -e EFIVAR_FS -e FB -e FB_EFI -e FB_DEVICE -e FRAMEBUFFER_CONSOLE \
 -e DRM -e DRM_KMS_HELPER -e DRM_FBDEV_EMULATION -e DRM_CLIENT_DEFAULT_FBDEV \
 -e DRM_I915 -e DRM_XE -e DRM_AMDGPU -e DRM_AMD_DC -e DRM_NOUVEAU -e EXTRA_FIRMWARE;
 
 # Entrada
-scripts/config -e INPUT -e INPUT_EVDEV -e INPUT_KEYBOARD -e KEYBOARD_ATKBD -e INPUT_MOUSE -e MOUSE_PS2 \
+/mnt/COMPILACAO/scripts/config --file /mnt/COMPILACAO/.config -e INPUT -e INPUT_EVDEV -e INPUT_KEYBOARD -e KEYBOARD_ATKBD -e INPUT_MOUSE -e MOUSE_PS2 \
 -e SERIO -e SERIO_I8042 -e INPUT_MISC -e INPUT_UINPUT \
 -e HID_SUPPORT -e HID -e HID_GENERIC -e USB_HID -e HIDRAW;
 
 # Áudio
-scripts/config -e SOUND -e SND -e SND_PCI -e SND_HDA_INTEL -d SND_HDA_CODEC_REALTEK -d SND_HDA_GENERIC -e SND_HDA_CODEC_HDMI -e SND_USB_AUDIO;
+/mnt/COMPILACAO/scripts/config --file /mnt/COMPILACAO/.config -e SOUND -e SND -e SND_PCI -e SND_HDA_INTEL -d SND_HDA_CODEC_REALTEK -d SND_HDA_GENERIC -e SND_HDA_CODEC_HDMI -e SND_USB_AUDIO;
 
 # Rede
-scripts/config -e NET -e INET -e IPV6 -e UNIX -e PACKET -e NETDEVICES -e NET_CORE -e IP_MULTIPLE_TABLES -e RFKILL \
+/mnt/COMPILACAO/scripts/config --file /mnt/COMPILACAO/.config -e NET -e INET -e IPV6 -e UNIX -e PACKET -e NETDEVICES -e NET_CORE -e IP_MULTIPLE_TABLES -e RFKILL \
 -e ETHERNET -e NET_VENDOR_REALTEK -e R8169 -e REALTEK_PHY \
 -d WIRELESS -d CFG80211 -d MAC80211 -d WLAN -d WLAN_VENDOR_INTEL -d IWLWIFI -d IWLMVM \
 -e USB_NET_DRIVERS -e USB_USBNET -e USB_NET_CDCETHER -e USB_NET_CDC_NCM -e USB_NET_RNDIS_HOST;
 
 #LEDS
-scripts/config -d NEW_LEDS -d LEDS_CLASS -d LEDS_TRIGGERS -d RFKILL_LEDS -d SND_HDA_GENERIC_LEDS -d SND_CTL_LED -d INPUT_LEDS;
+/mnt/COMPILACAO/scripts/config --file /mnt/COMPILACAO/.config -d NEW_LEDS -d LEDS_CLASS -d LEDS_TRIGGERS -d RFKILL_LEDS -d SND_HDA_GENERIC_LEDS -d SND_CTL_LED -d INPUT_LEDS;
 
 
 echo "configurando dependencias linux";
@@ -311,9 +309,6 @@ cp /mnt/COMPILACAO/arch/x86/boot/bzImage /mnt/boot/vmlinuz-bux;
 
 echo "excluindo diretorio /COMPILACAO";
 rm -rf /mnt/COMPILACAO;
-
-
-cd /;
 
 
 echo "criando diretorio /usr/lib/firmware";
