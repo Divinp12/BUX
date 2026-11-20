@@ -381,6 +381,9 @@ git -C /mnt/usr/lib/firmware checkout;
 
 #################################################################################################################
 
+echo "excluindo diretorio /COMPILACAO";
+rm -rf /mnt/COMPILACAO;
+
 echo "adicionando pasta COMPILACAO no diretorio /mnt";
 mkdir -p /mnt/COMPILACAO/CODIGOFONTE-WLROOTS;
 
@@ -410,12 +413,46 @@ ninja -C /mnt/COMPILACAO/BUILD-WLROOTS install;
 
 #############################################################################################################
 
+echo "adicionando pasta COMPILACAO no diretorio /mnt";
+mkdir -p /mnt/COMPILACAO/CODIGOFONTE-SWAY;
+
+echo "adicionando pasta COMPILACAO no diretorio /mnt";
+mkdir -p /mnt/COMPILACAO/BUILD-SWAY;
+
+echo "baixando repositorio do sway";
+git clone https://github.com/swaywm/sway.git /mnt/COMPILACAO/CODIGOFONTE-SWAY;
+
+echo "adicionando configuracao do sway";
+meson setup /mnt/COMPILACAO/BUILD-SWAY /mnt/COMPILACAO/CODIGOFONTE-SWAY \
+    --prefix=/usr/local \
+    --buildtype=release \
+    -Dswaybar=false \
+    -Dswaynag=false \
+    -Dtray=disabled \
+    -Dgdk-pixbuf=disabled \
+    -Dman-pages=disabled \
+    -Dbash-completions=false \
+    -Dzsh-completions=false \
+    -Dfish-completions=false
+
+echo "compilando wlroots";
+ninja -C /mnt/COMPILACAO/BUILD-SWAY;
+
+echo "instalando wlroots";
+sudo ninja -C /mnt/COMPILACAO/BUILD-SWAY install;
+
+# Atualização do linker
+sudo ldconfig
+
+
+###############################################################################################################
+
 echo "adicionando espelho brasileiro";
 cp -a /etc/pacman.d/mirrorlist /mnt/etc/pacman.d/mirrorlist;
 
 
 echo "sobscrevendo arquivo pacman.conf";
-cp -a /etc/pacman.conf /mnt/etc/pacman.conf
+cp -a /etc/pacman.conf /mnt/etc/pacman.conf;
 
 
 echo "criando pasta systemd no diretorio /mnt/etc";
