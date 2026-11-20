@@ -241,7 +241,8 @@ touch /mnt/COMPILACAO/arch/um/scripts/Makefile.rules;
 echo "aplicando configuracao minima de kernel";
 arch-chroot /mnt bash -c 'make -C /COMPILACAO tinyconfig > /dev/null 2>&1';
 
-# Base do sistema
+
+echo "configurando modulos do kernel";
 /mnt/COMPILACAO/scripts/config --file /mnt/COMPILACAO/.config \
 -e EXPERT -e 64BIT -e SMP -e SCHED_SMT -e SCHED_MC -e X86_X2APIC -e MTRR -e X86_PAT \                             # Base do sistema
 -e HIGH_RES_TIMERS -e NO_HZ_IDLE -e HZ_250 -e CC_OPTIMIZE_FOR_PERFORMANCE \
