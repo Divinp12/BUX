@@ -381,15 +381,15 @@ git clone https://gitlab.freedesktop.org/wlroots/wlroots.git /mnt/COMPILACAO/COD
 
 echo "adicionando configuracao do wlroots";
 arch-chroot /mnt bash -c 'meson setup /COMPILACAO/BUILD-WLROOTS /COMPILACAO/CODIGOFONTE-WLROOTS \
-    --prefix=/usr/local \
-    --buildtype=release \
-    -Dexamples=false \
-    -Dxwayland=disabled \
-    -Dxcb-errors=disabled \
-    -Drenderers=gles2 \
-    -Dbackends=drm,libinput \
-    -Dallocators=gbm \
-    -Dsession=enabled';
+--prefix=/usr/local \
+--buildtype=release \
+-Dexamples=false \
+-Dxwayland=disabled \
+-Dxcb-errors=disabled \
+-Drenderers=gles2 \
+-Dbackends=drm,libinput \
+-Dallocators=gbm \
+-Dsession=enabled';
 
 echo "compilando wlroots";
 arch-chroot /mnt bash -c 'ninja -C /COMPILACAO/BUILD-WLROOTS';
@@ -416,16 +416,16 @@ git clone https://github.com/swaywm/sway.git /mnt/COMPILACAO/CODIGOFONTE-SWAY;
 
 echo "adicionando configuracao do sway";
 arch-chroot /mnt bash -c 'meson setup /COMPILACAO/BUILD-SWAY /COMPILACAO/CODIGOFONTE-SWAY \
-    --prefix=/usr/local \
-    --buildtype=release \
-    -Dswaybar=false \
-    -Dswaynag=false \
-    -Dtray=disabled \
-    -Dgdk-pixbuf=disabled \
-    -Dman-pages=disabled \
-    -Dbash-completions=false \
-    -Dzsh-completions=false \
-    -Dfish-completions=false';
+--prefix=/usr/local \
+--buildtype=release \
+-Dswaybar=false \
+-Dswaynag=false \
+-Dtray=disabled \
+-Dgdk-pixbuf=disabled \
+-Dman-pages=disabled \
+-Dbash-completions=false \
+-Dzsh-completions=false \
+-Dfish-completions=false';
 
 echo "compilando wlroots";
 arch-chroot /mnt bash -c 'ninja -C /COMPILACAO/BUILD-SWAY';
