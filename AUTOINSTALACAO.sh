@@ -153,8 +153,9 @@ glibc \
 networkmanager \
 sudo \
 git \
+ninja \
+meson \
 mesa \
-sway \
 wayland \
 pulseaudio \
 wget \
@@ -241,58 +242,42 @@ echo "aplicando configuracao minima de kernel";
 arch-chroot /mnt bash -c 'make -C /COMPILACAO tinyconfig > /dev/null 2>&1';
 
 # Base do sistema
-/mnt/COMPILACAO/scripts/config --file /mnt/COMPILACAO/.config -e EXPERT -e 64BIT -e SMP -e SCHED_SMT -e SCHED_MC -e X86_X2APIC -e MTRR -e X86_PAT \
+/mnt/COMPILACAO/scripts/config --file /mnt/COMPILACAO/.config \
+-e EXPERT -e 64BIT -e SMP -e SCHED_SMT -e SCHED_MC -e X86_X2APIC -e MTRR -e X86_PAT \                             # Base do sistema
 -e HIGH_RES_TIMERS -e NO_HZ_IDLE -e HZ_250 -e CC_OPTIMIZE_FOR_PERFORMANCE \
 -d MODULES -d SLUB_TINY -d BLK_DEV_INITRD --set-val NR_CPUS 32 \
 -e PRINTK -e BUG -e BLOCK -e TTY -e VT -e VT_CONSOLE -e UNIX98_PTYS -e MAGIC_SYSRQ \
 -e DEVTMPFS -e DEVTMPFS_MOUNT -e BINFMT_ELF -e BINFMT_SCRIPT -e MULTIUSER \
 -e PROC_FS -e PROC_SYSCTL -e SYSFS -e TMPFS -e TMPFS_POSIX_ACL -e TMPFS_XATTR -e SHMEM -e SYSVIPC \
 -e FUTEX -e EPOLL -e SIGNALFD -e TIMERFD -e EVENTFD -e AIO -e FILE_LOCKING -e ADVISE_SYSCALLS \
--e POSIX_TIMERS -e INOTIFY_USER -e FHANDLE -e AUTOFS_FS;
-
-# systemd, Steam, namespaces
-/mnt/COMPILACAO/scripts/config --file /mnt/COMPILACAO/.config -e CGROUPS -e MEMCG -e CGROUP_SCHED -e FAIR_GROUP_SCHED -e CGROUP_PIDS \
+-e POSIX_TIMERS -e INOTIFY_USER -e FHANDLE -e AUTOFS_FS \
+-e CGROUPS -e MEMCG -e CGROUP_SCHED -e FAIR_GROUP_SCHED -e CGROUP_PIDS \                                          # systemd, Steam, namespaces
 -e NAMESPACES -e UTS_NS -e TIME_NS -e IPC_NS -e USER_NS -e PID_NS -e NET_NS \
 -e SECCOMP -e SECCOMP_FILTER -e IA32_EMULATION -e COMPAT_32BIT_TIME -e IKCONFIG -e IKCONFIG_PROC -e NTSYNC \
--e CRYPTO -e CRYPTO_HMAC -e CRYPTO_SHA256 -e CRYPTO_USER_API_HASH;
-
-# Hardware base
-/mnt/COMPILACAO/scripts/config --file /mnt/COMPILACAO/.config -e FW_LOADER -e RTC_CLASS -e RTC_DRV_CMOS -e RTC_HCTOSYS -e RTC_SYSTOHC \
+-e CRYPTO -e CRYPTO_HMAC -e CRYPTO_SHA256 -e CRYPTO_USER_API_HASH \
+-e FW_LOADER -e RTC_CLASS -e RTC_DRV_CMOS -e RTC_HCTOSYS -e RTC_SYSTOHC \                                          # Hardware base
 -e ACPI -e ACPI_PROCESSOR -e ACPI_BUTTON -e PCI -e PCI_MSI -e DMI -e DMIID \
 -e CPU_FREQ -e X86_INTEL_PSTATE -e X86_AMD_PSTATE -e CPU_IDLE -e INTEL_IDLE \
--e HWMON -e SENSORS_CORETEMP -e SENSORS_K10TEMP;
-
-# Disco: NVMe, SATA, USB
-/mnt/COMPILACAO/scripts/config --file /mnt/COMPILACAO/.config -e BLK_DEV_NVME -e ATA -e SATA_AHCI -e SCSI -e BLK_DEV_SD \
+-e HWMON -e SENSORS_CORETEMP -e SENSORS_K10TEMP \
+-e BLK_DEV_NVME -e ATA -e SATA_AHCI -e SCSI -e BLK_DEV_SD \                                                        # Disco: NVMe, SATA, USB
 -e PARTITION_ADVANCED -e EFI_PARTITION \
 -e USB_SUPPORT -e USB -e USB_PCI -e USB_XHCI_HCD -e USB_XHCI_PCI -e USB_EHCI_HCD -e USB_EHCI_PCI \
--e USB_STORAGE -e USB_UAS;
-
-# Sistemas de arquivos
-/mnt/COMPILACAO/scripts/config --file /mnt/COMPILACAO/.config -e EXT4_FS -e FAT_FS -e VFAT_FS -e NLS -e NLS_CODEPAGE_437 -e NLS_ASCII -e NLS_UTF8 \
---set-str FAT_DEFAULT_IOCHARSET ascii;
-
-# EFI e vídeo (framebuffer é necessário para o sway subir)
-/mnt/COMPILACAO/scripts/config --file /mnt/COMPILACAO/.config -e EFI -e EFI_STUB -e EFIVAR_FS -e FB -e FB_EFI -e FB_DEVICE -e FRAMEBUFFER_CONSOLE \
+-e USB_STORAGE -e USB_UAS \
+-e EXT4_FS -e FAT_FS -e VFAT_FS -e NLS -e NLS_CODEPAGE_437 -e NLS_ASCII -e NLS_UTF8 \                              # Sistemas de arquivos
+--set-str FAT_DEFAULT_IOCHARSET ascii \
+-e EFI -e EFI_STUB -e EFIVAR_FS -e FB -e FB_EFI -e FB_DEVICE -e FRAMEBUFFER_CONSOLE \                              # EFI e vídeo (framebuffer é necessário para o sway subir)
 -e DRM -e DRM_KMS_HELPER -e DRM_FBDEV_EMULATION -e DRM_CLIENT_DEFAULT_FBDEV \
--e DRM_I915 -e DRM_XE -e DRM_AMDGPU -e DRM_AMD_DC -e DRM_NOUVEAU -e EXTRA_FIRMWARE;
-
-# Entrada
-/mnt/COMPILACAO/scripts/config --file /mnt/COMPILACAO/.config -e INPUT -e INPUT_EVDEV -e INPUT_KEYBOARD -e KEYBOARD_ATKBD -e INPUT_MOUSE -e MOUSE_PS2 \
+-e DRM_I915 -e DRM_XE -e DRM_AMDGPU -e DRM_AMD_DC -e DRM_NOUVEAU -e EXTRA_FIRMWARE \
+-e INPUT -e INPUT_EVDEV -e INPUT_KEYBOARD -e KEYBOARD_ATKBD -e INPUT_MOUSE -e MOUSE_PS2 \                          # Entrada
 -e SERIO -e SERIO_I8042 -e INPUT_MISC -e INPUT_UINPUT \
--e HID_SUPPORT -e HID -e HID_GENERIC -e USB_HID -e HIDRAW;
-
-# Áudio
-/mnt/COMPILACAO/scripts/config --file /mnt/COMPILACAO/.config -e SOUND -e SND -e SND_PCI -e SND_HDA_INTEL -d SND_HDA_CODEC_REALTEK -d SND_HDA_GENERIC -e SND_HDA_CODEC_HDMI -e SND_USB_AUDIO;
-
-# Rede
-/mnt/COMPILACAO/scripts/config --file /mnt/COMPILACAO/.config -e NET -e INET -e IPV6 -e UNIX -e PACKET -e NETDEVICES -e NET_CORE -e IP_MULTIPLE_TABLES -e RFKILL \
+-e HID_SUPPORT -e HID -e HID_GENERIC -e USB_HID -e HIDRAW \
+-e SOUND -e SND -e SND_PCI -e SND_HDA_INTEL -d SND_HDA_CODEC_REALTEK \                                             # Áudio
+-d SND_HDA_GENERIC -e SND_HDA_CODEC_HDMI -e SND_USB_AUDIO \
+-e NET -e INET -e IPV6 -e UNIX -e PACKET -e NETDEVICES -e NET_CORE -e IP_MULTIPLE_TABLES -e RFKILL \               # Rede
 -e ETHERNET -e NET_VENDOR_REALTEK -e R8169 -e REALTEK_PHY \
 -d WIRELESS -d CFG80211 -d MAC80211 -d WLAN -d WLAN_VENDOR_INTEL -d IWLWIFI -d IWLMVM \
--e USB_NET_DRIVERS -e USB_USBNET -e USB_NET_CDCETHER -e USB_NET_CDC_NCM -e USB_NET_RNDIS_HOST;
-
-#LEDS
-/mnt/COMPILACAO/scripts/config --file /mnt/COMPILACAO/.config -d NEW_LEDS -d LEDS_CLASS -d LEDS_TRIGGERS -d RFKILL_LEDS -d SND_HDA_GENERIC_LEDS -d SND_CTL_LED -d INPUT_LEDS;
+-e USB_NET_DRIVERS -e USB_USBNET -e USB_NET_CDCETHER -e USB_NET_CDC_NCM -e USB_NET_RNDIS_HOST \
+-d NEW_LEDS -d LEDS_CLASS -d LEDS_TRIGGERS -d RFKILL_LEDS -d SND_HDA_GENERIC_LEDS -d SND_CTL_LED -d INPUT_LEDS;    #LEDS
 
 
 echo "configurando dependencias linux";
@@ -391,27 +376,33 @@ echo "adicionando pasta COMPILACAO no diretorio /mnt";
 mkdir -p /mnt/COMPILACAO/BUILD-WLROOTS;
 
 echo "baixando repositorio do wlroots";
-git clone https://gitlab.freedesktop.org/wlroots/wlroots.git /mnt/COMPILACAO/CODIGOFONTE-WLROOTS
+git clone https://gitlab.freedesktop.org/wlroots/wlroots.git /mnt/COMPILACAO/CODIGOFONTE-WLROOTS;
 
 echo "adicionando configuracao do wlroots";
-meson setup /mnt/COMPILACAO/BUILD-WLROOTS /mnt/COMPILACAO/CODIGOFONTE-WLROOTS \
+arch-chroot /mnt bash -c 'meson setup /COMPILACAO/BUILD-WLROOTS /COMPILACAO/CODIGOFONTE-WLROOTS \
     --prefix=/usr/local \
     --buildtype=release \
     -Dexamples=false \
     -Dxwayland=disabled \
     -Dxcb-errors=disabled \
-    -Drenderers=gles2,vulkan \
+    -Drenderers=gles2 \
     -Dbackends=drm,libinput \
     -Dallocators=gbm \
-    -Dsession=enabled
+    -Dsession=enabled';
 
 echo "compilando wlroots";
-ninja -C /mnt/COMPILACAO/BUILD-WLROOTS;
+arch-chroot /mnt bash -c 'ninja -C /COMPILACAO/BUILD-WLROOTS';
 
 echo "instalando wlroots";
-ninja -C /mnt/COMPILACAO/BUILD-WLROOTS install;
+arch-chroot /mnt bash -c 'ninja -C /COMPILACAO/BUILD-WLROOTS install';
+
+echo "atualizando linker";
+arch-chroot /mnt bash -c 'ldconfig';
 
 #############################################################################################################
+
+echo "excluindo diretorio /COMPILACAO";
+rm -rf /mnt/COMPILACAO;
 
 echo "adicionando pasta COMPILACAO no diretorio /mnt";
 mkdir -p /mnt/COMPILACAO/CODIGOFONTE-SWAY;
@@ -423,7 +414,7 @@ echo "baixando repositorio do sway";
 git clone https://github.com/swaywm/sway.git /mnt/COMPILACAO/CODIGOFONTE-SWAY;
 
 echo "adicionando configuracao do sway";
-meson setup /mnt/COMPILACAO/BUILD-SWAY /mnt/COMPILACAO/CODIGOFONTE-SWAY \
+arch-chroot /mnt bash -c 'meson setup /COMPILACAO/BUILD-SWAY /COMPILACAO/CODIGOFONTE-SWAY \
     --prefix=/usr/local \
     --buildtype=release \
     -Dswaybar=false \
@@ -433,16 +424,16 @@ meson setup /mnt/COMPILACAO/BUILD-SWAY /mnt/COMPILACAO/CODIGOFONTE-SWAY \
     -Dman-pages=disabled \
     -Dbash-completions=false \
     -Dzsh-completions=false \
-    -Dfish-completions=false
+    -Dfish-completions=false';
 
 echo "compilando wlroots";
-ninja -C /mnt/COMPILACAO/BUILD-SWAY;
+arch-chroot /mnt bash -c 'ninja -C /COMPILACAO/BUILD-SWAY';
 
 echo "instalando wlroots";
-sudo ninja -C /mnt/COMPILACAO/BUILD-SWAY install;
+arch-chroot /mnt bash -c 'ninja -C /COMPILACAO/BUILD-SWAY install';
 
-# Atualização do linker
-sudo ldconfig
+echo "atualizando linker";
+arch-chroot /mnt bash -c 'ldconfig';
 
 
 ###############################################################################################################
