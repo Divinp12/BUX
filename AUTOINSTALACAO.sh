@@ -379,6 +379,36 @@ git -C /mnt/usr/lib/firmware sparse-checkout set --no-cone '/*' \
 echo "baixando firmware";
 git -C /mnt/usr/lib/firmware checkout;
 
+#################################################################################################################
+
+echo "adicionando pasta COMPILACAO no diretorio /mnt";
+mkdir -p /mnt/COMPILACAO/CODIGOFONTE-WLROOTS;
+
+echo "adicionando pasta COMPILACAO no diretorio /mnt";
+mkdir -p /mnt/COMPILACAO/BUILD-WLROOTS;
+
+echo "baixando repositorio do wlroots";
+git clone https://gitlab.freedesktop.org/wlroots/wlroots.git /mnt/COMPILACAO/CODIGOFONTE-WLROOTS
+
+echo "adicionando configuracao do wlroots";
+meson setup /mnt/COMPILACAO/BUILD-WLROOTS /mnt/COMPILACAO/CODIGOFONTE-WLROOTS \
+    --prefix=/usr/local \
+    --buildtype=release \
+    -Dexamples=false \
+    -Dxwayland=disabled \
+    -Dxcb-errors=disabled \
+    -Drenderers=gles2,vulkan \
+    -Dbackends=drm,libinput \
+    -Dallocators=gbm \
+    -Dsession=enabled
+
+echo "compilando wlroots";
+ninja -C /mnt/COMPILACAO/BUILD-WLROOTS;
+
+echo "instalando wlroots";
+ninja -C /mnt/COMPILACAO/BUILD-WLROOTS install;
+
+#############################################################################################################
 
 echo "adicionando espelho brasileiro";
 cp -a /etc/pacman.d/mirrorlist /mnt/etc/pacman.d/mirrorlist;
