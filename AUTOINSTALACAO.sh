@@ -153,10 +153,14 @@ glibc \
 networkmanager \
 sudo \
 git \
+make \
+cmake \
 ninja \
 meson \
 mesa \
 wayland \
+wayland-protocols \
+libinput \
 pulseaudio \
 wget \
 bc > /dev/null 2>&1;
@@ -397,9 +401,6 @@ arch-chroot /mnt bash -c 'ninja -C /COMPILACAO/BUILD-WLROOTS';
 echo "instalando wlroots";
 arch-chroot /mnt bash -c 'ninja -C /COMPILACAO/BUILD-WLROOTS install';
 
-echo "atualizando linker";
-arch-chroot /mnt bash -c 'ldconfig';
-
 #############################################################################################################
 
 echo "excluindo diretorio /COMPILACAO";
@@ -415,7 +416,8 @@ echo "baixando repositorio do sway";
 git clone https://github.com/swaywm/sway.git /mnt/COMPILACAO/CODIGOFONTE-SWAY;
 
 echo "adicionando configuracao do sway";
-arch-chroot /mnt bash -c 'meson setup /COMPILACAO/BUILD-SWAY /COMPILACAO/CODIGOFONTE-SWAY \
+arch-chroot /mnt bash -c 'PKG_CONFIG_PATH=/usr/local/lib/pkgconfig \
+meson setup /COMPILACAO/BUILD-SWAY /COMPILACAO/CODIGOFONTE-SWAY \
 --prefix=/usr/local \
 --buildtype=release \
 -Dswaybar=false \
@@ -432,6 +434,12 @@ arch-chroot /mnt bash -c 'ninja -C /COMPILACAO/BUILD-SWAY';
 
 echo "instalando wlroots";
 arch-chroot /mnt bash -c 'ninja -C /COMPILACAO/BUILD-SWAY install';
+
+echo "adicionando diretorio /etc/ld.so.conf.d";
+mkdir -p /etc/ld.so.conf.d;
+
+echo "adicionando arquivo local.conf em /etc/ld.so.conf.d";
+echo "/usr/local/lib" > /etc/ld.so.conf.d/local.conf;
 
 echo "atualizando linker";
 arch-chroot /mnt bash -c 'ldconfig';
