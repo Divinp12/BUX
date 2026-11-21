@@ -268,7 +268,7 @@ echo "configurando modulos do kernel";
 -e PARTITION_ADVANCED -e EFI_PARTITION \
 -e USB_SUPPORT -e USB -e USB_PCI -e USB_XHCI_HCD -e USB_XHCI_PCI -e USB_EHCI_HCD -e USB_EHCI_PCI \
 -e USB_STORAGE -e USB_UAS \
--e EXT4_FS -e FAT_FS -e VFAT_FS -e NLS -e NLS_CODEPAGE_437 -e NLS_ASCII -e NLS_UTF8 \                              # Sistemas de arquivos
+-d EXT4_FS -e BTRFS_FS -e BTRFS_FS_POSIX_ACL -e FAT_FS -e VFAT_FS -e NLS -e NLS_CODEPAGE_437 -e NLS_ASCII -e NLS_UTF8 \   # Sistemas de arquivos
 --set-str FAT_DEFAULT_IOCHARSET ascii \
 -e EFI -e EFI_STUB -e EFIVAR_FS -e FB -e FB_EFI -e FB_DEVICE -e FRAMEBUFFER_CONSOLE \                              # EFI e vídeo (framebuffer é necessário para o sway subir)
 -e DRM -e DRM_KMS_HELPER -e DRM_FBDEV_EMULATION -e DRM_CLIENT_DEFAULT_FBDEV \
