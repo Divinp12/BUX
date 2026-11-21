@@ -282,8 +282,8 @@ echo "configurando modulos do kernel";
 -e ETHERNET -e NET_VENDOR_REALTEK -e R8169 -e REALTEK_PHY \
 -d WIRELESS -d CFG80211 -d MAC80211 -d WLAN -d WLAN_VENDOR_INTEL -d IWLWIFI -d IWLMVM \
 -e USB_NET_DRIVERS -e USB_USBNET -e USB_NET_CDCETHER -e USB_NET_CDC_NCM -e USB_NET_RNDIS_HOST \
--d NEW_LEDS -d LEDS_CLASS -d LEDS_TRIGGERS -d RFKILL_LEDS -d SND_HDA_GENERIC_LEDS -d SND_CTL_LED -d INPUT_LEDS;    #LEDS
-
+-d NEW_LEDS -d LEDS_CLASS -d LEDS_TRIGGERS -d RFKILL_LEDS -d SND_HDA_GENERIC_LEDS -d SND_CTL_LED -d INPUT_LEDS \    #LEDS
+-e ZSTD_COMPRESS -e ZSTD_DECOMPRESS;
 
 echo "configurando dependencias linux";
 arch-chroot /mnt bash -c 'make -C /COMPILACAO olddefconfig -j$(nproc) > /dev/null 2>&1';
