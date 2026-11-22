@@ -115,11 +115,11 @@ fi && \
 parted -s "$DISC" mklabel gpt && \
 parted -s "$DISC" mkpart ESP fat32 1MiB 50MiB && \
 parted -s "$DISC" set 1 esp on && \
-parted -s "$DISC" mkpart primary ext4 50MiB 100% && \
+parted -s "$DISC" mkpart primary btrfs 50MiB 100% && \
 partprobe > /dev/null 2>&1 && \
 mkfs.fat -F32 "$BOOT" > /dev/null 2>&1 && \
 mkfs.btrfs -f "$ROOT" > /dev/null 2>&1 && \
-mount -o rw,noatime,compress-force=zstd:22 "$ROOT" /mnt > /dev/null 2>&1 && \
+mount -o defaults,rw,noatime,compress-force=zstd:22 "$ROOT" /mnt > /dev/null 2>&1 && \
 mount --mkdir -t tmpfs -o rw,nosuid,nodev,noatime,size=100%,nr_inodes=819200,mode=755,inode64,huge=never tmpfs /mnt/run && \
 mount --mkdir -t tmpfs -o defaults,nosuid,nodev,noatime,mode=1777,size=100% tmpfs /mnt/tmp && \
 mount --mkdir -t tmpfs -o defaults,nosuid,nodev,noatime,size=100% tmpfs /mnt/var/cache && \
