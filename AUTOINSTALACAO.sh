@@ -131,7 +131,7 @@ mount --mkdir -t tmpfs -o rw,nosuid,nodev,noexec,noatime,mode=0755,size=100% tmp
 mount --mkdir "$BOOT" /mnt/boot > /dev/null 2>&1 && \
 mkdir -p /mnt/etc && \
 echo "PARTUUID=$(blkid -s PARTUUID -o value "$BOOT") /boot/EFI vfat rw,noatime,iocharset=ascii 0 2
-PARTUUID=$(blkid -s PARTUUID -o value "$ROOT") / btrfs defaults,rw,noatime 0 1
+PARTUUID=$(blkid -s PARTUUID -o value "$ROOT") / btrfs defaults,rw,noatime,compress-force=zstd:22 0 1
 tmpfs /run tmpfs rw,nosuid,nodev,noatime,size=100%,nr_inodes=819200,mode=755,inode64,huge=advise 0 0
 tmpfs /tmp tmpfs defaults,nosuid,nodev,noatime,mode=1777,size=100% 0 0
 tmpfs /var/cache tmpfs defaults,nosuid,nodev,noatime,size=100% 0 0
