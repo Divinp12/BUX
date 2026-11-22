@@ -168,7 +168,8 @@ libxkbcommon \
 pixman \
 seatd \
 cairo \
-pango > /dev/null 2>&1;
+pango \
+libliftoff > /dev/null 2>&1;
 
 
 echo "escaneando hardware amd, sincronizando repositorios do pacman e instalando drivers amd";
@@ -397,7 +398,8 @@ arch-chroot /mnt bash -c 'meson setup /COMPILACAO/BUILD-WLROOTS /COMPILACAO/CODI
 -Drenderers=gles2 \
 -Dbackends=drm,libinput \
 -Dallocators=gbm \
--Dsession=enabled';
+-Dsession=enabled \
+-Dlibliftoff=enabled';
 
 
 echo "compilando wlroots";
