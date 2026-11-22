@@ -163,7 +163,12 @@ wayland-protocols \
 libinput \
 pulseaudio \
 wget \
-bc > /dev/null 2>&1;
+bc \
+libxkbcommon \
+pixman \
+seatd \
+cairo \
+pango > /dev/null 2>&1;
 
 
 echo "escaneando hardware amd, sincronizando repositorios do pacman e instalando drivers amd";
@@ -369,19 +374,18 @@ git -C /mnt/usr/lib/firmware sparse-checkout set --no-cone '/*' \
 echo "baixando firmware";
 git -C /mnt/usr/lib/firmware checkout;
 
-#################################################################################################################
 
 echo "excluindo diretorio /COMPILACAO";
 rm -rf /mnt/COMPILACAO;
 
-echo "adicionando pasta COMPILACAO no diretorio /mnt";
-mkdir -p /mnt/COMPILACAO/CODIGOFONTE-WLROOTS;
 
 echo "adicionando pasta COMPILACAO no diretorio /mnt";
-mkdir -p /mnt/COMPILACAO/BUILD-WLROOTS;
+mkdir -p /mnt/COMPILACAO/{CODIGOFONTE-WLROOTS,BUILD-WLROOTS};
+
 
 echo "baixando repositorio do wlroots";
 git clone https://gitlab.freedesktop.org/wlroots/wlroots.git /mnt/COMPILACAO/CODIGOFONTE-WLROOTS;
+
 
 echo "adicionando configuracao do wlroots";
 arch-chroot /mnt bash -c 'meson setup /COMPILACAO/BUILD-WLROOTS /COMPILACAO/CODIGOFONTE-WLROOTS \
@@ -395,25 +399,26 @@ arch-chroot /mnt bash -c 'meson setup /COMPILACAO/BUILD-WLROOTS /COMPILACAO/CODI
 -Dallocators=gbm \
 -Dsession=enabled';
 
+
 echo "compilando wlroots";
 arch-chroot /mnt bash -c 'ninja -C /COMPILACAO/BUILD-WLROOTS';
+
 
 echo "instalando wlroots";
 arch-chroot /mnt bash -c 'ninja -C /COMPILACAO/BUILD-WLROOTS install';
 
-#############################################################################################################
 
 echo "excluindo diretorio /COMPILACAO";
 rm -rf /mnt/COMPILACAO;
 
-echo "adicionando pasta COMPILACAO no diretorio /mnt";
-mkdir -p /mnt/COMPILACAO/CODIGOFONTE-SWAY;
 
 echo "adicionando pasta COMPILACAO no diretorio /mnt";
-mkdir -p /mnt/COMPILACAO/BUILD-SWAY;
+mkdir -p /mnt/COMPILACAO/{CODIGOFONTE-SWAY,BUILD-SWAY};
+
 
 echo "baixando repositorio do sway";
 git clone https://github.com/swaywm/sway.git /mnt/COMPILACAO/CODIGOFONTE-SWAY;
+
 
 echo "adicionando configuracao do sway";
 arch-chroot /mnt bash -c 'PKG_CONFIG_PATH=/usr/local/lib/pkgconfig \
@@ -429,17 +434,22 @@ meson setup /COMPILACAO/BUILD-SWAY /COMPILACAO/CODIGOFONTE-SWAY \
 -Dzsh-completions=false \
 -Dfish-completions=false';
 
+
 echo "compilando wlroots";
 arch-chroot /mnt bash -c 'ninja -C /COMPILACAO/BUILD-SWAY';
+
 
 echo "instalando wlroots";
 arch-chroot /mnt bash -c 'ninja -C /COMPILACAO/BUILD-SWAY install';
 
+
 echo "adicionando diretorio /etc/ld.so.conf.d";
 mkdir -p /etc/ld.so.conf.d;
 
+
 echo "adicionando arquivo local.conf em /etc/ld.so.conf.d";
 echo "/usr/local/lib" > /etc/ld.so.conf.d/local.conf;
+
 
 echo "atualizando linker";
 arch-chroot /mnt bash -c 'ldconfig';
@@ -448,8 +458,6 @@ arch-chroot /mnt bash -c 'ldconfig';
 echo "excluindo diretorio /COMPILACAO";
 rm -rf /mnt/COMPILACAO;
 
-
-###############################################################################################################
 
 echo "adicionando espelho brasileiro";
 cp -a /etc/pacman.d/mirrorlist /mnt/etc/pacman.d/mirrorlist;
