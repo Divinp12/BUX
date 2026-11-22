@@ -702,18 +702,18 @@ rm -rf /mnt/etc/systemd/system/*.wants/NetworkManager-wait-online.service \
 echo "removendo linhas que começam com jogo da velha e espaços vazios";
 sed -i "/^\s*#/d; /^\s*$/d" \
 /mnt/home/bux/.bash_logout \
-/mnt/etc/sudoers \
-/mnt/etc/sudo.conf \
-/mnt/etc/environment \
-/mnt/etc/gai.conf \
-/mnt/etc/host.conf \
-/mnt/etc/healthd.conf \
-/mnt/etc/mkinitcpio.conf \
-/mnt/etc/libva.conf \
-/mnt/etc/vconsole.conf \
-/mnt/etc/fuse.conf \
-/mnt/etc/ts.conf \
-/mnt/etc/fstab || true;
+/mnt/etc/{sudoers,\
+sudo.conf,\
+environment,\
+gai.conf,\
+host.conf,\
+healthd.conf,\
+mkinitcpio.conf,\
+libva.conf,\
+vconsole.conf,\
+fuse.conf,\
+ts.conf,\
+fstab} || true;
 
 
 echo "deletando diretorios tmpfs";
