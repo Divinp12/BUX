@@ -100,6 +100,26 @@ tmpfs /home/bux/.cache tmpfs defaults,nosuid,nodev,noatime,uid=1000,gid=1000,mod
 mount -a -v;
 
 
+echo "configurando systemd-boot";
+bootctl --esp-path=/mnt/boot install > /dev/null 2>&1;
+
+
+echo "adicionando diretorio /mnt/boot/EFI/loader/entries";
+mkdir -p /mnt/boot/loader/entries;
+
+
+echo "adicionando arquivo de configuração do systemd-boot em /mnt/boot/EFI/loader/entries/arch.conf";
+echo "title BUX
+linux /vmlinuz-bux
+options root=PARTUUID=$(blkid -s PARTUUID -o value "$ROOT") rootfstype=btrfs rootwait rw quiet loglevel=3" > /mnt/boot/loader/entries/arch.conf;
+
+
+echo "adicionando arquivo de configuração do systemd-boot em /mnt/boot/EFI/loader/loader.conf";
+echo "default arch.conf
+timeout 0
+editor no" > /mnt/boot/loader/loader.conf
+
+
 echo "instalando pacotes do sistema";
 pacstrap /mnt --noconfirm \
 base \
@@ -489,26 +509,6 @@ arch-chroot /mnt bash -c 'locale-gen > /dev/null 2>&1';
 
 echo "sincronizando relogio";
 arch-chroot /mnt bash -c 'hwclock --systohc > /dev/null 2>&1';
-
-
-echo "configurando systemd-boot";
-bootctl --esp-path=/mnt/boot install > /dev/null 2>&1;
-
-
-echo "adicionando diretorio /mnt/boot/EFI/loader/entries";
-mkdir -p /mnt/boot/loader/entries;
-
-
-echo "adicionando arquivo de configuração do systemd-boot em /mnt/boot/EFI/loader/entries/arch.conf";
-echo "title BUX
-linux /vmlinuz-bux
-options root=PARTUUID=$(blkid -s PARTUUID -o value "$ROOT") rootfstype=btrfs rootwait rw quiet loglevel=3" > /mnt/boot/loader/entries/arch.conf;
-
-
-echo "adicionando arquivo de configuração do systemd-boot em /mnt/boot/EFI/loader/loader.conf";
-echo "default arch.conf
-timeout 0
-editor no" > /mnt/boot/loader/loader.conf
 
 
 echo "adicionando conexão ipv6 no sistema";
