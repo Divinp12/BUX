@@ -69,9 +69,9 @@ BOOT="/dev/sda1"
 ROOT="/dev/sda2"
 fi && \
 parted -s "$DISC" mklabel gpt && \
-parted -s "$DISC" mkpart ESP fat32 1MiB 50MiB && \
+parted -s "$DISC" mkpart ESP fat32 1MiB 40MiB && \
 parted -s "$DISC" set 1 esp on && \
-parted -s "$DISC" mkpart primary btrfs 50MiB 100% && \
+parted -s "$DISC" mkpart primary btrfs 40MiB 100% && \
 partprobe > /dev/null 2>&1 && \
 mkfs.fat -F32 "$BOOT" > /dev/null 2>&1 && \
 mkfs.btrfs -f "$ROOT" > /dev/null 2>&1 && \
