@@ -224,6 +224,10 @@ echo "criando arquivo Makefile.rules vazio";
 touch /mnt/COMPILACAO/arch/um/scripts/Makefile.rules;
 
 
+echo "alterando limite de TTYs abertos para 6";
+sed -i "/#define MAX_NR_CONSOLES/s/\(MAX_NR_CONSOLES[[:space:]]\+\)[0-9]\+/\16/" /mnt/COMPILACAO/include/uapi/linux/vt.h;
+
+
 echo "aplicando configuracao minima de kernel";
 arch-chroot /mnt bash -c 'make -C /COMPILACAO tinyconfig > /dev/null 2>&1';
 
